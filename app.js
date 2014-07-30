@@ -26,7 +26,7 @@
         
     function opportunityTimeline() {
         
-        if (view.opportunityTimeline === undefined) {
+        if (view.opportunityTimeline != undefined) {
            //switch to container rather than reloading 
         } else {
             headlineOpportunities.fetch(function(success) {
