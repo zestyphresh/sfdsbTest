@@ -1,5 +1,3 @@
-if (!views) { var views = {}; }
-
 views['opportunity-timeline'] = (function() {
 
     function render() { 
@@ -22,6 +20,4 @@ views['opportunity-timeline'] = (function() {
 
     return { render : render };
 
-}());    
-
-
+}());
