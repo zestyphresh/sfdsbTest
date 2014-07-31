@@ -18,14 +18,14 @@
     //ROUTER
     var routes = {
         '/Home': home,
-        '/OpportunityTimeline': opportunityTimeline
+        '/OpportunityTimeline': oppTimeline
     };
 
     var router = Router(routes);
 
     router.init();
         
-    function opportunityTimeline() {
+    function oppTimeline() {
         
         if (views.opportunityTimeline != undefined) {
            //switch to container rather than reloading 
