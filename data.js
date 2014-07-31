@@ -21,7 +21,7 @@ var headlineOpportunities = (function(){
             
                 var success = event.status || result.length > 0 ? false : true; 
                 
-                _(result).each(function(r) { r.closeDate = new Date(r.closeDate); }).value();
+                _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
                 
                 data.push(result);
                 dataWeeks.push(dataTransformToWeeks(result));
