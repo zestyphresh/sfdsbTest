@@ -1,4 +1,4 @@
-if (views) var views = {};
+if (!views) var views = {};
 
 views['opportunity-timeline'] = (function() {
 
