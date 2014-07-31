@@ -1,3 +1,5 @@
+if (views) var views = {};
+
 views['opportunity-timeline'] = (function() {
 
     function render() { 

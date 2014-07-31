@@ -1,6 +1,5 @@
 (function () {
     
-    var views = {};
     var body = $j('body');
     
     var templateNavbar = Handlebars.compile($j("#Template-Navbar").html());
