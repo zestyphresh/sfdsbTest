@@ -9,7 +9,7 @@
         'title' : 'Director Dashboard',
         'links' : [
             {'id' : 'Home', 'linkText' : 'Home'},
-            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunit'}
+            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'}
         ]
     };
         
