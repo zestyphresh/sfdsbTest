@@ -21,7 +21,7 @@ var headlineOpportunities = (function(){
             
             function (result, event) {
             
-                var success = !event.status || !result.length > 0 ? true : false; 
+                var success = !event.status || !result.length > 0 ? false : true; 
                 
                 console.log(event);
                 console.log(result);
