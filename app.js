@@ -13,6 +13,8 @@
     };
         
     body.append(templateNavbar(contextNavbar));
+    
+    body.append('<div id="test"></div>');
 
     //ROUTER
     var routes = {

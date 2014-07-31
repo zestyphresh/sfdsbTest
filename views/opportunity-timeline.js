@@ -6,7 +6,7 @@ views['opportunity-timeline'] = (function() {
 
     function render() { 
     
-        $j('#' + id).append(templateHeadlineOpportunities());
+        $j('#test').append(templateHeadlineOpportunities());
     
         var chtTimeline = new charts.OpportunityTimeline('chartContainer-OpportunityTimeline', headlineOpportunities.getDataWeeks());
         var chtSales = new charts.OpportunitySales('chartContainer-OpportunitySales', headlineOpportunities.getDataWeeks());
