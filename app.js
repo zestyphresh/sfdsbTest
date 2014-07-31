@@ -1,6 +1,6 @@
 (function () {
     
-    var view = {};
+    var views = {};
     var body = $j('body');
     
     var templateNavbar = Handlebars.compile($j("#Template-Navbar").html());
@@ -27,13 +27,13 @@
         
     function opportunityTimeline() {
         
-        if (view.opportunityTimeline != undefined) {
+        if (views.opportunityTimeline != undefined) {
            //switch to container rather than reloading 
         } else {
             headlineOpportunities.fetch(function(success) {
                 
                 if (success) {
-                    view['opportunity-timeline'].render();
+                    views['opportunity-timeline'].render();
                 } else {
                     console.log('data failure');
                 }
