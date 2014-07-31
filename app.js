@@ -10,7 +10,7 @@
             {'id' : 'home', 'linkText' : 'Home'},
             {'id' : 'opportunities', 'linkText' : 'Opportunities'}
         ]
-    }
+    };
         
     body.append(templateNavbar(contextNavbar));
 
