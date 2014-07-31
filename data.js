@@ -21,10 +21,11 @@ var headlineOpportunities = (function(){
             
             function (result, event) {
             
-                var success = event.status || result.length > 0 ? false : true; 
+                var success = !event.status || !result.length > 0 ? true : false; 
                 
                 console.log(event);
                 console.log(result);
+                console.log(success);
                 
                 _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
                 
