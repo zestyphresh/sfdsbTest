@@ -14,12 +14,19 @@ var headlineOpportunities = (function(){
                   ];
     
     function fetch(callback) {
+        
+        console.log('in fetch');
             
         AnalyticsDataProvider.getHeadlineOpportunities(
+            
+            console.log('in provider');
            
             function (result, event) {
             
                 var success = event.status || result.length > 0 ? false : true; 
+                
+                console.log(event);
+                console.log(result);
                 
                 _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
                 
