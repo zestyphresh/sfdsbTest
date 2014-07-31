@@ -19,8 +19,6 @@ var headlineOpportunities = (function(){
             
         AnalyticsDataProvider.getHeadlineOpportunities(
             
-            console.log('in provider');
-           
             function (result, event) {
             
                 var success = event.status || result.length > 0 ? false : true; 
