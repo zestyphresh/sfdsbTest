@@ -7,8 +7,8 @@
     var contextNavbar = {
         'title' : 'Director Dashboard',
         'links' : [
-            {'id' : 'home', 'linkText' : 'Home'},
-            {'id' : 'opportunities', 'linkText' : 'Opportunities'}
+            {'id' : 'Home', 'linkText' : 'Home'},
+            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunit'}
         ]
     };
         
