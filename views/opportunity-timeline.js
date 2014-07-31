@@ -2,6 +2,8 @@ if (!views) var views = {};
 
 views['opportunity-timeline'] = (function() {
     
+    var templateHeadlineOpportunities = Handlebars.compile($j("#Template-HeadlineOpportunities").html());
+    
     var rendered = false;
 
     function render() { 
