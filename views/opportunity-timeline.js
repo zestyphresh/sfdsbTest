@@ -1,6 +1,8 @@
 if (!views) var views = {};
 
 views['opportunity-timeline'] = (function() {
+    
+    var rendered = false;
 
     function render() { 
     
@@ -11,7 +13,13 @@ views['opportunity-timeline'] = (function() {
         var tblOpps = new tables.HeadlineOpportunities('table-OpportunityTable', headlineOpportunities.getData());      
 
         renderFilters('filterContainer-Opportunities');
+        
+        rendered = true;
 
+    }
+    
+    function isRendered() {
+        return rendered;
     }
     
     function renderFilters(id) {
@@ -20,6 +28,9 @@ views['opportunity-timeline'] = (function() {
 
     }
 
-    return { render : render };
+    return { 
+        render : render,
+        isRendered : isRendered 
+    };
 
 }());
