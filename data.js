@@ -112,6 +112,8 @@ var headlineOpportunities = (function(){
                 var start = index + add + 7;
                 var remainingWeeks = Math.floor((maxIndex - start) / 7);
                 
+                console.log(maxIndex+','+add+','+start+','+remainingWeeks);
+                
                 _(remainingWeeks).times(function(i) {
                 
                     var saleWeek = $j.extend({}, d);
