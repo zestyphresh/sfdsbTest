@@ -2,13 +2,18 @@ var dates = (function() {
     
     var data = [];
     
+    console.log('in dates');
+    
     function fetch(callback) {
+
+        console.log('in fetch');
 
         AnalyticsViewProvider.getDateInfo(
             
             function (result, event) {
                 
                 console.log(result);
+                console.log(event);
             
                 var success = !event.status || !result.length > 0 ? false : true; 
 
