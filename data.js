@@ -1,6 +1,6 @@
 var onLoad = (function() {
     
-    var data = [];
+    var datesByIndex, datesByDate;
 
     function fetch(callback) {
 
@@ -8,7 +8,8 @@ var onLoad = (function() {
             
             function (result, event) {
                 
-                data = result.dates;
+                datesByIndex = _.object(_.map(result.dates, function(d) { return [d.dateIndex, d]; }));
+                datesByDate = _.object(_.map(result.dates, function(d) { return [d.cyDate, d]; }));
                 
                 console.log(data);
 
@@ -20,8 +21,15 @@ var onLoad = (function() {
         
     }
     
+    function getDates() { return dates; }
+    function getDatesByIndex() { return datesByIndex; }
+    function getDatesByDate() { return datesByDate; }
+    
     return { 
-        fetch : fetch
+        fetch : fetch,
+        getDates : getDates,
+        getDatesByIndex : getDatesByIndex,
+        getDatesByDate : getDatesByDate
     };
     
 }());
