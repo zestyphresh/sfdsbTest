@@ -63,9 +63,6 @@ var headlineOpportunities = (function(){
         var deliveryWeeks = 4,
             storeWeeks = 4,
             newData = [];
-            
-        console.log(datesByDate);
-        console.log(datesByDate['01/12/2014']);
 
         _(originalData).each(function(d) {
             
