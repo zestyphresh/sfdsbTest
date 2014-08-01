@@ -8,17 +8,11 @@ var onLoad = (function() {
             
             function (result, event) {
                 
-                console.log(result);
-                console.log(event);
-            
-                var success = !event.status || !result.length > 0 ? false : true; 
-
-                console.log(event.status);
-                console.log(result.length);
-
                 data.push(result.dates);
+                
+                console.log(data);
 
-                callback(success);
+                callback(event.status);
                     
             }, { escape: true }
                 
