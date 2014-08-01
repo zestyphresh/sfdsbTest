@@ -8,7 +8,7 @@ var onLoad = (function() {
             
             function (result, event) {
                 
-                data.push(result.dates);
+                data = result.dates;
                 
                 console.log(data);
 
