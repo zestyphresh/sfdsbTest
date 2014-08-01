@@ -24,9 +24,7 @@ var headlineOpportunities = (function(){
                 var success = !event.status || !result.length > 0 ? false : true; 
                 
                 console.log(result);
-                
-                _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
-                
+
                 //In place to filter while testing
                 
                 var testData = result.slice(0,30);
@@ -65,8 +63,13 @@ var headlineOpportunities = (function(){
         var deliveryWeeks = 4,
             storeWeeks = 4,
             newData = [];
+            
+        console.log(datesByDate);
+        console.log(datesByDate['01/12/2014']);
 
         _(originalData).each(function(d) {
+            
+            console.log(d.closeDate);
             
             var index = datesByDate[d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
