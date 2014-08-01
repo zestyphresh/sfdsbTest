@@ -1,12 +1,8 @@
-var dates = (function() {
+var onLoad = (function() {
     
     var data = [];
-    
-    console.log('in dates');
-    
-    function fetch(callback) {
 
-        console.log('in fetch');
+    function fetch(callback) {
 
         AnalyticsViewProvider.getDateInfo(
             
@@ -16,6 +12,9 @@ var dates = (function() {
                 console.log(event);
             
                 var success = !event.status || !result.length > 0 ? false : true; 
+
+                console.log(event.status);
+                console.log(result.length);
 
                 data.push(result.dates);
 

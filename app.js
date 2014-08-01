@@ -12,7 +12,7 @@
 
     router.init();
     
-    dates.fetch(function(success) {
+    onLoad.fetch(function(success) {
                 
         if (success) {
             loadApp();
