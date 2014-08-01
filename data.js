@@ -114,8 +114,8 @@ var headlineOpportunities = (function(){
                 _(remainingWeeks).times(function(i) {
                 
                     var saleWeek = $j.extend({}, d);
-                        saleWeek.week = datesByIndex[start + (i*7)].FY_Year_Week;
-                        saleWeek.month = datesByIndex[start + (i*7)].FY_Year_Month;
+                        saleWeek.week = datesByIndex[index + start + (i*7)].FY_Year_Week;
+                        saleWeek.month = datesByIndex[index + start + (i*7)].FY_Year_Month;
                         saleWeek.closeDate = datesByIndex[index + (start + (i*7))].Date;
                         saleWeek.type = headline ? 'Sales' : 'Loss';
                     newData.push(saleWeek);
