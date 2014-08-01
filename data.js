@@ -71,7 +71,7 @@ var headlineOpportunities = (function(){
         _(originalData).each(function(d) {
             
             
-            console.log(d.closeDate);
+            console.log(d.closeDate.toString());
             
             var index = datesByDate[d.closeDate.toString()].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
