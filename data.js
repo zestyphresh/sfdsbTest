@@ -23,6 +23,9 @@ var dates = (function() {
         
     }
     
+    return { fetch : fetch
+    };
+    
 }());
 
 var headlineOpportunities = (function(){
