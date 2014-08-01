@@ -60,13 +60,13 @@ var headlineOpportunities = (function(){
         return dataWeeks[0];
     }
     
-    function dataTransformToWeeks(data) {
+    function dataTransformToWeeks(originalData) {
         
         var deliveryWeeks = 4,
             storeWeeks = 4,
             newData = [];
         
-        _(data).each(function(d) {
+        _(originalData).each(function(d) {
             
             var index = datesByDate[d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
