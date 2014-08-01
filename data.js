@@ -12,10 +12,7 @@ var dates = (function() {
             
                 var success = !event.status || !result.length > 0 ? false : true; 
 
-                //In place to filter while testing
-                var testData = result.dates;
-                
-                data.push(testData.opps);
+                data.push(result.dates);
 
                 callback(success);
                     
@@ -25,7 +22,8 @@ var dates = (function() {
         
     }
     
-    return { fetch : fetch
+    return { 
+        fetch : fetch
     };
     
 }());
