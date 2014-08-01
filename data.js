@@ -97,7 +97,7 @@ var headlineOpportunities = (function(){
                     var storeWeek = $j.extend({}, d);
                         storeWeek.week = datesByIndex[index + (i*7)].FY_Year_Week;
                         storeWeek.month = datesByIndex[index + (i*7)].FY_Year_Month;
-                        delWeek.closeDate = datesByIndex[index + (i*7)].Date;
+                        storeWeek.closeDate = datesByIndex[index + (i*7)].Date;
                         storeWeek.type = 'In Store';
                     newData.push(storeWeek);
                 
