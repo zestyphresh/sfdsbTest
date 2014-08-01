@@ -65,15 +65,10 @@ var headlineOpportunities = (function(){
         var deliveryWeeks = 4,
             storeWeeks = 4,
             newData = [];
-            
-            console.log(datesByDate);
-        
+
         _(originalData).each(function(d) {
             
-            
-            console.log(d.closeDate.toString());
-            
-            var index = datesByDate[d.closeDate.toString()].Date_Index;
+            var index = datesByDate[d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
             
             var thisWeek = $j.extend({}, d);
