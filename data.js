@@ -116,7 +116,7 @@ var headlineOpportunities = (function(){
                     var saleWeek = $j.extend({}, d);
                         saleWeek.week = datesByIndex[index + start + (i*7)].FY_Year_Week;
                         saleWeek.month = datesByIndex[index + start + (i*7)].FY_Year_Month;
-                        saleWeek.closeDate = datesByIndex[index + (start + (i*7))].Date;
+                        saleWeek.closeDate = datesByIndex[index + start + (i*7)].Date;
                         saleWeek.type = headline ? 'Sales' : 'Loss';
                     newData.push(saleWeek);
                 
