@@ -1,6 +1,6 @@
 (function () {
     
-    var body = $j('body');
+    var $body = $j('body');
     
     var templateNavbar = Handlebars.compile($j("#Template-Navbar").html());
 
@@ -12,9 +12,9 @@
         ]
     };
         
-    body.append(templateNavbar(contextNavbar));
+    $body.append(templateNavbar(contextNavbar));
     
-    body.append('<div id="test"></div>');
+    $body.append('<div id="test"></div>');
 
     //ROUTER
     var routes = {

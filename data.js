@@ -25,8 +25,12 @@ var headlineOpportunities = (function(){
                 
                 _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
                 
-                data.push(result);
-                dataWeeks.push(dataTransformToWeeks(result));
+                //In place to filter while testing
+                
+                var testData = result.slice(0,30);
+                
+                data.push(testData);
+                dataWeeks.push(dataTransformToWeeks(testData));
                 
                 callback(success);
                     
@@ -108,29 +112,12 @@ var headlineOpportunities = (function(){
                     var saleWeek = $j.extend({}, d);
                         saleWeek.week = datesByIndex[i].FY_Year_Week;
                         saleWeek.month = datesByIndex[i].FY_Year_Month;
+                        saleWeek.closeDate = datesByIndex[index + (i*7)].Date;
                         saleWeek.type = headline ? 'Sales' : 'Loss';
                     newData.push(saleWeek);
                     i += 7;
                 
                 });
-            
-            }
-            
-            if (d.recordType == 'Threat') {
-            
-                var maxIndex = 2191;                        
-                var start = index + (storeWeeks * 7) + 7;
-                var end = maxIndex;
-                
-                for (var i=start; i<=end; i = i+7) {
-                    
-                    var saleWeek = $j.extend({}, d);
-                        saleWeek.week = datesByIndex[i].FY_Year_Week;
-                        saleWeek.month = datesByIndex[i].FY_Year_Month;
-                        saleWeek.type = 'Sales';
-                    newData.push(saleWeek);
-                
-                }
             
             }
             
