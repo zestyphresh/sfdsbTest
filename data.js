@@ -23,6 +23,8 @@ var headlineOpportunities = (function(){
             
                 var success = !event.status || !result.length > 0 ? false : true; 
                 
+                console.log(result);
+                
                 _(result).each(function(r) { r.closeDate = new Date(r.closeDate); });
                 
                 //In place to filter while testing
