@@ -26,6 +26,7 @@ var onLoad = (function() {
     
 }());
 
+//headlineOpportunities
 var headlineOpportunities = (function(){
     
     var data = [];
@@ -48,8 +49,6 @@ var headlineOpportunities = (function(){
         AnalyticsViewProvider.getHeadlineOpportunityTimeline(
             
             function (result, event) {
-            
-                var success = !event.status || !result.length > 0 ? false : true; 
 
                 //In place to filter while testing
                 var testData = result.opps.slice(0,20);
@@ -57,7 +56,7 @@ var headlineOpportunities = (function(){
                 data.push(testData.opps);
                 dataWeeks.push(dataTransformToWeeks(testData.opps));
                 
-                callback(success);
+                callback(event.status);
                     
             }, { escape: true }
                 
@@ -161,3 +160,4 @@ var headlineOpportunities = (function(){
     };
         
 }());
+//end of headlineOpportunities

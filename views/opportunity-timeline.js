@@ -5,6 +5,8 @@ views['opportunity-timeline'] = (function() {
     var templateHeadlineOpportunities = Handlebars.compile($j("#Template-HeadlineOpportunities").html());
     
     var rendered = false;
+    
+    function isRendered() { return rendered; }
 
     function render() { 
     
@@ -18,10 +20,6 @@ views['opportunity-timeline'] = (function() {
         
         rendered = true;
 
-    }
-    
-    function isRendered() {
-        return rendered;
     }
     
     function renderFilters(id) {

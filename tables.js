@@ -18,7 +18,7 @@ var tables = (function() {
                         {"data": "closeDate", "title": "Date"},
                         {"data": "productCategory", "title": "Category"}
             ],
-            'columnDefs' : [returnDef([4,5,6], '$0,0', 'alignRight')],
+            'columnDefs' : [_returnDef([4,5,6], '$0,0', 'alignRight')],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
 
@@ -39,8 +39,29 @@ var tables = (function() {
                                 
     };
     
+    _returnDef = function(targets, format, cssClass) {
+    
+        var render = function (data, type, full, meta) {
+            if (type === 'display') {
+                return numeral(data).format(format);
+            }
+            return data;
+        };
+            
+        var result = {
+            'targets' : targets,
+            'render' : render, 
+            className : cssClass               
+        };
+            
+        return result;
+            
+    };
+
+    
     return {
         HeadlineOpportunities : HeadlineOpportunities
     };
 
 }());
+
