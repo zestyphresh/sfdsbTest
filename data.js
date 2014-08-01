@@ -1,3 +1,30 @@
+var dates = (function() {
+    
+    var data = [];
+    
+    function fetch(callback) {
+
+        AnalyticsViewProvider.getDateInfo(
+            
+            function (result, event) {
+            
+                var success = !event.status || !result.length > 0 ? false : true; 
+
+                //In place to filter while testing
+                var testData = result.dates;
+                
+                data.push(testData.opps);
+
+                callback(success);
+                    
+            }, { escape: true }
+                
+        );
+        
+    }
+    
+}());
+
 var headlineOpportunities = (function(){
     
     var data = [];
@@ -17,20 +44,17 @@ var headlineOpportunities = (function(){
         
         console.log('in fetch');
             
-        AnalyticsDataProvider.getHeadlineOpportunities(
+        AnalyticsViewProvider.getHeadlineOpportunityTimeline(
             
             function (result, event) {
             
                 var success = !event.status || !result.length > 0 ? false : true; 
-                
-                console.log(result);
 
                 //In place to filter while testing
+                var testData = result.opps.slice(0,20);
                 
-                var testData = result.slice(0,30);
-                
-                data.push(testData);
-                dataWeeks.push(dataTransformToWeeks(testData));
+                data.push(testData.opps);
+                dataWeeks.push(dataTransformToWeeks(testData.opps));
                 
                 callback(success);
                     

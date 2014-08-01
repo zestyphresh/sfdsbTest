@@ -2,20 +2,6 @@
     
     var $body = $j('body');
     
-    var templateNavbar = Handlebars.compile($j("#Template-Navbar").html());
-
-    var contextNavbar = {
-        'title' : 'Director Dashboard',
-        'links' : [
-            {'id' : 'Home', 'linkText' : 'Home'},
-            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'}
-        ]
-    };
-        
-    $body.append(templateNavbar(contextNavbar));
-    
-    $body.append('<div id="test"></div>');
-
     //ROUTER
     var routes = {
         '/Home': home,
@@ -25,7 +11,36 @@
     var router = Router(routes);
 
     router.init();
+    
+    dates.fetch(function(success) {
+                
+        if (success) {
+            loadApp();
+        } else {
+            console.log('data failure');
+        }
+                
+    });
+    
+    function loadApp() {
         
+        //Navbar
+        var templateNavbar = Handlebars.compile($j("#Template-Navbar").html());
+    
+        var contextNavbar = {
+            'title' : 'Director Dashboard',
+            'links' : [
+                {'id' : 'Home', 'linkText' : 'Home'},
+                {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'}
+            ]
+        };
+            
+        $body.append(templateNavbar(contextNavbar));
+        
+        $body.append('<div id="test"></div>');
+        
+    }
+
     function oppTimeline() {
         
         if (views['opportunity-timeline'].isRendered()) {
