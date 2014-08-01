@@ -7,6 +7,8 @@ var dates = (function() {
         AnalyticsViewProvider.getDateInfo(
             
             function (result, event) {
+                
+                console.log(result);
             
                 var success = !event.status || !result.length > 0 ? false : true; 
 
