@@ -73,7 +73,7 @@ var headlineOpportunities = (function(){
             
             console.log(d.closeDate);
             
-            var index = datesByDate[d.closeDate].Date_Index;
+            var index = datesByDate[d.closeDate.toString()].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
             
             var thisWeek = $j.extend({}, d);
