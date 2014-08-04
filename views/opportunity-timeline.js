@@ -1,9 +1,9 @@
 if (!views) var views = {};
 
-views['headline-opportunity-timeline'] = (function(id) {
+views['headline-opportunity-timeline'] = (function() {
     
     //Private vars
-    var _id = id;
+    var _id = '0001';
     
     //Public vars
     var chtTimeline, chtSales, tblOpps;
@@ -42,4 +42,4 @@ views['headline-opportunity-timeline'] = (function(id) {
         isRendered : function() { return rendered; }
     };
 
-}(id));
+}());
