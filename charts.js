@@ -146,7 +146,9 @@ var charts = (function() {
     
     return {
         OpportunityTimeline : OpportunityTimeline,
-        OpportunitySales : OpportunitySales
+        OpportunitySales : OpportunitySales,
+        CountdownLeaderboard : CountdownLeaderboard,
+        CountdownWeeklySales : CountdownWeeklySales
     };
     
 }());
