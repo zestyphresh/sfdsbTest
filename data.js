@@ -1,17 +1,17 @@
 var models = {};
 
+var gblDatesByIndex, gblDatesByDate;
+
 models['onLoad'] = (function() {
     
-    var datesByIndex, datesByDate;
-
     function fetch(callback) {
 
         AnalyticsViewProvider.getDateInfo(
             
             function (result, event) {
                 
-                datesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
-                datesByDate = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object();
+                gblDatesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
+                gblDatesByDate = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object();
 
                 callback(event.status);
                     
@@ -23,8 +23,8 @@ models['onLoad'] = (function() {
 
     return { 
         fetch : fetch,
-        getDatesByIndex : function() { return datesByIndex; },
-        getDatesByDate : function() { return datesByDate; }
+        getDatesByIndex : function() { return gblDatesByIndex; },
+        getDatesByDate : function() { return gblDatesByDate; }
     };
     
 }());
@@ -98,7 +98,7 @@ models['headline-opportunities'] = (function(){
             
             //console.log(d.closeDate);
             
-            var index = datesByDate[d.closeDate].Date_Index;
+            var index = gblDatesByDate[d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
             
             var thisWeek = $j.extend({}, d);
@@ -110,9 +110,9 @@ models['headline-opportunities'] = (function(){
                 _(deliveryWeeks).times(function(i) {
                     
                     var delWeek = $j.extend({}, d);
-                        delWeek.week = datesByIndex[index - (i*7)].FY_Year_Week;
-                        delWeek.month = datesByIndex[index - (i*7)].FY_Year_Month;
-                        delWeek.closeDate = datesByIndex[index - (i*7)].Date;
+                        delWeek.week = gblDatesByIndex[index - (i*7)].FY_Year_Week;
+                        delWeek.month = gblDatesByIndex[index - (i*7)].FY_Year_Month;
+                        delWeek.closeDate = gblDatesByIndex[index - (i*7)].Date;
                         delWeek.weeklyValue = 0;
                         delWeek.type = 'Delivery';
                     newData.push(delWeek);
@@ -122,9 +122,9 @@ models['headline-opportunities'] = (function(){
                 _(storeWeeks).times(function(i) {
                             
                     var storeWeek = $j.extend({}, d);
-                        storeWeek.week = datesByIndex[index + (i*7)].FY_Year_Week;
-                        storeWeek.month = datesByIndex[index + (i*7)].FY_Year_Month;
-                        storeWeek.closeDate = datesByIndex[index + (i*7)].Date;
+                        storeWeek.week = gblDatesByIndex[index + (i*7)].FY_Year_Week;
+                        storeWeek.month = gblDatesByIndex[index + (i*7)].FY_Year_Month;
+                        storeWeek.closeDate = gblDatesByIndex[index + (i*7)].Date;
                         storeWeek.type = 'In Store';
                     newData.push(storeWeek);
                 

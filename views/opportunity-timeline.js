@@ -33,7 +33,7 @@ views['headline-opportunity-timeline'] = (function() {
     //Renders filters, separate to render() so it can be called to refresh filters
     function renderFilters(id) {
 
-        $j('#' + id).empty().append(tmplFilters(headlineOpportunities.getFilters())); 
+        $j('#' + id).empty().append(tmplFilters(models['headline-opportunities'].getFilters())); 
 
     }
     
