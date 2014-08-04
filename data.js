@@ -84,8 +84,8 @@ var headlineOpportunities = (function(){
         });
     }
     
-    function getData() { return data[0]; }
-    function getDataWeeks() { return dataWeeks[0]; }
+    function getData() { return data; }
+    function getDataWeeks() { return dataWeeks; }
     function isFetched() { return fetched; }
     
     function _dataTransformToWeeks(originalData) {
