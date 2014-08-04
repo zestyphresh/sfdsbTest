@@ -72,7 +72,7 @@ var charts = (function() {
                         
         var yAxis = chart.addCategoryAxis('y', 'owner');
             yAxis.title = null;
-            yAxis.addOrderRule(value); 
+            yAxis.addOrderRule('value'); 
         
         var series = chart.addSeries('owner', dimple.plot.bar);
         
