@@ -61,6 +61,9 @@ var headlineOpportunities = (function(){
                 data = testData;
                 dataWeeks = _dataTransformToWeeks(testData);
                 
+                console.log(data);
+                console.log(dataWeeks);
+                
                 isFetched = true;
                 
                 callback(event.status);
