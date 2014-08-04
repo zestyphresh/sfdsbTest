@@ -9,7 +9,7 @@ var onLoad = (function() {
             function (result, event) {
                 
                 datesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
-                datesByDate = _.object(_.map(result.dates, function(d) { return [d.cyDate, d]; }));
+                datesByDate = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object();
 
                 callback(event.status);
                     
@@ -59,7 +59,7 @@ var headlineOpportunities = (function(){
                 var testData = result.opps.slice(0,20);
                 
                 data.push(testData.opps);
-                dataWeeks.push(dataTransformToWeeks(testData.opps));
+                dataWeeks.push(_dataTransformToWeeks(testData.opps));
                 
                 isFetched = true;
                 
