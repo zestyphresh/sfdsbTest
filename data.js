@@ -93,7 +93,7 @@ var headlineOpportunities = (function(){
 
         _(originalData).each(function(d) {
             
-            console.log(d.closeDate);
+            //console.log(d.closeDate);
             
             var index = datesByDate[d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
@@ -136,7 +136,7 @@ var headlineOpportunities = (function(){
                 var start = index + add + 7;
                 var remainingWeeks = Math.floor((maxIndex - start) / 7);
                 
-                console.log(maxIndex+','+add+','+start+','+remainingWeeks);
+                //console.log(maxIndex+','+add+','+start+','+remainingWeeks);
                 
                 _(remainingWeeks).times(function(i) {
                 
