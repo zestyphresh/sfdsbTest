@@ -111,7 +111,8 @@ var tables = (function() {
     };
     
     return {
-        HeadlineOpportunities : HeadlineOpportunities
+        HeadlineOpportunities : HeadlineOpportunities,
+        CountdownLeaderboard : CountdownLeaderboard
     };
 
 }());
