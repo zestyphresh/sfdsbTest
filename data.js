@@ -13,9 +13,6 @@ models['onLoad'] = (function() {
                 
                 models['datesByIndex'] = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object().value();
                 models['datesByDate'] = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object().value();
-                
-                console.log(models['datesByIndex']);
-                console.log(models['datesByDate']);
 
                 callback(event.status);
                     

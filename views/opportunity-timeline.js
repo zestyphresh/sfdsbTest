@@ -19,7 +19,9 @@ views['headline-opportunity-timeline'] = (function() {
     function render() { 
     
         $j('#test').append(tmplView({'id':_id}));
-    
+        
+        console.log(models['headline-opportunities'].getDataWeeks());
+        
         chtTimeline = new charts.OpportunityTimeline(_id + '-charts-opp-timeline', models['headline-opportunities'].getDataWeeks());
         chtSales = new charts.OpportunitySales(_id + '-charts-opp-sales', models['headline-opportunities'].getDataWeeks());
         tblOpps = new tables.HeadlineOpportunities(_id + '-tables-opp-list', models['headline-opportunities'].getData());      
