@@ -8,7 +8,7 @@ var onLoad = (function() {
             
             function (result, event) {
                 
-                datesByIndex = _(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
+                datesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
                 datesByDate = _.object(_.map(result.dates, function(d) { return [d.cyDate, d]; }));
 
                 callback(event.status);
