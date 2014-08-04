@@ -24,6 +24,8 @@
     
     function loadApp() {
         
+        console.log(templates['navbar']);
+        
         //Navbar
         var tmplNavbar = Handlebars.compile(templates['navbar']);
     

@@ -10,9 +10,7 @@ views['headline-opportunity-timeline'] = (function() {
     
     //First call of render() sets to true, used to check if view has been initialised
     var rendered = false;
-    
-    console.log(templates['headline-opportunities']);
-    
+
     //Initialise handlebar templates
     var tmplView = Handlebars.compile(templates['headline-opportunities']);
     var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
