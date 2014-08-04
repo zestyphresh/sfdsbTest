@@ -27,7 +27,7 @@
     function loadApp() {
 
         //Navbar
-        var tmplNavbar = Handlebars.compile($j(templates['navbar']).html());
+        var tmplNavbar = Handlebars.compile($j(templates['navbar']).parseHTML());
     
         var contextNavbar = {
             'title' : 'Director Dashboard',
