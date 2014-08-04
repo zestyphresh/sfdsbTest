@@ -100,10 +100,7 @@ models['headline-opportunities'] = (function(){
             
             //console.log(d.closeDate);
             
-            var index = models['datesByDate'][d.closeDate].Date_Index;
-            console.log(models['datesByDate']);
-            console.log(d.closeDate);
-            console.log(models['datesByDate'][d.closeDate]);
+            var index = models['datesByDate'][d.closeDate].dateIndex;
             
             var headline = d.recordType == 'Headline' ? true : false;
 
@@ -116,9 +113,9 @@ models['headline-opportunities'] = (function(){
                 _(deliveryWeeks).times(function(i) {
                     
                     var delWeek = $j.extend({}, d);
-                        delWeek.week = models['datesByIndex'][index - (i*7)].FY_Year_Week;
-                        delWeek.month = models['datesByIndex'][index - (i*7)].FY_Year_Month;
-                        delWeek.closeDate = models['datesByIndex'][index - (i*7)].Date;
+                        delWeek.week = models['datesByIndex'][index - (i*7)].fyYearWeek;
+                        delWeek.month = models['datesByIndex'][index - (i*7)].fyYearMonth;
+                        delWeek.closeDate = models['datesByIndex'][index - (i*7)].cyDate;
                         delWeek.weeklyValue = 0;
                         delWeek.type = 'Delivery';
                     newData.push(delWeek);
@@ -128,9 +125,9 @@ models['headline-opportunities'] = (function(){
                 _(storeWeeks).times(function(i) {
                             
                     var storeWeek = $j.extend({}, d);
-                        storeWeek.week = models['datesByIndex'][index + (i*7)].FY_Year_Week;
-                        storeWeek.month = models['datesByIndex'][index + (i*7)].FY_Year_Month;
-                        storeWeek.closeDate = models['datesByIndex'][index + (i*7)].Date;
+                        storeWeek.week = models['datesByIndex'][index + (i*7)].fyYearWeek;
+                        storeWeek.month = models['datesByIndex'][index + (i*7)].fyYearMonth;
+                        storeWeek.closeDate = models['datesByIndex'][index + (i*7)].cyDate;
                         storeWeek.type = 'In Store';
                     newData.push(storeWeek);
                 
@@ -150,9 +147,9 @@ models['headline-opportunities'] = (function(){
                 _(remainingWeeks).times(function(i) {
                 
                     var saleWeek = $j.extend({}, d);
-                        saleWeek.week = models['datesByIndex'][start + (i*7)].FY_Year_Week;
-                        saleWeek.month = models['datesByIndex'][start + (i*7)].FY_Year_Month;
-                        saleWeek.closeDate = models['datesByIndex'][start + (i*7)].Date;
+                        saleWeek.week = models['datesByIndex'][start + (i*7)].fyYearWeek;
+                        saleWeek.month = models['datesByIndex'][start + (i*7)].fyYearMonth;
+                        saleWeek.closeDate = models['datesByIndex'][start + (i*7)].cyDate;
                         saleWeek.type = headline ? 'Sales' : 'Loss';
                     newData.push(saleWeek);
                 
