@@ -198,7 +198,7 @@ models['countdown-promo'] = (function(){
         
         _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
             result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
-            _.each(vo, function(o) { 
+            _.each(v, function(o) { 
                 result[k].owner = k;
                 result[k].grossValue += o.grossValue;
                 result[k].quantity += o.quantity;
