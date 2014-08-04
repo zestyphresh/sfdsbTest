@@ -5,7 +5,9 @@ Handlebars.registerHelper('times', function(n, block) {
     return result;
 });
 
-templates['dropdown-filter'] = ""+  
+var templates = {};
+
+templates['dropdown-filters'] = ""+  
     "{{#each this}}"+    
     "    <div class='btn-group'>"+  
     "        <button type='button' class='btn btn-primary btn-sm dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></button>"+  

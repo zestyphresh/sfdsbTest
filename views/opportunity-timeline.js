@@ -12,8 +12,8 @@ views['headline-opportunity-timeline'] = (function() {
     var rendered = false;
     
     //Initialise handlebar templates
-    var tmplView = Handlebars.compile($j("#Template-HeadlineOpportunities").html());
-    var tmplFilters = Handlebars.compile($j("#Template-DropdownFilter").html());
+    var tmplView = Handlebars.compile(templates['headline-opportunities']);
+    var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
 
     //Render function, adds all dom elements and creates charts, tables and filters
     function render() { 
