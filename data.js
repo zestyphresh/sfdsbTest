@@ -58,8 +58,10 @@ var headlineOpportunities = (function(){
                 //In place to filter while testing
                 var testData = result.opps.slice(0,20);
                 
-                data.push(testData.opps);
-                dataWeeks.push(_dataTransformToWeeks(testData.opps));
+                data = testData.opps;
+                dataWeeks = _dataTransformToWeeks(testData.opps);
+                
+                console.log(data);
                 
                 isFetched = true;
                 
