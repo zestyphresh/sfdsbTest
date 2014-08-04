@@ -8,10 +8,8 @@ var onLoad = (function() {
             
             function (result, event) {
                 
-                datesByIndex = _.object(_.map(result.dates, function(d) { return [d.dateIndex, d]; }));
+                datesByIndex = _(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
                 datesByDate = _.object(_.map(result.dates, function(d) { return [d.cyDate, d]; }));
-                
-                console.log(data);
 
                 callback(event.status);
                     
@@ -21,13 +19,11 @@ var onLoad = (function() {
         
     }
     
-    function getDates() { return dates; }
     function getDatesByIndex() { return datesByIndex; }
     function getDatesByDate() { return datesByDate; }
     
     return { 
         fetch : fetch,
-        getDates : getDates,
         getDatesByIndex : getDatesByIndex,
         getDatesByDate : getDatesByDate
     };
@@ -37,6 +33,7 @@ var onLoad = (function() {
 //headlineOpportunities
 var headlineOpportunities = (function(){
     
+    var fetched = false;
     var data = [];
     var dataWeeks = [];
     var filterEntries = [];
@@ -64,6 +61,8 @@ var headlineOpportunities = (function(){
                 data.push(testData.opps);
                 dataWeeks.push(dataTransformToWeeks(testData.opps));
                 
+                isFetched = true;
+                
                 callback(event.status);
                     
             }, { escape: true }
@@ -82,15 +81,11 @@ var headlineOpportunities = (function(){
         });
     }
     
-    function getData() {
-        return data[0];
-    }
+    function getData() { return data[0]; }
+    function getDataWeeks() { return dataWeeks[0]; }
+    function isFetched() { return fetched; }
     
-    function getDataWeeks(){
-        return dataWeeks[0];
-    }
-    
-    function dataTransformToWeeks(originalData) {
+    function _dataTransformToWeeks(originalData) {
         
         var deliveryWeeks = 4,
             storeWeeks = 4,
@@ -164,7 +159,8 @@ var headlineOpportunities = (function(){
     
     return { fetch : fetch, 
              getData : getData,
-             getDataWeeks : getDataWeeks
+             getDataWeeks : getDataWeeks,
+             isFetched : isFetched
     };
         
 }());
