@@ -41,25 +41,28 @@
         
     }
 
-    function oppTimeline() {
+    function home() { console.log('home'); }  
+    function oppTimeline() { renderView('headline-opportunity-timeline', 'headline-opportunities'); }
         
-        if (views['opportunity-timeline'].isRendered()) {
+
+    function renderView(view, model) {
+        
+        if (views[view].isRendered()) {
            //switch to container rather than reloading 
         } else {
-            models['headline-opportunities'].fetch(function(success) {
+            models[model].fetch(function(success) {
                 
                 if (success) {
-                    views['headline-opportunity-timeline'].render();
+                    views[view].render();
                 } else {
                     console.log('data failure');
                 }
                 
             });
         }
-    
     }
     
-    function home() { console.log('home'); }  
+
     //END OF ROUTER
 
 }());
