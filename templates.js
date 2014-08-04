@@ -106,23 +106,23 @@ templates['countdown-promo'] = ""+
     "<div class='col-xs-12'>"+
     "    <div class='panel panel-default'>"+
     "        <div class='panel-heading'>Leaderboard</div>"+
-    "        <div id='{{id}}-charts-leaderboard' class='minChartDims1'></div>"+
-    "        <div id='{{id}}-tables-leaderboard' class='table-responsive'>"+
+    "        <div id='{{id}}-charts-promo-leaderboard' class='minChartDims1'></div>"+
+    "        <div id='{{id}}-tables-promo-leaderboard' class='table-responsive'>"+
     "    </div>"+
     "</div>"+
     ""+    
     "<div class='col-xs-12'>"+
     "    <div class='panel panel-default'>"+
     "        <div class='panel-heading'>Last Week</div>"+
-    "        <div id='{{id}}-charts-lastweek' class='minChartDims1'></div>"+
-    "        <div id='{{id}}-tables-lastweek' class='table-responsive'>"+
+    "        <div id='{{id}}-charts-promo-lastweek' class='minChartDims1'></div>"+
+    "        <div id='{{id}}-tables-promo-lastweek' class='table-responsive'>"+
     "    </div>"+ 
     "</div>"+
     ""+    
     "<div class='col-xs-12'>"+
     "    <div class='panel panel-default'>"+
     "        <div class='panel-heading'>Weekly Sales</div>"+
-    "        <div id='{{id}}-charts-weekly' class='minChartDims2'></div>"+
+    "        <div id='{{id}}-charts-promo-weekly' class='minChartDims2'></div>"+
     "        </div>"+
     "    </div>"+ 
     "</div>"
