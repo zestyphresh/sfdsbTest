@@ -54,16 +54,12 @@ var headlineOpportunities = (function(){
         AnalyticsViewProvider.getHeadlineOpportunityTimeline(
             
             function (result, event) {
-                
-                console.log(result);
 
                 //In place to filter while testing
                 var testData = result.opps.slice(0,20);
                 
-                data = testData.opps;
-                dataWeeks = _dataTransformToWeeks(testData.opps);
-                
-                console.log(data);
+                data = testData;
+                dataWeeks = _dataTransformToWeeks(testData);
                 
                 isFetched = true;
                 
