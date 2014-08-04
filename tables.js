@@ -1,6 +1,6 @@
 var tables = (function() {
     
-    var tmplTable = Handlebars.compile($j("#Template-NakedTable").html());
+    var tmplTable = Handlebars.compile(templates['table']);
     
     HeadlineOpportunities = function(id, data) {
         

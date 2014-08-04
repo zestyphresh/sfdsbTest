@@ -15,7 +15,7 @@ models['onLoad'] = (function() {
                 models['datesByDate'] = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object();
                 
                 console.log(models['datesByIndex']);
-                console.log( models['datesByDate']);
+                console.log(models['datesByDate']);
 
                 callback(event.status);
                     
