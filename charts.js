@@ -107,9 +107,9 @@ var charts = (function() {
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("80px", "30px", "40px", "120px");
             
-        var xAxis = chart.addCategoryAxis("x", "week");
+        var xAxis = chart.addCategoryAxis('x', 'week');
             xAxis.title = xAxisTitle;
-            xAxis.addOrderRule(week); 
+            xAxis.addOrderRule('week'); 
         
         var yAxis = chart.addMeasureAxis("y", "value");
             yAxis.title = yAxisTitle;
