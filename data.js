@@ -182,7 +182,7 @@ models['countdown-promo'] = (function(){
             function (result, event) {
                 
                 data['original'] = result.sales;
-                data['lastweek'] = _.filter(result.sales, { 'week': '2014-31' })
+                data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
                 
                 console.log(data);
 
