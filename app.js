@@ -13,9 +13,7 @@
     router.init();
     
     models['onLoad'].fetch(function(success) {
-        
-        console.log(templates['navbar']);
-                
+
         if (success) {
             loadApp();
         } else {
