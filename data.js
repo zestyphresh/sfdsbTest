@@ -32,8 +32,8 @@ models['onLoad'] = (function() {
 models['headline-opportunities'] = (function(){
     
     var fetched = false;
-    var data = [];
-    var dataWeeks = [];
+    var data, dataWeeks;
+    
     var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
                    {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
                    {'field' : 'owner', 'title' : 'Owner', 'values' : []},
@@ -136,7 +136,7 @@ models['headline-opportunities'] = (function(){
             
                 var maxIndex = 2191; 
                 var add = headline ? storeWeeks * 7 : 0;
-                var start = index + add + 7;
+                var start = index + add;
                 var remainingWeeks = Math.floor((maxIndex - start) / 7);
                 
                 //console.log(maxIndex+','+add+','+start+','+remainingWeeks);
@@ -169,3 +169,55 @@ var _dataFuncs = {
         return _.chain(data).pluck(key).uniq().value();
     }
 };
+
+//Countdown Promo
+models['countdown-promo'] = (function(){
+    
+    var data = {};
+    
+    function fetch(callback) {
+
+        AnalyticsViewProvider.getCountdownPromotion(
+            
+            function (result, event) {
+                
+                data['original'] = result.sales;
+                data['lastweek'] = _.filter(result.sales, { 'week': '2014-31' })
+
+                callback(event.status);
+                    
+            }, { escape: true }
+                
+        );
+        
+    }
+    
+    function groupByOwner(dataset, target) {
+        
+        var result = {};
+        
+        _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
+            result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
+            _.each(vo, function(o) { 
+                result[k].owner = k;
+                result[k].grossValue += o.grossValue;
+                result[k].quantity += o.quantity;
+            });
+        });
+        
+        _.chain(result).pluck().each(function(r) {
+            r.vsTarget = grossValue - target;
+            r.vsTargetPercentage = (grossValue - target) / target;
+        });
+        
+        return result;
+
+    }
+    
+    return { fetch : fetch,
+         getData : function(dataset) { return data[dataset]; },
+         groupByOwner : groupByOwner,
+         isFetched : function() { return fetched; }
+    };
+    
+}());

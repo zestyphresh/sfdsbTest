@@ -5,7 +5,8 @@
     //ROUTER
     var routes = {
         '/Home': home,
-        '/OpportunityTimeline': oppTimeline
+        '/OpportunityTimeline': oppTimeline,
+        '/CountdownPromo': cntPromo
     };
 
     var router = Router(routes);
@@ -31,18 +32,21 @@
             'title' : 'Director Dashboard',
             'links' : [
                 {'id' : 'Home', 'linkText' : 'Home'},
-                {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'}
+                {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'},
+                {'id' : 'CountdownPromo', 'linkText' : 'Countdown Promo'}
             ]
         };
             
         $body.append(tmplNavbar(contextNavbar));
         
         $body.append('<div id="test"></div>');
+        $body.append('<div id="test2"></div>');
         
     }
 
     function home() { console.log('home'); }  
     function oppTimeline() { renderView('headline-opportunity-timeline', 'headline-opportunities'); }
+    function cntPromo() { renderView('countdown-promo', 'countdown-promo'); }
         
 
     function renderView(view, model) {
