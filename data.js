@@ -183,6 +183,8 @@ models['countdown-promo'] = (function(){
                 
                 data['original'] = result.sales;
                 data['lastweek'] = _.filter(result.sales, { 'week': '2014-31' })
+                
+                console.log(data);
 
                 callback(event.status);
                     
