@@ -36,15 +36,14 @@ var headlineOpportunities = (function(){
     var fetched = false;
     var data = [];
     var dataWeeks = [];
-    var filterEntries = [];
-    var filters = [{'field' : 'account', 'title' : 'Account'},
-                   {'field' : 'accountSector', 'title' : 'Sector'},
-                   {'field' : 'owner', 'title' : 'Owner'},
-                   {'field' : 'productCategory', 'title' : 'Category'},
-                   {'field' : 'recordType', 'title' : 'Type'},
-                   {'field' : 'stage', 'title' : 'Stage'},
-                   {'field' : 'isBudgeted', 'title' : 'Budgeted?'},
-                   {'field' : 'isPromotion', 'title' : 'Promotion?'}
+    var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
+                   {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
+                   {'field' : 'owner', 'title' : 'Owner', 'values' : []},
+                   {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
+                   {'field' : 'recordType', 'title' : 'Type', 'values' : []},
+                   {'field' : 'stage', 'title' : 'Stage', 'values' : []},
+                   {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
+                   {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
                   ];
     
     function fetch(callback) {
@@ -61,9 +60,8 @@ var headlineOpportunities = (function(){
                 data = testData;
                 dataWeeks = _dataTransformToWeeks(testData);
                 
-                console.log(JSON.stringify(data));
-                console.log(dataWeeks);
-                
+                updateFilters();
+
                 isFetched = true;
                 
                 callback(event.status);
@@ -74,18 +72,17 @@ var headlineOpportunities = (function(){
         
     }
     
-    function getFilters(){
+    function updateFilters(){
         
         _(filters).each(function(f) { 
-            filterEntries.push({'name' : f.title, 
-                                'field' : f.field, 
-                                'values' : dimple.getUniqueValues(data[0], f.field)
-            });
+            f.values = _dataFuncs.getUniqueValues(data, f.field);
         });
+        
     }
     
     function getData() { return data; }
     function getDataWeeks() { return dataWeeks; }
+    function getFilters() { return filters; }
     function isFetched() { return fetched; }
     
     function _dataTransformToWeeks(originalData) {
@@ -163,8 +160,17 @@ var headlineOpportunities = (function(){
     return { fetch : fetch, 
              getData : getData,
              getDataWeeks : getDataWeeks,
+             getFilters : getFilters,
+             updateFilters : updateFilters,
              isFetched : isFetched
     };
         
 }());
 //end of headlineOpportunities
+
+//Utility functions, requires lodash
+var _dataFuncs = {
+    getUniqueValues : function(data, key) {
+        return _.chain(data).pluck(key).uniq().value();
+    }
+};
