@@ -11,8 +11,8 @@ models['onLoad'] = (function() {
             
             function (result, event) {
                 
-                models['datesByIndex'] = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object();
-                models['datesByDate'] = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object();
+                models['datesByIndex'] = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object().values();
+                models['datesByDate'] = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object().values();
                 
                 console.log(models['datesByIndex']);
                 console.log(models['datesByDate']);
