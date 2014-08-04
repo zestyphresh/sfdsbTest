@@ -1,16 +1,18 @@
 if (!views) var views = {};
 
-views['opportunity-timeline'] = (function() {
+views['headline-opportunity-timeline'] = (function() {
     
-    var templateHeadlineOpportunities = Handlebars.compile($j("#Template-HeadlineOpportunities").html());
-    
+    //First call of render() sets to true, used to check if view has been initialised
     var rendered = false;
     
-    function isRendered() { return rendered; }
+    //Initialise handlebar templates
+    var tmplView = Handlebars.compile($j("#Template-HeadlineOpportunities").html());
+    var tmplFilters = Handlebars.compile($j("#Template-DropdownFilter").html());
 
+    //Render function, adds all dom elements and creates charts, tables and filters
     function render() { 
     
-        $j('#test').append(templateHeadlineOpportunities());
+        $j('#test').append(tmplView());
     
         var chtTimeline = new charts.OpportunityTimeline('chartContainer-OpportunityTimeline', headlineOpportunities.getDataWeeks());
         var chtSales = new charts.OpportunitySales('chartContainer-OpportunitySales', headlineOpportunities.getDataWeeks());
@@ -22,15 +24,16 @@ views['opportunity-timeline'] = (function() {
 
     }
     
+    //Renders filteres, separate to render() so it can be called to refresh filters
     function renderFilters(id) {
 
-        $j('#' + id).empty().append(templateDropdownFilters(headlineOpportunities.getFilters())); 
+        $j('#' + id).empty().append(tmplFilters(headlineOpportunities.getFilters())); 
 
     }
-
+    
     return { 
         render : render,
-        isRendered : isRendered 
+        isRendered : function() { return rendered; }
     };
 
 }());

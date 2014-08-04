@@ -12,7 +12,7 @@
 
     router.init();
     
-    onLoad.fetch(function(success) {
+    models['onLoad'].fetch(function(success) {
                 
         if (success) {
             loadApp();
@@ -46,10 +46,10 @@
         if (views['opportunity-timeline'].isRendered()) {
            //switch to container rather than reloading 
         } else {
-            headlineOpportunities.fetch(function(success) {
+            models['headline-opportunities'].fetch(function(success) {
                 
                 if (success) {
-                    views['opportunity-timeline'].render();
+                    views['headline-opportunity-timeline'].render();
                 } else {
                     console.log('data failure');
                 }

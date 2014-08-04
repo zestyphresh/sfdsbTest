@@ -1,4 +1,6 @@
-var onLoad = (function() {
+var models = {};
+
+var models['onLoad'] = (function() {
     
     var datesByIndex, datesByDate;
 
@@ -18,20 +20,17 @@ var onLoad = (function() {
         );
         
     }
-    
-    function getDatesByIndex() { return datesByIndex; }
-    function getDatesByDate() { return datesByDate; }
-    
+
     return { 
         fetch : fetch,
-        getDatesByIndex : getDatesByIndex,
-        getDatesByDate : getDatesByDate
+        getDatesByIndex : function() { return datesByIndex; },
+        getDatesByDate : function() { return datesByDate; }
     };
     
 }());
 
 //headlineOpportunities
-var headlineOpportunities = (function(){
+var models['headline-opportunities'] = (function(){
     
     var fetched = false;
     var data = [];
@@ -61,8 +60,6 @@ var headlineOpportunities = (function(){
                 dataWeeks = _dataTransformToWeeks(testData);
                 
                 updateFilters();
-                
-                console.log(filters);
 
                 isFetched = true;
                 
@@ -82,11 +79,15 @@ var headlineOpportunities = (function(){
         
     }
     
-    function getData() { return data; }
-    function getDataWeeks() { return dataWeeks; }
-    function getFilters() { return filters; }
-    function isFetched() { return fetched; }
+    return { fetch : fetch,
+             updateFilters : updateFilters,
+             getData : function() { return data; },
+             getDataWeeks : function() { return dataWeeks; },
+             getFilters : function() { return filters; },
+             isFetched : function() { return fetched; }
+    };
     
+    //PRIVATE FUNCTIONS
     function _dataTransformToWeeks(originalData) {
         
         var deliveryWeeks = 4,
@@ -158,14 +159,6 @@ var headlineOpportunities = (function(){
         return newData;
     
     }
-    
-    return { fetch : fetch, 
-             getData : getData,
-             getDataWeeks : getDataWeeks,
-             getFilters : getFilters,
-             updateFilters : updateFilters,
-             isFetched : isFetched
-    };
         
 }());
 //end of headlineOpportunities
