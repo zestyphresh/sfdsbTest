@@ -61,6 +61,8 @@ var headlineOpportunities = (function(){
                 dataWeeks = _dataTransformToWeeks(testData);
                 
                 updateFilters();
+                
+                console.log(filters);
 
                 isFetched = true;
                 
