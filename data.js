@@ -103,6 +103,8 @@ models['headline-opportunities'] = (function(){
             var index = models['datesByDate'][d.closeDate].Date_Index;
             var headline = d.recordType == 'Headline' ? true : false;
             
+            console.log(d.closeDate +', '+ index);
+            
             var thisWeek = $j.extend({}, d);
                 thisWeek.type = 'Live';
                 newData.push(thisWeek);
