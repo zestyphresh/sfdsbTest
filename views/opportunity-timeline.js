@@ -16,7 +16,7 @@ views['opportunity-timeline'] = (function() {
         var chtSales = new charts.OpportunitySales('chartContainer-OpportunitySales', headlineOpportunities.getDataWeeks());
         var tblOpps = new tables.HeadlineOpportunities('table-OpportunityTable', headlineOpportunities.getData());      
 
-        renderFilters('filterContainer-Opportunities');
+        //renderFilters('filterContainer-Opportunities');
         
         rendered = true;
 
