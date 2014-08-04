@@ -63,9 +63,9 @@ var tables = (function() {
                          {"data": "vsTarget", "title": "vs Target"}, 
                          {"data": "vsTargetPercentage", "title": "% of Target"}
             ],
-            'columnDefs' : [returnDef([1,3], '$0,0', 'alignRight'),
-                            returnDef([2], '0,0', 'alignRight'),
-                            returnDef([4], '0%', 'alignRight'),
+            'columnDefs' : [_returnDef([1,3], '$0,0', 'alignRight'),
+                            _returnDef([2], '0,0', 'alignRight'),
+                            _returnDef([4], '0%', 'alignRight'),
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
