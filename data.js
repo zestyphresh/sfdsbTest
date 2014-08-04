@@ -206,9 +206,11 @@ models['countdown-promo'] = (function(){
         });
         
         _.chain(result).pluck().each(function(r) {
-            r.vsTarget = r.grossValue - r.target;
-            r.vsTargetPercentage = (r.grossValue - r.target) / r.target;
+            r.vsTarget = -r.target + r.grossValue;
+            r.vsTargetPercentage = r.grossValue / r.target;
         });
+        
+        console.log(result);
         
         return result;
 

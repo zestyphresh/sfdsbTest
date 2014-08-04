@@ -59,7 +59,7 @@ var tables = (function() {
             'searching' : false,
             'columns' : [{"data": "owner", "title": "ASM"}, 
                          {"data": "value", "title": "Gross Value"}, 
-                         { "data": "quantity", "title": "Quantity"},
+                         {"data": "quantity", "title": "Quantity"},
                          {"data": "vsTarget", "title": "vs Target"}, 
                          {"data": "vsTargetPercentage", "title": "% of Target"}
             ],
