@@ -4,6 +4,7 @@ var charts = (function() {
         
         var svg =  dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "120px");
+        
         var xAxis = chart.addCategoryAxis('x', 'week');
             xAxis.title = 'Week';
             xAxis.addOrderRule('week');
@@ -23,7 +24,7 @@ var charts = (function() {
         chart.draw();
 
         function reload(data) { chart.data = data; chart.draw(); }
-        function resize(data) { chart.draw(); }
+        function resize() { chart.draw(); }
 
         return { reload : reload, resize : resize };              
                            
@@ -52,7 +53,7 @@ var charts = (function() {
         chart.draw();
                 
         function reload(data) { chart.data = data; chart.draw(); }
-        function resize(data) { chart.draw(); }
+        function resize() { chart.draw(); }
 
         return { reload : reload, resize : resize };   
                                     
