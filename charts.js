@@ -10,7 +10,7 @@ var charts = (function() {
                 
         var yAxis = chart.addCategoryAxis('y', 'name');
             yAxis.title = 'Opportunity';
-            //yAxis.addOrderRule('week');
+            yAxis.addOrderRule('week');
              
         var series = chart.addSeries('type', dimple.plot.bar);     
                

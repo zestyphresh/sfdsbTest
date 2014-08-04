@@ -77,23 +77,21 @@
     
 </script> 
 
-<script id='Template-TableContainer' type='text/x-handlebars-template'>
-        
-    <div id='{{tableContainerId}}' class='table-responsive'>
-        <table id='{{tableId}}' class='table table-condensed display' cellspacing='0' width='100%'>
-            <thead>
-                <tr role='row'>
-                    {{#times columns}}<th></th>{{/times}}
-                </tr>
-            </thead>
-            <tfoot>
-                 <tr role='row'>
-                    {{#times columns}}<th></th>{{/times}}
-                </tr>
-            </tfoot>
-            <tbody></tbody>
-        </table>
-    </div>  
+<script id='Template-NakedTable' type='text/x-handlebars-template'>
+
+    <table id='{{id}}' class='table table-condensed table-hover display' cellspacing='0' width='100%'>
+        <thead>
+            <tr role='row'>
+                {{#times columns}}<th></th>{{/times}}
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+             <tr role='row'>
+                {{#times columns}}<th></th>{{/times}}
+            </tr>
+        </tfoot>
+    </table>
      
 </script>
 
@@ -138,61 +136,31 @@
 </script>
 
 <script id='Template-HeadlineOpportunities' type='text/x-handlebars-template'>
-    
+
     <div class='col-xs-12'>
-                    
-        <div id='filterContainer-Opportunities' class="well"></div> 
-                            
+        <div id='{{id}}-filters' class="well"></div> 
     </div>  
 
     <div class='col-xs-12'>
-                    
         <div class="panel panel-default">
-        
             <div class='panel-heading'>Opportunity Timeline</div>
-            
-            <div id='chartContainer-OpportunityTimeline' class='minChartDims1'></div>
-                                                        
+            <div id='{{id}}-charts-opp-timeline' class='minChartDims1'></div>
         </div> 
-                            
     </div> 
     
     <div class='col-xs-12'>
-                    
         <div class="panel panel-default">
-        
             <div class='panel-heading'>Opportunity Sales</div>
-            
-            <div id='chartContainer-OpportunitySales' class='minChartDims1'></div>
-                                                        
+            <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>
         </div> 
-                            
     </div>
     
     <div class='col-xs-12'>
-                    
         <div class="panel panel-default">
-        
             <div class='panel-heading'>Opportunity List</div>
-            
-            <div id='tableContainer-OpportunityTable' class='table-responsive'>
-                <table id='table-OpportunityTable' class='table table-condensed table-hover display' cellspacing='0' width='100%'>
-                    <thead>
-                        <tr role='row'>
-                            <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <tfoot>
-                         <tr role='row'>
-                            <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>  
-                                                        
+            <div id='{{id}}-tables-opp-list' class='table-responsive'>
+            </div>
         </div> 
-                            
     </div> 
 
 </script>

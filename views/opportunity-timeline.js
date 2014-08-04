@@ -1,6 +1,12 @@
 if (!views) var views = {};
 
-views['headline-opportunity-timeline'] = (function() {
+views['headline-opportunity-timeline'] = (function(id) {
+    
+    //Private vars
+    var _id = id;
+    
+    //Public vars
+    var chtTimeline, chtSales, tblOpps;
     
     //First call of render() sets to true, used to check if view has been initialised
     var rendered = false;
@@ -12,19 +18,19 @@ views['headline-opportunity-timeline'] = (function() {
     //Render function, adds all dom elements and creates charts, tables and filters
     function render() { 
     
-        $j('#test').append(tmplView());
+        $j('#test').append(tmplView({'id':_id}));
     
-        var chtTimeline = new charts.OpportunityTimeline('chartContainer-OpportunityTimeline', headlineOpportunities.getDataWeeks());
-        var chtSales = new charts.OpportunitySales('chartContainer-OpportunitySales', headlineOpportunities.getDataWeeks());
-        var tblOpps = new tables.HeadlineOpportunities('table-OpportunityTable', headlineOpportunities.getData());      
+        chtTimeline = new charts.OpportunityTimeline(_id + '-charts-opp-timeline', models['headline-opportunities'].getDataWeeks());
+        chtSales = new charts.OpportunitySales(_id + '-charts-opp-sales', models['headline-opportunities'].getDataWeeks());
+        tblOpps = new tables.HeadlineOpportunities(_id + '-tables-opp-list', models['headline-opportunities'].getData());      
 
-        renderFilters('filterContainer-Opportunities');
+        renderFilters(_id + '-filters');
         
         rendered = true;
 
     }
     
-    //Renders filteres, separate to render() so it can be called to refresh filters
+    //Renders filters, separate to render() so it can be called to refresh filters
     function renderFilters(id) {
 
         $j('#' + id).empty().append(tmplFilters(headlineOpportunities.getFilters())); 
@@ -36,4 +42,4 @@ views['headline-opportunity-timeline'] = (function() {
         isRendered : function() { return rendered; }
     };
 
-}());
+}(id));

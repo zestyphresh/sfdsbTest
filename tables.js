@@ -1,22 +1,28 @@
 var tables = (function() {
     
-   HeadlineOpportunities = function(id, data) {
+    var tmplTable = Handlebars.compile($j("#Template-NakedTable").html());
+    
+    HeadlineOpportunities = function(id, data) {
+        
+        var _id = id + '-inner';
+        
+        $j('#' + id).append(tmplTable({'id': _id, 'columns' : 9}));
             
-        var table = $j('#' + id).DataTable({
+        var table = $j('#' + _id).DataTable({
             'data' : data,
             'order' : [[ 1, 'desc' ]],
             'paging' : false,
             'info' : false, 
             'searching' : false,
             'columns' : [{"data": "account", "title": "Account"}, 
-                        {"data": "recordType", "title": "Type"},
-                        {"data": "name", "title": "Name"},
-                        {"data": "stage", "title": "Stage"},
-                        {"data": "isoValue", "title": "ISO"}, 
-                        {"data": "annualisedValue", "title": "Annualised"}, 
-                        {"data": "weeklyValue", "title": "Weekly"},
-                        {"data": "closeDate", "title": "Date"},
-                        {"data": "productCategory", "title": "Category"}
+                         {"data": "recordType", "title": "Type"},
+                         {"data": "name", "title": "Name"},
+                         {"data": "stage", "title": "Stage"},
+                         {"data": "isoValue", "title": "ISO"}, 
+                         {"data": "annualisedValue", "title": "Annualised"}, 
+                         {"data": "weeklyValue", "title": "Weekly"},
+                         {"data": "closeDate", "title": "Date"},
+                         {"data": "productCategory", "title": "Category"}
             ],
             'columnDefs' : [_returnDef([4,5,6], '$0,0', 'alignRight')],
             'footerCallback' : function (tfoot, data, start, end, display) {
@@ -32,10 +38,10 @@ var tables = (function() {
                 $j(api.column(6).footer()).html(numeral(totalWeekly).format('$0,0'));
             }
         });
-    
-        function reload(data) { table.clear().rows.add(data).draw(); }
 
-        return { reload : reload };  
+        return { 
+            reload : function(data) { table.clear().rows.add(data).draw(); } 
+        };  
                                 
     };
     
@@ -48,16 +54,13 @@ var tables = (function() {
             return data;
         };
             
-        var result = {
+        return {
             'targets' : targets,
             'render' : render, 
             className : cssClass               
         };
-            
-        return result;
-            
-    };
 
+    };
     
     return {
         HeadlineOpportunities : HeadlineOpportunities
