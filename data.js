@@ -1,6 +1,6 @@
 var models = {};
 
-var models['onLoad'] = (function() {
+models['onLoad'] = (function() {
     
     var datesByIndex, datesByDate;
 
@@ -30,7 +30,7 @@ var models['onLoad'] = (function() {
 }());
 
 //headlineOpportunities
-var models['headline-opportunities'] = (function(){
+models['headline-opportunities'] = (function(){
     
     var fetched = false;
     var data = [];
