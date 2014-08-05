@@ -19,6 +19,8 @@
     
     var onload = gblModel.Onload;
     
+    console.log(onload);
+    
     onload.fetch(function(success) {
         
         if (success) loadApp();
