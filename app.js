@@ -13,7 +13,7 @@
 
     router.init();
     
-    var gblModel = new MODEL;
+    var gblModel = new MODEL();
     
     var onload = new gblModel.Onload();
     
