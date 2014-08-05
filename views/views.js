@@ -1,8 +1,11 @@
 var VIEW = (function() {
+        
+    //constructor
+    var module = function () {};
     
-    var _priv = {};
+    module._priv = {};
     
-    return { _priv : _priv }; 
+    return module; 
     
 })();var VIEW_COUNTDOWN = (function($v) {
 

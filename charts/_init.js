@@ -1,8 +1,11 @@
 var CHART = (function() {
     
-    var _priv = {};
+    //constructor
+    var module = function () {};
+    
+    module._priv = {};
 
-    return { _priv : _priv };
+    return module;
     
 })();
 

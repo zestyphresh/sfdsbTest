@@ -1,6 +1,9 @@
 var MODEL = (function() {
     
-    var _priv = {
+    //constructor
+    var module = function () {};
+    
+    module._priv = {
         datesByIndex : {},
         datesByDate : {},
         getUniqueValues : function(data, key) {
@@ -8,6 +11,6 @@ var MODEL = (function() {
         }
     };
     
-    return { _priv : _priv }; 
+    return module; 
     
 })();
