@@ -10,8 +10,7 @@
     };
 
     var router = Router(routes);
-
-    router.init();
+    //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()
     
     var gblModel = MODEL;
     
@@ -45,6 +44,8 @@
         
         $body.append('<div id="test"></div>');
         $body.append('<div id="test2"></div>');
+        
+        router.init();
         
     }
 
