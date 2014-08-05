@@ -13,7 +13,7 @@
 
     router.init();
     
-    var gblModel = MODEL
+    var gblModel = MODEL;
     
     console.log(gblModel);
     
