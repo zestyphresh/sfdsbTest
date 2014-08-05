@@ -1,9 +1,10 @@
 var VIEW_OPPORTUNITIES = (function($v) {
 
-    $v.CountdownPromo = function(model) {
+    $v.HeadlineOpportunities = function(model) {
     
         //Private vars
-        var _id = '_0001';
+        var _id = '_0001',
+            _model = model;
         
         //Public vars
         var chtTimeline, chtSales, tblOpps;
@@ -20,9 +21,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
         
             $j('#test').append(tmplView({'id':_id}));
     
-            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', model.getDataWeeks());
-            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', model.getDataWeeks());
-            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', model.getData());      
+            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getDataWeeks());
+            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getDataWeeks());
+            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData());      
     
             renderFilters(_id + '-filters');
             
@@ -39,6 +40,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         
         return { 
             render : render,
+            changeModel : function(model) { _.model = model; },
             isRendered : function() { return rendered; }
         };
         
