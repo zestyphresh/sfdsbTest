@@ -13,14 +13,14 @@
 
     router.init();
     
-    models['onload'].fetch(function(success) {
+    var gblModel = new MODEL();
+    
+    var onload = new gblModel.Onload();
+    
+    onload.fetch(function(success) {
+        
+        if (success) loadApp();
 
-        if (success) {
-            loadApp();
-        } else {
-            console.log('data failure');
-        }
-                
     });
     
     function loadApp() {
@@ -44,27 +44,24 @@
         
     }
 
-    function home() { console.log('home'); }  
-    function oppTimeline() { renderView('headline-opportunity-timeline', 'headline-opportunities'); }
-    function cntPromo() { renderView('countdown-promo', 'countdown-promo'); }
-        
+    function home() { console.log('home'); } 
 
-    function renderView(view, model) {
+    function oppTimeline() {
+        var rendered = false;
+        var model, view;
         
-        if (views[view].isRendered()) {
-           //switch to container rather than reloading 
-        } else {
-            models[model].fetch(function(success) {
-                
+        if (!rendered) {
+            model = new gblModel.HeadlineOpportunities();
+            model.fetch(function(success) {
                 if (success) {
-                    views[view].render();
-                } else {
-                    console.log('data failure');
+                    view = new VIEW.HeadlineOpportunities(model);
+                    view.render();
                 }
-                
             });
         }
+        
+        rendered = true;
+        
     }
-
 
 }());

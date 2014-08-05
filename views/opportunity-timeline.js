@@ -1,43 +1,49 @@
-views['headline-opportunity-timeline'] = (function() {
-    
-    //Private vars
-    var _id = '_0001';
-    
-    //Public vars
-    var chtTimeline, chtSales, tblOpps;
-    
-    //First call of render() sets to true, used to check if view has been initialised
-    var rendered = false;
+var VIEW_OPPORTUNITIES = (function($v) {
 
-    //Initialise handlebar templates
-    var tmplView = Handlebars.compile(templates['headline-opportunities']);
-    var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
-
-    //Render function, adds all dom elements and creates charts, tables and filters
-    function render() { 
+    $v.CountdownPromo = function(model) {
     
-        $j('#test').append(tmplView({'id':_id}));
-
-        chtTimeline = new charts.OpportunityTimeline(_id + '-charts-opp-timeline', models['headline-opportunities'].getDataWeeks());
-        chtSales = new charts.OpportunitySales(_id + '-charts-opp-sales', models['headline-opportunities'].getDataWeeks());
-        tblOpps = new tables.HeadlineOpportunities(_id + '-tables-opp-list', models['headline-opportunities'].getData());      
-
-        renderFilters(_id + '-filters');
+        //Private vars
+        var _id = '_0001';
         
-        rendered = true;
-
-    }
+        //Public vars
+        var chtTimeline, chtSales, tblOpps;
+        
+        //First call of render() sets to true, used to check if view has been initialised
+        var rendered = false;
     
-    //Renders filters, separate to render() so it can be called to refresh filters
-    function renderFilters(id) {
-
-        $j('#' + id).empty().append(tmplFilters(models['headline-opportunities'].getFilters())); 
-
-    }
+        //Initialise handlebar templates
+        var tmplView = Handlebars.compile(templates['headline-opportunities']);
+        var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
     
-    return { 
-        render : render,
-        isRendered : function() { return rendered; }
+        //Render function, adds all dom elements and creates charts, tables and filters
+        function render() { 
+        
+            $j('#test').append(tmplView({'id':_id}));
+    
+            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', model.getDataWeeks());
+            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', model.getDataWeeks());
+            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', model.getData());      
+    
+            renderFilters(_id + '-filters');
+            
+            rendered = true;
+    
+        }
+        
+        //Renders filters, separate to render() so it can be called to refresh filters
+        function renderFilters(id) {
+    
+            $j('#' + id).empty().append(tmplFilters(model.getFilters())); 
+    
+        }
+        
+        return { 
+            render : render,
+            isRendered : function() { return rendered; }
+        };
+        
     };
+    
+    return $v;
 
-}());
+})(VIEW);

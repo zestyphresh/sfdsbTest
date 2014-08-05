@@ -1,52 +1,60 @@
-models['countdown-promo'] = (function(){
+var MODELS_COUNTDOWN = (function($m) { 
+        
+    var _modpriv = $m._priv;
     
-    var data = {};
+    $m.CountdownPromo = function(){
+        
+        var data = {};
+        
+        function fetch(callback) {
     
-    function fetch(callback) {
-
-        AnalyticsViewProvider.getCountdownPromotion(
-            
-            function (result, event) {
+            AnalyticsViewProvider.getCountdownPromotion(
                 
-                data['original'] = result.sales;
-                data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
-
-                callback(event.status);
+                function (result, event) {
                     
-            }, { escape: true }
-                
-        );
-        
-    }
+                    data['original'] = result.sales;
+                    data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
     
-    function groupByOwner(dataset, target) {
+                    callback(event.status);
+                        
+                }, { escape: true }
+                    
+            );
+            
+        }
         
-        var result = {};
-        
-        _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
-            result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
-            _.each(v, function(o) { 
-                result[k].owner = k;
-                result[k].grossValue += o.grossValue;
-                result[k].quantity += o.quantity;
+        function groupByOwner(dataset, target) {
+            
+            var result = {};
+            
+            _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
+                result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
+                _.each(v, function(o) { 
+                    result[k].owner = k;
+                    result[k].grossValue += o.grossValue;
+                    result[k].quantity += o.quantity;
+                });
             });
-        });
-        
-        _.chain(result).pluck().each(function(r) {
-            r.vsTarget = -r.target + r.grossValue;
-            r.vsTargetPercentage = r.grossValue / r.target;
-        });
-        
-        console.log(result);
-        
-        return result;
-
-    }
+            
+            _.chain(result).pluck().each(function(r) {
+                r.vsTarget = -r.target + r.grossValue;
+                r.vsTargetPercentage = r.grossValue / r.target;
+            });
+            
+            console.log(result);
+            
+            return result;
     
-    return { fetch : fetch,
-         getData : function(dataset) { return data[dataset]; },
-         groupByOwner : groupByOwner,
-         isFetched : function() { return fetched; }
+        }
+        
+        return {fetch : fetch,
+                getData : function(dataset) { return data[dataset]; },
+                groupByOwner : groupByOwner,
+                isFetched : function() { return fetched; }
+        };
+        
     };
     
-}());
+    return $m;
+        
+})(MODEL);

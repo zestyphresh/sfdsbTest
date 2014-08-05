@@ -1,37 +1,8 @@
-var charts = (function() {
+var CHART_COUNTDOWN = (function($c) {
     
-    var testvar = "HELLO";
-
-    OpportunitySales = function(id, data) {
-        
-        var svg = dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "30px");
-                
-        var xAxis = chart.addCategoryAxis('x', 'month');
-            xAxis.title = 'Month';
-            xAxis.addOrderRule('month');
-                
-        var yAxis = chart.addMeasureAxis('y', 'weeklyValue');
-            yAxis.title = 'Monthly Sales';
-               
-        var series = chart.addSeries('recordType', dimple.plot.line); 
-          
-        var legend = chart.addLegend("50px", "-20px", "100%", "-30px");        
-                       
-        series.getTooltipText = function (e) {
-            return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
-            };        
-           
-        chart.draw();
-                
-        function reload(data) { chart.data = data; chart.draw(); }
-        function resize() { chart.draw(); }
-
-        return { reload : reload, resize : resize };   
-                                    
-    };
+    var _priv = $c._priv;
     
-    CountdownLeaderboard = function(id, data, lastWeek) {
+    $c.CountdownLeaderboard = function(id, data, lastWeek) {
 
         var svg = dimple.newSvg('#' + id, '100%', '100%');
             
@@ -74,7 +45,7 @@ var charts = (function() {
     
     };
     
-    CountdownWeeklySales = function() {
+    $c.CountdownWeeklySales = function() {
 
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("80px", "30px", "40px", "120px");
@@ -116,23 +87,6 @@ var charts = (function() {
                 
     };
     
-    return {
-        OpportunitySales : OpportunitySales,
-        CountdownLeaderboard : CountdownLeaderboard,
-        CountdownWeeklySales : CountdownWeeklySales
-    };
+    return $c;
     
-})();
-
-var charts_opps = (function(cht) {
-    
-    cht.testvar = 12;
-    console.log(cht.testvar);
-    
-
-    
-    return cht;
-    
-})(charts);
-
-console.log(charts);
+})(CHART);
