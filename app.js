@@ -13,11 +13,11 @@
 
     router.init();
     
-    var gblModel = new MODEL();
+    var gblModel = MODEL
     
     console.log(gblModel);
     
-    var onload = new gblModel.Onload;
+    var onload = gblModel.Onload;
     
     onload.fetch(function(success) {
         
@@ -54,10 +54,10 @@
         var model, view;
         
         if (!rendered) {
-            model = new gblModel.HeadlineOpportunities;
+            model = gblModel.HeadlineOpportunities;
             model.fetch(function(success) {
                 if (success) {
-                    view = new VIEW.HeadlineOpportunities(model);
+                    view = VIEW.HeadlineOpportunities(model);
                     view.render();
                 }
             });
