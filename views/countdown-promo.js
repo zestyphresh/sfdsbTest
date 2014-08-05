@@ -1,5 +1,3 @@
-if (!views) var views = {};
-
 views['countdown-promo'] = (function() {
     
     //Private vars

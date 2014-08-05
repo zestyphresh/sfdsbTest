@@ -13,7 +13,7 @@
 
     router.init();
     
-    models['onLoad'].fetch(function(success) {
+    models['onload'].fetch(function(success) {
 
         if (success) {
             loadApp();

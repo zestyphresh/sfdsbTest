@@ -1,5 +1,3 @@
-if (!views) var views = {};
-
 views['headline-opportunity-timeline'] = (function() {
     
     //Private vars
