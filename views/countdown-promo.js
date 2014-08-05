@@ -33,5 +33,9 @@ var VIEW_COUNTDOWN = (function($v) {
             render : render,
             isRendered : function() { return rendered; }
         };
+        
+    };
+    
+    return $v;
 
-}());
+})(VIEW);
