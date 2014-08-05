@@ -45,6 +45,7 @@
     }
 
     function home() { console.log('home'); } 
+    function cntPromo() { console.log('home'); } 
 
     function oppTimeline() {
         var rendered = false;
