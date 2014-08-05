@@ -1,6 +1,6 @@
 var TABLE_COUNTDOWN = (function($t) {
     
-    var _priv = $t._priv;
+    var _modpriv = $t._priv;
 
     $t.CountdownLeaderboard = function(id, data) {
         
@@ -20,9 +20,9 @@ var TABLE_COUNTDOWN = (function($t) {
                          {"data": "vsTarget", "title": "vs Target"}, 
                          {"data": "vsTargetPercentage", "title": "% of Target"}
             ],
-            'columnDefs' : [_priv.returnDef([1,3], '$0,0', 'alignRight'),
-                            _priv.returnDef([2], '0,0', 'alignRight'),
-                            _priv.returnDef([4], '0%', 'alignRight'),
+            'columnDefs' : [_modpriv.returnDefs([1,3], '$0,0', 'alignRight'),
+                            _modpriv.returnDefs([2], '0,0', 'alignRight'),
+                            _modpriv.returnDefs([4], '0%', 'alignRight'),
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();

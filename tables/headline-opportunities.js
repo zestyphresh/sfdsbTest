@@ -1,6 +1,6 @@
 var TABLE_OPPORTUNITIES = (function($t) {
     
-    var _priv = $t._priv;
+    var _modpriv = $t._priv;
 
     $t.HeadlineOpportunities = function(id, data) {
         
@@ -24,7 +24,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                          {"data": "closeDate", "title": "Date"},
                          {"data": "productCategory", "title": "Category"}
             ],
-            'columnDefs' : [_priv.returnDef([4,5,6], '$0,0', 'alignRight')],
+            'columnDefs' : [_modpriv.returnDefs([4,5,6], '$0,0', 'alignRight')],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
 

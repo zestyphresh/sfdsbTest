@@ -1,6 +1,9 @@
 (function () {
     
     var $body = $j('body');
+    var userId = $j('#userId').text();
+    
+    console.log(userId);
     
     //ROUTER
     var routes = {
