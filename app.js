@@ -56,10 +56,10 @@
         var model, view;
         
         if (!rendered) {
-            model = gblModel.HeadlineOpportunities;
+            model = new gblModel.HeadlineOpportunities;
             model.fetch(function(success) {
                 if (success) {
-                    view = VIEW.HeadlineOpportunities(model);
+                    view = new VIEW.HeadlineOpportunities(model);
                     view.render();
                 }
             });
