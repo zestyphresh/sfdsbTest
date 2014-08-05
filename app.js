@@ -17,7 +17,7 @@
     
     console.log(gblModel);
     
-    var onload = new gblModel.Onload();
+    var onload = new gblModel.Onload;
     
     onload.fetch(function(success) {
         
