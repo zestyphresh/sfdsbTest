@@ -120,7 +120,7 @@ var MODEL = (function() {
         function updateFilters(){
             
             _(filters).each(function(f) { 
-                f.values = getUniqueValues(data, f.field);
+                f.values = _modpriv.getUniqueValues(data, f.field);
             });
             
         }
