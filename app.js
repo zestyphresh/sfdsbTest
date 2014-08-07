@@ -29,7 +29,7 @@
     
     function testR(err, result) {
         var navCategory = { 'name' : '', 'views' : [] };
-        var results = _.map(result, '_.props');
+        var results = _.map(result, '_props');
         //_.each(result, function(v) { results.push(v._props); });
         
         console.log(results);
