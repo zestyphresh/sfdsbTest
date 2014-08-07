@@ -11,7 +11,7 @@ var MODEL = (function() {
         },
         createDataSets  : function(views, defaults) {
             result = {};
-            _.chain(views).each(function(v) { result[v] = cloneDeep({}, defaults); });
+            _.chain(views).each(function(v) { result[v] = _.cloneDeep({}, defaults); });
             return result;
         },
         createFilters  : function(views, defaults) {
