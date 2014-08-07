@@ -29,8 +29,6 @@
                 
                 var result = {},
                     userViews = _.map(obj, '_props');
-                    
-                
                 
                 //NAVBAR
                 result.navbar = {'user' : '', 'categories' : []};
@@ -86,11 +84,11 @@
 
     }
 
-    onload.fetch(function(success) {
+    /*onload.fetch(function(success) {
         
         if (success) loadApp();
 
-    });
+    });*/
     
 
         
