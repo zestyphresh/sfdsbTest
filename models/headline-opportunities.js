@@ -34,7 +34,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     var testData = result.opps.slice(0,20);
                     var testTransformedData = _dataTransformToWeeks(testData);
                     
-                    _.each(viewIds, function(v) { 
+                    _.each(_viewIds, function(v) { 
                         _data[v].normal = testData;
                         _data[v].byweek = testTransformedData;
                         updateFilters(v);
