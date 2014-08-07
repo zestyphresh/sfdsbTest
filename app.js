@@ -2,7 +2,8 @@
     
     var config = {},
         models = {},
-        views = {}
+        views = {},
+        routes = {}
     ;
     
     config.userId = $j('#userId').text();
@@ -14,8 +15,43 @@
     //    onload = new gblModel.Onload
 //    ;
 
-    getUserViewConfig(function() { console.log('success'); });  
-
+    //TODO Add formula to view, checkbox for if it uses a model. If not then needs separate class so clicking isn't blocked
+    getUserViewConfig(function(userViewConfig) { 
+        
+        $body = $j('body');
+        $navbar = $j(tmplNavbar(userViewConfig.navbar));
+        
+        //Disables all links in Navbar that have an associated data model
+        $navbar.find('a.reqModel').bind('click', false);
+        
+        //Append Navbar
+        $navbar.appendTo($body);
+        
+        //Load data models and enable links on success
+        models['onload'] = new gblModel['onload'].fetch(function(success) {
+            _.each(userViewConfig.models.available, function(v, k) {
+                models[v.name] = new gblModel[v.name](v.viewIds);
+                models[v.name].fetch(function(success, id) {
+                    if (success) $navbar.find('.'+ id).unbind('click', false);
+                });
+            });
+        });
+        
+        //Create routes
+        _.each(userViewConfig.views.available, function(v) {
+            routes[v.link] = routerFunc(v.name, models[v.model]);    
+        });
+        
+    });
+    
+    function routerFunc(name, model) {
+        
+        views[name] = new VIEW[name](model);
+        
+        view.render();
+        
+    }
+    
     function getUserViewConfig(callback) {
     
         var remoteObject = new SObjectModel.userViews();
@@ -27,7 +63,7 @@
             
             }, function(err, obj) {
 
-                var result = { 'navbar' : {}, 'models' : {} },
+                var result = { 'navbar' : {}, 'models' : {}, routes : {} },
                     userViews = _.map(obj, '_props');
                 
                 //NAVBAR
@@ -44,48 +80,27 @@
                 var models = result.models;
                 
                 models['available'] = _.chain(userViews)
-                       .map(function(v) { return [v.Model_Id__c, v.Model_Javascript_Name]; })
-                       .object()
-                       .value();
+                        .map(function(v) { return { 'name' : v.Model_Javascript_Name__c, 'viewId' : View_Id__c }; })
+                        .groupBy('name')
+                        .map(function(v,k) { return {'name' : k, 'viewIds' : v}; });
+                       
+                //ROUTES
+                var routes = result.routes;
+                
+                routes = _.chain(userViews)
+                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Id__c, 'model' : v.Model_Id__c}; })
+                        .object()
+                        .value();
                        
                 console.log(result);
                 
-
-            
-        
-                //callback();
+                callback(result);
         });
         
     }
     
-    function testR(err, result) {
-        
-        var dashboardConfig;
-        
-        $body = $j('body');
-        $navbar = createNavbar(results);
+
        
-        //$navbar.find('a').bind('click', false);
-        //$navbar.appendTo($body);
-        //$body.append('<div id="test"></div>');
-        //$body.append('<div id="test2"></div>');
-        
-        
-        //var availableModels = 
-        
-        _.each(availableModels, function(v) {
-            models[v] = new gblModel[v];
-        });
-        
-        _.each(models, function(v) {
-            v.fetch(function(success, id) {
-                if (success) $navbar.find('#'+ id).unbind('click', false);
-                
-            });
-        });
-
-    }
-
     /*onload.fetch(function(success) {
         
         if (success) loadApp();
@@ -98,12 +113,7 @@
         
 
 
-    //ROUTER
-    /*var routes = {
-        '/Home': home,
-        '/OpportunityTimeline': oppTimeline,
-        '/CountdownPromo': cntPromo
-    };*/
+
 
     //var router = Router(routes);
     //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()

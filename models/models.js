@@ -9,9 +9,14 @@ var MODEL = (function() {
         getUniqueValues : function(data, key) {
             return _.chain(data).pluck(key).uniq().value();
         },
-        createDataSets  : function(views) {
+        createDataSets  : function(views, defaults) {
             result = {};
-            _.chain(views).each(function(v) { result[v] = {}; });
+            _.chain(views).each(function(v) { result[v] = cloneDeep({}, defaults); });
+            return result;
+        },
+        createFilters  : function(views, defaults) {
+            result = {};
+            _.chain(views).each(function(v) { result[v] = {} ); });
             return result;
         }
     };
@@ -22,10 +27,12 @@ var MODEL = (function() {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(views){
+    $m.CountdownPromo = function(viewIds){
         
         var _id = 'a0Mb0000005LPl6',
-            _data = _modpriv.createDataSets(views)
+            _viewIds = viewIds,
+            _defaultDatasets = {'alltime' : [], 'lastweek' : []}
+            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
         ;
         
         function fetch(callback) {
@@ -34,10 +41,12 @@ var MODEL = (function() {
                 
                 function (result, event) {
                     
-                    _data['original'] = result.sales;
-                    _data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
+                    _.each(_viewIds, function(v) {
+                        _data[v].alltime = result.sales;
+                        _data[v].lastweek = _.where(result.sales, { 'week': '2014-31' });
+                    });
     
-                    callback(event.status);
+                    callback(event.status, _id);
                         
                 }, { escape: true }
                     
@@ -84,20 +93,22 @@ var MODEL = (function() {
     $m.HeadlineOpportunities = function(views){
         
         var _id = 'a0Mb0000005LPl5',
-            _data = _modpriv.createDataSets(views);
+            _viewIds = views,
+            _defaultDatasets = {'normal' : [], 'byweek' : []}
+            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
+            _filters = _modpriv.createDataSets(_viewIds, _defaultFilters)
         ;
 
-        //var data, dataWeeks;
-    
-        var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
-                       {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
-                       {'field' : 'owner', 'title' : 'Owner', 'values' : []},
-                       {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
-                       {'field' : 'recordType', 'title' : 'Type', 'values' : []},
-                       {'field' : 'stage', 'title' : 'Stage', 'values' : []},
-                       {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
-                       {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
-                      ];
+        var _defaultfilters = 
+            [{'field' : 'account', 'title' : 'Account', 'values' : []},
+             {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
+             {'field' : 'owner', 'title' : 'Owner', 'values' : []},
+             {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
+             {'field' : 'recordType', 'title' : 'Type', 'values' : []},
+             {'field' : 'stage', 'title' : 'Stage', 'values' : []},
+             {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
+             {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
+            ];
         
         function fetch(callback) {
             
@@ -109,13 +120,15 @@ var MODEL = (function() {
     
                     //In place to filter while testing
                     var testData = result.opps.slice(0,20);
+                    var testTransformedData = _dataTransformToWeeks(testData);
                     
-                    data = testData;
-                    dataWeeks = _dataTransformToWeeks(testData);
-                    
-                    updateFilters();
+                    _.each(viewIds, function(v) { 
+                        _data[v].normal = testData;
+                        _data[v].byweek = testTransformedData;
+                        updateFilters(v);
+                    })
 
-                    callback(event.status);
+                    callback(event.status, _id);
                         
                 }, { escape: true }
                     
@@ -123,10 +136,10 @@ var MODEL = (function() {
             
         }
         
-        function updateFilters(){
+        function updateFilters(viewId){
             
-            _(filters).each(function(f) { 
-                f.values = _modpriv.getUniqueValues(data, f.field);
+            _(_filters[viewId]).each(function(f) { 
+                f.values = _modpriv.getUniqueValues(data[viewId].normal, f.field);
             });
             
         }

@@ -2,10 +2,12 @@ var MODELS_COUNTDOWN = (function($m) {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(views){
+    $m.CountdownPromo = function(viewIds){
         
         var _id = 'a0Mb0000005LPl6',
-            _data = _modpriv.createDataSets(views)
+            _viewIds = viewIds,
+            _defaultDatasets = {'alltime' : [], 'lastweek' : []}
+            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
         ;
         
         function fetch(callback) {
@@ -14,8 +16,10 @@ var MODELS_COUNTDOWN = (function($m) {
                 
                 function (result, event) {
                     
-                    _data['original'] = result.sales;
-                    _data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
+                    _.each(_viewIds, function(v) {
+                        _data[v].alltime = result.sales;
+                        _data[v].lastweek = _.where(result.sales, { 'week': '2014-31' });
+                    });
     
                     callback(event.status, _id);
                         

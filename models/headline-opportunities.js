@@ -5,20 +5,22 @@ var MODEL_OPPORTUNITIES = (function($m) {
     $m.HeadlineOpportunities = function(views){
         
         var _id = 'a0Mb0000005LPl5',
-            _data = _modpriv.createDataSets(views)
+            _viewIds = views,
+            _defaultDatasets = {'normal' : [], 'byweek' : []}
+            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
+            _filters = _modpriv.createDataSets(_viewIds, _defaultFilters)
         ;
 
-        //var data, dataWeeks;
-    
-        var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
-                       {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
-                       {'field' : 'owner', 'title' : 'Owner', 'values' : []},
-                       {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
-                       {'field' : 'recordType', 'title' : 'Type', 'values' : []},
-                       {'field' : 'stage', 'title' : 'Stage', 'values' : []},
-                       {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
-                       {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
-                      ];
+        var _defaultfilters = 
+            [{'field' : 'account', 'title' : 'Account', 'values' : []},
+             {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
+             {'field' : 'owner', 'title' : 'Owner', 'values' : []},
+             {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
+             {'field' : 'recordType', 'title' : 'Type', 'values' : []},
+             {'field' : 'stage', 'title' : 'Stage', 'values' : []},
+             {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
+             {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
+            ];
         
         function fetch(callback) {
             
@@ -30,11 +32,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
     
                     //In place to filter while testing
                     var testData = result.opps.slice(0,20);
+                    var testTransformedData = _dataTransformToWeeks(testData);
                     
-                    data = testData;
-                    dataWeeks = _dataTransformToWeeks(testData);
-                    
-                    updateFilters();
+                    _.each(viewIds, function(v) { 
+                        _data[v].normal = testData;
+                        _data[v].byweek = testTransformedData;
+                        updateFilters(v);
+                    })
 
                     callback(event.status, _id);
                         
@@ -44,10 +48,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-        function updateFilters(){
+        function updateFilters(viewId){
             
-            _(filters).each(function(f) { 
-                f.values = _modpriv.getUniqueValues(data, f.field);
+            _(_filters[viewId]).each(function(f) { 
+                f.values = _modpriv.getUniqueValues(data[viewId].normal, f.field);
             });
             
         }
