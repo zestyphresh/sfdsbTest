@@ -30,7 +30,7 @@
         models['Onload'] = new gblModel['Onload'];
         models['Onload'].fetch(function(success) {
             _.each(userViewConfig.models.available, function(v, k) {
-                models[v.name] = new gblModel[v.name](v.viewIds);
+                models[v.name] = new gblModel.CountdownPromo(v.viewIds);
                 models[v.name].fetch(function(success, id) {
                     if (success) $navbar.find('.'+ id).unbind('click', false);
                 });
@@ -38,7 +38,7 @@
         });
         
         //Create routes
-        _.each(userViewConfig.views.available, function(v) {
+        _.each(userViewConfig.routes, function(v) {
             routes[v.link] = routerFunc(v.name, models[v.model]);    
         });
         
