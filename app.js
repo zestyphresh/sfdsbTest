@@ -23,10 +23,10 @@
         remoteObject.retrieve({
             
             limit : 100,
-            where : { User_Id__c : { eq : userId } }
+            where : { User_Id__c : { eq : config.userId } }
             
             }, function(err, obj) {
-                
+
                 var result = {},
                     userViews = _.map(obj, '_props');
                 
