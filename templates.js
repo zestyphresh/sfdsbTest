@@ -6,7 +6,7 @@ Handlebars.registerHelper('times', function(n, block) {
 });
 
 var templates = {};
-var tmplNavbar = Handlebars.compile(templates['navbar']);
+
 
 templates['dropdown-filters'] = ""+  
     "{{#each this}}"+    
@@ -133,3 +133,5 @@ templates['countdown-promo'] = ""+
     "    </div>"+ 
     "</div>"
 ;
+
+var tmplNavbar = Handlebars.compile(templates['navbar']);
