@@ -2,10 +2,16 @@
     
     var $body = $j('body'),
         userId = $j('#userId').text(),
+        userName = $j('#userName').text()
+    ;
+    /*
+    var $body = $j('body'),
+        userId = $j('#userId').text(),
         userName = $j('#userName').text(),
         gblModel = MODEL,
         onload = new gblModel.Onload
     ;
+    */
     
     console.log(userId);
     

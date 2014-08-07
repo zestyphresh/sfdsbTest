@@ -5,7 +5,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
     $m.HeadlineOpportunities = function(views){
         
         var _id = 'a0Mb0000005LPl5',
-            _data = _modpriv.createDataSets(views);
+            _data = _modpriv.createDataSets(views)
         ;
 
         //var data, dataWeeks;
