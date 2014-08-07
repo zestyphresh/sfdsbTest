@@ -28,6 +28,7 @@
     }, testR);
     
     function testR(err, result) {
+        
         var results = _.map(result, '_props');
         
         console.log(results);
@@ -35,27 +36,12 @@
         var views = [];
         
         _.each(results, function(v) {
-           views.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}) 
+           views.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}) ;
         });
         
-        console.log(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
-        
-        var categories = _.chain(results).pick(['View_Category__c', 'Model_Id__c', 'View_Link__c', 'View_Name__c']).groupBy('View_Category__c').value();
-        _.each(categories, function(v,k) { navbar.categories.push({ 'name' : k,  'views' : v}); });
+        navbar.user = userName;
+        navbar.categories.push(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
 
- 
-
-        //var categories = _.chain(results).pluck('View_Category__c').uniq().value();
-        var views =  _.chain(results).pluck('View_Javascript_Name__c').uniq().value();
-        var models =  _.chain(results).pluck('Model_Javascript_Name__c').uniq().value();
-        
-        console.log(categories);
-        console.log(views);
-        console.log(models);
-        
-        //_.each(categories, function(v) { navbar.categories.push({ 'name' : v,  'views' : [] }); });
-
-        //_.each(results, function(v) { navbar.categories[v.View_Category__c]})
         console.log(navbar);
         
     }
