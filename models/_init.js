@@ -16,7 +16,7 @@ var MODEL = (function() {
         },
         createFilters  : function(views, defaults) {
             result = {};
-            _.chain(views).each(function(v) { result[v] = {} ); });
+            _.chain(views).each(function(v) { result[v] = {}; });
             return result;
         }
     };

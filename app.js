@@ -80,7 +80,7 @@
                 var models = result.models;
                 
                 models['available'] = _.chain(userViews)
-                        .map(function(v) { return { 'name' : v.Model_Javascript_Name__c, 'viewId' : View_Id__c }; })
+                        .map(function(v) { return { 'name' : v.Model_Javascript_Name__c, 'viewId' : v.View_Id__c }; })
                         .groupBy('name')
                         .map(function(v,k) { return {'name' : k, 'viewIds' : v}; });
                        
