@@ -29,21 +29,24 @@ templates['navbar'] = ""+
     "            <span class='icon-bar'></span>"+
     "            <span class='icon-bar'></span>"+
     "        </button>"+
-    "        <a class='navbar-brand' href='#'>{{title}}</a>"+
-    "        <span id='loading'></span>"+
+    "        <a class='navbar-brand' href='#'>{{user}}</a>"+
     "    </div>"+
     "    <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>"+
-    "        <ul class='nav navbar-nav navbar-left'>"+
-    "            {{#links}}"+
-    "               <li id='{{id}}'><a href='#/{{id}}'>{{linkText}}</a></li>"+ 
-    "            {{/links}}"+
-    "        </ul>"+
+    "        {{#category}}" +
+    "            <li class='dropdown'>"+       
+    "                <a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></a>"+
+    "                <ul class='dropdown-menu' role='menu'>"+
+    "                    {{#view}}"+
+    "                        <li><a class='{{modelId}}' href='{{link}}'>{{name}}</a></li>"+
+    "                    {{/view}}"+
+    "                </ul>"+
+    "            </li>"+
+    "        {{/category}}" +
     "        <ul class='nav navbar-nav navbar-right'>"+
     "        </ul>"+
     "    </div>"+
     "</nav>"
 ;
-
 
 templates['table'] = ""+
     "<table id='{{id}}' class='table table-condensed table-hover display' cellspacing='0' width='100%'>"+

@@ -6,7 +6,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
         
         var _id = id + '-inner';
         
-        $j('#' + id).append(_priv.template({'id': _id, 'columns' : 9}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 9}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,

@@ -2,10 +2,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
     
     var _modpriv = $m._priv;
 
-    $m.HeadlineOpportunities = function(){
-    
-        var fetched = false;
-        var data, dataWeeks;
+    $m.HeadlineOpportunities = function(views){
+        
+        var _id = 'a0Mb0000005LPl5',
+            _data = _modpriv.createDataSets(views);
+        ;
+
+        //var data, dataWeeks;
     
         var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
                        {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
@@ -32,9 +35,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     dataWeeks = _dataTransformToWeeks(testData);
                     
                     updateFilters();
-    
-                    isFetched = true;
-                    
+
                     callback(event.status);
                         
                 }, { escape: true }
@@ -55,8 +56,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                  updateFilters : updateFilters,
                  getData : function() { return data; },
                  getDataWeeks : function() { return dataWeeks; },
-                 getFilters : function() { return filters; },
-                 isFetched : function() { return fetched; }
+                 getFilters : function() { return filters; }
         };
         
         //PRIVATE FUNCTIONS

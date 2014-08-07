@@ -4,10 +4,15 @@ var MODEL = (function() {
     var module = function () {};
     
     module._priv = {
-        datesByIndex : {},
-        datesByDate : {},
+        datesByIndex    : {},
+        datesByDate     : {},
         getUniqueValues : function(data, key) {
             return _.chain(data).pluck(key).uniq().value();
+        },
+        createDataSets  : function(views) {
+            result = {};
+            _.chain(views).each(function(v) { result[v] = {}; });
+            return result;
         }
     };
     
@@ -17,9 +22,11 @@ var MODEL = (function() {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(){
+    $m.CountdownPromo = function(views){
         
-        var data = {};
+        var _id = 'a0Mb0000005LPl6',
+            _data = _modpriv.createDataSets(views)
+        ;
         
         function fetch(callback) {
     
@@ -27,8 +34,8 @@ var MODEL = (function() {
                 
                 function (result, event) {
                     
-                    data['original'] = result.sales;
-                    data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
+                    _data['original'] = result.sales;
+                    _data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
     
                     callback(event.status);
                         
@@ -42,7 +49,7 @@ var MODEL = (function() {
             
             var result = {};
             
-            _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -55,15 +62,13 @@ var MODEL = (function() {
                 r.vsTarget = -r.target + r.grossValue;
                 r.vsTargetPercentage = r.grossValue / r.target;
             });
-            
-            console.log(result);
-            
+
             return result;
     
         }
         
         return {fetch : fetch,
-                getData : function(dataset) { return data[dataset]; },
+                getData : function(dataset) { return _data[dataset]; },
                 groupByOwner : groupByOwner,
                 isFetched : function() { return fetched; }
         };
@@ -76,10 +81,13 @@ var MODEL = (function() {
     
     var _modpriv = $m._priv;
 
-    $m.HeadlineOpportunities = function(){
-    
-        var fetched = false;
-        var data, dataWeeks;
+    $m.HeadlineOpportunities = function(views){
+        
+        var _id = 'a0Mb0000005LPl5',
+            _data = _modpriv.createDataSets(views);
+        ;
+
+        //var data, dataWeeks;
     
         var filters = [{'field' : 'account', 'title' : 'Account', 'values' : []},
                        {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
@@ -106,9 +114,7 @@ var MODEL = (function() {
                     dataWeeks = _dataTransformToWeeks(testData);
                     
                     updateFilters();
-    
-                    isFetched = true;
-                    
+
                     callback(event.status);
                         
                 }, { escape: true }
@@ -129,8 +135,7 @@ var MODEL = (function() {
                  updateFilters : updateFilters,
                  getData : function() { return data; },
                  getDataWeeks : function() { return dataWeeks; },
-                 getFilters : function() { return filters; },
-                 isFetched : function() { return fetched; }
+                 getFilters : function() { return filters; }
         };
         
         //PRIVATE FUNCTIONS
@@ -216,6 +221,9 @@ var MODEL = (function() {
     var _modpriv = $m._priv;
     
     $m.Onload = function() {
+        
+        var id = 'a0Mb0000005LPl4'
+        ;
     
         function fetch(callback) {
 

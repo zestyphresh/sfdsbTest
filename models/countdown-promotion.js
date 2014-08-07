@@ -2,9 +2,11 @@ var MODELS_COUNTDOWN = (function($m) {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(){
+    $m.CountdownPromo = function(views){
         
-        var data = {};
+        var _id = 'a0Mb0000005LPl6',
+            _data = _modpriv.createDataSets(views)
+        ;
         
         function fetch(callback) {
     
@@ -12,8 +14,8 @@ var MODELS_COUNTDOWN = (function($m) {
                 
                 function (result, event) {
                     
-                    data['original'] = result.sales;
-                    data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
+                    _data['original'] = result.sales;
+                    _data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
     
                     callback(event.status);
                         
@@ -27,7 +29,7 @@ var MODELS_COUNTDOWN = (function($m) {
             
             var result = {};
             
-            _.chain(data[dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -40,15 +42,13 @@ var MODELS_COUNTDOWN = (function($m) {
                 r.vsTarget = -r.target + r.grossValue;
                 r.vsTargetPercentage = r.grossValue / r.target;
             });
-            
-            console.log(result);
-            
+
             return result;
     
         }
         
         return {fetch : fetch,
-                getData : function(dataset) { return data[dataset]; },
+                getData : function(dataset) { return _data[dataset]; },
                 groupByOwner : groupByOwner,
                 isFetched : function() { return fetched; }
         };

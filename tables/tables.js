@@ -34,7 +34,7 @@ var TABLE = (function() {
 
 var TABLE_COUNTDOWN = (function($t) {
     
-    var _priv = $t._priv;
+    var _modpriv = $t._priv;
 
     $t.CountdownLeaderboard = function(id, data) {
         
@@ -54,9 +54,9 @@ var TABLE_COUNTDOWN = (function($t) {
                          {"data": "vsTarget", "title": "vs Target"}, 
                          {"data": "vsTargetPercentage", "title": "% of Target"}
             ],
-            'columnDefs' : [_priv.returnDef([1,3], '$0,0', 'alignRight'),
-                            _priv.returnDef([2], '0,0', 'alignRight'),
-                            _priv.returnDef([4], '0%', 'alignRight'),
+            'columnDefs' : [_modpriv.returnDefs([1,3], '$0,0', 'alignRight'),
+                            _modpriv.returnDefs([2], '0,0', 'alignRight'),
+                            _modpriv.returnDefs([4], '0%', 'alignRight'),
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
@@ -88,13 +88,13 @@ var TABLE_COUNTDOWN = (function($t) {
     
 })(TABLE);var TABLE_OPPORTUNITIES = (function($t) {
     
-    var _priv = $t._priv;
+    var _modpriv = $t._priv;
 
     $t.HeadlineOpportunities = function(id, data) {
         
         var _id = id + '-inner';
         
-        $j('#' + id).append(_priv.template({'id': _id, 'columns' : 9}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 9}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
@@ -112,7 +112,7 @@ var TABLE_COUNTDOWN = (function($t) {
                          {"data": "closeDate", "title": "Date"},
                          {"data": "productCategory", "title": "Category"}
             ],
-            'columnDefs' : [_priv.returnDef([4,5,6], '$0,0', 'alignRight')],
+            'columnDefs' : [_modpriv.returnDefs([4,5,6], '$0,0', 'alignRight')],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
 

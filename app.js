@@ -1,10 +1,55 @@
 (function () {
     
-    var $body = $j('body');
-    var userId = $j('#userId').text();
+    var $body = $j('body'),
+        userId = $j('#userId').text(),
+        userName = $j('#userName').text(),
+        gblModel = MODEL,
+        onload = new gblModel.Onload
+    ;
     
-    console.log(userId);
+    var userViews = new RemoteObjectModel.userViews();
+    userViews.retrieve({
+        limit : 100,
+        where : { User__c : { eq : userId } }
+    }, function(){console.log(userViews);});
     
+    onload.fetch(function(success) {
+        
+        if (success) loadApp();
+
+    });
+    
+    var tmplNavbar = Handlebars.compile(templates['navbar']);
+    
+    var contextNavbar = {
+        'title' : 'Director Dashboard',
+        'links' : [
+            {'id' : 'Home', 'linkText' : 'Home'},
+            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'},
+            {'id' : 'CountdownPromo', 'linkText' : 'Countdown Promo'}
+        ]
+    };
+    
+    var navbar = {
+        'user' : '',
+        'category' : [
+            {'name' : '',
+             'views' : [
+                
+            ]
+        
+        ]
+    }
+            
+    $body.append(tmplNavbar(contextNavbar));
+        
+    $body.append('<div id="test"></div>');
+    $body.append('<div id="test2"></div>');
+        
+    router.init();
+        
+
+
     //ROUTER
     var routes = {
         '/Home': home,
@@ -15,19 +60,7 @@
     var router = Router(routes);
     //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()
     
-    var gblModel = MODEL;
-    
-    console.log(gblModel);
-    
-    var onload = new gblModel.Onload;
-    
-    console.log(onload);
-    
-    onload.fetch(function(success) {
-        
-        if (success) loadApp();
 
-    });
     
     function loadApp() {
 
@@ -56,6 +89,7 @@
     function cntPromo() { console.log('home'); } 
 
     function oppTimeline() {
+        
         var rendered = false;
         var model, view;
         
@@ -63,7 +97,7 @@
             model = new gblModel.HeadlineOpportunities;
             model.fetch(function(success) {
                 if (success) {
-                    view = new VIEW.HeadlineOpportunities(model);
+                    view = new VIEW.HeadlineOpportunityTimeline(model);
                     view.render();
                 }
             });

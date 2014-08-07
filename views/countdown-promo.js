@@ -1,16 +1,15 @@
 var VIEW_COUNTDOWN = (function($v) {
 
-    $v.CountdownPromo = function() {
+    $v.CountdownPromo = function(model) {
         
         //Private vars
-        var _id = '_0002';
+        var _id = 'a0Lb0000006xVBr';
+            _model = model
+        ;
         
         //Public vars
         var chtLeaderboard, tblLeaderboard, chtLastWeek, tblLastWeek, chtWeeklySales;
-        
-        //First call of render() sets to true, used to check if view has been initialised
-        var rendered = false;
-    
+
         //Initialise handlebar templates
         var template = Handlebars.compile(templates['countdown-promo']);
     
@@ -24,14 +23,11 @@ var VIEW_COUNTDOWN = (function($v) {
             chtLastWeek = new charts.CountdownLeaderboard(_id + '-charts-promo-lastweek', models['countdown-promo'].getData('lastweek'), true);
             tblLastWeek = new tables.CountdownLeaderboard(_id + '-tables-promo-lastweek', models['countdown-promo'].groupByOwner('lastweek', 1360));  
             chtWeeklySales = new charts.CountdownWeeklySales(_id + '-charts-promo-weeklysales', models['countdown-promo'].getData('original'));
-    
-            rendered = true;
-    
+
         }
     
         return { 
-            render : render,
-            isRendered : function() { return rendered; }
+            render : render
         };
         
     };
