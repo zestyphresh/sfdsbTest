@@ -32,16 +32,18 @@ templates['navbar'] = ""+
     "        <a class='navbar-brand' href='#'>{{user}}</a>"+
     "    </div>"+
     "    <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>"+
-    "        {{#categories}}" +
-    "            <li class='dropdown'>"+       
-    "                <a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></a>"+
-    "                <ul class='dropdown-menu' role='menu'>"+
-    "                    {{#views}}"+
-    "                        <li><a class='{{modelId}}' href='{{link}}'>{{name}}</a></li>"+
-    "                    {{/views}}"+
-    "                </ul>"+
-    "            </li>"+
-    "        {{/categories}}" +
+    "        <ul class='nav navbar-nav navbar-left'>"+
+    "            {{#categories}}" +
+    "                <li class='dropdown'>"+       
+    "                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></a>"+
+    "                 <ul class='dropdown-menu' role='menu'>"+
+    "                        {{#views}}"+
+    "                            <li><a class='{{modelId}}' href='{{link}}'>{{name}}</a></li>"+
+    "                        {{/views}}"+
+    "                    </ul>"+
+    "                </li>"+
+    "           {{/categories}}" +
+    "        </ul>"+
     "        <ul class='nav navbar-nav navbar-right'>"+
     "        </ul>"+
     "    </div>"+
