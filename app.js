@@ -59,7 +59,7 @@
         '/CountdownPromo': cntPromo
     };*/
 
-    var router = Router(routes);
+    //var router = Router(routes);
     //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()
     
 
