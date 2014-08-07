@@ -36,9 +36,9 @@
                 result.navbar.user = config.userName;
                 
                 var abc = _.chain(userViews)
-                        .map(function(v) { return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
+                        .map(function(v) { console.log(v); return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
                         .groupBy('category')
-                        .map(function(v, k) { return {'name' : k, 'views' : v}; })
+                        .map(function(v, k) { console.log(v); return {'name' : k, 'views' : v}; })
                         .value()
                 ;
                 
