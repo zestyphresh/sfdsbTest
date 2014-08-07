@@ -31,27 +31,26 @@
                     userViews = _.map(obj, '_props');
                 
                 //NAVBAR
-                result.navbar = {'user' : '', 'categories' : []};
-                
-                result.navbar.user = config.userName;
-                
-                console.log(userViews);
-                
-                var abc = _.chain(userViews)
-                        .map(function(v) { console.log(v); return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
+                var navbar = result['navbar'];
+
+                navbar['user'] = config.userName;
+                navbar['categories'] = _.chain(userViews)
+                        .map(function(v) { return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
                         .groupBy('category')
-                        .map(function(v, k) { console.log(v); return {'name' : k, 'views' : v}; })
-                        .value()
-                ;
+                        .map(function(v, k) { return {'name' : k, 'views' : v}; })
+                        .value();
                 
-                console.log(abc);
-        
-                //_.each(userViews, function(v) { 
-                 //  navbarViews.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}) ;
-                //});
-        
-    
-     //= _.cloneDeep(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
+                //MODELS        
+                var models = result['models'];
+                
+                models['available'] = _.chain(userViews)
+                       .map(function(v) { return [v.Model_Id__c, v.Model_Javascript_Name]; })
+                       .object()
+                       .value();
+                       
+                console.log(result);
+                
+
             
         
                 //callback();
@@ -72,7 +71,7 @@
         //$body.append('<div id="test2"></div>');
         
         
-        //var availableModels = _.object(_.map(results, function(v) { return [v.Model_Javascript_Name, ]
+        //var availableModels = 
         
         _.each(availableModels, function(v) {
             models[v] = new gblModel[v];
