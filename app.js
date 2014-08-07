@@ -64,10 +64,10 @@
         $body = $j('body');
         $navbar = createNavbar(results);
        
-        $navbar.find('a').bind('click', false);
-        $navbar.appendTo($body);
-        $body.append('<div id="test"></div>');
-        $body.append('<div id="test2"></div>');
+        //$navbar.find('a').bind('click', false);
+        //$navbar.appendTo($body);
+        //$body.append('<div id="test"></div>');
+        //$body.append('<div id="test2"></div>');
         
         
         //var availableModels = _.object(_.map(results, function(v) { return [v.Model_Javascript_Name, ]
