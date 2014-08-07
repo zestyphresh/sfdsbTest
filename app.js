@@ -12,9 +12,7 @@
         onload = new gblModel.Onload
     ;
     */
-    
-    console.log(userId);
-    
+
     var navbar = {
         'user' : '',
         'categories' : [
@@ -30,9 +28,7 @@
     function testR(err, result) {
         
         var results = _.map(result, '_props');
-        
-        console.log(results);
-        
+
         var views = [];
         
         _.each(results, function(v) {
@@ -41,9 +37,11 @@
         
         navbar.user = userName;
         navbar.categories = _.cloneDeep(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
-
-        console.log(navbar);
         
+        var tmplNavbar = Handlebars.compile(templates['navbar']);
+
+        $body.append(tmplNavbar(contextNavbar));
+
     }
 
     onload.fetch(function(success) {
@@ -52,29 +50,7 @@
 
     });
     
-    var tmplNavbar = Handlebars.compile(templates['navbar']);
-    
-    var contextNavbar = {
-        'title' : 'Director Dashboard',
-        'links' : [
-            {'id' : 'Home', 'linkText' : 'Home'},
-            {'id' : 'OpportunityTimeline', 'linkText' : 'Opportunity Timeline'},
-            {'id' : 'CountdownPromo', 'linkText' : 'Countdown Promo'}
-        ]
-    };
-    
-    var navbar = {
-        'user' : '',
-        'category' : [
-            {'name' : '',
-             'views' : [
-                ]
-            }
-        
-        ]
-    };
-            
-    $body.append(tmplNavbar(contextNavbar));
+
         
     $body.append('<div id="test"></div>');
     $body.append('<div id="test2"></div>');
