@@ -40,7 +40,7 @@
         });
         
         navbar.user = userName;
-        navbar.categories.push(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
+        navbar.categories = _.cloneDeep(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
 
         console.log(navbar);
         
