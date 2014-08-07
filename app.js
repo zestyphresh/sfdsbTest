@@ -27,11 +27,11 @@
             
             }, function(err, obj) {
 
-                var result = {},
+                var result = { 'navbar' : {}, 'models' : {} },
                     userViews = _.map(obj, '_props');
                 
                 //NAVBAR
-                var navbar = result['navbar'];
+                var navbar = result.navbar;
 
                 navbar['user'] = config.userName;
                 navbar['categories'] = _.chain(userViews)
@@ -41,7 +41,7 @@
                         .value();
                 
                 //MODELS        
-                var models = result['models'];
+                var models = result.models;
                 
                 models['available'] = _.chain(userViews)
                        .map(function(v) { return [v.Model_Id__c, v.Model_Javascript_Name]; })
