@@ -35,6 +35,8 @@
                 
                 result.navbar.user = config.userName;
                 
+                console.log(userViews);
+                
                 var abc = _.chain(userViews)
                         .map(function(v) { console.log(v); return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
                         .groupBy('category')
