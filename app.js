@@ -86,7 +86,8 @@
                 models['available'] = _.chain(userViews)
                         .map(function(v) { return { 'name' : v.Model_Javascript_Name__c, 'viewId' : v.View_Id__c }; })
                         .groupBy('name')
-                        .map(function(v,k) { return {'name' : k, 'viewIds' : v}; });
+                        .map(function(v,k) { return {'name' : k, 'viewIds' : v}; })
+                        .value();
                        
                 //ROUTES
                 var routes = result.routes;
