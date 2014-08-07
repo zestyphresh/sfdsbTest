@@ -15,6 +15,8 @@
     //TODO Add formula to view, checkbox for if it uses a model. If not then needs separate class so clicking isn't blocked
     getUserViewConfig(function(userViewConfig) { 
         
+        console.log(userViewConfig);
+        
         $body = $j('body');
         $navbar = $j(tmplNavbar(userViewConfig.navbar));
         
