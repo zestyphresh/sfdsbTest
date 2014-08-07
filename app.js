@@ -19,7 +19,7 @@
     userViews.retrieve({
         limit : 100,
         where : { User_Id__c : { eq : userId } }
-    }, testR(err, result));
+    }, testR);
     
     function testR(err, result) {
         var results = [];
