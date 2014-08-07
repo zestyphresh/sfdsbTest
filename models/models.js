@@ -99,7 +99,7 @@ var MODEL = (function() {
             _filters = _modpriv.createDataSets(_viewIds, _defaultFilters)
         ;
 
-        var _defaultfilters = 
+        var _defaultFilters = 
             [{'field' : 'account', 'title' : 'Account', 'values' : []},
              {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
              {'field' : 'owner', 'title' : 'Owner', 'values' : []},
