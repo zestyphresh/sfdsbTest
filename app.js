@@ -33,15 +33,16 @@
                 //NAVBAR
                 result.navbar = {'user' : '', 'categories' : []};
                 
-                result.navbar.user = userName;
+                result.navbar.user = config.userName;
                 
-                _(userViews)
+                var abc = _(userViews)
                         .map(function(v) { return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
                         .groupBy('category')
-                        .map(function(v, k) { result.navbar.categories.push({'name' : k, 'views' : v}); })
+                        .map(function(v, k) { return {'name' : k, 'views' : v}; })
+                        .value()
                 ;
                 
-                console.log(result);
+                console.log(abc);
         
                 //_.each(userViews, function(v) { 
                  //  navbarViews.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}) ;
