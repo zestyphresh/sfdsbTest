@@ -32,7 +32,7 @@
         
         console.log(results);
         
-        var views = {};
+        var views = []
         
         _.each(results, function(v) {
            views.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}) 
