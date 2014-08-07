@@ -29,8 +29,10 @@
     
     function testR(err, result) {
         var navCategory = { 'name' : '', 'views' : [] };
-        var results = [];
-        _.each(result, function(v) { results.push(v._props); });
+        var results = _.map(result, '_.props');
+        //_.each(result, function(v) { results.push(v._props); });
+        
+        console.log(results);
         
         var categories = _.chain(results).pluck('View_Category__c').uniq().value();
         var views =  _.chain(results).pluck('View_Javascript_Name__c').uniq().value();
@@ -40,8 +42,9 @@
         console.log(views);
         console.log(models);
         
-        _.each(categories, function(v) { navbar.categories.push({ 'name' : v.View_Category__c,  'views' : [] }); });
+        _.each(categories, function(v) { navbar.categories.push({ 'name' : v,  'views' : [] }); });
 
+        _.each(results)
         console.log(navbar);
         
     }
