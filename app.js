@@ -19,9 +19,9 @@
     userViews.retrieve({
         limit : 100,
         where : { User_Id__c : { eq : userId } }
-    }, callback(err, result));
+    }, testR(err, result));
     
-    function callback(err, result) {
+    function testR(err, result) {
         var results = [];
         _.each(result, function(v) { results.push(v._props); });
         
