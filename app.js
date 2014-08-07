@@ -37,6 +37,8 @@
             });
         });
         
+        console.log(models);
+        
         //Create routes
         _.each(userViewConfig.routes, function(v) {
             routes[v.link] = routerFunc(v.name, models[v.model]);    
