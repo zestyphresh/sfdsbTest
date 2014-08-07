@@ -27,7 +27,7 @@
         gblModel = MODEL;
         
         //Load data models and enable links on success
-        models['onload'] = new gblModel['onload'].fetch(function(success) {
+        models['Onload'] = new gblModel['Onload'].fetch(function(success) {
             _.each(userViewConfig.models.available, function(v, k) {
                 models[v.name] = new gblModel[v.name](v.viewIds);
                 models[v.name].fetch(function(success, id) {
