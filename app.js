@@ -30,11 +30,13 @@
     function testR(err, result) {
         var navCategory = { 'name' : '', 'views' : [] };
         var results = _.map(result, '_props');
-        //_.each(result, function(v) { results.push(v._props); });
         
         console.log(results);
         
-        var categories = _.chain(results).pluck('View_Category__c').uniq().value();
+        var categories = _.chain(results).pick(['View_Category__c', 'Model_Id__c', 'View_Link__c', 'View_Name__c']).groupBy('View_Category__c');
+ 
+
+        //var categories = _.chain(results).pluck('View_Category__c').uniq().value();
         var views =  _.chain(results).pluck('View_Javascript_Name__c').uniq().value();
         var models =  _.chain(results).pluck('Model_Javascript_Name__c').uniq().value();
         
@@ -42,9 +44,9 @@
         console.log(views);
         console.log(models);
         
-        _.each(categories, function(v) { navbar.categories.push({ 'name' : v,  'views' : [] }); });
+        //_.each(categories, function(v) { navbar.categories.push({ 'name' : v,  'views' : [] }); });
 
-        _.each(results)
+        //_.each(results, function(v) { navbar.categories[v.View_Category__c]})
         console.log(navbar);
         
     }
