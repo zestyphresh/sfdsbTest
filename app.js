@@ -41,9 +41,7 @@
         console.log(models);
         
         _.each(categories, function(v) { navbar.categories.push({ 'name' : v.View_Category__c,  'views' : [] }); });
-        
-       _.chain(results).pluck('View_Category__c').uniq().value().each( function(v) { navbar.categories.push({ 'name' : v.View_Category__c,  'views' : [] }); });
-        
+
         console.log(navbar);
         
     }
