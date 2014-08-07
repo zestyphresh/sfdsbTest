@@ -7,11 +7,13 @@
         onload = new gblModel.Onload
     ;
     
+    console.log(userId);
+    
     var userViews = new SObjectModel.userViews();
     userViews.retrieve({
         limit : 100,
         where : { User__c : { eq : userId } }
-    }, function(err, records){console.log(records);});
+    }, function(err, records) {console.log(err); console.log(records);});
     
     onload.fetch(function(success) {
         
