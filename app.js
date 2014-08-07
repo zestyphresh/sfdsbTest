@@ -12,8 +12,8 @@
     var userViews = new SObjectModel.userViews();
     userViews.retrieve({
         limit : 100,
-        where : { User__c : { eq : userId } }
-    }, function(err, records) {console.log(err); console.log(records);});
+        where : { User_Id__c : { eq : userId } }
+    }, function(err, records) {console.log(records);});
     
     onload.fetch(function(success) {
         
