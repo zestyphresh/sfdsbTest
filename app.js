@@ -13,7 +13,7 @@
     userViews.retrieve({
         limit : 100,
         where : { User_Id__c : { eq : userId } }
-    }, function(err, records) {console.log(records);});
+    }, function(err, records) {console.log(userViews);});
     
     onload.fetch(function(success) {
         
@@ -83,7 +83,7 @@
         $body.append('<div id="test"></div>');
         $body.append('<div id="test2"></div>');
         
-        router.init();
+        //router.init();
         
     }
 
