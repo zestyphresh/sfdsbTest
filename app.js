@@ -93,9 +93,6 @@
     
 
         
-    $body.append('<div id="test"></div>');
-    $body.append('<div id="test2"></div>');
-        
     //router.init();
         
 
