@@ -40,7 +40,7 @@
         
         var tmplNavbar = Handlebars.compile(templates['navbar']);
 
-        $body.append(tmplNavbar(contextNavbar));
+        $body.append(tmplNavbar(navbar));
 
     }
 
