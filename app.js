@@ -53,11 +53,11 @@
 
 
     //ROUTER
-    var routes = {
+    /*var routes = {
         '/Home': home,
         '/OpportunityTimeline': oppTimeline,
         '/CountdownPromo': cntPromo
-    };
+    };*/
 
     var router = Router(routes);
     //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()
