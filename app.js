@@ -19,7 +19,32 @@
     userViews.retrieve({
         limit : 100,
         where : { User_Id__c : { eq : userId } }
-    }, function(err, records) {console.log(records);});
+    }, callback(err, result));
+    
+    function callback(err, result) {
+        var results = [];
+        _.each(result, function(v) { results.push(v._props); });
+        
+        var categories = _.chain(results).pluck('View_Category__c').uniq().value();
+        var views =  _.chain(results).pluck('View_Javascript_Name__c').uniq().value();
+        var models =  _.chain(results).pluck('Model_Javascript_Name__c').uniq().value();
+        
+        console.log(categories);
+        console.log(views);
+        console.log(models);
+        
+    }
+    
+    var navbar = {
+        'user' : '',
+        'category' : [
+            {'name' : '',
+             'views' : [
+                ]
+            }
+        
+        ]
+    };
     
     onload.fetch(function(success) {
         
