@@ -7,7 +7,7 @@
         onload = new gblModel.Onload
     ;
     
-    var userViews = new RemoteObjectModel.userViews();
+    var userViews = new SObjectModel.userViews();
     userViews.retrieve({
         limit : 100,
         where : { User__c : { eq : userId } }
