@@ -35,11 +35,11 @@
         'category' : [
             {'name' : '',
              'views' : [
-                
-            ]
+                ]
+            }
         
         ]
-    }
+    };
             
     $body.append(tmplNavbar(contextNavbar));
         
@@ -88,7 +88,7 @@
     function home() { console.log('home'); } 
     function cntPromo() { console.log('home'); } 
 
-    function oppTimeline() {
+    /*function oppTimeline() {
         
         var rendered = false;
         var model, view;
@@ -105,6 +105,6 @@
         
         rendered = true;
         
-    }
+    }*/
 
 }());
