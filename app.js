@@ -19,7 +19,7 @@
     userViews.retrieve({
         limit : 100,
         where : { User_Id__c : { eq : userId } }
-    }, function(err, records) {console.log(userViews);});
+    }, function(err, records) {console.log(records);});
     
     onload.fetch(function(success) {
         
