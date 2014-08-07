@@ -3,17 +3,14 @@
     var config = {},
         models = {},
         views = {},
-        routes = {}
+        routes = {},
+        gblModel
     ;
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
     
     var $body, $navbar;
-
-    //var gblModel = MODEL,
-    //    onload = new gblModel.Onload
-//    ;
 
     //TODO Add formula to view, checkbox for if it uses a model. If not then needs separate class so clicking isn't blocked
     getUserViewConfig(function(userViewConfig) { 
@@ -26,6 +23,8 @@
         
         //Append Navbar
         $navbar.appendTo($body);
+        
+        gblModel = MODEL;
         
         //Load data models and enable links on success
         models['onload'] = new gblModel['onload'].fetch(function(success) {

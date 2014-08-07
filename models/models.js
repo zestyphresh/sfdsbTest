@@ -31,8 +31,8 @@ var MODEL = (function() {
         
         var _id = 'a0Mb0000005LPl6',
             _viewIds = viewIds,
-            _defaultDatasets = {'alltime' : [], 'lastweek' : []}
-            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
+            _defaultDatasets = {'alltime' : [], 'lastweek' : []},
+            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets)
         ;
         
         function fetch(callback) {
