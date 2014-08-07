@@ -34,6 +34,8 @@
         console.log(results);
         
         var categories = _.chain(results).pick(['View_Category__c', 'Model_Id__c', 'View_Link__c', 'View_Name__c']).groupBy('View_Category__c').value();
+        _.each(categories, function(v,k) { navbar.categories.push({ 'name' : k,  'views' : v}); });
+
  
 
         //var categories = _.chain(results).pluck('View_Category__c').uniq().value();
