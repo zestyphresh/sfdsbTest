@@ -15,6 +15,12 @@
     
     console.log(userId);
     
+    var navbar = {
+        'user' : '',
+        'categories' : [
+        ]
+    };
+    
     var userViews = new SObjectModel.userViews();
     userViews.retrieve({
         limit : 100,
@@ -22,6 +28,7 @@
     }, testR);
     
     function testR(err, result) {
+        var navCategory = { 'name' : '', 'views' : [] };
         var results = [];
         _.each(result, function(v) { results.push(v._props); });
         
@@ -33,19 +40,14 @@
         console.log(views);
         console.log(models);
         
-    }
-    
-    var navbar = {
-        'user' : '',
-        'category' : [
-            {'name' : '',
-             'views' : [
-                ]
-            }
+        _.each(categories, function(v) { navbar.categories.push({ 'name' : v.View_Category__c,  'views' : [] }); });
         
-        ]
-    };
-    
+       _.chain(results).pluck('View_Category__c').uniq().value().each( function(v) { navbar.categories.push({ 'name' : v.View_Category__c,  'views' : [] }); });
+        
+        console.log(navbar);
+        
+    }
+
     onload.fetch(function(success) {
         
         if (success) loadApp();
