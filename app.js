@@ -11,7 +11,7 @@
     userViews.retrieve({
         limit : 100,
         where : { User__c : { eq : userId } }
-    }, function(){console.log(userViews);});
+    }, function(err, records){console.log(records);});
     
     onload.fetch(function(success) {
         
