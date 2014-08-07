@@ -35,7 +35,7 @@
         var views = {};
         
         _.each(results, function(v) {
-           views.push({'category' : View_Category__c, 'modelId' : v.Model_Id__c, 'link' : View_Link__c, 'name' : View_Name__c}) 
+           views.push({'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : View_Link__c, 'name' : View_Name__c}) 
         });
         
         console.log(_.map(_.groupBy(views, 'category'), function(v, k) { return {'name' : k, 'views' : v}; }));
