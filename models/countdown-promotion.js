@@ -17,7 +17,7 @@ var MODELS_COUNTDOWN = (function($m) {
                     _data['original'] = result.sales;
                     _data['lastweek'] = _.where(result.sales, { 'week': '2014-31' })
     
-                    callback(event.status);
+                    callback(event.status, _id);
                         
                 }, { escape: true }
                     

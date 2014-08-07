@@ -6,6 +6,7 @@ Handlebars.registerHelper('times', function(n, block) {
 });
 
 var templates = {};
+var tmplNavbar = Handlebars.compile(templates['navbar']);
 
 templates['dropdown-filters'] = ""+  
     "{{#each this}}"+    
@@ -38,7 +39,7 @@ templates['navbar'] = ""+
     "                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></a>"+
     "                 <ul class='dropdown-menu' role='menu'>"+
     "                        {{#views}}"+
-    "                            <li><a class='{{modelId}}' href='{{link}}'>{{name}}</a></li>"+
+    "                            <li><a class='{{modelId}}' href='#{{link}}'>{{name}}</a></li>"+
     "                        {{/views}}"+
     "                    </ul>"+
     "                </li>"+

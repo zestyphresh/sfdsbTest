@@ -36,7 +36,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     
                     updateFilters();
 
-                    callback(event.status);
+                    callback(event.status, _id);
                         
                 }, { escape: true }
                     
