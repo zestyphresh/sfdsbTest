@@ -126,7 +126,7 @@ var MODEL = (function() {
                         _data[v].normal = testData;
                         _data[v].byweek = testTransformedData;
                         updateFilters(v);
-                    })
+                    });
 
                     callback(event.status, _id);
                         
@@ -139,15 +139,15 @@ var MODEL = (function() {
         function updateFilters(viewId){
             
             _(_filters[viewId]).each(function(f) { 
-                f.values = _modpriv.getUniqueValues(data[viewId].normal, f.field);
+                f.values = _modpriv.getUniqueValues(_data[viewId].normal, f.field);
             });
             
         }
         
         return { fetch : fetch,
                  updateFilters : updateFilters,
-                 getData : function(viewId, dataset) { return data[viewId][dataset]; },
-                 getFilters : function(viewId) { return filters[viewId]; }
+                 getData : function(viewId, dataset) { return _data[viewId][dataset]; },
+                 getFilters : function(viewId) { return _filters[viewId]; }
         };
         
         //PRIVATE FUNCTIONS
