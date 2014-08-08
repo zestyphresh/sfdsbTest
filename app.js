@@ -52,8 +52,10 @@
     function routerFunc(name, model) {
         
         return function() {
+            
+            console.log(name, model);
         
-            views[name] = new VIEW[name](model);
+            views[name] = new VIEW[name](models[model]);
             
             view.render();
             
