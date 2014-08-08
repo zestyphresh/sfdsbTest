@@ -135,8 +135,14 @@ function TEMPLATE() {
         "</div>"
     ;
     
-    return _(_templates)
-        .each(function(v, k) { return { k : function() { Handlebars.compile(v); } }})
-        .value();
+    return {
+        'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters'])
+    } 
+    
+    
+    
+    //_(_templates)
+    //    .each(function(v, k) { return { k : Handlebars.compile(v) }})
+    //    .value();
     
 }
