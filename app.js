@@ -95,7 +95,6 @@
                 
                 routes['available'] = _.chain(userViews)
                         .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Id__c, 'model' : v.Model_Id__c}; })
-                        .object()
                         .value();
 
                 callback(result);
