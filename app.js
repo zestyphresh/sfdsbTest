@@ -4,11 +4,8 @@
     models = {},
     views = {},
     routes = {},
-    templates = TEMPLATE(),
     gblModel = MODEL;
     ;
-    
-    console.log(templates);
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();

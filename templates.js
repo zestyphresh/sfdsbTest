@@ -1,5 +1,3 @@
-function TEMPLATE() {
-
     Handlebars.registerHelper('times', function(n, block) {
         var result = '';
         for(var i = 0; i < n; ++i)
@@ -135,7 +133,7 @@ function TEMPLATE() {
         "</div>"
     ;
     
-    return {
+    var templates =  {
         'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
         'navbar' : Handlebars.compile(_templates['navbar']),
         'table' : Handlebars.compile(_templates['table']),
@@ -143,5 +141,3 @@ function TEMPLATE() {
         'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
         'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
     }; 
-
-}
