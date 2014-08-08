@@ -17,7 +17,7 @@
         "            {{/values}}"+  
         "        </ul>"+  
         "    </div>"+  
-        "{{Other/each}}"
+        "{{/each}}"
     ;
     
     _templates['navbar'] = ""+ 
