@@ -57,7 +57,7 @@
         
             views[name] = new VIEW[name](models[model]);
             
-            view.render();
+            views[name].render();
             
         }
         
