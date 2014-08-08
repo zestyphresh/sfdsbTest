@@ -19,7 +19,7 @@
         console.log(userViewConfig);
         
         $body = $j('body');
-        $navbar = $j(tmplNavbar(userViewConfig.navbar));
+        $navbar = $j(templates['navbar'](userViewConfig.navbar));
         
         //Disables all links in Navbar that have an associated data model
         $navbar.find('a.reqModel').bind('click', false);
