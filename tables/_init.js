@@ -5,7 +5,7 @@ var TABLE = (function() {
     
     module._priv = {
     
-        template : Handlebars.compile(templates['table']),
+        template : templates['table'],
         
         returnDefs : function(targets, format, cssClass) {
         
