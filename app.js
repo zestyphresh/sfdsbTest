@@ -4,7 +4,7 @@
     models = {},
     views = {},
     routes = {},
-    templates = TEMPLATES(),
+    templates = TEMPLATE(),
     gblModel;
     ;
     
