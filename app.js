@@ -100,7 +100,7 @@
                 var routes = result.routes;
                 
                 routes['available'] = _.chain(userViews)
-                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Id__c, 'model' : v.Model_Javascript_Name__c}; })
+                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'model' : v.Model_Javascript_Name__c}; })
                         .value();
 
                 callback(result);
