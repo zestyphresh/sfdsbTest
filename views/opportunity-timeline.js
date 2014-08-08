@@ -9,19 +9,15 @@ var VIEW_OPPORTUNITIES = (function($v) {
         
         //Public vars
         var chtTimeline, chtSales, tblOpps;
-        
-        //Initialise handlebar templates
-        var tmplView = Handlebars.compile(templates['headline-opportunities']);
-        var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
-    
+
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
         
-            $j('#test').append(tmplView({'id':_id}));
+            $j('#test').append(templates['headline-opportunities']({'id':_id}));
     
-            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getDataWeeks());
-            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getDataWeeks());
-            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData());      
+            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getData(_id, 'byweek'));
+            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getData(_id, 'byweek'));
+            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData(_id, 'normal'));      
     
             renderFilters(_id + '-filters');
 
@@ -30,13 +26,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Renders filters, separate to render() so it can be called to refresh filters
         function renderFilters(id) {
     
-            $j('#' + id).empty().append(tmplFilters(model.getFilters())); 
+            $j('#' + id).empty().append(templates['dropdown-filters'](model.getFilters(_id))); 
     
         }
         
         return { 
             render : render,
-            changeModel : function(model) { _.model = model; }
         };
         
     };

@@ -1,3 +1,7 @@
+//TODO
+//While the code allows for multiple instances of the same view to be created
+//it will not work correctly as an additional 'unique' ids will need to be
+//appended to the standard id.
 var VIEW = (function() {
         
     //constructor
@@ -19,19 +23,16 @@ var VIEW = (function() {
         //Public vars
         var chtLeaderboard, tblLeaderboard, chtLastWeek, tblLastWeek, chtWeeklySales;
 
-        //Initialise handlebar templates
-        var template = Handlebars.compile(templates['countdown-promo']);
-    
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
         
-            $j('#test2').append(template({'id':_id}));
+            $j('#test2').append(templates['countdown-promo']({'id':_id}));
     
-            chtLeaderboard = new charts.CountdownLeaderboard(_id + '-charts-promo-leaderboard', models['countdown-promo'].getData('original'), false);
-            tblLeaderboard = new tables.CountdownLeaderboard(_id + '-tables-promo-leaderboard', models['countdown-promo'].groupByOwner('original', 20000)); 
-            chtLastWeek = new charts.CountdownLeaderboard(_id + '-charts-promo-lastweek', models['countdown-promo'].getData('lastweek'), true);
-            tblLastWeek = new tables.CountdownLeaderboard(_id + '-tables-promo-lastweek', models['countdown-promo'].groupByOwner('lastweek', 1360));  
-            chtWeeklySales = new charts.CountdownWeeklySales(_id + '-charts-promo-weeklysales', models['countdown-promo'].getData('original'));
+            chtLeaderboard = new charts.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _model.getData(_id, 'alltime'), false);
+            tblLeaderboard = new tables.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _model.groupByOwner(_id, 'alltime', 20000)); 
+            chtLastWeek = new charts.CountdownLeaderboard(_id + '-charts-promo-lastweek', _model.getData(_id, 'lastweek'), true);
+            tblLastWeek = new tables.CountdownLeaderboard(_id + '-tables-promo-lastweek', _model.groupByOwner(_id, 'lastweek', 1360));  
+            chtWeeklySales = new charts.CountdownWeeklySales(_id + '-charts-promo-weeklysales', _model.getData(_id, 'alltime'));
 
         }
     
@@ -54,19 +55,15 @@ var VIEW = (function() {
         
         //Public vars
         var chtTimeline, chtSales, tblOpps;
-        
-        //Initialise handlebar templates
-        var tmplView = Handlebars.compile(templates['headline-opportunities']);
-        var tmplFilters = Handlebars.compile(templates['dropdown-filters']);
-    
+
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
         
-            $j('#test').append(tmplView({'id':_id}));
+            $j('#test').append(templates['headline-opportunities']({'id':_id}));
     
-            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getDataWeeks());
-            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getDataWeeks());
-            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData());      
+            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getData(_id, 'byweek'));
+            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getData(_id, 'byweek'));
+            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData(_id, 'normal'));      
     
             renderFilters(_id + '-filters');
 
@@ -75,13 +72,12 @@ var VIEW = (function() {
         //Renders filters, separate to render() so it can be called to refresh filters
         function renderFilters(id) {
     
-            $j('#' + id).empty().append(tmplFilters(model.getFilters())); 
+            $j('#' + id).empty().append(templates['dropdown-filters'](model.getFilters(_id))); 
     
         }
         
         return { 
             render : render,
-            changeModel : function(model) { _.model = model; }
         };
         
     };

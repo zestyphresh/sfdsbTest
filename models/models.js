@@ -54,11 +54,11 @@ var MODEL = (function() {
             
         }
         
-        function groupByOwner(dataset, target) {
+        function groupByOwner(viewId, dataset, target) {
             
             var result = {};
             
-            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[viewId][dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -77,7 +77,7 @@ var MODEL = (function() {
         }
         
         return {fetch : fetch,
-                getData : function(dataset) { return _data[dataset]; },
+                getData : function(viewId, dataset) { return _data[viewId][dataset]; },
                 groupByOwner : groupByOwner,
                 isFetched : function() { return fetched; }
         };
@@ -146,9 +146,8 @@ var MODEL = (function() {
         
         return { fetch : fetch,
                  updateFilters : updateFilters,
-                 getData : function() { return data; },
-                 getDataWeeks : function() { return dataWeeks; },
-                 getFilters : function() { return filters; }
+                 getData : function(viewId, dataset) { return data[viewId][dataset]; },
+                 getFilters : function(viewId) { return filters[viewId]; }
         };
         
         //PRIVATE FUNCTIONS
@@ -232,6 +231,9 @@ var MODEL = (function() {
 })(MODEL);var MODEL_ONLOAD = (function($m) {
     
     var _modpriv = $m._priv;
+    
+    //TODO - instead of either loading/not loaidng this module adjust the query to accept short/long formats. The short version
+    //will just be a single date (todays). This format could also be used for any other 'Onload' modules.
     
     $m.Onload = function() {
         

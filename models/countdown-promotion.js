@@ -29,11 +29,11 @@ var MODELS_COUNTDOWN = (function($m) {
             
         }
         
-        function groupByOwner(dataset, target) {
+        function groupByOwner(viewId, dataset, target) {
             
             var result = {};
             
-            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[viewId][dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -52,7 +52,7 @@ var MODELS_COUNTDOWN = (function($m) {
         }
         
         return {fetch : fetch,
-                getData : function(dataset) { return _data[dataset]; },
+                getData : function(viewId, dataset) { return _data[viewId][dataset]; },
                 groupByOwner : groupByOwner,
                 isFetched : function() { return fetched; }
         };

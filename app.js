@@ -1,10 +1,11 @@
 (function () {
     
-    var config = {},
-        models = {},
-        views = {},
-        routes = {},
-        gblModel
+    config = {},
+    models = {},
+    views = {},
+    routes = {},
+    templates = TEMPLATES(),
+    gblModel;
     ;
     
     config.userId = $j('#userId').text();
@@ -32,7 +33,6 @@
         models['Onload'] = new gblModel['Onload'];
         models['Onload'].fetch(function(success) {
             _.each(userViewConfig.models.available, function(v, k) {
-                console.log(v);console.log(k);
                 models[v.name] = new gblModel[v.name](v.viewIds);
                 models[v.name].fetch(function(success, id) {
                     if (success) $navbar.find('.'+ id).unbind('click', false);

@@ -58,9 +58,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         return { fetch : fetch,
                  updateFilters : updateFilters,
-                 getData : function() { return data; },
-                 getDataWeeks : function() { return dataWeeks; },
-                 getFilters : function() { return filters; }
+                 getData : function(viewId, dataset) { return data[viewId][dataset]; },
+                 getFilters : function(viewId) { return filters[viewId]; }
         };
         
         //PRIVATE FUNCTIONS
