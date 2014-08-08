@@ -42,7 +42,7 @@
 
         //Create routes
         _.each(userViewConfig.routes.available, function(v) {
-            router.on(v.link, routerFunc(v.name, models[v.model]));    
+            router.on(v.link, routerFunc(v.name, v.model));    
         });
         
         console.log(models, views, router);
@@ -51,13 +51,15 @@
     
     function routerFunc(name, model) {
         
+        var _name = name, _model = model;
+        
         return function() {
             
-            console.log(name, model);
+            console.log(_name, _model);
         
-            views[name] = new VIEW[name](models[model]);
+            views[_name] = new VIEW[_name](models[_model]);
             
-            views[name].render();
+            views[_name].render();
             
         }
         
