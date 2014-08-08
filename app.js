@@ -42,7 +42,7 @@
 
         //Create routes
         _.each(userViewConfig.routes.available, function(v) {
-            router.once(v.link, routerFunc(v.name, models[v.model]));    
+            router.on(v.link, routerFunc(v.name, models[v.model]));    
         });
         
         console.log(models, views, router);
