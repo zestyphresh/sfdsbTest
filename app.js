@@ -3,9 +3,10 @@
     config = {},
     models = {},
     views = {},
-    routes = {},
-    gblModel = MODEL;
+    router = new Router().init()
     ;
+    
+    var _gblModel;
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
@@ -25,26 +26,26 @@
         
         //Append Navbar
         $navbar.appendTo($body);
+        
+        _gblModel = MODEL;
 
         //Load data models and enable links on success
-        models['Onload'] = new gblModel['Onload'];
+        models['Onload'] = new _gblModel['Onload'];
         models['Onload'].fetch(function(success) {
             _.each(userViewConfig.models.available, function(v, k) {
-                models[v.name] = new gblModel[v.name](v.viewIds);
+                models[v.name] = new _gblModel[v.name](v.viewIds);
                 models[v.name].fetch(function(success, id) {
                     if (success) $navbar.find('.'+ id).unbind('click', false);
                 });
             });
         });
-        
-        console.log(models);
-        
+
         //Create routes
         _.each(userViewConfig.routes.available, function(v) {
-            routes[v.link] = routerFunc(v.name, models[v.model]);    
+            Router.once(v.link, routerFunc(v.name, models[v.model]));    
         });
         
-        console.log(models, views, routes);
+        console.log(models, views, router);
         
     });
     
@@ -71,7 +72,7 @@
             
             }, function(err, obj) {
 
-                var result = { 'navbar' : {}, 'models' : {}, routes : {} },
+                var result = { 'navbar' : {}, 'models' : {}, 'routes' : {} },
                     userViews = _.map(obj, '_props');
                 
                 //NAVBAR
