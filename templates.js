@@ -66,8 +66,18 @@
         "</table>"
     ;
     
+    _templates['heading-no-links'] = ""+
+        "<div class='row'>"+
+        "    <div class='col-xs-12'>"+           
+        "        <h4>"+  
+        "            {{title}}"+  
+        "        </h4>"+  
+        "    </div>"+
+        "</div>"
+    ;
+    
     _templates['heading'] = ""+
-        "<div class='{{gridClass}}'>"+           
+        "<div class='col-xs-12'>"+           
         "    <h4>"+  
         "        {{title}}"+  
         "        <small>(Report Links :"+  
@@ -80,64 +90,74 @@
     ;
     
     _templates['headline-opportunities'] = ""+
-        "<div class='col-xs-12'>"+
-        "    <div id='{{id}}-filters' class='well'></div>"+
-        "</div>"+
-        ""+
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Opportunity Timeline</div>"+
-        "        <div id='{{id}}-charts-opp-timeline' class='minChartDims1'></div>"+
-        "    </div>"+
-        "</div>"+
-        ""+    
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Opportunity Sales</div>"+
-        "        <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>"+
-        "    </div>"+ 
-        "</div>"+
-        ""+    
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Opportunity List</div>"+
-        "        <div id='{{id}}-tables-opp-list' class='table-responsive'>"+
-        "        </div>"+
-        "    </div>"+ 
+        "<div class='row'>"+
+            "<div class='col-xs-12'>"+
+            "    <div id='{{id}}-filters' class='well'></div>"+
+            "</div>"+
+            ""+
+            "<div class='col-xs-12'>"+
+            "    <div class='panel panel-default'>"+
+            "        <div class='panel-heading'>Opportunity Timeline</div>"+
+            "        <div id='{{id}}-charts-opp-timeline' class='minChartDims1'></div>"+
+            "    </div>"+
+            "</div>"+
+            ""+    
+            "<div class='col-xs-12'>"+
+            "    <div class='panel panel-default'>"+
+            "        <div class='panel-heading'>Opportunity Sales</div>"+
+            "        <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>"+
+            "    </div>"+ 
+            "</div>"+
+            ""+    
+            "<div class='col-xs-12'>"+
+            "    <div class='panel panel-default'>"+
+            "        <div class='panel-heading'>Opportunity List</div>"+
+            "        <div id='{{id}}-tables-opp-list' class='table-responsive'>"+
+            "        </div>"+
+            "    </div>"+ 
+            "</div>"+
         "</div>"
     ;
     
     _templates['countdown-promo'] = ""+
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Leaderboard</div>"+
-        "        <div id='{{id}}-charts-promo-leaderboard' class='minChartDims1'></div>"+
-        "        <div id='{{id}}-tables-promo-leaderboard' class='table-responsive'>"+
+        "<div class='row'>"+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Leaderboard</div>"+
+        "            <div id='{{id}}-charts-promo-leaderboard' class='minChartDims1'></div>"+
+        "            <div id='{{id}}-tables-promo-leaderboard' class='table-responsive'>"+
+        "        </div>"+
         "    </div>"+
-        "</div>"+
         ""+    
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Last Week</div>"+
-        "        <div id='{{id}}-charts-promo-lastweek' class='minChartDims1'></div>"+
-        "        <div id='{{id}}-tables-promo-lastweek' class='table-responsive'>"+
-        "    </div>"+ 
-        "</div>"+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Last Week</div>"+
+        "            <div id='{{id}}-charts-promo-lastweek' class='minChartDims1'></div>"+
+        "            <div id='{{id}}-tables-promo-lastweek' class='table-responsive'>"+
+        "        </div>"+ 
+        "    </div>"+
         ""+    
-        "<div class='col-xs-12'>"+
-        "    <div class='panel panel-default'>"+
-        "        <div class='panel-heading'>Weekly Sales</div>"+
-        "        <div id='{{id}}-charts-promo-weekly' class='minChartDims2'></div>"+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Weekly Sales</div>"+
+        "            <div id='{{id}}-charts-promo-weekly' class='minChartDims2'></div>"+
         "        </div>"+
         "    </div>"+ 
         "</div>"
     ;
     
+    _templates['container'] = ""+
+        "<div id={{id}} class='container-fluid'></div>"
+    ;    
+        
+    
     var templates =  {
+        'container' : Handlebars.compile(_templates['container']),
         'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
         'navbar' : Handlebars.compile(_templates['navbar']),
         'table' : Handlebars.compile(_templates['table']),
         'heading' : Handlebars.compile(_templates['heading']),
+        'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
         'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
         'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
     }; 
