@@ -139,13 +139,9 @@ function TEMPLATE() {
         'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
         'navbar' : Handlebars.compile(_templates['navbar']),
         'table' : Handlebars.compile(_templates['table']),
-        'heading' : Handlebars.compile(_templates['heading'])
-    } 
-    
-    
-    
-    //_(_templates)
-    //    .each(function(v, k) { return { k : Handlebars.compile(v) }})
-    //    .value();
-    
+        'heading' : Handlebars.compile(_templates['heading']),
+        'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
+        'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
+    }; 
+
 }

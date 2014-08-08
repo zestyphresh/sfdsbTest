@@ -43,7 +43,7 @@
         console.log(models);
         
         //Create routes
-        _.each(userViewConfig.routes, function(v) {
+        _.each(userViewConfig.routes.available, function(v) {
             routes[v.link] = routerFunc(v.name, models[v.model]);    
         });
         
@@ -93,7 +93,7 @@
                 //ROUTES
                 var routes = result.routes;
                 
-                routes = _.chain(userViews)
+                routes['available'] = _.chain(userViews)
                         .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Id__c, 'model' : v.Model_Id__c}; })
                         .object()
                         .value();
