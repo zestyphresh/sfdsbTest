@@ -107,56 +107,5 @@
         });
         
     }
-    
-
-       
-    /*onload.fetch(function(success) {
-        
-        if (success) loadApp();
-
-    });*/
-    
-
-        
-    //router.init();
-        
-
-
-
-
-    //var router = Router(routes);
-    //END OF ROUTER - DELAY INITIIALISATION UNTIL LOADAPP()
-    
-
-    
-    function loadApp() {
-
-
-        
-        //router.init();
-        
-    }
-
-    function home() { console.log('home'); } 
-    function cntPromo() { console.log('home'); } 
-
-    /*function oppTimeline() {
-        
-        var rendered = false;
-        var model, view;
-        
-        if (!rendered) {
-            model = new gblModel.HeadlineOpportunities;
-            model.fetch(function(success) {
-                if (success) {
-                    view = new VIEW.HeadlineOpportunityTimeline(model);
-                    view.render();
-                }
-            });
-        }
-        
-        rendered = true;
-        
-    }*/
 
 }());
