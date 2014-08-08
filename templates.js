@@ -136,7 +136,7 @@ function TEMPLATE() {
     ;
     
     return _(_templates)
-        .each(function(v, k) { return {k : Handlebars.compile(v)}; })
+        .each(function(v, k) { return { k : function() { Handlebars.compile(v); } }})
         .value();
     
-};
+}
