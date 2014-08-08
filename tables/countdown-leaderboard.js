@@ -6,7 +6,7 @@ var TABLE_COUNTDOWN = (function($t) {
         
         var _id = id + '-inner';
         
-        $j('#' + id).append(_priv.template({'id': _id, 'columns' : 5}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 5}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
