@@ -5,7 +5,7 @@
     views = {},
     routes = {},
     templates = TEMPLATE(),
-    gblModel;
+    gblModel = MODEL;
     ;
     
     config.userId = $j('#userId').text();
@@ -26,9 +26,7 @@
         
         //Append Navbar
         $navbar.appendTo($body);
-        
-        gblModel = MODEL;
-        
+
         //Load data models and enable links on success
         models['Onload'] = new gblModel['Onload'];
         models['Onload'].fetch(function(success) {
