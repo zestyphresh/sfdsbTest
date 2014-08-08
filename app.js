@@ -44,6 +44,8 @@
             routes[v.link] = routerFunc(v.name, models[v.model]);    
         });
         
+        console.log(models, views, routes);
+        
     });
     
     function routerFunc(name, model) {
