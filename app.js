@@ -4,21 +4,20 @@
     models = {},
     views = {},
     router = new Router().init()
-    ;
-    
+    $body = $j('body');
+
     var _gblModel;
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
     
-    var $body, $navbar;
+    var $navbar;
 
     //TODO Add formula to view, checkbox for if it uses a model. If not then needs separate class so clicking isn't blocked
     getUserViewConfig(function(userViewConfig) { 
         
         console.log(userViewConfig);
         
-        $body = $j('body');
         $navbar = $j(templates['navbar'](userViewConfig.navbar));
         
         //Disables all links in Navbar that have an associated data model

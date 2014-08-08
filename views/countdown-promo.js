@@ -12,8 +12,10 @@ var VIEW_COUNTDOWN = (function($v) {
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
-        
-            $j('#test2').append(templates['countdown-promo']({'id':_id}));
+            
+            $body.append(templates['container']({'id':_id}))
+            $j(_id).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
+            $j(_id).append(templates['countdown-promo']({'id':_id}));
     
             chtLeaderboard = new CHART.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _model.getData(_id, 'alltime'), false);
             tblLeaderboard = new TABLE.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _model.groupByOwner(_id, 'alltime', 20000)); 

@@ -25,14 +25,16 @@ var VIEW = (function() {
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
-        
-            $j('#test2').append(templates['countdown-promo']({'id':_id}));
+            
+            $body.append(templates['container']({'id':_id}))
+            $j(_id).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
+            $j(_id).append(templates['countdown-promo']({'id':_id}));
     
-            chtLeaderboard = new charts.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _model.getData(_id, 'alltime'), false);
-            tblLeaderboard = new tables.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _model.groupByOwner(_id, 'alltime', 20000)); 
-            chtLastWeek = new charts.CountdownLeaderboard(_id + '-charts-promo-lastweek', _model.getData(_id, 'lastweek'), true);
-            tblLastWeek = new tables.CountdownLeaderboard(_id + '-tables-promo-lastweek', _model.groupByOwner(_id, 'lastweek', 1360));  
-            chtWeeklySales = new charts.CountdownWeeklySales(_id + '-charts-promo-weeklysales', _model.getData(_id, 'alltime'));
+            chtLeaderboard = new CHART.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _model.getData(_id, 'alltime'), false);
+            tblLeaderboard = new TABLE.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _model.groupByOwner(_id, 'alltime', 20000)); 
+            chtLastWeek = new CHART.CountdownLeaderboard(_id + '-charts-promo-lastweek', _model.getData(_id, 'lastweek'), true);
+            tblLastWeek = new TABLE.CountdownLeaderboard(_id + '-tables-promo-lastweek', _model.groupByOwner(_id, 'lastweek', 1360));  
+            chtWeeklySales = new CHART.CountdownWeeklySales(_id + '-charts-promo-weeklysales', _model.getData(_id, 'alltime'));
 
         }
     
@@ -59,7 +61,9 @@ var VIEW = (function() {
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
         
-            $j('#test').append(templates['headline-opportunities']({'id':_id}));
+            $body.append(templates['container']({'id':_id}))
+            $j(_id).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
+            $j(_id).append(templates['headline-opportunities']({'id':_id}));
     
             chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getData(_id, 'byweek'));
             chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getData(_id, 'byweek'));
