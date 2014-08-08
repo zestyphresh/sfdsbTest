@@ -136,7 +136,10 @@ function TEMPLATE() {
     ;
     
     return {
-        'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters'])
+        'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
+        'navbar' : Handlebars.compile(_templates['navbar']),
+        'table' : Handlebars.compile(_templates['table']),
+        'heading' : Handlebars.compile(_templates['heading'])
     } 
     
     
