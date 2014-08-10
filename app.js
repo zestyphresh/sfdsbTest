@@ -83,6 +83,8 @@
                 views['available'] = _.chain(userViews)
                         .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'args' : v.View_Args__c, 'home' : v.Home__c, 'preload' : v.Preload__c}; })
                         .value();
+                        
+                console.log(result);
 
         });
         
