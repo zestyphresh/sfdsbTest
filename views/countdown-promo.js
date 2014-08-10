@@ -25,39 +25,11 @@ var VIEW_COUNTDOWN = (function($v) {
             Q.all([_models.promo.fetch()]).done(function() {
                 
                 _loaded = true;
-                
-                console.log(_models['promo'].getData('alltime'));
-                
+
                 if (renderAfter) render();
 
             });
 
-            /*_counter = 1;
-            
-            _(_requiredModels).each(function(v, k) {
-                
-                _models[v.shortName] = new _gblModel[v.modelName];
-                _models[v.shortName].fetch(function(loaded) {
-                    
-                    if (loaded) _counter--; 
-                    
-                    console.log('in fetch', v.shortName);
-                    
-                });
-                
-            });
-            
-            if (renderAfter) {
-                
-                console.log('in render after');
-                
-                while (_counter != 0) {}; //blocking code
-                
-                render();
-                
-            }
-            */
-            
         }
 
         //Render function, adds all dom elements and creates charts, tables and filters
