@@ -100,6 +100,8 @@ var VIEW = (function() {
         //Init models
         function init(renderAfter) {
             
+            _counter = 1;
+            
             _(_requiredModels).each(function(v, k) {
                 
                 _models[v.shortName] = new _gblModel[v.modelName];
