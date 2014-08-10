@@ -63,6 +63,8 @@ var TABLE_COUNTDOWN = (function($t) {
             //'footerCallback' : footerCallback
         });
         
+        //FUCKING GAY
+        
         function footerCallback (tfoot, data, start, end, display) {
             var api = this.api();
 
