@@ -38,6 +38,8 @@ var TABLE_COUNTDOWN = (function($t) {
 
     $t.CountdownLeaderboard = function(id, data) {
         
+        console.log(data);
+        
         var _id = id + '-inner';
         
         $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 5}));
