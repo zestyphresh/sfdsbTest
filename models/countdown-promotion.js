@@ -58,8 +58,6 @@ var MODELS_COUNTDOWN = (function($m) {
                 r.vsTargetPercentage = r.grossValue / target;
             });
             
-            console.log(result);
-
             return result;
     
         }
