@@ -36,7 +36,7 @@ var VIEW = (function() {
                 _models[v.shortName] = new _gblModel[v.modelName];
                 _models[v.shortName].fetch(function(loaded) {
                     
-                    if (!loaded) _counter--; 
+                    if (loaded) _counter--; 
                     
                 });
                 
@@ -107,7 +107,7 @@ var VIEW = (function() {
                 _models[v.shortName] = new _gblModel[v.modelName];
                 _models[v.shortName].fetch(function(loaded) {
                     
-                    if (!loaded) _counter--; 
+                    if (loaded) _counter--; 
                     
                 });
                 

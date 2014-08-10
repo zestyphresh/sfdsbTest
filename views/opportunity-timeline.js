@@ -26,7 +26,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 _models[v.shortName] = new _gblModel[v.modelName];
                 _models[v.shortName].fetch(function(loaded) {
                     
-                    if (!loaded) _counter--; 
+                    if (loaded) _counter--; 
                     
                 });
                 
