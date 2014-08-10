@@ -30,7 +30,9 @@ var MODEL = (function() {
             _loaded = false
         ;
         
-        function fetch(callback) {
+        function fetch() {
+            
+            var deferred = Q.defer();
     
             AnalyticsViewProvider.getCountdownPromotion(
                 
@@ -38,22 +40,28 @@ var MODEL = (function() {
                     
                     if (!event.status) {
                         
-                        _loaded = false;
+                        deferred.reject(event);
+                        
+                        //_loaded = false;
                         
                     } else {
-                    
+                        
                         _data.alltime = result.sales;
                         _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
+                        
+                        deferred.resolve(true);
         
-                        _loaded = true;
-    
-                        callback(_loaded);
+                        //_loaded = true;
                         
                     }
+                    
+                    //callback(_loaded);
                         
                 }, { buffer : false, escape: true }
                     
             );
+            
+            return deferred.promise;
             
         }
         
@@ -136,10 +144,10 @@ var MODEL = (function() {
                         updateFilters();
                         
                         _loaded = true;
-
-                        callback(_loaded);
                         
                     }
+                    
+                    callback(_loaded);
                         
                 }, { buffer : false, escape: true }
                     

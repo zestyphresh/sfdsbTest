@@ -41,9 +41,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             }
             
         }
-        
-        //TODO insert something that stops people clicking links to render view until
-        //models successfully loaded
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 

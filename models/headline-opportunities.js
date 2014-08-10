@@ -44,10 +44,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         updateFilters();
                         
                         _loaded = true;
-
-                        callback(_loaded);
                         
                     }
+                    
+                    callback(_loaded);
                         
                 }, { buffer : false, escape: true }
                     

@@ -16,7 +16,8 @@ var VIEW = (function() {
         var _args = args;
             _viewId = 'a0Lb0000006xVBr',
             _uid = _.uniqueId(_viewId + '-'), 
-            _models = {}
+            _models = {},
+            _loaded = false
         ;
 
         var _requiredModels = [
@@ -29,7 +30,18 @@ var VIEW = (function() {
         //Init models
         function init(renderAfter) {
             
-            _counter = 1;
+            _models['promo'] = new _gblModel['CountdownPromo'];
+            
+
+            Q.all([_models.promo.fetch()]).done(function() {
+                
+                _loaded = true;
+                
+                if (renderAfter) render();
+
+            });
+
+            /*_counter = 1;
             
             _(_requiredModels).each(function(v, k) {
                 
@@ -53,11 +65,9 @@ var VIEW = (function() {
                 render();
                 
             }
+            */
             
         }
-        
-        //TODO insert something that stops people clicking links to render view until
-        //models successfully loaded
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
@@ -126,9 +136,6 @@ var VIEW = (function() {
             }
             
         }
-        
-        //TODO insert something that stops people clicking links to render view until
-        //models successfully loaded
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
