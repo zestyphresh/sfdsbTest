@@ -54,6 +54,8 @@
     }
     
     function getUserViewConfig(callback) {
+        
+        console.log('in function');
     
         var remoteObject = new SObjectModel.userViews();
     
