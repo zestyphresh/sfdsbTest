@@ -47,8 +47,6 @@
 
         return function() {
             
-            console.log(name);
-            
             views[name].init(true);
 
         }
