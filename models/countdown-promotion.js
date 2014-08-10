@@ -57,7 +57,7 @@ var MODELS_COUNTDOWN = (function($m) {
                             'grossValue' : sum.grossValue, 
                             'quantity' : sum.quantity,
                             'vsTarget' : -target + sum.grossValue,
-                            'vsTargetPercentage' : r.grossValue / target
+                            'vsTargetPercentage' : sum.grossValue / target
                     };
                     
                 })
