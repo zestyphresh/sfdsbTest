@@ -27,21 +27,21 @@ var CHART_COUNTDOWN = (function($c) {
                         
         var yAxis = chart.addCategoryAxis('y', 'owner');
             yAxis.title = null;
-            yAxis.addOrderRule('value'); 
+            yAxis.addOrderRule('grossValue'); 
         
         var series = chart.addSeries('owner', dimple.plot.bar);
         
         var targetSeries = chart.addSeries('owner', dimple.plot.line);            
             var target = !lastWeek ? 20000 : 1540;     
-            var targetData = [{'owner':'Matt K', 'value':target},
-                              {'owner':'Phil L', 'value':target},
-                              {'owner':'Mark P', 'value':target},
-                              {'owner':'Tracy B', 'value':target},
-                              {'owner':'Steve G', 'value':target},
-                              {'owner':'Steve H', 'value':target},
-                              {'owner':'Norrie C', 'value':target},
-                              {'owner':'Brian M', 'value':target},
-                              {'owner':'Brian R', 'value':target}];            
+            var targetData = [{'owner':'Matt K', 'grossValue':target},
+                              {'owner':'Phil L', 'grossValue':target},
+                              {'owner':'Mark P', 'grossValue':target},
+                              {'owner':'Tracy B', 'grossValue':target},
+                              {'owner':'Steve G', 'grossValue':target},
+                              {'owner':'Steve H', 'grossValue':target},
+                              {'owner':'Norrie C', 'grossValue':target},
+                              {'owner':'Brian M', 'grossValue':target},
+                              {'owner':'Brian R', 'grossValue':target}];            
             
         targetSeries.data = targetData;
         

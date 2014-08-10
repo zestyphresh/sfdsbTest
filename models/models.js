@@ -61,22 +61,27 @@ var MODEL = (function() {
         }
         
         function groupByOwner(dataset, target) {
-            
-            var result = {};
-            
-            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
-                result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
-                _.each(v, function(o) { 
-                    result[k].owner = k;
-                    result[k].grossValue += o.grossValue;
-                    result[k].quantity += o.quantity;
-                });
-            });
-            
-            _.chain(result).pluck().each(function(r) {
-                r.vsTarget = -target + r.grossValue;
-                r.vsTargetPercentage = r.grossValue / target;
-            });
+
+            var result = _(_data[dataset])
+                .groupBy('owner')
+                .map(function(v, k) {
+                    
+                    var sum = _.reduce(v, function(r, n) { 
+                        
+                        return {'grossValue' : r.grossValue + n.grossValue, 
+                                'quantity' : r.quantity + n.quantity };
+                                
+                    }, {'grossValue':0, 'quantity':0});
+                    
+                    return {'owner': k, 
+                            'grossValue' : sum.grossValue, 
+                            'quantity' : sum.quantity,
+                            'vsTarget' : -target + sum.grossValue,
+                            'vsTargetPercentage' : r.grossValue / target
+                    };
+                    
+                })
+                .value();
             
             return result;
     
