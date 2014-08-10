@@ -26,6 +26,8 @@ var TABLE_COUNTDOWN = (function($t) {
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
+                
+                console.log(api.column(1), api.column(2));
 
                 var totalValue = api.column(1).data().reduce(function (a, b) {
                     return a + b;
