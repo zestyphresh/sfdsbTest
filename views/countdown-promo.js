@@ -21,7 +21,6 @@ var VIEW_COUNTDOWN = (function($v) {
         function init(renderAfter) {
             
             _models['promo'] = new _gblModel['CountdownPromo'];
-            
 
             Q.all([_models.promo.fetch()]).done(function() {
                 
@@ -76,6 +75,7 @@ var VIEW_COUNTDOWN = (function($v) {
     
         return {
             init : init,
+            isLoaded : function() { return _loaded; },
             render : render
         };
         
