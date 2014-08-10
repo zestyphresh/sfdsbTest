@@ -9,12 +9,7 @@ var MODEL = (function() {
         getUniqueValues : function(data, key) {
             return _.chain(data).pluck(key).uniq().value();
         },
-        createDataSets  : function(views, defaults) {
-            result = {};
-            _.chain(views).each(function(v) { result[v] = _.cloneDeep({}, defaults); });
-            return result;
-        },
-        createFilters  : function(views, defaults) {
+        createFilters   : function(views, defaults) {
             result = {};
             _.chain(views).each(function(v) { result[v] = {}; });
             return result;
@@ -27,12 +22,12 @@ var MODEL = (function() {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(viewIds){
+    $m.CountdownPromo = function(){
         
-        var _id = 'a0Mb0000005LPl6',
-            _viewIds = viewIds,
-            _defaultDatasets = {'alltime' : [], 'lastweek' : []},
-            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets)
+        var _modelId = 'a0Mb0000005LPl6',
+            _uid = _.uniqueId(_modelId + '-'),
+            _data = {'alltime' : [], 'lastweek' : []},
+            _loaded = false
         ;
         
         function fetch(callback) {
@@ -41,24 +36,32 @@ var MODEL = (function() {
                 
                 function (result, event) {
                     
-                    _.each(_viewIds, function(v) {
-                        _data[v].alltime = result.sales;
-                        _data[v].lastweek = _.where(result.sales, { 'week': '2014-31' });
-                    });
-    
-                    callback(event.status, _id);
+                    if (!event.status) {
                         
-                }, { escape: true }
+                        _loaded = false;
+                        
+                    } else {
+                    
+                        _data.alltime = result.sales;
+                        _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
+        
+                        _loaded = true;
+    
+                        callback(_loaded);
+                        
+                    }
+                        
+                }, { buffer : false, escape: true }
                     
             );
             
         }
         
-        function groupByOwner(viewId, dataset, target) {
+        function groupByOwner(dataset, target) {
             
             var result = {};
             
-            _.chain(_data[viewId][dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -76,10 +79,11 @@ var MODEL = (function() {
     
         }
         
-        return {fetch : fetch,
-                getData : function(viewId, dataset) { return _data[viewId][dataset]; },
-                groupByOwner : groupByOwner,
-                isFetched : function() { return fetched; }
+        return {
+            fetch : fetch,
+            getData : function(dataset) { return _data[dataset]; },
+            groupByOwner : groupByOwner,
+            isLoaded : function() { return _loaded; }
         };
         
     };
@@ -90,16 +94,15 @@ var MODEL = (function() {
     
     var _modpriv = $m._priv;
 
-    $m.HeadlineOpportunities = function(views){
+    $m.HeadlineOpportunities = function(){
         
-        var _id = 'a0Mb0000005LPl5',
-            _viewIds = views,
-            _defaultDatasets = {'normal' : [], 'byweek' : []}
-            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets),
-            _filters = _modpriv.createDataSets(_viewIds, _defaultFilters)
+        var _modelId = 'a0Mb0000005LPl5',
+            _uid = _.uniqueId(_modelId + '-'),
+            _data = {'normal' : [], 'byweek' : []},
+            _loaded = false
         ;
 
-        var _defaultFilters = 
+        var _filters = 
             [{'field' : 'account', 'title' : 'Account', 'values' : []},
              {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
              {'field' : 'owner', 'title' : 'Owner', 'values' : []},
@@ -117,40 +120,51 @@ var MODEL = (function() {
             AnalyticsViewProvider.getHeadlineOpportunityTimeline(
                 
                 function (result, event) {
-    
-                    //In place to filter while testing
-                    var testData = result.opps.slice(0,20);
-                    var testTransformedData = _dataTransformToWeeks(testData);
                     
-                    _.each(_viewIds, function(v) { 
-                        _data[v].normal = testData;
-                        _data[v].byweek = testTransformedData;
-                        updateFilters(v);
-                    });
-
-                    callback(event.status, _id);
+                    if (!event.status) {
                         
-                }, { escape: true }
+                        _loaded = false;
+                        
+                    } else {
+    
+                        //In place to filter while testing
+                        var testData = result.opps.slice(0,20);
+                        var testTransformedData = _dataTransformToWeeks(testData);
+                        
+                        _data.normal = testData;
+                        _data.byweek = testTransformedData;
+                        updateFilters();
+                        
+                        _loaded = true;
+
+                        callback(_loaded);
+                        
+                    }
+                        
+                }, { buffer : false, escape: true }
                     
             );
             
         }
         
-        function updateFilters(viewId){
+        function updateFilters(){
             
-            _(_filters[viewId]).each(function(f) { 
-                f.values = _modpriv.getUniqueValues(_data[viewId].normal, f.field);
+            _.chain(_filters).each(function(f) { 
+                f.values = _modpriv.getUniqueValues(_data.normal, f.field);
             });
             
         }
         
-        return { fetch : fetch,
-                 updateFilters : updateFilters,
-                 getData : function(viewId, dataset) { return _data[viewId][dataset]; },
-                 getFilters : function(viewId) { return _filters[viewId]; }
+        return { 
+            fetch : fetch,
+            updateFilters : updateFilters,
+            getData : function(dataset) { return _data[dataset]; },
+            getFilters : function() { return _filters; },
+            isLoaded : function() { return _loaded; }
         };
         
         //PRIVATE FUNCTIONS
+        //TODO - Not adding records correctly by week plus need way to push week 53 to week 1
         function _dataTransformToWeeks(originalData) {
             
             var deliveryWeeks = 4,
@@ -251,7 +265,7 @@ var MODEL = (function() {
     
                     callback(event.status);
                         
-                }, { escape: true }
+                }, { buffer : false, escape : true }
                     
             );
             

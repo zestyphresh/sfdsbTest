@@ -5,8 +5,7 @@
     views = {},
     router = new Router().init()
     $body = $j('body');
-
-    var _gblModel;
+    _gblModel = MODEL;
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
@@ -26,40 +25,30 @@
         //Append Navbar
         $navbar.appendTo($body);
         
-        _gblModel = MODEL;
-
-        //Load data models and enable links on success
+        //Load data model and enable links on success
         models['Onload'] = new _gblModel['Onload'];
-        models['Onload'].fetch(function(success) {
-            _.each(userViewConfig.models.available, function(v, k) {
-                models[v.name] = new _gblModel[v.name](v.viewIds);
-                models[v.name].fetch(function(success, id) {
-                    if (success) $navbar.find('.'+ id).unbind('click', false);
-                });
+        models['Onload'].fetch(function(success) { 
+            
+            _.each(userViewConfig.views.available, function(v) {
+                
+                views[v.name] = new VIEW[v.name](JSON.parse(v.View_Args__c));
+                
+                router.on(v.link, routerFunc(v.name));
+                
             });
+                
         });
 
-        //Create routes
-        _.each(userViewConfig.routes.available, function(v) {
-            router.on(v.link, routerFunc(v.name, v.model));    
-        });
-        
-        console.log(models, views, router);
+
         
     });
     
-    function routerFunc(name, model) {
-        
-        var _name = name, _model = model;
-        
+    function routerFunc(name) {
+
         return function() {
             
-            console.log(_name, _model);
-        
-            views[_name] = new VIEW[_name](models[_model]);
-            
-            views[_name].render();
-            
+            views[name].init(true);
+
         }
         
     }
@@ -75,36 +64,26 @@
             
             }, function(err, obj) {
 
-                var result = { 'navbar' : {}, 'models' : {}, 'routes' : {} },
+                var result = { 'navbar' : {}, 'views' : {} },
                     userViews = _.map(obj, '_props');
-                
+
                 //NAVBAR
                 var navbar = result.navbar;
 
                 navbar['user'] = config.userName;
                 navbar['categories'] = _.chain(userViews)
-                        .map(function(v) { return {'category' : v.View_Category__c, 'modelId' : v.Model_Id__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
+                        .map(function(v) { return {'category' : v.View_Category__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
                         .groupBy('category')
                         .map(function(v, k) { return {'name' : k, 'views' : v}; })
                         .value();
                 
-                //MODELS        
-                var models = result.models;
-                
-                models['available'] = _.chain(userViews)
-                        .map(function(v) { return { 'name' : v.Model_Javascript_Name__c, 'viewId' : v.View_Id__c }; })
-                        .groupBy('name')
-                        .map(function(v,k) { console.log(v); console.log(k);return {'name' : k, 'viewIds' : _.pluck(v, 'viewId')}; })
-                        .value();
-                       
                 //ROUTES
-                var routes = result.routes;
+                var views = result.views;
                 
-                routes['available'] = _.chain(userViews)
-                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'model' : v.Model_Javascript_Name__c}; })
+                views['available'] = _.chain(userViews)
+                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'args' : v.View_Args__c, 'home' : v.Home__c, 'preload' : v.Preload__c}; })
                         .value();
 
-                callback(result);
         });
         
     }

@@ -21,7 +21,7 @@ var MODEL_ONLOAD = (function($m) {
     
                     callback(event.status);
                         
-                }, { escape: true }
+                }, { buffer : false, escape : true }
                     
             );
             

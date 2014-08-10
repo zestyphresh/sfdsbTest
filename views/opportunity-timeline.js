@@ -1,25 +1,58 @@
 var VIEW_OPPORTUNITIES = (function($v) {
 
-    $v.HeadlineOpportunityTimeline = function(model) {
-    
+    $v.HeadlineOpportunityTimeline = function(args) {
+
         //Private vars
-        var _id = 'a0Lb0000006xVBq',
-            _model = model
+        var _args = args,
+            _viewId = 'a0Lb0000006xVBq',
+            _uid = _.uniqueId(_viewId + '-'), 
+            _models = {}
         ;
         
+        var _requiredModels = [
+            {'shortName' : 'opps', 'modelName' : 'HeadlineOpportunities'}
+        ];
+
         //Public vars
         var chtTimeline, chtSales, tblOpps;
+        
+        //Init models
+        function init(renderAfter) {
+            
+            _(_requiredModels).each(function(v, k) {
+                
+                _models[v.shortName] = new _gblModel[v.modelName];
+                _models[v.shortName].fetch(function(loaded) {
+                    
+                    if (!loaded) _counter--; 
+                    
+                });
+                
+            });
+            
+            if (renderAfter) {
+                
+                while (_counter != 0) {}; //blocking code
+                
+                render();
+                
+            }
+            
+        }
+        
+        //TODO insert something that stops people clicking links to render view until
+        //models successfully loaded
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
         
-            $body.append(templates['container']({'id':_id}))
-            $j('#' + _id).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
-            $j('#' + _id).append(templates['headline-opportunities']({'id':_id}));
+            $body.append(templates['container']({'id':_uid}))
+            $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
+            $j('#' + _uid).append(templates['headline-opportunities']({'id':_id}));
     
-            chtTimeline = new CHART.OpportunityTimeline(_id + '-charts-opp-timeline', _model.getData(_id, 'byweek'));
-            chtSales = new CHART.OpportunitySales(_id + '-charts-opp-sales', _model.getData(_id, 'byweek'));
-            tblOpps = new TABLE.HeadlineOpportunities(_id + '-tables-opp-list', _model.getData(_id, 'normal'));      
+            chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models['opps'].getData(_id, 'byweek'));
+            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models['opps'].getData(_id, 'byweek'));
+            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models['opps'].getData(_id, 'normal'));      
     
             renderFilters(_id + '-filters');
 
@@ -33,7 +66,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
         }
         
         return { 
+            init : init,
             render : render,
+            setModel : function(name, model) { _models[name] = model; }
         };
         
     };

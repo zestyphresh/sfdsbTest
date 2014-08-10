@@ -1,14 +1,49 @@
 var VIEW_COUNTDOWN = (function($v) {
 
-    $v.CountdownPromo = function(model) {
-        
+    $v.CountdownPromo = function(args) {
+
         //Private vars
-        var _id = 'a0Lb0000006xVBr';
-            _model = model
+        var _args = args;
+            _viewId = 'a0Lb0000006xVBr',
+            _uid = _.uniqueId(_viewId + '-'), 
+            _models = {}
         ;
-        
+
+        var _requiredModels = [
+            {'shortName' : 'promo', 'modelName' : 'CountdownPromo'}
+        ];
+
         //Public vars
         var chtLeaderboard, tblLeaderboard, chtLastWeek, tblLastWeek, chtWeeklySales;
+        
+        //Init models
+        function init(renderAfter) {
+            
+            _counter = 1;
+            
+            _(_requiredModels).each(function(v, k) {
+                
+                _models[v.shortName] = new _gblModel[v.modelName];
+                _models[v.shortName].fetch(function(loaded) {
+                    
+                    if (!loaded) _counter--; 
+                    
+                });
+                
+            });
+            
+            if (renderAfter) {
+                
+                while (_counter != 0) {}; //blocking code
+                
+                render();
+                
+            }
+            
+        }
+        
+        //TODO insert something that stops people clicking links to render view until
+        //models successfully loaded
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
@@ -17,15 +52,16 @@ var VIEW_COUNTDOWN = (function($v) {
             $j('#' + _id).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
             $j('#' + _id).append(templates['countdown-promo']({'id':_id}));
     
-            chtLeaderboard = new CHART.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _model.getData(_id, 'alltime'), false);
-            tblLeaderboard = new TABLE.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _model.groupByOwner(_id, 'alltime', 20000)); 
-            chtLastWeek = new CHART.CountdownLeaderboard(_id + '-charts-promo-lastweek', _model.getData(_id, 'lastweek'), true);
-            tblLastWeek = new TABLE.CountdownLeaderboard(_id + '-tables-promo-lastweek', _model.groupByOwner(_id, 'lastweek', 1360));  
-            chtWeeklySales = new CHART.CountdownWeeklySales(_id + '-charts-promo-weeklysales', _model.getData(_id, 'alltime'));
+            chtLeaderboard = new CHART.CountdownLeaderboard(_id + '-charts-promo-leaderboard', _models['promo'].getData('alltime'), false);
+            tblLeaderboard = new TABLE.CountdownLeaderboard(_id + '-tables-promo-leaderboard', _models['promo'].groupByOwner('alltime', 20000)); 
+            chtLastWeek = new CHART.CountdownLeaderboard(_id + '-charts-promo-lastweek', _models['promo'].getData('lastweek'), true);
+            tblLastWeek = new TABLE.CountdownLeaderboard(_id + '-tables-promo-lastweek', _models['promo'].groupByOwner('lastweek', 1360));  
+            chtWeeklySales = new CHART.CountdownWeeklySales(_id + '-charts-promo-weeklysales', _models['promo'].getData('alltime'));
 
         }
     
-        return { 
+        return {
+            init : init,
             render : render
         };
         

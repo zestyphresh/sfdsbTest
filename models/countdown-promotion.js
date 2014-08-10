@@ -2,12 +2,12 @@ var MODELS_COUNTDOWN = (function($m) {
         
     var _modpriv = $m._priv;
     
-    $m.CountdownPromo = function(viewIds){
+    $m.CountdownPromo = function(){
         
-        var _id = 'a0Mb0000005LPl6',
-            _viewIds = viewIds,
-            _defaultDatasets = {'alltime' : [], 'lastweek' : []},
-            _data = _modpriv.createDataSets(_viewIds, _defaultDatasets)
+        var _modelId = 'a0Mb0000005LPl6',
+            _uid = _.uniqueId(_modelId + '-'),
+            _data = {'alltime' : [], 'lastweek' : []},
+            _loaded = false
         ;
         
         function fetch(callback) {
@@ -16,24 +16,32 @@ var MODELS_COUNTDOWN = (function($m) {
                 
                 function (result, event) {
                     
-                    _.each(_viewIds, function(v) {
-                        _data[v].alltime = result.sales;
-                        _data[v].lastweek = _.where(result.sales, { 'week': '2014-31' });
-                    });
-    
-                    callback(event.status, _id);
+                    if (!event.status) {
                         
-                }, { escape: true }
+                        _loaded = false;
+                        
+                    } else {
+                    
+                        _data.alltime = result.sales;
+                        _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
+        
+                        _loaded = true;
+    
+                        callback(_loaded);
+                        
+                    }
+                        
+                }, { buffer : false, escape: true }
                     
             );
             
         }
         
-        function groupByOwner(viewId, dataset, target) {
+        function groupByOwner(dataset, target) {
             
             var result = {};
             
-            _.chain(_data[viewId][dataset]).groupBy('owner').each(function(v, k) {
+            _.chain(_data[dataset]).groupBy('owner').each(function(v, k) {
                 result[k] = {'owner' : k , 'grossValue' : 0, 'quantity' : 0};
                 _.each(v, function(o) { 
                     result[k].owner = k;
@@ -51,10 +59,11 @@ var MODELS_COUNTDOWN = (function($m) {
     
         }
         
-        return {fetch : fetch,
-                getData : function(viewId, dataset) { return _data[viewId][dataset]; },
-                groupByOwner : groupByOwner,
-                isFetched : function() { return fetched; }
+        return {
+            fetch : fetch,
+            getData : function(dataset) { return _data[dataset]; },
+            groupByOwner : groupByOwner,
+            isLoaded : function() { return _loaded; }
         };
         
     };
