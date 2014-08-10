@@ -59,8 +59,8 @@ var TABLE_COUNTDOWN = (function($t) {
             'columnDefs' : [_modpriv.returnDefs([1,3], '$0,0', 'alignRight'),
                             _modpriv.returnDefs([2], '0,0', 'alignRight'),
                             _modpriv.returnDefs([4], '0%', 'alignRight'),
-            ],
-            'footerCallback' : footerCallback
+            ]//,
+            //'footerCallback' : footerCallback
         });
         
         function footerCallback (tfoot, data, start, end, display) {
