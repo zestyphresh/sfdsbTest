@@ -77,6 +77,8 @@ var MODEL = (function() {
                 r.vsTarget = -target + r.grossValue;
                 r.vsTargetPercentage = r.grossValue / target;
             });
+            
+            console.log(result);
 
             return result;
     
