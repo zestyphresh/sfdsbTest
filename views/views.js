@@ -38,11 +38,15 @@ var VIEW = (function() {
                     
                     if (loaded) _counter--; 
                     
+                    console.log('in fetch', v.shortName);
+                    
                 });
                 
             });
             
             if (renderAfter) {
+                
+                console.log('in render after');
                 
                 while (_counter != 0) {}; //blocking code
                 
