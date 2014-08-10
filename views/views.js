@@ -72,8 +72,8 @@ var VIEW = (function() {
         function render() { 
             
             $body.append(templates['container']({'id':_uid}))
-            $j('#' + _id).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
-            $j('#' + _id).append(templates['countdown-promo']({'id':_uid}));
+            $j('#' + _uid).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
+            $j('#' + _uid).append(templates['countdown-promo']({'id':_uid}));
     
             chtLeaderboard = new CHART.CountdownLeaderboard(_uid + '-charts-promo-leaderboard', _models['promo'].getData('alltime'), false);
             tblLeaderboard = new TABLE.CountdownLeaderboard(_uid + '-tables-promo-leaderboard', _models['promo'].groupByOwner('alltime', 20000)); 
