@@ -1,13 +1,13 @@
-    Handlebars.registerHelper('times', function(n, block) {
-        var result = '';
-        for(var i = 0; i < n; ++i)
-            result += block.fn(i);
-        return result;
-    });
+Handlebars.registerHelper('times', function(n, block) {
+    var result = '';
+    for(var i = 0; i < n; ++i)
+        result += block.fn(i);
+    return result;
+});
     
-    var _templates = {};
+var _templates = {};
     
-    _templates['dropdown-filters'] = ""+  
+_templates['dropdown-filters'] = ""+  
         "{{#each this}}"+    
         "    <div class='btn-group'>"+  
         "        <button type='button' class='btn btn-primary btn-sm dropdown-toggle' data-toggle='dropdown'>{{name}} <span class='caret'></span></button>"+  
@@ -18,9 +18,9 @@
         "        </ul>"+  
         "    </div>"+  
         "{{/each}}"
-    ;
+;
     
-    _templates['navbar'] = ""+ 
+_templates['navbar'] = ""+ 
         "<nav class='navbar navbar-fixed-top navbar-inverse' role='navigation'>"+
         "    <div class='navbar-header'>"+
         "        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>"+
@@ -48,9 +48,9 @@
         "        </ul>"+
         "    </div>"+
         "</nav>"
-    ;
+;
     
-    _templates['table'] = ""+
+_templates['table'] = ""+
         "<table id='{{id}}' class='table table-condensed table-hover display' cellspacing='0' width='100%'>"+
         "    <thead>"+
         "        <tr role='row'>"+
@@ -64,9 +64,9 @@
         "        </tr>"+
         "    </tfoot>"+
         "</table>"
-    ;
+;
     
-    _templates['heading-no-links'] = ""+
+_templates['heading-no-links'] = ""+
         "<div class='row'>"+
         "    <div class='col-xs-12'>"+           
         "        <h4>"+  
@@ -74,9 +74,9 @@
         "        </h4>"+  
         "    </div>"+
         "</div>"
-    ;
+;
     
-    _templates['heading'] = ""+
+_templates['heading'] = ""+
         "<div class='col-xs-12'>"+           
         "    <h4>"+  
         "        {{title}}"+  
@@ -87,9 +87,9 @@
         "        </small>"+  
         "    </h4>"+  
         "</div>"
-    ;
+;
     
-    _templates['headline-opportunities'] = ""+
+_templates['headline-opportunities'] = ""+
         "<div class='row'>"+
         "    <div class='col-xs-12'>"+
         "        <div id='{{id}}-filters' class='well'></div>"+
@@ -116,9 +116,9 @@
         "        </div>"+ 
         "    </div>"+
         "</div>"
-    ;
+;
     
-    _templates['countdown-promo'] = ""+
+_templates['countdown-promo'] = ""+
         "<div class='row'>"+
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
@@ -143,20 +143,20 @@
         "        </div>"+
         "    </div>"+ 
         "</div>"
-    ;
+;
     
-    _templates['container'] = ""+
+_templates['container'] = ""+
         "<div id={{id}} class='container-fluid'></div>"
-    ;    
+;    
         
     
-    var templates =  {
-        'container' : Handlebars.compile(_templates['container']),
-        'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
-        'navbar' : Handlebars.compile(_templates['navbar']),
-        'table' : Handlebars.compile(_templates['table']),
-        'heading' : Handlebars.compile(_templates['heading']),
-        'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
-        'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
-        'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
-    }; 
+var templates =  {
+    'container' : Handlebars.compile(_templates['container']),
+    'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
+    'navbar' : Handlebars.compile(_templates['navbar']),
+    'table' : Handlebars.compile(_templates['table']),
+    'heading' : Handlebars.compile(_templates['heading']),
+    'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
+    'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
+    'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
+}; 
