@@ -20,7 +20,7 @@ var CHART_COUNTDOWN = (function($c) {
             
         var chart = new dimple.chart(svg, data).setMargins('60px', '30px', '50px', '40px');
         
-        var xAxis = chart.addMeasureAxis('x', 'value');
+        var xAxis = chart.addMeasureAxis('x', 'grossValue');
             xAxis.title = 'Gross Value (£)';
             xAxis.ticks = 5;
             xAxis.tickFormat = '0,f'; 

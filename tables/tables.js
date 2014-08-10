@@ -49,7 +49,7 @@ var TABLE_COUNTDOWN = (function($t) {
             'info' : false, 
             'searching' : false,
             'columns' : [{"data": "owner", "title": "ASM"}, 
-                         {"data": "value", "title": "Gross Value"}, 
+                         {"data": "grossValue", "title": "Gross Value"}, 
                          {"data": "quantity", "title": "Quantity"},
                          {"data": "vsTarget", "title": "vs Target"}, 
                          {"data": "vsTargetPercentage", "title": "% of Target"}
