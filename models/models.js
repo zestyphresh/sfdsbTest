@@ -74,11 +74,9 @@ var MODEL = (function() {
             });
             
             _.chain(result).pluck().each(function(r) {
-                r.vsTarget = -r.target + r.grossValue;
-                r.vsTargetPercentage = r.grossValue / r.target;
+                r.vsTarget = -target + r.grossValue;
+                r.vsTargetPercentage = r.grossValue / target;
             });
-            
-            console.log(result);
 
             return result;
     
