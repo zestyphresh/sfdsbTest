@@ -29,7 +29,9 @@
             
             _.each(userViewConfig.views.available, function(v) {
                 
-                views[v.name] = new VIEW[v.name](JSON.parse(v.View_Args__c));
+                var _args = _.isUndefined(v.View_Args__c) ? false : JSON.parse(v.View_Args__c);
+                
+                views[v.name] = new VIEW[v.name](_args);
                 
                 router.on(v.link, routerFunc(v.name));
                 
