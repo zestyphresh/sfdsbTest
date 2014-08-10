@@ -14,9 +14,7 @@
 
     //TODO Add formula to view, checkbox for if it uses a model. If not then needs separate class so clicking isn't blocked
     getUserViewConfig(function(userViewConfig) { 
-        
-        console.log(userViewConfig);
-        
+
         $navbar = $j(templates['navbar'](userViewConfig.navbar));
         
         //Disables all links in Navbar that have an associated data model
@@ -54,9 +52,7 @@
     }
     
     function getUserViewConfig(callback) {
-        
-        console.log('in function');
-    
+
         var remoteObject = new SObjectModel.userViews();
     
         remoteObject.retrieve({
@@ -85,8 +81,8 @@
                 views['available'] = _.chain(userViews)
                         .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'args' : v.View_Args__c, 'home' : v.Home__c, 'preload' : v.Preload__c}; })
                         .value();
-                        
-                console.log(result);
+
+                callback(result);
 
         });
         
