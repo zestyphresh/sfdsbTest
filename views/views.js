@@ -36,6 +36,8 @@ var VIEW = (function() {
                 
                 _loaded = true;
                 
+                console.log(_models['promo'].getData('alltime'));
+                
                 if (renderAfter) render();
 
             });

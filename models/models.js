@@ -26,8 +26,7 @@ var MODEL = (function() {
         
         var _modelId = 'a0Mb0000005LPl6',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = {'alltime' : [], 'lastweek' : []},
-            _loaded = false
+            _data = {'alltime' : [], 'lastweek' : []}
         ;
         
         function fetch() {
@@ -40,19 +39,15 @@ var MODEL = (function() {
                     
                     if (!event.status) {
                         
-                        deferred.reject(event);
-                        
-                        //_loaded = false;
-                        
+                        deferred.reject(false);
+
                     } else {
                         
                         _data.alltime = result.sales;
                         _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
                         
                         deferred.resolve(true);
-        
-                        //_loaded = true;
-                        
+
                     }
                     
                     //callback(_loaded);
