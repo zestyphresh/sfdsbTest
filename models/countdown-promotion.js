@@ -44,7 +44,8 @@ var MODELS_COUNTDOWN = (function($m) {
                     result = _.filter(_data, {'week':'2014-W32'});
                     break;
             } 
-                
+               
+            console.log(result);    
             return result;
             
         }

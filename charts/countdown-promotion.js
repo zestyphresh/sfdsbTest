@@ -35,7 +35,7 @@ var CHART_COUNTDOWN = (function($c) {
     
     };
     
-    $c.CountdownWeeklySales = function() {
+    $c.CountdownWeeklySales = function(id) {
 
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("80px", "30px", "40px", "120px");

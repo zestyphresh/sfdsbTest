@@ -48,9 +48,9 @@ var VIEW = (function() {
             $j('#' + _uid).append(templates['countdown-promo']({'id':_uid}));
     
             chtLeaderboard = new CHART.CountdownLeaderboard(_uid + '-charts-promo-leaderboard', _models.promo.getData('all'), _models.promo.getTargetSeries(20000));
-            tblLeaderboard = new TABLE.CountdownLeaderboard(_uid + '-tables-promo-leaderboard', _models.promo.groupByOwner('all', 20000), _models.promo.getTotal('all', 20000)); 
-            chtLastWeek = new CHART.CountdownLeaderboard(_uid + '-charts-promo-lastweek', _models.promo.getData('lastweek'), _models.promo.getTargetSeries(1360));
-            tblLastWeek = new TABLE.CountdownLeaderboard(_uid + '-tables-promo-lastweek', _models.promo.groupByOwner('lastweek', 1360), _models.promo.getTotal('lastweek', 1360));  
+            tblLeaderboard = new TABLE.CountdownLeaderboard(_uid + '-tables-promo-leaderboard', _models.promo.groupByOwner('all', 20000), _models.promo.getTotal('all', 180000)); 
+            chtLastWeek = new CHART.CountdownLeaderboard(_uid + '-charts-promo-lastweek', _models.promo.getData('lastweek'), _models.promo.getTargetSeries(1540));
+            tblLastWeek = new TABLE.CountdownLeaderboard(_uid + '-tables-promo-lastweek', _models.promo.groupByOwner('lastweek', 1540), _models.promo.getTotal('lastweek', 13860));  
             chtWeeklySales = new CHART.CountdownWeeklySales(_uid + '-charts-promo-weeklysales', _models.promo.getData('all'));
 
         }

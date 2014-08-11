@@ -38,15 +38,10 @@ var MODEL = (function() {
                 function (result, event) {
                     
                     if (!event.status) {
-                        
                         deferred.reject(false);
-
                     } else {
-                        
                         _data = result.sales;
-                        
                         deferred.resolve(true);
-
                     }
 
                 }, { escape: true }
@@ -69,7 +64,8 @@ var MODEL = (function() {
                     result = _.filter(_data, {'week':'2014-W32'});
                     break;
             } 
-                
+               
+            console.log(result);    
             return result;
             
         }
