@@ -24,7 +24,7 @@ var MODELS_COUNTDOWN = (function($m) {
                     } else {
                         
                         _data.alltime = result.sales;
-                        _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
+                        _data.lastweek = _.where(result.sales, { 'week': '2014-W32' });
                         
                         deferred.resolve(true);
 
