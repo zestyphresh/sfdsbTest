@@ -40,7 +40,7 @@ var CHART_COUNTDOWN = (function($c) {
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("80px", "30px", "40px", "120px");
             
-        var xAxis = chart.addCategoryAxis('x', 'week');
+        var xAxis = chart.addCategoryAxis('x', 'cyDate', '%Y-%m-%d', '%Y-%U');
             xAxis.title = xAxisTitle;
             xAxis.addOrderRule('week'); 
         

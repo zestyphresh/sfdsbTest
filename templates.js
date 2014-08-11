@@ -139,7 +139,7 @@ _templates['countdown-promo'] = ""+
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>Weekly Sales</div>"+
-        "            <div id='{{id}}-charts-promo-weekly' class='minChartDims2'></div>"+
+        "            <div id='{{id}}-charts-promo-weeklysales' class='minChartDims2'></div>"+
         "        </div>"+
         "    </div>"+ 
         "</div>"
