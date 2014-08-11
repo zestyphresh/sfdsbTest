@@ -107,7 +107,7 @@ var VIEW = (function() {
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData('byweek'));
             tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData('normal'));      
     
-            renderFilters(_uid + '-filters');
+            //renderFilters(_uid + '-filters');
 
         }
         

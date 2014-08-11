@@ -231,6 +231,8 @@ var MODEL = (function() {
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         updateFilters();
                         
+                        console.log(_data);
+                        
                         deferred.resolve(true);
                         
                     }

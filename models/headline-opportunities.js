@@ -52,6 +52,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         updateFilters();
                         
+                        console.log(_data);
+                        
                         deferred.resolve(true);
                         
                     }
