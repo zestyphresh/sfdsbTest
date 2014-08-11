@@ -104,11 +104,11 @@ var CHART_COUNTDOWN = (function($c) {
             xAxis.title = 'Week';
             xAxis.addOrderRule('week');
                 
-        var yAxis = chart.addCategoryAxis('y', 'name');
+        var yAxis = chart.addCategoryAxis('y', 'uName');
             yAxis.title = 'Opportunity';
             yAxis.addOrderRule('week');
              
-        var series = chart.addSeries('type', dimple.plot.bar);     
+        var series = chart.addSeries('type', dimple.plot.line);     
                
         var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
                            

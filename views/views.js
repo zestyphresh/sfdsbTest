@@ -105,7 +105,7 @@ var VIEW = (function() {
     
             chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getData('byweek'));
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData('byweek'));
-            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models['opps'].opps.getData('normal'));      
+            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData('normal'));      
     
             renderFilters(_uid + '-filters');
 
