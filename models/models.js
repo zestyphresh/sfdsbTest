@@ -77,7 +77,7 @@ var MODEL = (function() {
         function getTotal(filter, target) {
 
             var result = _(_dataFilter(filter))
-                .reduce(v, function(r, n) { 
+                .reduce(function(r, n) { 
                         
                     return {'grossValue' : r.grossValue + n.grossValue, 
                             'quantity' : r.quantity + n.quantity };
