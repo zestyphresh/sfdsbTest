@@ -222,7 +222,7 @@ var MODEL = (function() {
                         
                         var inOneMonth = moment().add('months', 1);
                         
-                        _.filter(_data.normal, function(v) {
+                        _data.normal = _.filter(_data.normal, function(v) {
                             
                             if (v.stageCategory == 'Confirmed' && v.mDate < inOneMonth) return v;
 
@@ -311,7 +311,7 @@ var MODEL = (function() {
                 
                     var maxIndex = 2191; 
                     var add = headline ? storeWeeks * 7 : 0;
-                    var start = index + add + 7;
+                    var start = index + add;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
 
                     for (var i = 1; i <= remainingWeeks; i++) {
