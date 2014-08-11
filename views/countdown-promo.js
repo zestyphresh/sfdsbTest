@@ -16,14 +16,16 @@ var VIEW_COUNTDOWN = (function($v) {
         //Init models
         function init(renderAfter) {
             
+            $loading.show();
+            
             _models['promo'] = new gblModel['CountdownPromo'];
 
             Q.all([_models.promo.fetch()]).done(function() {
                 
                 _loaded = true;
-
+                $loading.hide();
                 if (renderAfter) render();
-
+                
             });
 
         }

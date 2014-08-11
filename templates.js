@@ -146,8 +146,16 @@ _templates['countdown-promo'] = ""+
 ;
     
 _templates['container'] = ""+
-        "<div id={{id}} class='container-fluid dashboard-view'></div>"
-;    
+        "<div id='{{id}}' class='container-fluid dashboard-view'></div>"
+;   
+
+_templates['loading'] = ""+
+        "<div id='loading' class='container-fluid dashboard-view'>"+
+            "<div class='row'>"+
+                "<div class='well well-info'>Loading...</div>"+
+            "</div>"+
+        "</div>"
+; 
         
     
 var templates =  {
@@ -158,5 +166,6 @@ var templates =  {
     'heading' : Handlebars.compile(_templates['heading']),
     'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
     'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
-    'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
+    'countdown-promo' : Handlebars.compile(_templates['countdown-promo']),
+    'loading' : Handlebars.compile(_templates['loading'])
 }; 
