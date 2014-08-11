@@ -215,7 +215,7 @@ var MODEL = (function() {
 
                         _data.normal = result.opps;
                         
-                        _each(_data.normal, function(v) {
+                        _.each(_data.normal, function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                         });
                         
