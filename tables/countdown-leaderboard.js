@@ -2,7 +2,7 @@ var TABLE_COUNTDOWN = (function($t) {
     
     var _modpriv = $t._priv;
 
-    $t.CountdownLeaderboard = function(id, data) {
+    $t.CountdownLeaderboard = function(id, data, lastWeek) {
         
         var _id = id + '-inner';
         
@@ -26,6 +26,7 @@ var TABLE_COUNTDOWN = (function($t) {
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
+                var target = !lastWeek ? 180000 : 13860;
                 
                 console.log(api.column(1), api.column(2));
 
@@ -35,8 +36,8 @@ var TABLE_COUNTDOWN = (function($t) {
                 var totalQuantity = api.column(2).data().reduce(function (a, b) {
                     return a + b;
                 })
-                var totalVsTarget = -totalTarget + totalValue;
-                var vsTargetPercentage = totalValue / totalTarget;
+                var totalVsTarget = -target + totalValue;
+                var vsTargetPercentage = totalValue / target;
                 
                 $j(api.column(0).footer()).html('Total');
                 $j(api.column(1).footer()).html(numeral(totalValue).format('$0,0'));

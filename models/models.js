@@ -49,10 +49,8 @@ var MODEL = (function() {
                         deferred.resolve(true);
 
                     }
-                    
-                    //callback(_loaded);
-                        
-                }, { buffer : false, escape: true }
+
+                }, { escape: true }
                     
             );
             
@@ -90,14 +88,52 @@ var MODEL = (function() {
         return {
             fetch : fetch,
             getData : function(dataset) { return _data[dataset]; },
-            groupByOwner : groupByOwner,
-            isLoaded : function() { return _loaded; }
+            groupByOwner : groupByOwner
         };
         
     };
     
     return $m;
         
+})(MODEL);var MODEL_GETDATEINFO = (function($m) {
+    
+    var _modpriv = $m._priv;
+    
+    //TODO - instead of either loading/not loaidng this module adjust the query to accept short/long formats. The short version
+    //will just be a single date (todays). This format could also be used for any other 'Onload' modules.
+    
+    $m.getDateInfo = function() {
+        
+        var id = 'a0Mb0000005LPl4',
+            deferred = Q.defer()
+        ;
+    
+        AnalyticsViewProvider.getDateInfo(
+            
+            function (result, event) {
+            
+                if (!event.status) {
+                    
+                    deferred.reject(false);
+                    
+                } else {
+
+                    _modpriv.datesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object().value();
+                    _modpriv.datesByDate = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object().value();
+                    
+                    deferred.resolve(true);
+                    
+                }
+            }, { escape: true }
+                
+        );
+    
+        return deferred.promise;
+        
+    };
+
+    return $m;
+    
 })(MODEL);var MODEL_OPPORTUNITIES = (function($m) {
     
     var _modpriv = $m._priv;
@@ -106,8 +142,7 @@ var MODEL = (function() {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = {'normal' : [], 'byweek' : []},
-            _loaded = false
+            _data = {'normal' : [], 'byweek' : []}
         ;
 
         var _filters = 
@@ -123,15 +158,15 @@ var MODEL = (function() {
         
         function fetch(callback) {
             
-            console.log('in fetch');
-                
+            var deferred = Q.defer();
+
             AnalyticsViewProvider.getHeadlineOpportunityTimeline(
                 
                 function (result, event) {
                     
                     if (!event.status) {
                         
-                        _loaded = false;
+                        deferred.reject(false);
                         
                     } else {
     
@@ -143,15 +178,15 @@ var MODEL = (function() {
                         _data.byweek = testTransformedData;
                         updateFilters();
                         
-                        _loaded = true;
+                        deferred.resolve(true);
                         
                     }
-                    
-                    callback(_loaded);
-                        
-                }, { buffer : false, escape: true }
+
+                }, { escape: true }
                     
             );
+            
+            return deferred.promise;
             
         }
         
@@ -167,8 +202,7 @@ var MODEL = (function() {
             fetch : fetch,
             updateFilters : updateFilters,
             getData : function(dataset) { return _data[dataset]; },
-            getFilters : function() { return _filters; },
-            isLoaded : function() { return _loaded; }
+            getFilters : function() { return _filters; }
         };
         
         //PRIVATE FUNCTIONS
@@ -250,39 +284,50 @@ var MODEL = (function() {
     
     return $m;
         
-})(MODEL);var MODEL_ONLOAD = (function($m) {
+})(MODEL);var MODEL_USERVIEWCONFIG = (function($m) {
     
     var _modpriv = $m._priv;
     
-    //TODO - instead of either loading/not loaidng this module adjust the query to accept short/long formats. The short version
-    //will just be a single date (todays). This format could also be used for any other 'Onload' modules.
-    
-    $m.Onload = function() {
+    $m.getUserViewConfig = function(userId) {
         
-        var id = 'a0Mb0000005LPl4'
+        var id = 'a0Mb0000005LPl4',
+            deferred = Q.defer(),
+            remoteObject = new SObjectModel.userViews()
         ;
     
-        function fetch(callback) {
+        remoteObject.retrieve({
+            
+            limit : 100,
+            where : { User_Id__c : { eq : userId } }
+            
+            }, function(err, obj) {
 
-            AnalyticsViewProvider.getDateInfo(
+                var result = { 'navbar' : {}, 'views' : {} },
+                    userViews = _.map(obj, '_props');
+
+                //NAVBAR
+                var navbar = result.navbar;
+
+                navbar['user'] = config.userName;
+                navbar['categories'] = _.chain(userViews)
+                        .map(function(v) { return {'category' : v.View_Category__c, 'link' : v.View_Link__c, 'name' : v.View_Name__c}; })
+                        .groupBy('category')
+                        .map(function(v, k) { return {'name' : k, 'views' : v}; })
+                        .value();
                 
-                function (result, event) {
-                    
-                    _modpriv.datesByIndex = _.chain(result.dates).map(function(d) { return [d.dateIndex, d]; }).object().value();
-                    _modpriv.datesByDate = _.chain(result.dates).map(function(d) { return [d.cyDate, d]; }).object().value();
-    
-                    callback(event.status);
-                        
-                }, { buffer : false, escape : true }
-                    
-            );
-            
-        }
-            
-        return {
-            fetch : fetch
-        };
+                //ROUTES
+                var views = result.views;
+                
+                views['available'] = _.chain(userViews)
+                        .map(function(v) { return {'link' : v.View_Link__c, 'name' : v.View_Javascript_Name__c, 'args' : v.View_Args__c, 'home' : v.Home__c, 'preload' : v.Preload__c}; })
+                        .value();
+
+                deferred.resolve(result);
+                
+        });
         
+        return deferred.promise;
+
     };
 
     return $m;
