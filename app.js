@@ -40,7 +40,7 @@
                 
             } else {
             
-                views[name] = new VIEW[v.name](args);
+                views[name] = new VIEW[name](args);
                 views[name].init(true);
             
             }
