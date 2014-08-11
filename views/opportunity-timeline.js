@@ -35,9 +35,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
     
-            chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models['opps'].getData('byweek'));
-            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models['opps'].getData('byweek'));
-            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models['opps'].getData('normal'));      
+            chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getData('byweek'));
+            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData('byweek'));
+            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models['opps'].opps.getData('normal'));      
     
             renderFilters(_uid + '-filters');
 
@@ -46,7 +46,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Renders filters, separate to render() so it can be called to refresh filters
         function renderFilters(id) {
     
-            $j('#' + _uid).empty().append(templates['dropdown-filters'](model.getFilters(_uid))); 
+            $j('#' + _uid).empty().append(templates['dropdown-filters'](_models.opps.getFilters(_uid))); 
     
         }
         

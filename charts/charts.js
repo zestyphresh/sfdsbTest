@@ -47,12 +47,12 @@ var CHART_COUNTDOWN = (function($c) {
     
     };
     
-    $c.CountdownWeeklySales = function(id, data) {
+    $c.CountdownWeeklySales = function(id) {
 
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("80px", "30px", "40px", "120px");
             
-        var xAxis = chart.addTimeAxis('x', 'cyDate', "%Y-%m-%d", "%Y-%U");
+        var xAxis = chart.addCategoryAxis('x', 'cyDate', '%Y-%m-%d', '%Y-%U');
             xAxis.title = xAxisTitle;
             xAxis.addOrderRule('week'); 
         

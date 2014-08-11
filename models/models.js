@@ -212,13 +212,14 @@ var MODEL = (function() {
                         deferred.reject(false);
                         
                     } else {
-    
-                        //In place to filter while testing
-                        var testData = result.opps.slice(0,20);
-                        var testTransformedData = _dataTransformToWeeks(testData);
+
+                        _data.normal = result.opps;
                         
-                        _data.normal = testData;
-                        _data.byweek = testTransformedData;
+                        _each(_data.normal, function(v) {
+                            v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
+                        });
+                        
+                        _data.byweek = _dataTransformToWeeks(_data.normal);
                         updateFilters();
                         
                         deferred.resolve(true);
@@ -262,7 +263,7 @@ var MODEL = (function() {
                 
                 var index = _modpriv.datesByDate[d.closeDate].dateIndex;
                 
-                var headline = d.recordType == 'Headline' ? true : false;
+                var headline = d.recordType === 'Headline' ? true : false;
     
                 var thisWeek = $j.extend({}, d);
                     thisWeek.type = 'Live';
@@ -270,7 +271,7 @@ var MODEL = (function() {
                 
                 if(d.recordType == 'Headline') {
                     
-                    _(deliveryWeeks).times(function(i) {
+                    for (var i = 1; i <= deliveryWeeks; i++) {
                         
                         var delWeek = $j.extend({}, d);
                             delWeek.week = _modpriv.datesByIndex[index - (i*7)].fyYearWeek;
@@ -280,9 +281,9 @@ var MODEL = (function() {
                             delWeek.type = 'Delivery';
                         newData.push(delWeek);
                 
-                    });
+                    }
     
-                    _(storeWeeks).times(function(i) {
+                    for (var i = 1; i <= storeWeeks; i++) {
                                 
                         var storeWeek = $j.extend({}, d);
                             storeWeek.week = _modpriv.datesByIndex[index + (i*7)].fyYearWeek;
@@ -291,7 +292,7 @@ var MODEL = (function() {
                             storeWeek.type = 'In Store';
                         newData.push(storeWeek);
                     
-                    });
+                    }
                 
                 }
                 
@@ -299,12 +300,10 @@ var MODEL = (function() {
                 
                     var maxIndex = 2191; 
                     var add = headline ? storeWeeks * 7 : 0;
-                    var start = index + add;
+                    var start = index + add + 7;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
-                    
-                    //console.log(maxIndex+','+add+','+start+','+remainingWeeks);
-                    
-                    _(remainingWeeks).times(function(i) {
+
+                    for (var i = 1; i <= remainingWeeks; i++) {
                     
                         var saleWeek = $j.extend({}, d);
                             saleWeek.week = _modpriv.datesByIndex[start + (i*7)].fyYearWeek;
@@ -313,7 +312,7 @@ var MODEL = (function() {
                             saleWeek.type = headline ? 'Sales' : 'Loss';
                         newData.push(saleWeek);
                     
-                    });
+                    }
                 
                 }
                 
