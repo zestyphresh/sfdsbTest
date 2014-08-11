@@ -83,11 +83,10 @@ var MODEL = (function() {
                             'quantity' : r.quantity + n.quantity };
                                 
                     }, {'grossValue':0, 'quantity':0}
-                )
-                .value();S
+                );
                 
-            result.vsTarget = -target + result.grossValue,
-            result.vsTargetPercentage = result.grossValue / target
+            result.vsTarget = -target + result.grossValue;
+            result.vsTargetPercentage = result.grossValue / target;
             
             return result;
         }
