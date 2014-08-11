@@ -14,7 +14,7 @@ var CHART_COUNTDOWN = (function($c) {
     
     var _priv = $c._priv;
     
-    $c.CountdownLeaderboard = function(id, data, lastWeek) {
+    $c.CountdownLeaderboard = function(id, data, targetData) {
 
         var svg = dimple.newSvg('#' + id, '100%', '100%');
             
@@ -32,19 +32,9 @@ var CHART_COUNTDOWN = (function($c) {
         var series = chart.addSeries('owner', dimple.plot.bar);
         
         var targetSeries = chart.addSeries('owner', dimple.plot.line);            
-            var target = !lastWeek ? 20000 : 1540;     
-            var targetData = [{'owner':'Matt K', 'grossValue':target},
-                              {'owner':'Phil L', 'grossValue':target},
-                              {'owner':'Mark P', 'grossValue':target},
-                              {'owner':'Tracy B', 'grossValue':target},
-                              {'owner':'Steve G', 'grossValue':target},
-                              {'owner':'Steve H', 'grossValue':target},
-                              {'owner':'Norrie C', 'grossValue':target},
-                              {'owner':'Brian M', 'grossValue':target},
-                              {'owner':'Brian R', 'grossValue':target}];            
+ 
+            targetSeries.data = targetData;           
             
-        targetSeries.data = targetData;
-        
         series.getTooltipText = function (e) {
             return ['Total Value - ' + numeral(e.cx).format('$0,0')];
         };

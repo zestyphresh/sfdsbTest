@@ -36,7 +36,7 @@ var TABLE_COUNTDOWN = (function($t) {
     
     var _modpriv = $t._priv;
 
-    $t.CountdownLeaderboard = function(id, data, lastWeek) {
+    $t.CountdownLeaderboard = function(id, data, total) {
         
         var _id = id + '-inner';
         
@@ -60,24 +60,12 @@ var TABLE_COUNTDOWN = (function($t) {
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
-                var target = !lastWeek ? 180000 : 13860;
-                
-                console.log(api.column(1), api.column(2));
 
-                var totalValue = api.column(1).data().reduce(function (a, b) {
-                    return a + b;
-                })
-                var totalQuantity = api.column(2).data().reduce(function (a, b) {
-                    return a + b;
-                })
-                var totalVsTarget = -target + totalValue;
-                var vsTargetPercentage = totalValue / target;
-                
                 $j(api.column(0).footer()).html('Total');
-                $j(api.column(1).footer()).html(numeral(totalValue).format('$0,0'));
-                $j(api.column(2).footer()).html(numeral(totalQuantity).format('0,0'));              
-                $j(api.column(3).footer()).html(numeral(totalVsTarget).format('$0,0'));
-                $j(api.column(4).footer()).html(numeral(vsTargetPercentage).format('0%'));
+                $j(api.column(1).footer()).html(numeral(total.grossValue).format('$0,0'));
+                $j(api.column(2).footer()).html(numeral(total.quantity).format('0,0'));              
+                $j(api.column(3).footer()).html(numeral(total.vsTarget).format('$0,0'));
+                $j(api.column(4).footer()).html(numeral(total.vsTargetPercentage).format('0%'));
             }
         });
 

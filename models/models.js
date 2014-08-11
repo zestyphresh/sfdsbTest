@@ -26,7 +26,7 @@ var MODEL = (function() {
         
         var _modelId = 'a0Mb0000005LPl6',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = {'alltime' : [], 'lastweek' : []}
+            _data = []
         ;
         
         function fetch() {
@@ -43,8 +43,7 @@ var MODEL = (function() {
 
                     } else {
                         
-                        _data.alltime = result.sales;
-                        _data.lastweek = _.where(result.sales, { 'week': '2014-31' });
+                        _data = result.sales;
                         
                         deferred.resolve(true);
 
@@ -58,9 +57,44 @@ var MODEL = (function() {
             
         }
         
-        function groupByOwner(dataset, target) {
+        function _dataFilter(filter) {
+            
+            var result;
+            
+            switch (filter) {
+                case 'all':
+                    result = _data;
+                    break;
+                case 'lastweek':
+                    result = _.filter(_data, {'week':'2014-W32'});
+                    break;
+            } 
+                
+            return result;
+            
+        }
+        
+        function getTotal(filter, target) {
 
-            var result = _(_data[dataset])
+            var result = _(_dataFilter(filter))
+                .reduce(v, function(r, n) { 
+                        
+                    return {'grossValue' : r.grossValue + n.grossValue, 
+                            'quantity' : r.quantity + n.quantity };
+                                
+                    }, {'grossValue':0, 'quantity':0}
+                )
+                .value();S
+                
+            result.vsTarget = -target + result.grossValue,
+            result.vsTargetPercentage = result.grossValue / target
+            
+            return result;
+        }
+        
+        function groupByOwner(filter, target) {
+
+            var result = _(_dataFilter(filter))
                 .groupBy('owner')
                 .map(function(v, k) {
                     
@@ -85,10 +119,24 @@ var MODEL = (function() {
     
         }
         
+        function getTargetSeries(target) {
+            return [{'owner':'Matt K', 'grossValue':target},
+                    {'owner':'Phil L', 'grossValue':target},
+                    {'owner':'Mark P', 'grossValue':target},
+                    {'owner':'Tracy B', 'grossValue':target},
+                    {'owner':'Steve G', 'grossValue':target},
+                    {'owner':'Steve H', 'grossValue':target},
+                    {'owner':'Norrie C', 'grossValue':target},
+                    {'owner':'Brian M', 'grossValue':target},
+                    {'owner':'Brian R', 'grossValue':target}]; 
+        }
+        
         return {
             fetch : fetch,
-            getData : function(dataset) { return _data[dataset]; },
-            groupByOwner : groupByOwner
+            getData : function(filter) { return _dataFilter(filter); },
+            getTotal : getTotal,
+            groupByOwner : groupByOwner,
+            getTargetSeries : getTargetSeries
         };
         
     };
