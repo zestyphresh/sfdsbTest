@@ -284,10 +284,14 @@ var MODEL = (function() {
                     
                     for (var i = 1; i <= deliveryWeeks; i++) {
                         
+                        var newIndex = index - (i*7);
+                        
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex--;}
+                        
                         var delWeek = $j.extend({}, d);
-                            delWeek.week = _modpriv.datesByIndex[index - (i*7)].fyYearWeek;
-                            delWeek.month = _modpriv.datesByIndex[index - (i*7)].fyYearMonth;
-                            delWeek.closeDate = _modpriv.datesByIndex[index - (i*7)].cyDate;
+                            delWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
+                            delWeek.month = _modpriv.datesByIndex[newIndex].fyYearMonth;
+                            delWeek.closeDate = _modpriv.datesByIndex[newIndex].cyDate;
                             delWeek.weeklyValue = 0;
                             delWeek.type = 'Delivery';
                         newData.push(delWeek);
@@ -295,11 +299,15 @@ var MODEL = (function() {
                     }
     
                     for (var i = 1; i <= storeWeeks; i++) {
+                        
+                        var newIndex = index + (i*7);
+                        
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
                                 
                         var storeWeek = $j.extend({}, d);
-                            storeWeek.week = _modpriv.datesByIndex[index + (i*7)].fyYearWeek;
-                            storeWeek.month = _modpriv.datesByIndex[index + (i*7)].fyYearMonth;
-                            storeWeek.closeDate = _modpriv.datesByIndex[index + (i*7)].cyDate;
+                            storeWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
+                            storeWeek.month = _modpriv.datesByIndex[newIndex].fyYearMonth;
+                            storeWeek.closeDate = _modpriv.datesByIndex[newIndex].cyDate;
                             storeWeek.type = 'In Store';
                         newData.push(storeWeek);
                     
@@ -313,13 +321,17 @@ var MODEL = (function() {
                     var add = headline ? storeWeeks * 7 : 0;
                     var start = index + add;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
+                    
+                    var newIndex = start + (i*7);
+                        
+                    while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
 
                     for (var i = 1; i <= remainingWeeks; i++) {
                     
                         var saleWeek = $j.extend({}, d);
-                            saleWeek.week = _modpriv.datesByIndex[start + (i*7)].fyYearWeek;
-                            saleWeek.month = _modpriv.datesByIndex[start + (i*7)].fyYearMonth;
-                            saleWeek.closeDate = _modpriv.datesByIndex[start + (i*7)].cyDate;
+                            saleWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
+                            saleWeek.month = _modpriv.datesByIndex[newIndex].fyYearMonth;
+                            saleWeek.closeDate = _modpriv.datesByIndex[newIndex].cyDate;
                             saleWeek.type = headline ? 'Sales' : 'Loss';
                         newData.push(saleWeek);
                     

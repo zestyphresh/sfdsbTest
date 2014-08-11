@@ -5,7 +5,7 @@ var CHART_OPPORTUNITIES = (function($c) {
     $c.OpportunityTimeline = function(id, data) {  
         
         var svg =  dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "120px");
+        var chart = new dimple.chart(svg, data).setMargins("210px", "30px", "40px", "120px");
         
         var xAxis = chart.addCategoryAxis('x', 'week');
             xAxis.title = 'Week';
