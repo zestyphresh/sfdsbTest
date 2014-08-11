@@ -138,7 +138,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
                 if (!d.isPromotion) {
                 
-                    var maxIndex = 2191; 
+                    var maxIndex = 2100; 
                     var add = headline ? storeWeeks * 7 : 0;
                     var start = index + add;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
