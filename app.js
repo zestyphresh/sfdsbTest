@@ -21,15 +21,15 @@
         
                 var args = _.isUndefined(v.View_Args__c) ? false : JSON.parse(v.View_Args__c);
                 
-                views[v.name] = new VIEW[v.name](args);
+                ;
                 
-                router.on(v.link, routerFunc(v.name));
+                router.on(v.link, routerFunc(v.name, args));
                 
             });
             
     });
 
-    function routerFunc(name) {
+    function routerFunc(name, args) {
 
         return function() {
             
@@ -40,6 +40,7 @@
                 
             } else {
             
+                views[name] = new VIEW[v.name](args);
                 views[name].init(true);
             
             }
