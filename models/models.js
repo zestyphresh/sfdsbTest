@@ -214,11 +214,20 @@ var MODEL = (function() {
                     } else {
 
                         _data.normal = result.opps;
-                        
+
                         _.each(_data.normal, function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
+                            v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         });
                         
+                        var inOneMonth = moment().add('months', 1);
+                        
+                        _.filter(_data.normal, function(v) {
+                            
+                            if (v.stageCategory == 'Confirmed' && v.mDate < inOneMonth) return v;
+
+                        });
+
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         updateFilters();
                         
