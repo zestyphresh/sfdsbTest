@@ -6,8 +6,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = {'normal' : [], 'byweek' : []},
-            _loaded = false
+            _data = {'normal' : [], 'byweek' : []}
         ;
 
         var _filters = 
@@ -23,15 +22,15 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function fetch(callback) {
             
-            console.log('in fetch');
-                
+            var deferred = Q.defer();
+
             AnalyticsViewProvider.getHeadlineOpportunityTimeline(
                 
                 function (result, event) {
                     
                     if (!event.status) {
                         
-                        _loaded = false;
+                        deferred.reject(false);
                         
                     } else {
     
@@ -43,15 +42,15 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         _data.byweek = testTransformedData;
                         updateFilters();
                         
-                        _loaded = true;
+                        deferred.resolve(true);
                         
                     }
-                    
-                    callback(_loaded);
-                        
-                }, { buffer : false, escape: true }
+
+                }, { escape: true }
                     
             );
+            
+            return deferred.promise;
             
         }
         
@@ -67,8 +66,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             fetch : fetch,
             updateFilters : updateFilters,
             getData : function(dataset) { return _data[dataset]; },
-            getFilters : function() { return _filters; },
-            isLoaded : function() { return _loaded; }
+            getFilters : function() { return _filters; }
         };
         
         //PRIVATE FUNCTIONS

@@ -10,17 +10,13 @@ var VIEW_COUNTDOWN = (function($v) {
             _loaded = false
         ;
 
-        var _requiredModels = [
-            {'shortName' : 'promo', 'modelName' : 'CountdownPromo'}
-        ];
-
         //Public vars
         var chtLeaderboard, tblLeaderboard, chtLastWeek, tblLastWeek, chtWeeklySales;
         
         //Init models
         function init(renderAfter) {
             
-            _models['promo'] = new _gblModel['CountdownPromo'];
+            _models['promo'] = new gblModel['CountdownPromo'];
 
             Q.all([_models.promo.fetch()]).done(function() {
                 
@@ -34,10 +30,7 @@ var VIEW_COUNTDOWN = (function($v) {
 
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
-            
-            console.log(_models['promo'].getData('alltime'));
-            console.log(_models['promo'].groupByOwner('alltime', 20000));
-            
+
             $body.append(templates['container']({'id':_uid}))
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Countdown Promotion'}));
             $j('#' + _uid).append(templates['countdown-promo']({'id':_uid}));
@@ -53,6 +46,7 @@ var VIEW_COUNTDOWN = (function($v) {
         return {
             init : init,
             isLoaded : function() { return _loaded; },
+            getUid : function() { return _uid; },
             render : render
         };
         

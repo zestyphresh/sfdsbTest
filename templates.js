@@ -146,7 +146,7 @@ _templates['countdown-promo'] = ""+
 ;
     
 _templates['container'] = ""+
-        "<div id={{id}} class='container-fluid'></div>"
+        "<div id={{id}} class='container-fluid dashboard-view'></div>"
 ;    
         
     

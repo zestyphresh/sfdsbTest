@@ -29,10 +29,8 @@ var MODELS_COUNTDOWN = (function($m) {
                         deferred.resolve(true);
 
                     }
-                    
-                    //callback(_loaded);
-                        
-                }, { buffer : false, escape: true }
+
+                }, { escape: true }
                     
             );
             
@@ -70,8 +68,7 @@ var MODELS_COUNTDOWN = (function($m) {
         return {
             fetch : fetch,
             getData : function(dataset) { return _data[dataset]; },
-            groupByOwner : groupByOwner,
-            isLoaded : function() { return _loaded; }
+            groupByOwner : groupByOwner
         };
         
     };
