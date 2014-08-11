@@ -18,15 +18,10 @@ var MODELS_COUNTDOWN = (function($m) {
                 function (result, event) {
                     
                     if (!event.status) {
-                        
                         deferred.reject(false);
-
                     } else {
-                        
                         _data = result.sales;
-                        
                         deferred.resolve(true);
-
                     }
 
                 }, { escape: true }
