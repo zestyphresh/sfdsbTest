@@ -98,7 +98,7 @@ _templates['headline-opportunities'] = ""+
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>Opportunity Timeline</div>"+
-        "            <div id='{{id}}-charts-opp-timeline' class='minChartDims1'></div>"+
+        "            <div id='{{id}}-charts-opp-timeline' class='minChartDims3'></div>"+
         "        </div>"+
         "    </div>"+
         ""+    

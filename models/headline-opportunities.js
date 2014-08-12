@@ -41,19 +41,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         });
                         
-                        var inOneMonth = moment().add('months', 1);
-                        
-                        _data.normal = _.filter(_data.normal, function(v) {
-                            
-                            if (v.stageCategory == 'Confirmed' && v.mDate < inOneMonth) return v;
-
-                        });
-
                         _data.byweek = _dataTransformToWeeks(_data.normal);
+                        
                         updateFilters();
-                        
-                        console.log(_data);
-                        
+
                         deferred.resolve(true);
                         
                     }
@@ -90,9 +81,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 newData = [];
     
             _(originalData).each(function(d) {
-                
-                //console.log(d.closeDate);
-                
+
                 var index = _modpriv.datesByDate[d.closeDate].dateIndex;
                 
                 var headline = d.recordType === 'Headline' ? true : false;
@@ -106,9 +95,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     for (var i = 1; i <= deliveryWeeks; i++) {
                         
                         var newIndex = index - (i*7);
-                        
-                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex--;}
-                        
+
                         var delWeek = $j.extend({}, d);
                             delWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
                             delWeek.month = _modpriv.datesByIndex[newIndex].fyYearMonth;
@@ -122,9 +109,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     for (var i = 1; i <= storeWeeks; i++) {
                         
                         var newIndex = index + (i*7);
-                        
-                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
-                                
+
                         var storeWeek = $j.extend({}, d);
                             storeWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
                             storeWeek.month = _modpriv.datesByIndex[newIndex].fyYearMonth;
@@ -138,14 +123,12 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
                 if (!d.isPromotion) {
                 
-                    var maxIndex = 2100; 
+                    var maxIndex = 1826; 
                     var add = headline ? storeWeeks * 7 : 0;
                     var start = index + add;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
                     
                     var newIndex = start + (i*7);
-                        
-                    while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
 
                     for (var i = 1; i <= remainingWeeks; i++) {
                     
