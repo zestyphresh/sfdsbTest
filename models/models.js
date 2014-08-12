@@ -216,7 +216,7 @@ var MODEL = (function() {
                         
                         var endOfYear = new moment('2014-12-31', 'YYYY-MM-DD');
 
-                        _data = _(result.opps).each(function(v) {
+                        _data = _(result.opps.slice(0,20)).each(function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         })

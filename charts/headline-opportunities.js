@@ -15,9 +15,9 @@ var CHART_OPPORTUNITIES = (function($c) {
             yAxis.title = 'Opportunity';
             yAxis.addOrderRule('week');
              
-        var series = chart.addSeries('type', dimple.plot.bar);     
+        var series = chart.addSeries('uName', dimple.plot.line);     
                
-        var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
+        //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
                            
         series.getTooltipText = function (e) {
             return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];

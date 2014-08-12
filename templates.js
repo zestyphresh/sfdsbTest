@@ -117,7 +117,20 @@ _templates['headline-opportunities'] = ""+
         "    </div>"+
         "</div>"
 ;
-    
+
+_templates['panel']
+        "    <div class='{{grid}}'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>{{heading}}</div>"+
+        "        </div>"+
+        "    </div>"
+        
+        "            <div id='{{id}}-chart' class='minChartDims1'></div>"+
+        "            <div id='{{id}}-table' class='table-responsive'></div>"+
+        
+        
+        
+        
 _templates['countdown-promo'] = ""+
         "<div class='row'>"+
         "    <div class='col-xs-12'>"+
