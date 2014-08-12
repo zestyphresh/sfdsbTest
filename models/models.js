@@ -223,6 +223,8 @@ var MODEL = (function() {
                         
                         var _new = _.filter(_data, function(v) {
                             
+                            console.log(v.mDate, endOfYear, v.mDate.isBefore(endOfYear));
+                            
                             return v.mDate.isBefore(endOfYear);
                             
                         });
