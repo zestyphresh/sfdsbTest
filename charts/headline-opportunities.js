@@ -15,7 +15,9 @@ var CHART_OPPORTUNITIES = (function($c) {
             yAxis.title = 'Opportunity';
             yAxis.addOrderRule('week');
              
-        var series = chart.addSeries('uName', dimple.plot.line);     
+        var series = chart.addSeries('uName', dimple.plot.line);   
+            series.lineMarkers = true;
+            series.lineWeight = 5;
                
         //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
                            
