@@ -22,9 +22,7 @@
             _.each(result[0].views.available, function(v) {
         
                 var args = _.isUndefined(v.View_Args__c) ? false : JSON.parse(v.View_Args__c);
-                
-                ;
-                
+
                 router.on(v.link, routerFunc(v.name, args));
                 
             });

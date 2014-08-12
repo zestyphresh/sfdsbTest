@@ -114,7 +114,7 @@ var VIEW = (function() {
         //Renders filters, separate to render() so it can be called to refresh filters
         function renderFilters(id) {
     
-            $j('#' + _uid).empty().append(templates['dropdown-filters'](_models.opps.getFilters(_uid))); 
+            $j('#' + id).empty().append(templates['dropdown-filters'](_models.opps.getFilters(_uid))); 
     
         }
         

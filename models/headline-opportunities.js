@@ -46,7 +46,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data = _.filter(_data, function(v) {
                             
-                            if (v.mDate < endOfYear) return v;
+                            if (v.mDate.isBefore(endOfYear)) return v;
                             
                         })
                         
