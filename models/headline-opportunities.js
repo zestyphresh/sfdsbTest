@@ -41,6 +41,14 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         });
                         
+                        var endOfYear = new moment('2014-12-31', 'YYY-MM-DD');
+                        
+                        _data.normal = _.filter(_data.normal, function(v) {
+                            
+                            if (v.mDate < endOfYear) return v;
+                            
+                        })
+                        
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         
                         updateFilters();
@@ -96,7 +104,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         var newIndex = index - (i*7);
                         
-                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex--;}
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum == 53) {newIndex--;}
 
                         var delWeek = $j.extend({}, d);
                             delWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
@@ -110,7 +118,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
     
                     for (var i = 1; i <= storeWeeks; i++) {
                         
-                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum == 53) {newIndex++;}
                         
                         var newIndex = index + (i*7);
 
@@ -136,7 +144,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         var newIndex = start + (i*7);
                         
-                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum == 53) {newIndex++;}
                     
                         var saleWeek = $j.extend({}, d);
                             saleWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
