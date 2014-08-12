@@ -42,13 +42,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         var endOfYear = new moment('2014-12-31', 'YYY-MM-DD');
                         
-                        _data = _.filter(_data, function(v) {
+                        var _new = _.filter(_data, function(v) {
                             
                             return v.mDate.isBefore(endOfYear);
                             
                         });
                         
-                        console.log(_data);
+                        console.log(_data, _new);
                         
                         _dataByWeek = _dataTransformToWeeks(_data);
                         
