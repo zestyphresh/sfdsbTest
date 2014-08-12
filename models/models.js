@@ -228,6 +228,8 @@ var MODEL = (function() {
                             
                         })
                         
+                        console.log(data);
+                        
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         
                         updateFilters();

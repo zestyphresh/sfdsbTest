@@ -49,6 +49,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             
                         })
                         
+                        console.log(data);
+                        
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         
                         updateFilters();
