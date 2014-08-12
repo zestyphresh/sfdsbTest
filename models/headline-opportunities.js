@@ -166,13 +166,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
         }
         
         function _dataTransformToTimeline(originalData) {
-            
-            var deliveryDate = d.mDate.subtract('weeks', 4),
-                storeDate = d.mDate.add('weeks', 4),
-                newData = [],
-                maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
                 
             _(originalData).each(function(d) {
+                
+                var deliveryDate = d.mDate.subtract('weeks', 4),
+                    storeDate = d.mDate.add('weeks', 4),
+                    newData = [],
+                    maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
                 
                 newData.push({'date':d.mDate, 'type': 'Live Date', 'opp' : d.uName});
                 newData.push({'date':deliveryDate, 'type': 'Delivery Date', 'opp' : d.uName});
