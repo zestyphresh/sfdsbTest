@@ -274,6 +274,8 @@ var MODEL = (function() {
                     for (var i = 1; i <= deliveryWeeks; i++) {
                         
                         var newIndex = index - (i*7);
+                        
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex--;}
 
                         var delWeek = $j.extend({}, d);
                             delWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
@@ -286,6 +288,8 @@ var MODEL = (function() {
                     }
     
                     for (var i = 1; i <= storeWeeks; i++) {
+                        
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
                         
                         var newIndex = index + (i*7);
 
@@ -306,10 +310,12 @@ var MODEL = (function() {
                     var add = headline ? storeWeeks * 7 : 0;
                     var start = index + add;
                     var remainingWeeks = Math.floor((maxIndex - start) / 7);
-                    
-                    var newIndex = start + (i*7);
 
                     for (var i = 1; i <= remainingWeeks; i++) {
+                        
+                        var newIndex = start + (i*7);
+                        
+                        while (_modpriv.datesByIndex[newIndex].cyWeekNum === 53) {newIndex++;}
                     
                         var saleWeek = $j.extend({}, d);
                             saleWeek.week = _modpriv.datesByIndex[newIndex].fyYearWeek;
