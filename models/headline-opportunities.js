@@ -34,23 +34,19 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         deferred.reject(false);
                         
                     } else {
+                        
+                        var endOfYear = new moment('2014-12-31', 'YYYY-MM-DD');
 
-                        _data = _.each(result.opps, function(v) {
+                        _data = _(result.opps).each(function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
-                        });
-                        
-                        var endOfYear = new moment('2014-12-31', 'YYY-MM-DD');
-                        
-                        var _new = _.filter(_data, function(v) {
-                            
-                            console.log(v.mDate, endOfYear, v.mDate.isBefore(endOfYear));
-                            
+                        })
+                        .filter(function(v) {
+
                             return v.mDate.isBefore(endOfYear);
                             
-                        });
-                        
-                        console.log(_data, _new);
+                        })
+                        .value();
                         
                         _dataByWeek = _dataTransformToWeeks(_data);
                         
