@@ -228,7 +228,7 @@ var MODEL = (function() {
                             
                         })
                         
-                        console.log(data);
+                        console.log(_data);
                         
                         _data.byweek = _dataTransformToWeeks(_data.normal);
                         
