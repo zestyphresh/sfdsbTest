@@ -79,6 +79,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             updateFilters : updateFilters,
             getData : function() { return _data; },
             getDataByWeek : function() { return _dataByWeek; },
+            getDataTimeline : function() { return _dataTimeline; },
             getFilters : function() { return _filters; }
         };
         
