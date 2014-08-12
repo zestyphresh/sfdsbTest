@@ -214,9 +214,7 @@ var MODEL = (function() {
                         
                     } else {
 
-                        _data = result.opps;
-
-                        _.each(_data, function(v) {
+                        _data = _.each(result.opps, function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         });
@@ -227,7 +225,7 @@ var MODEL = (function() {
                             
                             if (v.mDate.isBefore(endOfYear)) return v;
                             
-                        })
+                        }).value();
                         
                         console.log(_data);
                         
