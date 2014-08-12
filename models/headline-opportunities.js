@@ -8,6 +8,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             _uid = _.uniqueId(_modelId + '-'),
             _data = [];
             _dataByWeek = [];
+            _dataTimeline = [];
         ;
 
         var _filters = 
@@ -49,6 +50,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value();
                         
                         _dataByWeek = _dataTransformToWeeks(_data);
+                        _dataTimeline = _dataTransformToTimeline(_data);
                         
                         updateFilters();
 
@@ -156,6 +158,26 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     }
                 
                 }
+                
+            });
+                
+            return newData;
+            
+        }
+        
+        function _dataTransformToTimeline(originalData) {
+            
+            var deliveryDate = d.mDate.subtract('weeks', 4),
+                storeDate = d.mDate.add('weeks', 4),
+                newData = [],
+                maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
+                
+            _(originalData).each(function(d) {
+                
+                newData.push({'date':d.mDate, 'type': 'Live Date', 'opp' : d.uName});
+                newData.push({'date':deliveryDate, 'type': 'Delivery Date', 'opp' : d.uName});
+                newData.push({'date':storeDate, 'type': 'Store Date', 'opp' : d.uName});
+                newData.push({'date':maxDate, 'type': 'End Date', 'opp' : d.uName});
                 
             });
                 

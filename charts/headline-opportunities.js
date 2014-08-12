@@ -7,15 +7,15 @@ var CHART_OPPORTUNITIES = (function($c) {
         var svg =  dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("210px", "30px", "40px", "120px");
         
-        var xAxis = chart.addCategoryAxis('x', 'week');
-            xAxis.title = 'Week';
-            xAxis.addOrderRule('week');
+        var xAxis = chart.addTimeAxis('x', 'date');
+            xAxis.title = 'Date';
+            xAxis.addOrderRule('date');
                 
-        var yAxis = chart.addCategoryAxis('y', 'uName');
+        var yAxis = chart.addCategoryAxis('y', 'opp');
             yAxis.title = 'Opportunity';
-            yAxis.addOrderRule('week');
+            yAxis.addOrderRule('date');
              
-        var series = chart.addSeries('uName', dimple.plot.line);   
+        var series = chart.addSeries('opp', dimple.plot.line);   
             series.lineMarkers = true;
             series.lineWeight = 5;
                
