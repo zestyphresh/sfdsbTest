@@ -6,7 +6,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = {'normal' : [], 'byweek' : []}
+            _data = [];
+            _dataByWeek = [];
         ;
 
         var _filters = 
@@ -34,16 +35,16 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
 
-                        _data.normal = result.opps;
+                        _data = result.opps;
 
-                        _.each(_data.normal, function(v) {
+                        _.each(_data, function(v) {
                             v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         });
                         
                         var endOfYear = new moment('2014-12-31', 'YYY-MM-DD');
                         
-                        _data.normal = _.filter(_data.normal, function(v) {
+                        _data = _.filter(_data, function(v) {
                             
                             if (v.mDate < endOfYear) return v;
                             
@@ -51,7 +52,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         console.log(_data);
                         
-                        _data.byweek = _dataTransformToWeeks(_data.normal);
+                        _dataByWeek = _dataTransformToWeeks(_data);
                         
                         updateFilters();
 
@@ -78,7 +79,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         return { 
             fetch : fetch,
             updateFilters : updateFilters,
-            getData : function(dataset) { return _data[dataset]; },
+            getData : function() { return _data; },
+            getDataByWeek : function() { return _dataByWeek; },
             getFilters : function() { return _filters; }
         };
         
