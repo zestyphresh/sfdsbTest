@@ -108,7 +108,7 @@ var CHART_COUNTDOWN = (function($c) {
             yAxis.title = 'Opportunity';
             yAxis.addOrderRule('date');
              
-        var series = chart.addSeries('opp', dimple.plot.line);   
+        var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
             series.lineMarkers = true;
             series.lineWeight = 5;
                
@@ -116,7 +116,7 @@ var CHART_COUNTDOWN = (function($c) {
                            
         series.getTooltipText = function (e) {
             console.log(e);
-            return [e.type + ' (' + e.date + ')'];
+            return [' (' + e.cx + ')'];
         };  
 
         chart.assignColor("Live Date", "orange", "orange", 0.75);   
