@@ -72,7 +72,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 f.values = _modpriv.getUniqueValues(_data, f.field);
             });
             
-            console.log(_filters);
+            //console.log(_filters);
             
         }
         
