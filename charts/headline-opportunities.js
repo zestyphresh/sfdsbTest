@@ -17,7 +17,7 @@ var CHART_OPPORTUNITIES = (function($c) {
              
         var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
             series.lineMarkers = false;
-            series.lineWeight = 15;
+            series.lineWeight = 9;
                
         //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
                            
@@ -26,10 +26,10 @@ var CHART_OPPORTUNITIES = (function($c) {
             return [' (' + e.cx + ')'];
         };  
 
-        chart.assignColor("Live Date", "orange", "orange", 0.75);   
-        chart.assignColor("Delivery Date", "red", "red", 0.75);   
-        chart.assignColor("Store Date", "green", "green", 0.75);   
-        chart.assignColor("End Date", "grey", "grey", 0.75);   
+        chart.assignColor("Live Date", "LimeGreen", "LimeGreen", 0.75);   
+        chart.assignColor("Delivery Date", "LightSkyBlue", "LightSkyBlue", 0.75);   
+        chart.assignColor("Store Date", "NavajoWhite", "NavajoWhite", 0.75);   
+        chart.assignColor("End Date", "Gainsboro", "Gainsboro", 0.75);   
                 
         chart.draw();
 
