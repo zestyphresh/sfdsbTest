@@ -82,7 +82,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         //PRIVATE FUNCTIONS
         function _dataTransformToMonthlySales(originalData) {
             
-            var maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
+            var maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
             var newData = [];
     
             _(originalData).each(function(d) {
@@ -123,7 +123,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
                 var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
                     storeDate = new moment(d.mDate).add('weeks', 4),
-                    maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
+                    maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
                     
                 newData.push({'date':deliveryDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
                 newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});

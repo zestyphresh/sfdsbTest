@@ -5,7 +5,7 @@ var CHART_OPPORTUNITIES = (function($c) {
     $c.OpportunityTimeline = function(id, data) {  
         
         var svg =  dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("230px", "30px", "30px", "30px");
+        var chart = new dimple.chart(svg, data).setMargins("230px", "30px", "30px", "40px");
         
         var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m-%d', '%Y-%m-%d');
             xAxis.title = 'Date';
