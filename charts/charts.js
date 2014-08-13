@@ -115,11 +115,10 @@ var CHART_COUNTDOWN = (function($c) {
         //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
                            
         series.getTooltipText = function (e) {
-            return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
+            console.log(e);
+            return [e.type + ' (' + e.date + ')'];
         };  
-        
-        chart.addColorAxis('date');
-        
+
         chart.assignColor("Live Date", "orange", "orange", 0.75);   
         chart.assignColor("Delivery Date", "red", "red", 0.75);   
         chart.assignColor("Store Date", "green", "green", 0.75);   
