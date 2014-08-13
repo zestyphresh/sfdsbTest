@@ -7,7 +7,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
             _data = [],
-            //_dataByWeek = [],
             _dataTimeline = [],
             _dataMonthlySales = [];
         ;
@@ -51,7 +50,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value();
                         
                         _dataTimeline = _dataTransformToTimeline(_data);
-                        //_dataByWeek = _dataTransformToWeeks(_data);
                         _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
                         updateFilters();
@@ -98,7 +96,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
 
                 var value = headline? d.isoValue : d.annualisedValue/12;
 
-                newData.push({'date' : d.mDate.format('YYYY-MM'), 'value' : value, 'recordType' : d.recordType})
+                newData.push({'date' : d.mDate.format('YYYY-MM'), 'value' : value, 'recordType' : d.recordType});
                 
                 d.mDate.add('months', 1);    
                     
@@ -106,16 +104,17 @@ var MODEL_OPPORTUNITIES = (function($m) {
 
                     while (d.mDate < maxDate) {
 
-                        newData.push({'date' : d.mDate.format('YYYY-MM'), 'value' : d.annualisedValue/12, 'recordType' : d.recordType})
+                        newData.push({'date' : d.mDate.format('YYYY-MM'), 'value' : d.annualisedValue/12, 'recordType' : d.recordType});
                         
                         d.mDate.add('months', 1);
+                        
                     }
                     
                 }
                     
             });
             
-            console.log('Function:_dataTransformToMonthlySales',newData);
+            //console.log('Function:_dataTransformToMonthlySales',newData);
                     
             return newData;
             
@@ -141,7 +140,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
             });
                 
-            console.log('Function:_dataTransformToTimeline',newData);  
+            //console.log('Function:_dataTransformToTimeline',newData);  
                 
             return newData;
             

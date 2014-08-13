@@ -12,15 +12,12 @@ var CHART_OPPORTUNITIES = (function($c) {
             xAxis.addOrderRule('date');
                 
         var yAxis = chart.addCategoryAxis('y', 'opp');
-            yAxis.title = 'Opportunity';
             yAxis.addOrderRule('date');
              
         var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
             series.lineMarkers = false;
             series.lineWeight = 9;
-               
-        //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
-                           
+
         series.getTooltipText = function (e) {
             console.log(e);
             return [' (' + e.cx + ')'];
