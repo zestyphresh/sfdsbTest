@@ -200,7 +200,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 }
                     
             });
-                
+                    
             return newData;
             
         }

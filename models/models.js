@@ -343,6 +343,8 @@ var MODEL = (function() {
                 }
                 
             });
+            
+            console.log(newData);
                 
             return newData;
             
@@ -379,6 +381,7 @@ var MODEL = (function() {
                 }
                     
             });
+            console.log(newData);
                 
             return newData;
             
