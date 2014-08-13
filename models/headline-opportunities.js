@@ -184,7 +184,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
                 d.mDate.add('months', 1);    
                     
-                if (!isPromotion) {
+                if (!d.isPromotion) {
 
                     while (d.mDate < maxDate) {
                         
