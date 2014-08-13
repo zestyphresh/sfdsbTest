@@ -172,8 +172,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
             _(originalData).each(function(d) {
                 
-                var deliveryDate = d.mDate.subtract('weeks', 4),
-                    storeDate = d.mDate.add('weeks', 4),
+                var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
+                    storeDate = new moment(d.mDate).add('weeks', 4),
                     maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
                 
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
