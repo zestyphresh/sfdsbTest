@@ -100,7 +100,7 @@ var CHART_COUNTDOWN = (function($c) {
         var svg =  dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("210px", "30px", "40px", "120px");
         
-        var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m', '%Y-%m');
+        var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m-%d', '%Y-%m-%d');
             xAxis.title = 'Date';
             xAxis.addOrderRule('date');
                 
