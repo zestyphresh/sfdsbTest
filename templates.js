@@ -17,7 +17,7 @@ _templates['dropdown-filters'] = ""+
     "            {{/values}}"+  
     "        </ul>"+ 
     "    </div>"+
-    "{{/each}}"+
+    "{{/each}}"
 ;
     
 _templates['navbar'] = ""+ 
