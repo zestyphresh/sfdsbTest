@@ -50,6 +50,8 @@ var CHART_OPPORTUNITIES = (function($c) {
             yAxis.title = 'Monthly Sales';
                
         var series = chart.addSeries('recordType', dimple.plot.line); 
+            series.lineMarkers = true;
+            series.lineWeight = 4;
           
         var legend = chart.addLegend("50px", "-20px", "100%", "-30px");        
                        
