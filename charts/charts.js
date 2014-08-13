@@ -83,7 +83,7 @@ var CHART_COUNTDOWN = (function($c) {
             return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
         };  
         
-        chart.assignColor("Target", "red", "red", 0.75)    ;   
+        chart.assignColor("Target", "red", "red", 0.75);   
           
         chart.draw();
                 
@@ -117,6 +117,11 @@ var CHART_COUNTDOWN = (function($c) {
         series.getTooltipText = function (e) {
             return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
         };   
+        
+        chart.assignColor("Live Date", "orange", "orange", 0.75);   
+        chart.assignColor("Delivery Date", "red", "red", 0.75);   
+        chart.assignColor("Store Date", "green", "green", 0.75);   
+        chart.assignColor("End Date", "grey", "grey", 0.75);   
                 
         chart.draw();
 
