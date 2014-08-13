@@ -109,7 +109,7 @@ var CHART_COUNTDOWN = (function($c) {
             yAxis.addOrderRule('date');
              
         var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
-            //series.lineMarkers = true;
+            series.lineMarkers = false;
             series.lineWeight = 15;
                
         //var legend = chart.addLegend("50px", "-20px", "100%", "-30px");         
