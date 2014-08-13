@@ -12,6 +12,7 @@ var CHART_OPPORTUNITIES = (function($c) {
             xAxis.addOrderRule('date');
                 
         var yAxis = chart.addCategoryAxis('y', 'opp');
+            yAxis.title = null;
             yAxis.addOrderRule('date');
              
         var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
@@ -19,8 +20,7 @@ var CHART_OPPORTUNITIES = (function($c) {
             series.lineWeight = 9;
 
         series.getTooltipText = function (e) {
-            console.log(e);
-            return [' (' + e.cx + ')'];
+            return ['(' + e.cx + ')'];
         };  
 
         chart.assignColor("Live Date", "LimeGreen", "LimeGreen", 0.75);   
