@@ -177,7 +177,9 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
                 
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
+                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
                 newData.push({'date':deliveryDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
+                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
                 newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
                 newData.push({'date':maxDate.format('YYYY-MM-DD'), 'type': 'End Date', 'opp' : d.uName});
                 
