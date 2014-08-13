@@ -40,7 +40,7 @@ var CHART_OPPORTUNITIES = (function($c) {
     $c.OpportunitySales = function(id, data) {
         
         var svg = dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "30px");
+        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "60px");
                 
         var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m', '%Y-%m');
             xAxis.title = 'Month';
