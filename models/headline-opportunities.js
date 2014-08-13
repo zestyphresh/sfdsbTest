@@ -50,7 +50,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         })
                         .value();
                         
-                        _dataTimeline = _dateTransformToTimeline(_date);
+                        _dataTimeline = _dataTransformToTimeline(_data);
                         //_dataByWeek = _dataTransformToWeeks(_data);
                         _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
@@ -205,7 +205,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-        function _dataTransformToTimeline(originalData, markers) {
+        function _dataTransformToTimeline(originalData) {
             
             var newData = [];
                 
