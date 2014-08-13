@@ -186,7 +186,7 @@ var MODEL = (function() {
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
             _data = [],
-            _dataByWeek = [],
+            //_dataByWeek = [],
             _dataTimeline = [],
             _dataMonthlySales = [];
         ;
@@ -343,8 +343,6 @@ var MODEL = (function() {
                 }
                 
             });
-            
-            console.log(newData);
                 
             return newData;
             
@@ -381,8 +379,9 @@ var MODEL = (function() {
                 }
                     
             });
-            console.log(newData);
-                
+            
+            console.log('Function:_dataTransformToMonthlySales',newData);
+                    
             return newData;
             
         }
@@ -406,6 +405,8 @@ var MODEL = (function() {
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
                 
             });
+                
+            console.log('Function:_dataTransformToTimeline',newData);  
                 
             return newData;
             

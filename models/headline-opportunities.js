@@ -7,7 +7,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
             _data = [],
-            _dataByWeek = [],
+            //_dataByWeek = [],
             _dataTimeline = [],
             _dataMonthlySales = [];
         ;
@@ -200,6 +200,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 }
                     
             });
+            
+            console.log('Function:_dataTransformToMonthlySales',newData);
                     
             return newData;
             
@@ -224,6 +226,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
                 
             });
+                
+            console.log('Function:_dataTransformToTimeline',newData);  
                 
             return newData;
             
