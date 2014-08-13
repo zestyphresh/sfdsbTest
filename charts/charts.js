@@ -121,7 +121,7 @@ var CHART_COUNTDOWN = (function($c) {
 
         chart.assignColor("Live Date", "LimeGreen", "LimeGreen", 0.75);   
         chart.assignColor("Delivery Date", "LightSkyBlue", "LightSkyBlue", 0.75);   
-        chart.assignColor("Store Date", "NavajoWhite", "NavajoWhite", 0.75);   
+        chart.assignColor("Store Date", "YellowGreen", "YellowGreen", 0.75);   
         chart.assignColor("End Date", "Gainsboro", "Gainsboro", 0.75);   
                 
         chart.draw();
@@ -138,9 +138,9 @@ var CHART_COUNTDOWN = (function($c) {
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "30px");
                 
-        var xAxis = chart.addCategoryAxis('x', 'month');
+        var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m-%d', '%Y-%m');
             xAxis.title = 'Month';
-            xAxis.addOrderRule('month');
+            xAxis.addOrderRule('date');
                 
         var yAxis = chart.addMeasureAxis('y', 'weeklyValue');
             yAxis.title = 'Monthly Sales';

@@ -6,9 +6,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = [];
-            _dataByWeek = [];
-            _dataTimeline = [];
+            _data = [],
+            _dataByWeek = [],
+            _dataTimeline = [],
+            _dataMonthlySales = [];
         ;
 
         var _filters = 
@@ -50,7 +51,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value();
                         
                         _dataByWeek = _dataTransformToWeeks(_data);
-                        _dataTimeline = _dataTransformToTimeline(_data);
+                        _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
                         updateFilters();
 
@@ -80,6 +81,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             getData : function() { return _data; },
             getDataByWeek : function() { return _dataByWeek; },
             getDataTimeline : function() { return _dataTimeline; },
+            getDataMonthlySales : function() { return _dataMonthlySales; },
             getFilters : function() { return _filters; }
         };
         
@@ -166,6 +168,42 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
+        function _dataTransformToMonthlySales(originalData) {
+            
+            var maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
+            var newData = [];
+    
+            _(originalData).each(function(d) {
+
+                var headline = d.recordType === 'Headline' ? true : false;
+    
+                var thisMonth = $j.extend({}, d);
+                    thisMonth.value = headline? d.isoValue : d.annualisedValue/12;
+                    thisMonth.date = d.mDate.format('YYYY-MM-DD');
+                    newData.push(thisMonth);
+                
+                d.mDate.add('months', 1);    
+                    
+                if (!isPromotion) {
+
+                    while (d.mDate < maxDate) {
+                        
+                        thisMonth = $j.extend({}, d);
+                        thisMonth.value = d.annualisedValue/12;
+                        thisMonth.date = d.mDate.format('YYYY-MM-DD');
+                        newData.push(thisMonth);
+                        
+                        d.mDate.add('months', 1);
+                    }
+                    
+                }
+                    
+            });
+                
+            return newData;
+            
+        }
+        
         function _dataTransformToTimeline(originalData, markers) {
             
             var newData = [];
@@ -175,15 +213,14 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
                     storeDate = new moment(d.mDate).add('weeks', 4),
                     maxDate = new moment('2014-12-31', 'YYYY-MM-DD');
-                
-                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
+                    
                 newData.push({'date':deliveryDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
                 newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
                 newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
                 newData.push({'date':maxDate.format('YYYY-MM-DD'), 'type': 'End Date', 'opp' : d.uName});
                 newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'End Date', 'opp' : d.uName});
-
+                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
                 
             });
                 
