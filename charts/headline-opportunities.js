@@ -46,7 +46,7 @@ var CHART_OPPORTUNITIES = (function($c) {
             xAxis.title = 'Month';
             xAxis.addOrderRule('date');
                 
-        var yAxis = chart.addMeasureAxis('y', 'weeklyValue');
+        var yAxis = chart.addMeasureAxis('y', 'value');
             yAxis.title = 'Monthly Sales';
                
         var series = chart.addSeries('recordType', dimple.plot.line); 
