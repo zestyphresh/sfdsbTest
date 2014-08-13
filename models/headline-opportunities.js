@@ -189,9 +189,9 @@ var MODEL_OPPORTUNITIES = (function($m) {
 
                     while (d.mDate < maxDate) {
                         
-                        thisMonth = $j.extend({}, d);
-                        thisMonth.value = d.annualisedValue/12;
-                        thisMonth.date = d.mDate.format('YYYY-MM');
+                        var thisMonth = $j.extend({}, d);
+                            thisMonth.value = d.annualisedValue/12;
+                            thisMonth.date = d.mDate.format('YYYY-MM');
                         newData.push(thisMonth);
                         
                         d.mDate.add('months', 1);
