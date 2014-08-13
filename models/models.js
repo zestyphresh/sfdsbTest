@@ -229,7 +229,8 @@ var MODEL = (function() {
                         })
                         .value();
                         
-                        _dataByWeek = _dataTransformToWeeks(_data);
+                        _dataTimeline = _dateTransformToTimeline(_date);
+                        //_dataByWeek = _dataTransformToWeeks(_data);
                         _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
                         updateFilters();
@@ -358,7 +359,7 @@ var MODEL = (function() {
     
                 var thisMonth = $j.extend({}, d);
                     thisMonth.value = headline? d.isoValue : d.annualisedValue/12;
-                    thisMonth.date = d.mDate.format('YYYY-MM-DD');
+                    thisMonth.date = d.mDate.format('YYYY-MM');
                     newData.push(thisMonth);
                 
                 d.mDate.add('months', 1);    
@@ -369,7 +370,7 @@ var MODEL = (function() {
                         
                         thisMonth = $j.extend({}, d);
                         thisMonth.value = d.annualisedValue/12;
-                        thisMonth.date = d.mDate.format('YYYY-MM-DD');
+                        thisMonth.date = d.mDate.format('YYYY-MM');
                         newData.push(thisMonth);
                         
                         d.mDate.add('months', 1);
