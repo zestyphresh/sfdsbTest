@@ -37,7 +37,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
             var options = {
                 'maxHeight' : '600px'
-            }
+            };
             var container = document.getElementById( _uid + '-charts-opp-timeline');
             var timeline = new vis.Timeline(container, _models.opps.getDataTimeline(), options);
 
