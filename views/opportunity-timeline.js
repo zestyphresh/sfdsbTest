@@ -35,14 +35,16 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'));
+            
             var options = {
               "width":  "100%",
               "height": "100%",
               "style": "box" // optional
             };
 
-            timeline.draw(_models.opps.getDataTimeline(), options);
+            var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'), options);
+
+            timeline.draw(_models.opps.getDataTimeline());
 
     
             //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
