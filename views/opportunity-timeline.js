@@ -45,7 +45,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'));
             timeline.setOptions(options);
 
-            timeline.draw(_models.opps.getDataTimeline());
+            timeline.draw(_models.opps.getDataTimeline(), options);
 
     
             //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
