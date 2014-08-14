@@ -35,7 +35,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
 
-            var timeline = new vis.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'), _models.opps.getDataTimeline(), {});
+            var container = document.getElementById('#' + _uid + '-charts-opp-timeline');
+            var timeline = new vis.Timeline(container, _models.opps.getDataTimeline(), {});
 
             //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getDataMonthlySales());
