@@ -42,7 +42,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
               "style": "box" // optional
             };
 
-            var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'), options);
+            var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'));
+            timeline.setOptions(options);
 
             timeline.draw(_models.opps.getDataTimeline());
 
