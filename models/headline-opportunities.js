@@ -159,8 +159,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
                 if (d.stageCategory === 'Confirmed'){
                 
-                    var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
-                        storeDate = new moment(d.mDate).add('weeks', 4),
+                    var deliveryDate = new moment(d.mDate).subtract('weeks', 1),
+                        storeDate = new moment(d.mDate).add('weeks', 1),
                         maxDate = new moment('2015-12-31', 'YYYY-MM-DD'),
                         tClass = headline ? 'headline' : 'threat',
                         content = d.account + ' - ' + d.name + '</br>' + 
