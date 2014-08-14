@@ -35,7 +35,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var timeline = new links.Timeline($j('#' + _uid + '-charts-opp-timeline'));
+            var timeline = new links.Timeline(document.getElementById('#' + _uid + '-charts-opp-timeline'));
             timeline.draw(_models.opps.getDataTimeline());
 
     
