@@ -35,9 +35,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
 
-            var container = document.getElementById('#' + _uid + '-charts-opp-timeline');
-            console.log('#' + _uid + '-charts-opp-timeline');
-            console.log(container);
+            var container = document.getElementById( _uid + '-charts-opp-timeline');
             var timeline = new vis.Timeline(container, _models.opps.getDataTimeline(), {});
 
             //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
