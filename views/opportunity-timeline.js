@@ -34,8 +34,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $body.append(templates['container']({'id':_uid}))
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
+            
+            var timeline = new links.Timeline($j('#' + _uid + '-charts-opp-timeline'));
+            timeline.draw(_models.opps.getDataTimeline());
+
     
-            chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
+            //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getDataMonthlySales());
             tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData());      
     

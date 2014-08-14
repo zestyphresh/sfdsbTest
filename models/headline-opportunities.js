@@ -8,6 +8,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             _uid = _.uniqueId(_modelId + '-'),
             _data = [],
             _dataTimeline = [],
+            _dataTimeline2 = [],
             _dataMonthlySales = [];
         ;
 
@@ -43,6 +44,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value();
                         
                         _dataTimeline = _dataTransformToTimeline(_data);
+                        _dataTimeline2 = _dataTransformToTimeline2(_data);
                         _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
                         updateFilters();
@@ -69,12 +71,18 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
+        function getDataTimeline() {
+            
+            return _dataTimeline2;
+            
+        }
+        
         return { 
             fetch : fetch,
             updateFilters : updateFilters,
             getData : function() { return _data; },
+            getDataTimeline : getDataTimeline,
             getDataByWeek : function() { return _dataByWeek; },
-            getDataTimeline : function() { return _dataTimeline; },
             getDataMonthlySales : function() { return _dataMonthlySales; },
             getFilters : function() { return _filters; }
         };
@@ -136,6 +144,27 @@ var MODEL_OPPORTUNITIES = (function($m) {
             });
                 
             //console.log('Function:_dataTransformToTimeline',newData);  
+                
+            return newData;
+            
+        }
+        
+        function _dataTransformToTimeline2(originalData) {
+            
+            var newData = [];
+                
+            _(originalData).each(function(d) {
+                
+                var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
+                    storeDate = new moment(d.mDate).add('weeks', 4),
+                    maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
+
+                newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : d.uName});
+
+                
+            });
+                
+            //console.log('Function:_dataTransformToTimeline2',newData);  
                 
             return newData;
             
