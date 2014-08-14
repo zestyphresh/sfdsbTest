@@ -38,8 +38,17 @@ var VIEW_OPPORTUNITIES = (function($v) {
             var options = {
                 'maxHeight' : '600px' 
             };
+            
+            var groups = [
+                {'id' : 'Low Value'},
+                {'id' : 'Medium Value'},
+                {'id' : 'High Value'}
+                
+            ];
+            
             var container = document.getElementById( _uid + '-charts-opp-timeline');
             var timeline = new vis.Timeline(container, _models.opps.getDataTimeline(), options);
+            timeline.setGroups(groups);
 
             //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getDataMonthlySales());

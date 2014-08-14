@@ -165,8 +165,17 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         tClass = headline ? 'headline' : 'threat',
                         content = d.account + ' - ' + d.name + '</br>' + 
                                   'ISO - ' + numeral(d.isoValue).format('$0,0') + ', Annualised - ' + numeral(d.annualisedValue).format('$0,0');
-    
-                    newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : content, 'className' : tClass});
+                        var group;
+                        
+                        if (d.isoValue + d.annualisedValue < 50000) {
+                            group = 'Low Value';
+                        } else if (d.isoValue + d.annualisedValue < 250000) {
+                            group = 'Medium Value';
+                        } else {
+                            group = 'High Value';
+                        }
+                        
+                    newData.push({'group' : group, 'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : content, 'className' : tClass});
                 
                 }
                 
