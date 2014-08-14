@@ -162,9 +162,11 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
                         storeDate = new moment(d.mDate).add('weeks', 4),
                         maxDate = new moment('2015-12-31', 'YYYY-MM-DD'),
-                        tClass = headline ? 'headline' : 'threat';
+                        tClass = headline ? 'headline' : 'threat',
+                        content = d.account + ' - ' + d.name + '</br>' + 
+                                  'ISO - ' + numeral(d.isoValue).format('$0,0') + ', Annualised - ' + numeral(d.annualisedValue).format('$0,0');
     
-                    newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : d.uName, 'className' : tClass});
+                    newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : content, 'className' : tClass});
                 
                 }
                 
