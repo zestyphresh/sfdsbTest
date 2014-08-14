@@ -155,12 +155,18 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
             _(originalData).each(function(d) {
                 
-                var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
-                    storeDate = new moment(d.mDate).add('weeks', 4),
-                    maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
-
-                newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : d.uName});
-
+                var headline = d.recordType === 'Headline' ? true : false;
+                
+                if (d.stageCategory === 'Confirmed'){
+                
+                    var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
+                        storeDate = new moment(d.mDate).add('weeks', 4),
+                        maxDate = new moment('2015-12-31', 'YYYY-MM-DD'),
+                        tClass = headline ? 'headline' : 'threat';
+    
+                    newData.push({'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : d.uName, 'className' : tClass});
+                
+                }
                 
             });
                 
