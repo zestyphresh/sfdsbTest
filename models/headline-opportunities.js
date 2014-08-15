@@ -175,7 +175,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             group = 'High Value';
                         }
                         
-                    newData.push({'group' : group, 'start':deliveryDate.toDate(), 'end': storeDate.toDate(), 'content' : content, 'className' : tClass});
+                    newData.push({'group' : group, 'start' : deliveryDate.toDate(), 'end' : storeDate.toDate(), 'content' : content, 'className' : tClass});
                 
                 }
                 
@@ -183,7 +183,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
             _.sortBy(newData, function(v) { return v.start; });
                 
-            //console.log('Function:_dataTransformToTimeline2',newData);  
+            console.log('Function:_dataTransformToTimeline2',newData);  
                 
             return newData;
             
