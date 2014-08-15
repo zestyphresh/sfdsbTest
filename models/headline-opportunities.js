@@ -181,11 +181,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
             });
             
-            _.sortBy(newData, 'start');
-                
-            console.log('Function:_dataTransformToTimeline2',newData);  
-                
-            return newData;
+            return _.sortBy(newData, 'start');
             
         }
     
