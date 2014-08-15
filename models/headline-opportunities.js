@@ -181,7 +181,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                 
             });
             
-            return _(newData).sortBy('start').reverse();
+            return _(newData).sortBy('start').reverse().value();
             
         }
     
