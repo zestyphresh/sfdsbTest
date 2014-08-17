@@ -7,10 +7,9 @@ var MODEL_OPPORTUNITIES = (function($m) {
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
             _data = [],
-            _dataTimeline = [],
-            _dataTimeline2 = [],
-            _dataMonthlySales = [];
-        ;
+            _dataFiltered = [];
+
+        var getData = {};
 
         var _filters = 
             [{'field' : 'account', 'title' : 'Account', 'values' : []},
@@ -38,13 +37,11 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     } else {
                         
                         _data = _(result.opps).each(function(v) {
-                            v.uName = v.name + ' (' + v.account + ' ' + _.uniqueId() + ')'; 
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         })
                         .value();
                         
                         _dataTimeline = _dataTransformToTimeline(_data);
-                        _dataTimeline2 = _dataTransformToTimeline2(_data);
                         _dataMonthlySales = _dataTransformToMonthlySales(_data);
                         
                         updateFilters();
@@ -71,19 +68,16 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-        function getDataTimeline() {
-            
-            return _dataTimeline2;
-            
-        }
+        function getDataTimeline() { return _dataTimeline; }
+        
+        getData.filtered = function() { return _data; };
+        getData.timeline = function() { return _dataTransformToTimeline(_data); };
+        getData.monthlySales = function() { return _dataTransformToMonthlySales(_data); };
         
         return { 
             fetch : fetch,
             updateFilters : updateFilters,
-            getData : function() { return _data; },
-            getDataTimeline : getDataTimeline,
-            getDataByWeek : function() { return _dataByWeek; },
-            getDataMonthlySales : function() { return _dataMonthlySales; },
+            getData : getData,
             getFilters : function() { return _filters; }
         };
         
@@ -124,32 +118,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
         }
         
         function _dataTransformToTimeline(originalData) {
-            
-            var newData = [];
-                
-            _(originalData).each(function(d) {
-                
-                var deliveryDate = new moment(d.mDate).subtract('weeks', 4),
-                    storeDate = new moment(d.mDate).add('weeks', 4),
-                    maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
-                    
-                newData.push({'date':deliveryDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
-                newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
-                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Delivery Date', 'opp' : d.uName});
-                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Store Date', 'opp' : d.uName});
-                newData.push({'date':maxDate.format('YYYY-MM-DD'), 'type': 'End Date', 'opp' : d.uName});
-                newData.push({'date':storeDate.format('YYYY-MM-DD'), 'type': 'End Date', 'opp' : d.uName});
-                newData.push({'date':d.mDate.format('YYYY-MM-DD'), 'type': 'Live Date', 'opp' : d.uName});
-                
-            });
-                
-            //console.log('Function:_dataTransformToTimeline',newData);  
-                
-            return newData;
-            
-        }
-        
-        function _dataTransformToTimeline2(originalData) {
             
             var newData = [];
                 

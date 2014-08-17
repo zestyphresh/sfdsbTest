@@ -11,12 +11,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
         ;
 
         //Public vars
-        var chtTimeline, chtSales, tblOpps;
+        var tmlOpps, chtSales, tblOpps;
         
         //Init models
         function init(renderAfter) {
             
-            _models['opps'] = new gblModel['HeadlineOpportunities'];
+            _models['opps'] = new gblModel.HeadlineOpportunities;
 
             Q.all([_models.opps.fetch()]).done(function() {
                 
@@ -35,24 +35,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
 
-            var options = {
-                'maxHeight' : '600px' 
-            };
-            
-            var groups = [
-                {'id' : 'Low Value'},
-                {'id' : 'Medium Value'},
-                {'id' : 'High Value'}
-                
-            ];
-            
-            var container = document.getElementById( _uid + '-charts-opp-timeline');
-            var timeline = new vis.Timeline(container, _models.opps.getDataTimeline(), options);
-            timeline.setGroups(groups);
-
-            //chtTimeline = new CHART.OpportunityTimeline(_uid + '-charts-opp-timeline', _models.opps.getDataTimeline());
-            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getDataMonthlySales());
-            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData());      
+            tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData.timeline());
+            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData.monthlySales());
+            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData.filtered());      
     
             renderFilters(_uid + '-filters');
 
