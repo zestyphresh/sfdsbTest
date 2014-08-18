@@ -6,7 +6,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = [],
+            _dataAll = [],
             _dataFiltered = [];
 
         var getData = {};
@@ -17,7 +17,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
              {'field' : 'owner', 'title' : 'Owner', 'values' : []},
              {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
              {'field' : 'recordType', 'title' : 'Type', 'values' : []},
-             {'field' : 'stage', 'title' : 'Stage', 'values' : []},
+             {'field' : 'stageCategory', 'title' : 'Stage', 'values' : []},
              {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
              {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
             ];
@@ -36,14 +36,11 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
-                        _data = _(result.opps).each(function(v) {
+                        _dataAll = _(result.opps).each(function(v) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                         })
                         .value();
-                        
-                        _dataTimeline = _dataTransformToTimeline(_data);
-                        _dataMonthlySales = _dataTransformToMonthlySales(_data);
-                        
+
                         updateFilters();
 
                         deferred.resolve(true);
@@ -58,6 +55,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
+        function filterData(filter) {
+            _dataFiltered = _.where(_dataAll, filter);
+        }
+        
         function updateFilters(){
             
             _.chain(_filters).each(function(f) { 
@@ -67,12 +68,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
             //console.log(_filters);
             
         }
-        
-        function getDataTimeline() { return _dataTimeline; }
-        
-        getData.filtered = function() { return _data; };
-        getData.timeline = function() { return _dataTransformToTimeline(_data); };
-        getData.monthlySales = function() { return _dataTransformToMonthlySales(_data); };
+
+        getData.filtered = function() { return _dataAll; };
+        getData.timeline = function() { return _dataTransformToTimeline(_dataAll); };
+        getData.monthlySales = function() { return _dataTransformToMonthlySales(_dataAll); };
         
         return { 
             fetch : fetch,
@@ -82,6 +81,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         };
         
         //PRIVATE FUNCTIONS
+        //_dataTransformToMonthlySales
+        //_dataTransformToTimeline
         function _dataTransformToMonthlySales(originalData) {
             
             var maxDate = new moment('2015-12-31', 'YYYY-MM-DD');

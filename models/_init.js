@@ -8,11 +8,6 @@ var MODEL = (function() {
         datesByDate     : {},
         getUniqueValues : function(data, key) {
             return _.chain(data).pluck(key).uniq().value();
-        },
-        createFilters   : function(views, defaults) {
-            result = {};
-            _.chain(views).each(function(v) { result[v] = {}; });
-            return result;
         }
     };
     
