@@ -61,7 +61,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function updateFilters(){
             
-            _.chain(_filters).each(function(f) { 
+            _(_filters).each(function(f) { 
                 f.values = _modpriv.getUniqueValues(_dataAll, f.field);
             });
             
