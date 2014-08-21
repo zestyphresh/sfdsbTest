@@ -11,7 +11,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         ;
 
         //Public vars
-        var tmlOpps, chtSales, tblOppsConfiemd, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost;
+        var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost;
         
         //Init models
         function init(renderAfter) {

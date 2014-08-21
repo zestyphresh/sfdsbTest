@@ -115,7 +115,6 @@ _templates['headline-opportunities'] = ""+
         "            <div id='{{id}}-tables-opp-list-confirmed' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
-        "</div>" +
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
@@ -123,7 +122,6 @@ _templates['headline-opportunities'] = ""+
         "            <div id='{{id}}-tables-opp-list-likely' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
-        "</div>" +
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
@@ -131,7 +129,6 @@ _templates['headline-opportunities'] = ""+
         "            <div id='{{id}}-tables-opp-list-open' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
-        "</div>" +
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
@@ -139,7 +136,6 @@ _templates['headline-opportunities'] = ""+
         "            <div id='{{id}}-tables-opp-list-unlikely' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
-        "</div>" +
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
