@@ -5,6 +5,12 @@ var TABLE_OPPORTUNITIES = (function($t) {
     $t.HeadlineOpportunities = function(id, data) {
         
         var _id = id + '-inner';
+        var glyphs = {'More Likely' : {'glyph' : 'glyphicon-chevron-up', 'cls' : ''}, 
+                      'Less Likely' : {'glyph' : 'glyphicon-chevron-down', 'cls' : ''},
+                      'New' : {'glyph' : 'glyphicon-star', 'cls' : ''},
+                      'No Change' : {'glyph' : '', 'cls' : ''}
+        };
+        var glyphClass = {'Headline' : 'glyph-green', 'Threat' : 'glyph-red'};
         
         $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 9}));
             
@@ -14,7 +20,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
             'paging' : false,
             'info' : false, 
             'searching' : false,
-            'columns' : [{"data": "account", "title": "Account"}, 
+            'columns' : [{"data": "stageCategoryVsPrevious", "title": "Status"},
+                         {"data": "account", "title": "Account"}, 
                          {"data": "recordType", "title": "Type"},
                          {"data": "name", "title": "Name"},
                          {"data": "stage", "title": "Stage"},
@@ -24,7 +31,18 @@ var TABLE_OPPORTUNITIES = (function($t) {
                          {"data": "closeDate", "title": "Date"},
                          {"data": "productCategory", "title": "Category"}
             ],
-            'columnDefs' : [_modpriv.returnDefs([4,5,6], '$0,0', 'alignRight')],
+            'columnDefs' : [_modpriv.returnDefs([5,6,7], '$0,0', 'alignRight'),
+                            { 
+                                targets : [0], 
+                                render : function ( data, type, full, meta ) {
+                                    console.log(full);
+                                    if (type === 'display') {
+                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
+                                    } 
+                                    return data;
+                                }
+                            }
+            ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
 
