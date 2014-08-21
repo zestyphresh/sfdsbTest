@@ -12,7 +12,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
         };
         var glyphClass = {'Headline' : 'glyph-green', 'Threat' : 'glyph-red'};
         
-        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 9}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : 10}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
