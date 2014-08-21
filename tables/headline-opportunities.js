@@ -35,7 +35,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                             { 
                                 targets : [0], 
                                 render : function ( data, type, full, meta ) {
-                                    console.log(full);
+                                    console.log(data, full);
                                     if (type === 'display') {
                                         return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
                                     } 
