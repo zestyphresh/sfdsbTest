@@ -11,7 +11,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         ;
 
         //Public vars
-        var tmlOpps, chtSales, tblOpps;
+        var tmlOpps, chtSales, tblOppsConfiemd, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost;
         
         //Init models
         function init(renderAfter) {
@@ -37,7 +37,11 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
             tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData.timeline());
             chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData.monthlySales());
-            tblOpps = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list', _models.opps.getData.filtered());      
+            tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData.oppsByStageCategory('Confirmed'));
+            tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData.oppsByStageCategory('Likely'));     
+            tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData.oppsByStageCategory('Open'));     
+            tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', _models.opps.getData.oppsByStageCategory('Unlikely'));     
+            tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', _models.opps.getData.oppsByStageCategory('Lost'));     
     
             renderFilters(_uid + '-filters');
 

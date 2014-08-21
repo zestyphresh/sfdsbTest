@@ -111,8 +111,40 @@ _templates['headline-opportunities'] = ""+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity List</div>"+
-        "            <div id='{{id}}-tables-opp-list' class='table-responsive'></div>"+
+        "            <div class='panel-heading'>Opportunity List - Confirmed</div>"+
+        "            <div id='{{id}}-tables-opp-list-confirmed' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        "</div>" +
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity List - Likely</div>"+
+        "            <div id='{{id}}-tables-opp-list-likely' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        "</div>" +
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity List - Open</div>"+
+        "            <div id='{{id}}-tables-opp-list-open' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        "</div>" +
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity List - Unlikely</div>"+
+        "            <div id='{{id}}-tables-opp-list-unlikely' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        "</div>" +
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity List - Lost</div>"+
+        "            <div id='{{id}}-tables-opp-list-lost' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
         "</div>"
