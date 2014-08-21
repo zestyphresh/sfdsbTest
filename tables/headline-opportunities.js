@@ -16,7 +16,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
-            'order' : [[ 1, 'desc' ]],
+            'order' : [[ 2, 'desc' ]],
             'paging' : false,
             'info' : false, 
             'searching' : false,
@@ -31,10 +31,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                          {"data": "closeDate", "title": "Date"},
                          {"data": "productCategory", "title": "Category"}
             ],
-            'columnDefs' : [
+            'columnDefs' : [_modpriv.returnDefs([5,6,7], '$0,0', 'alignRight'),
                             { 
-                                targets : [0], 
-                                render : function ( data, type, full, meta ) {
+                                'targets' : [0], 
+                                'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
                                         return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
