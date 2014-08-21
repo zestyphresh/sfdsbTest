@@ -45,7 +45,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api();
-
+                /*
                 var totalISO = api.column(5).data().reduce(function (a, b) { return a + b; });
                 var totalAnnualised = api.column(6).data().reduce(function (a, b) { return a + b; });
                 var totalWeekly = api.column(7).data().reduce(function (a, b) { return a + b; });
@@ -53,7 +53,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                 $j(api.column(0).footer()).html('Total');
                 $j(api.column(5).footer()).html(numeral(totalISO).format('$0,0'));
                 $j(api.column(6).footer()).html(numeral(totalAnnualised).format('$0,0'));
-                $j(api.column(7).footer()).html(numeral(totalWeekly).format('$0,0'));
+                $j(api.column(7).footer()).html(numeral(totalWeekly).format('$0,0'));*/
             }
         });
 
