@@ -8,7 +8,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
         var glyphs = {'More Likely' : {'glyph' : 'glyphicon-chevron-up', 'cls' : ''}, 
                       'Less Likely' : {'glyph' : 'glyphicon-chevron-down', 'cls' : ''},
                       'New' : {'glyph' : 'glyphicon-star', 'cls' : ''},
-                      'No Change' : {'glyph' : 'glyphicon-star', 'cls' : ''}
+                      'No Change' : {'glyph' : '', 'cls' : ''}
         };
         var glyphClass = {'Headline' : 'glyph-green', 'Threat' : 'glyph-red'};
         
