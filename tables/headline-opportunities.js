@@ -51,7 +51,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
-                                            return f.toGbpWithComparison(data, diff);
+                                            return f.toGbpWithComparison(data, diff, '');
                                         }
                                     } 
                                     return data;
@@ -66,7 +66,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
-                                            return f.toGbpWithComparison(data, diff);
+                                            return f.toGbpWithComparison(data, diff, '');
                                         }
                                     } 
                                     return data;
@@ -81,7 +81,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
-                                            return f.toGbpWithComparison(data, diff);
+                                            return f.toGbpWithComparison(data, diff, '');
                                         }
                                     } 
                                     return data;
@@ -110,14 +110,12 @@ var TABLE_OPPORTUNITIES = (function($t) {
                     
                 var totals = _(data).reduce(function(r, v, k) {
                     
-                    return {'totalISO' : r.iso + v.isoValue, 
-                            'totalAnnualised' : r.annualised + v.annualisedValue, 
-                            'totalWeekly' : r.weekly + v.weeklyValue
+                    return {'iso' : r.iso + v.isoValue, 
+                            'annualised' : r.annualised + v.annualisedValue, 
+                            'weekly' : r.weekly + v.weeklyValue
                     };
                     
                 }, {'iso':0, 'annualised':0, 'weekly':0}); 
-                
-                console.log(totals);
                 
                 //var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
                 //var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
