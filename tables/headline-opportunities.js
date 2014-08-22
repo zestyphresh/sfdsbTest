@@ -127,9 +127,9 @@ var TABLE_OPPORTUNITIES = (function($t) {
                 //$j(api.column(isoCol).footer()).html(numeral(totalISO).format('$0,0'));
                 //$j(api.column(annualisedCol).footer()).html(numeral(totalAnnualised).format('$0,0'));
                 //$j(api.column(weeklyCol).footer()).html(numeral(totalWeekly).format('$0,0'));
-                $j(api.column(isoCol).footer()).html(f.toGBP(totals.iso));
-                $j(api.column(annualisedCol).footer()).html(f.toGBP(totals.annualised));
-                $j(api.column(weeklyCol).footer()).html(f.toGBP(totals.weekly));
+                $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
+                $j(api.column(annualisedCol).footer()).html(f.toGbp(totals.annualised));
+                $j(api.column(weeklyCol).footer()).html(f.toGbp(totals.weekly));
             }
         });
 
