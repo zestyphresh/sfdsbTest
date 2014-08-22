@@ -48,27 +48,56 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return numeral(data).format($0,0)'<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
+                                        var diff = data - full.isoValuePrevious;
+                                        if (diff === 0) {
+                                            return f.toGbp(data);
+                                        } else {
+                                            return f.toGbpWithComparison(data, diff);
+                                        }
                                     } 
                                     return data;
                                 }
                             },
-                                                        { 
-                                'targets' : [0], 
+                            { 
+                                'targets' : [5], 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
+                                        var diff = data - full.annualisedValuePrevious;
+                                        if (diff === 0) {
+                                            return f.toGbp(data);
+                                        } else {
+                                            return f.toGbpWithComparison(data, diff);
+                                        }
                                     } 
                                     return data;
                                 }
                             },
-                                                        { 
-                                'targets' : [0], 
+                            { 
+                                'targets' : [6], 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
+                                        var diff = data - full.weeklyValuePrevious;
+                                        if (diff === 0) {
+                                            return f.toGbp(data);
+                                        } else {
+                                            return f.toGbpWithComparison(data, diff);
+                                        }
+                                    } 
+                                    return data;
+                                }
+                            },
+                            { 
+                                'targets' : [7], 
+                                'render' : function ( data, type, full, meta ) {
+                                    //console.log(data, type, meta, full);
+                                    if (type === 'display') {
+                                        if (closeDate === closeDatePrevious) {
+                                            return closeDate;
+                                        } else {
+                                            return closeDate + '(' + moment(closeDate, 'YYYY-MM-DD').diff(moment(closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
+                                        }
                                     } 
                                     return data;
                                 }
