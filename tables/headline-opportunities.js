@@ -92,10 +92,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        if (closeDate == closeDatePrevious) {
-                                            return closeDate;
+                                        if (data == full.closeDatePrevious) {
+                                            return data;
                                         } else {
-                                            return closeDate + ' (' + moment(closeDate, 'YYYY-MM-DD').diff(moment(closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
+                                            return data + ' (' + moment(data, 'YYYY-MM-DD').diff(moment(full.closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
                                         }
                                     } 
                                     return data;
