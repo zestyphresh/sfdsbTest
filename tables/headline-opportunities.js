@@ -32,8 +32,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
             'info' : false, 
             'searching' : false,
             'columns' : _columns,
-            'columnDefs' : [_modpriv.returnDefs([5,6,7], '$0,0', 'alignRight'),
-                            { 
+            'columnDefs' : [{ 
                                 'targets' : [0], 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
@@ -43,7 +42,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     return data;
                                 }
                             },
-                                                        { 
+                            { 
                                 'targets' : [4], 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
