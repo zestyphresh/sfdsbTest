@@ -1,4 +1,4 @@
-var CONFIG = (function() {
+(function() {
 
     //accounting.js default settings
     accounting.settings = {
