@@ -49,7 +49,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
                                         var diff = data - full.isoValuePrevious;
-                                        if (diff === 0) {
+                                        if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
                                             return f.toGbpWithComparison(data, diff);
@@ -64,7 +64,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
                                         var diff = data - full.annualisedValuePrevious;
-                                        if (diff === 0) {
+                                        if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
                                             return f.toGbpWithComparison(data, diff);
@@ -79,7 +79,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
                                         var diff = data - full.weeklyValuePrevious;
-                                        if (diff === 0) {
+                                        if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
                                             return f.toGbpWithComparison(data, diff);
@@ -93,10 +93,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        if (closeDate === closeDatePrevious) {
+                                        if (closeDate == closeDatePrevious) {
                                             return closeDate;
                                         } else {
-                                            return closeDate + '(' + moment(closeDate, 'YYYY-MM-DD').diff(moment(closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
+                                            return closeDate + ' (' + moment(closeDate, 'YYYY-MM-DD').diff(moment(closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
                                         }
                                     } 
                                     return data;
