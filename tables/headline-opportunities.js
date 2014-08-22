@@ -107,15 +107,27 @@ var TABLE_OPPORTUNITIES = (function($t) {
                     isoCol = 4,
                     annualisedCol = 5,
                     weeklyCol = 6;
+                    
+                var totals = _(data).reduce(function(r, v, k) {
+                    
+                    return {'totalISO' : r.iso + v.isoValue, 
+                            'totalAnnualised' : r.annualised + v.annualisedValue, 
+                            'totalWeekly' : r.weekly + v.weeklyValue
+                    };
+                    
+                }, {'iso':0, 'annualised':0, 'weekly':0}).value();    
                 
-                var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
-                var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
-                var totalWeekly = api.column(weeklyCol).data().reduce(function (a, b) { return a + b; });
+                //var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
+                //var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
+                //var totalWeekly = api.column(weeklyCol).data().reduce(function (a, b) { return a + b; });
                     
                 $j(api.column(0).footer()).html('Total');
-                $j(api.column(isoCol).footer()).html(numeral(totalISO).format('$0,0'));
-                $j(api.column(annualisedCol).footer()).html(numeral(totalAnnualised).format('$0,0'));
-                $j(api.column(weeklyCol).footer()).html(numeral(totalWeekly).format('$0,0'));
+                //$j(api.column(isoCol).footer()).html(numeral(totalISO).format('$0,0'));
+                //$j(api.column(annualisedCol).footer()).html(numeral(totalAnnualised).format('$0,0'));
+                //$j(api.column(weeklyCol).footer()).html(numeral(totalWeekly).format('$0,0'));
+                $j(api.column(isoCol).footer()).html(f.toGBP(totals.iso));
+                $j(api.column(annualisedCol).footer()).html(f.toGBP(totals.annualised));
+                $j(api.column(weeklyCol).footer()).html(f.toGBP(totals.weekly));
             }
         });
 
