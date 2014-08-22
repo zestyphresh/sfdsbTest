@@ -115,7 +115,9 @@ var TABLE_OPPORTUNITIES = (function($t) {
                             'totalWeekly' : r.weekly + v.weeklyValue
                     };
                     
-                }, {'iso':0, 'annualised':0, 'weekly':0}).value();    
+                }, {'iso':0, 'annualised':0, 'weekly':0}); 
+                
+                console.log(totals);
                 
                 //var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
                 //var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
