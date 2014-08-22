@@ -107,7 +107,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                 var api = this.api(),
                     isoCol = 4,
                     annualisedCol = 5,
-                    wekklyCol = 6;
+                    weeklyCol = 6;
                 
                 var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
                 var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
