@@ -1,7 +1,24 @@
-var CONFIG = {
-    users : {
-        '005b0000000iM4W' : { 'name' : 'Martin Barker', 'views' : {} },
-        '005b0000000ikVs' : { 'name' : 'Phil Adams', 'views' : {} },
-        '005b0000000ikcT' : { 'name' : 'Jon Langford', 'views' : {} }
-    }
-};
+var CONFIG = (function() {
+
+    //accounting.js default settings
+    accounting.settings = {
+    	currency: {
+    		symbol : "£",
+    		decimal : ".",
+    		thousand : ",",
+    		precision : 0
+    	},
+    	number: {
+    		precision : 0,
+    		thousand : ",",
+    		decimal : "."
+    	}
+    };
+    
+    accounting.settings.currency.format = {
+    	pos : '%s%v',   // £1.00
+    	neg : '-%s%v', // £1.00
+    	zero : '%s--'  // £--
+    };
+
+})();
