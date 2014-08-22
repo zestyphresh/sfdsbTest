@@ -116,15 +116,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
                     };
                     
                 }, {'iso':0, 'annualised':0, 'weekly':0}); 
-                
-                //var totalISO = api.column(isoCol).data().reduce(function (a, b) { return a + b; });
-                //var totalAnnualised = api.column(annualisedCol).data().reduce(function (a, b) { return a + b; });
-                //var totalWeekly = api.column(weeklyCol).data().reduce(function (a, b) { return a + b; });
-                    
+
                 $j(api.column(0).footer()).html('Total');
-                //$j(api.column(isoCol).footer()).html(numeral(totalISO).format('$0,0'));
-                //$j(api.column(annualisedCol).footer()).html(numeral(totalAnnualised).format('$0,0'));
-                //$j(api.column(weeklyCol).footer()).html(numeral(totalWeekly).format('$0,0'));
                 $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
                 $j(api.column(annualisedCol).footer()).html(f.toGbp(totals.annualised));
                 $j(api.column(weeklyCol).footer()).html(f.toGbp(totals.weekly));
@@ -133,8 +126,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
 
         return { 
             reload : function(data) { table.clear().rows.add(data).draw(); } 
-        };  
-                                
+        }; 
+        
     };
     
     return $t;

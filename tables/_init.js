@@ -23,6 +23,16 @@ var TABLE = (function() {
                 className : cssClass               
             };
     
+        },
+        
+        oppThreatsNegative : function(data, keys) {
+            _.each(data, function (v, k) {
+                if (v.recordType === 'Threat') {
+                    _.each(keys, function(key) {
+                        v[key] = -v[key];
+                    });
+                }
+            });
         }
     
     };
