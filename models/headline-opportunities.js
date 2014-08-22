@@ -88,7 +88,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         getData.filtered = function(threatsNegative) { return _dataAll; };
         getData.timeline = function() { return _dataTransformToTimeline(_dataAll); };
         getData.monthlySales = function() { return _dataTransformToMonthlySales(_dataAll); };
-        getData.oppsByStageCategory = function(stage) { return _.filter(_convertThreatsToNegative(_dataAll), {'stageCategory' : stage}); };
+        getData.oppsByStageCategory = function(stage) { return _.filter(_dataAll, {'stageCategory' : stage}); };
         
         return { 
             fetch : fetch,
