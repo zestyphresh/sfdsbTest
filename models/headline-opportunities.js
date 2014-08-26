@@ -125,7 +125,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     v.thisYearValue = -v.thisYearValue;
                     v.thisYearValuePrevious = -v.thisYearValuePrevious;
                 }
-            }).value();
+            });
             
         }
         
