@@ -114,7 +114,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function _convertThreatsToNegative(data) {
 
-            return _([]).assign(data).each(function(v) {
+            return _.each(_.cloneDeep(data), function(v) {
                 if (v.recordType === 'Threat') {
                     v.isoValue = -v.isoValue;
                     v.isoValuePrevious = -v.isoValuePrevious;
@@ -123,7 +123,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     v.weeklyValue = -v.weeklyValue;
                     v.weeklyValuePrevious = -v.weeklyValuePrevious;
                     v.thisYearValue = -v.thisYearValue;
-                    v.thsiYearValuePrevious = -v.thisYearValuePrevious;
+                    v.thisYearValuePrevious = -v.thisYearValuePrevious;
                 }
             }).value();
             
