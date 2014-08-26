@@ -5,18 +5,19 @@ var CHART_OPPORTUNITIES = (function($c) {
     $c.OpportunitySalesByCategory = function(id, data) {
         
         var svg = dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "60px");
+        var chart = new dimple.chart(svg, data).setMargins("60px", "30px", "40px", "60px");
                 
         var xAxis = chart.addMeasureAxis('x', 'thisYearValue');
             xAxis.title = 'Value This Year (£)';
                 
         var yAxis = chart.addCategoryAxis('y', 'stageCategory');
             yAxis.title = 'Stage';
-            yAxis.addOrderRule(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost']);
+            yAxis.addOrderRule(['Lost', 'Unlikely', 'Open', 'Likely', 'Confirmed']);
                
         var series = chart.addSeries('recordType', dimple.plot.bar); 
+            series.stacked = false;
 
-        var legend = chart.addLegend("50px", "-20px", "100%", "-30px");        
+        var legend = chart.addLegend("60px", "-20px", "100%", "-30px");        
                        
         series.getTooltipText = function (e) {
             return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
