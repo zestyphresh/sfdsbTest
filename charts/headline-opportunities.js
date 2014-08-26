@@ -12,7 +12,7 @@ var CHART_OPPORTUNITIES = (function($c) {
                 
         var yAxis = chart.addCategoryAxis('y', 'stageCategory');
             yAxis.title = 'Stage';
-            //yAxis.addOrderRule(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost']);
+            yAxis.addOrderRule(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost']);
                
         var series = chart.addSeries('recordType', dimple.plot.bar); 
 

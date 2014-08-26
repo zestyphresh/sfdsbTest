@@ -76,11 +76,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function getData2(format, filter, threatsNegative) {
             
-            //var result = _.size(filter)
-            
-            
-            
-            var result = _.filter(_dataAll, filter);
+            var result = _.size(filter) > 0 ? _.filter(_dataAll, filter) : _dataAll;
             
             if (threatsNegative) result = _convertThreatsToNegative(result);
             
