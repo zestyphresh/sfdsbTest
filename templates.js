@@ -95,7 +95,7 @@ _templates['headline-opportunities'] = ""+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
         ""+ 
-        "    <div class='col-xs-12 col-md-12'>"+
+        "    <div class='col-xs-12 col-md-6'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Opportunity Buckets</span>" +
@@ -105,7 +105,7 @@ _templates['headline-opportunities'] = ""+
         "        </div>"+ 
         "    </div>"+
         ""+  
-        "    <div class='col-xs-12 col-md-12'>"+
+        "    <div class='col-xs-12 col-md-6'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Opportunity Buckets - Change</span>" +
