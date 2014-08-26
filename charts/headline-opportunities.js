@@ -10,12 +10,11 @@ var CHART_OPPORTUNITIES = (function($c) {
         var xAxis = chart.addMeasureAxis('x', 'thisYearValue');
             xAxis.title = 'Value This Year (£)';
                 
-        var yAxis = chart.addCategoryAxis('y', 'stageCategory');
+        var yAxis = chart.addCategoryAxis('y', ['stageCategory', 'recordType']);
             yAxis.title = 'Stage';
             yAxis.addOrderRule(['Lost', 'Unlikely', 'Open', 'Likely', 'Confirmed']);
                
         var series = chart.addSeries('recordType', dimple.plot.bar); 
-            series.stacked = false;
 
         var legend = chart.addLegend("60px", "-20px", "100%", "-30px");        
                        
