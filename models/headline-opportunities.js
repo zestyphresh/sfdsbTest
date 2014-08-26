@@ -58,7 +58,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function _convertThreatsToNegative(data) {
 
-            var result = _([]).assign(data).each(function(v) {
+            return _([]).assign(data).each(function(v) {
                 if (v.recordType === 'Threat') {
                     v.isoValue = -v.isoValue;
                     v.isoValuePrevious = -v.isoValuePrevious;
@@ -66,11 +66,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     v.annualisedValuePrevious = -v.annualisedValuePrevious;
                     v.weeklyValue = -v.weeklyValue;
                     v.weeklyValuePrevious = -v.weeklyValuePrevious;
+                    v.thisYearValue = -v.thisYearValue;
+                    v.thsiYearValuePrevious = -v.thisYearValuePrevious;
                 }
             }).value();
-            
-            console.log(result);
-            return result;
             
         }
         
@@ -87,14 +86,35 @@ var MODEL_OPPORTUNITIES = (function($m) {
             //console.log(_filters);
             
         }
+        
+        function getData2(format, filter, threatsNegative) {
+            
+            var result = _.filter(_dataAll, filter);
+            
+            if (threatsNegative) result = _convertThreatsToNegative(result);
+            
+            switch (format) {
+                case 'list':
+                    return result;
+                    break;
+                case 'monthlySales':
+                    return _dataTransformToMonthlySales(result);
+                    break;
+                case 'timeline':
+                    return _dataTransformToTimeline(result);
+                    break;
+            }
+            
+        }
 
         getData.filtered = function() { return _dataAll; };
         getData.timeline = function() { return _dataTransformToTimeline(_dataAll); };
-        getData.monthlySales = function() { return _dataTransformToMonthlySales(_dataAll); };
+        getData.monthlySales = function() { return _.filter(_dataTransformToMonthlySales(_dataAll), {'stageCategory' : stage}); };
         getData.oppsByStageCategory = function(stage) { return _.filter(_convertThreatsToNegative(_dataAll), {'stageCategory' : stage}); };
         
         return { 
             fetch : fetch,
+            getData2 : getData2,
             updateFilters : updateFilters,
             getData : getData,
             getFilters : function() { return _filters; }
