@@ -67,7 +67,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     v.weeklyValue = -v.weeklyValue;
                     v.weeklyValuePrevious = -v.weeklyValuePrevious;
                 }
-            }).values();
+            }).value();
             
             console.log(result);
             return result;
