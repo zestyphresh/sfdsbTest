@@ -16,9 +16,9 @@ var TABLE_OPPORTUNITIES = (function($t) {
                         {"data": "account", "title": "Account"},                //1
                         {"data": "recordType", "title": "Type"},                //2
                         {"data": "name", "title": "Name"},                      //3
-                        {"data": "isoValue", "title": "ISO"},                   //4
+                        {"data": "thisYearValue", "title": "This Year"},        //4
                         {"data": "annualisedValue", "title": "Annualised"},     //5
-                        {"data": "weeklyValue", "title": "Weekly"},             //6
+                        {"data": "isoValue", "title": "ISO"},                   //6
                         {"data": "closeDate", "title": "Date"},                 //7
                         {"data": "productCategory", "title": "Category"}        //8
         ]
@@ -43,11 +43,11 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 }
                             },
                             { 
-                                'targets' : [4], 
+                                'targets' : [4], //thisYearValue
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        var diff = data - full.isoValuePrevious;
+                                        var diff = data - full.thisYearValuePrevious;
                                         if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
@@ -58,7 +58,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 }
                             },
                             { 
-                                'targets' : [5], 
+                                'targets' : [5], //annualisedValue 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
@@ -73,11 +73,11 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 }
                             },
                             { 
-                                'targets' : [6], 
+                                'targets' : [6], //isoValue 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        var diff = data - full.weeklyValuePrevious;
+                                        var diff = data - full.isoValuePrevious;
                                         if (diff == 0) {
                                             return f.toGbp(data);
                                         } else {
@@ -104,23 +104,23 @@ var TABLE_OPPORTUNITIES = (function($t) {
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api(),
-                    isoCol = 4,
+                    thisYearCol = 4,
                     annualisedCol = 5,
-                    weeklyCol = 6;
+                    isoCol = 6;
                     
                 var totals = _(data).reduce(function(r, v, k) {
                     
-                    return {'iso' : r.iso + v.isoValue, 
+                    return {'thisYear' : r.thisYear + v.thisYearValue, 
                             'annualised' : r.annualised + v.annualisedValue, 
-                            'weekly' : r.weekly + v.weeklyValue
+                            'iso' : r.iso + v.isoValue
                     };
                     
-                }, {'iso':0, 'annualised':0, 'weekly':0}); 
+                }, {'thisYear':0, 'annualised':0, 'iso':0}); 
 
                 $j(api.column(0).footer()).html('Total');
-                $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
+                $j(api.column(thisYearCol).footer()).html(f.toGbp(totals.thisYear));
                 $j(api.column(annualisedCol).footer()).html(f.toGbp(totals.annualised));
-                $j(api.column(weeklyCol).footer()).html(f.toGbp(totals.weekly));
+                $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
             }
         });
 

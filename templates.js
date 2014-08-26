@@ -94,20 +94,6 @@ _templates['headline-opportunities'] = ""+
         "    <div class='col-xs-12'>"+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
-        ""+
-        "    <div class='col-xs-12'>"+
-        "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity Timeline</div>"+
-        "            <div id='{{id}}-charts-opp-timeline' class='minChartDims3'></div>"+
-        "        </div>"+
-        "    </div>"+
-        ""+    
-        "    <div class='col-xs-12'>"+
-        "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity Sales</div>"+
-        "            <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>"+
-        "        </div>"+ 
-        "    </div>"+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
@@ -121,29 +107,55 @@ _templates['headline-opportunities'] = ""+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity List - Likely</div>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Likley</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-likely'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
         "            <div id='{{id}}-tables-opp-list-likely' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity List - Open</div>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Open</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-open'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
         "            <div id='{{id}}-tables-opp-list-open' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity List - Unlikely</div>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Unlikley</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-unlikley'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
         "            <div id='{{id}}-tables-opp-list-unlikely' class='table-responsive'></div>"+
         "        </div>"+ 
         "    </div>"+
         ""+    
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity List - Lost</div>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Lost</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-lost'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
         "            <div id='{{id}}-tables-opp-list-lost' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity Timeline</div>"+
+        "            <div id='{{id}}-charts-opp-timeline' class='minChartDims3'></div>"+
+        "        </div>"+
+        "    </div>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity Sales</div>"+
+        "            <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>"+
         "        </div>"+ 
         "    </div>"+
         "</div>"

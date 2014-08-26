@@ -56,22 +56,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-        function _convertThreatsToNegative(data) {
 
-            return _([]).assign(data).each(function(v) {
-                if (v.recordType === 'Threat') {
-                    v.isoValue = -v.isoValue;
-                    v.isoValuePrevious = -v.isoValuePrevious;
-                    v.annualisedValue = -v.annualisedValue;
-                    v.annualisedValuePrevious = -v.annualisedValuePrevious;
-                    v.weeklyValue = -v.weeklyValue;
-                    v.weeklyValuePrevious = -v.weeklyValuePrevious;
-                    v.thisYearValue = -v.thisYearValue;
-                    v.thsiYearValuePrevious = -v.thisYearValuePrevious;
-                }
-            }).value();
-            
-        }
         
         function filterData(filter) {
             _dataFiltered = _.where(_dataAll, filter);
@@ -121,8 +106,28 @@ var MODEL_OPPORTUNITIES = (function($m) {
         };
         
         //PRIVATE FUNCTIONS
+        //_convertThreatsToNegative
         //_dataTransformToMonthlySales
         //_dataTransformToTimeline
+        
+        function _convertThreatsToNegative(data) {
+
+            return _([]).assign(data).each(function(v) {
+                if (v.recordType === 'Threat') {
+                    v.isoValue = -v.isoValue;
+                    v.isoValuePrevious = -v.isoValuePrevious;
+                    v.annualisedValue = -v.annualisedValue;
+                    v.annualisedValuePrevious = -v.annualisedValuePrevious;
+                    v.weeklyValue = -v.weeklyValue;
+                    v.weeklyValuePrevious = -v.weeklyValuePrevious;
+                    v.thisYearValue = -v.thisYearValue;
+                    v.thsiYearValuePrevious = -v.thisYearValuePrevious;
+                }
+            }).value();
+            
+        }
+        
+    
         function _dataTransformToMonthlySales(originalData) {
             
             var maxDate = new moment('2015-12-31', 'YYYY-MM-DD');
@@ -157,6 +162,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             return newData;
             
         }
+        
         
         function _dataTransformToTimeline(originalData) {
             
