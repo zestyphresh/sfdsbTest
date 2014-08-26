@@ -14,13 +14,14 @@ var TABLE_OPPORTUNITIES = (function($t) {
         
         var _columns = [{"data": "stageCategoryVsPrevious", "title": "Status"}, //0
                         {"data": "account", "title": "Account"},                //1
-                        {"data": "recordType", "title": "Type"},                //2
-                        {"data": "name", "title": "Name"},                      //3
-                        {"data": "thisYearValue", "title": "This Year"},        //4
-                        {"data": "annualisedValue", "title": "Annualised"},     //5
-                        {"data": "isoValue", "title": "ISO"},                   //6
-                        {"data": "closeDate", "title": "Date"},                 //7
-                        {"data": "productCategory", "title": "Category"}        //8
+                        {"data": "owner", "title": "Owner"},                    //2
+                        {"data": "recordType", "title": "Type"},                //3
+                        {"data": "name", "title": "Name"},                      //4
+                        {"data": "thisYearValue", "title": "This Year"},        //5
+                        {"data": "annualisedValue", "title": "Annualised"},     //6
+                        {"data": "isoValue", "title": "ISO"},                   //7
+                        {"data": "closeDate", "title": "Date"},                 //8
+                        {"data": "productCategory", "title": "Category"}        //9
         ]
         
         $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
@@ -43,7 +44,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 }
                             },
                             { 
-                                'targets' : [4], //thisYearValue
+                                'targets' : [5], //thisYearValue
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
@@ -56,10 +57,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     } 
                                     return data;
                                 },
-                                'className' : text-right
+                                'className' : 'text-right'
                             },
                             { 
-                                'targets' : [5], //annualisedValue 
+                                'targets' : [6], //annualisedValue 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
@@ -72,10 +73,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     } 
                                     return data;
                                 },
-                                'className' : text-right
+                                'className' : 'text-right'
                             },
                             { 
-                                'targets' : [6], //isoValue 
+                                'targets' : [7], //isoValue 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
@@ -88,10 +89,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     } 
                                     return data;
                                 },
-                                'className' : text-right
+                                'className' : 'text-right'
                             },
                             { 
-                                'targets' : [7], 
+                                'targets' : [8], 
                                 'render' : function ( data, type, full, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
@@ -103,14 +104,14 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                     } 
                                     return data;
                                 },
-                                'className' : text-right
+                                'className' : 'text-right'
                             }
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
                 var api = this.api(),
-                    thisYearCol = 4,
-                    annualisedCol = 5,
-                    isoCol = 6;
+                    thisYearCol = 5,
+                    annualisedCol = 6,
+                    isoCol = 7;
                     
                 var totals = _(data).reduce(function(r, v, k) {
                     
