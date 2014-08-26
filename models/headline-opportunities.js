@@ -43,6 +43,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value();
 
                         updateFilters();
+                        
+                        console.log(_dataAll);
 
                         deferred.resolve(true);
                         
