@@ -55,7 +55,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         }
                                     } 
                                     return data;
-                                }
+                                },
+                                'className' : text-right
                             },
                             { 
                                 'targets' : [5], //annualisedValue 
@@ -70,7 +71,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         }
                                     } 
                                     return data;
-                                }
+                                },
+                                'className' : text-right
                             },
                             { 
                                 'targets' : [6], //isoValue 
@@ -85,7 +87,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         }
                                     } 
                                     return data;
-                                }
+                                },
+                                'className' : text-right
                             },
                             { 
                                 'targets' : [7], 
@@ -99,7 +102,8 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         }
                                     } 
                                     return data;
-                                }
+                                },
+                                'className' : text-right
                             }
             ],
             'footerCallback' : function (tfoot, data, start, end, display) {
