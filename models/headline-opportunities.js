@@ -58,7 +58,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         function _convertThreatsToNegative(data) {
 
-            var result =  _(data).each(function(v) {
+            var result =  _({}).assign(data).each(function(v) {
                 if (v.recordType === 'Threat') {
                     v.isoValue = -v.isoValue;
                     v.isoValuePrevious = -v.isoValuePrevious;
@@ -67,7 +67,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                     v.weeklyValue = -v.weeklyValue;
                     v.weeklyValuePrevious = -v.weeklyValuePrevious;
                 }
-            }).values();
+            });
             
             console.log(result);
             return result;
