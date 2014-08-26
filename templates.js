@@ -94,7 +94,27 @@ _templates['headline-opportunities'] = ""+
         "    <div class='col-xs-12'>"+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
-        ""+    
+        ""+ 
+        "    <div class='col-xs-12 col-md-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity Buckets</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-charts-opp-buckets'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-charts-opp-buckets' class='minChartDims1'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+  
+        "    <div class='col-xs-12 col-md-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity Buckets - Change</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-charts-opp-buckets-change'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-charts-opp-buckets-change' class='minChartDims1'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+  
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +

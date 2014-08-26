@@ -2,40 +2,33 @@ var CHART_OPPORTUNITIES = (function($c) {
     
     var _priv = $c._priv;
     
-    $c.OpportunityTimeline = function(id, data) {  
+    $c.OpportunitySalesByCategory = function(id, data) {
         
-        var svg =  dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("230px", "30px", "30px", "40px");
-        
-        var xAxis = chart.addTimeAxis('x', 'date', '%Y-%m-%d', '%Y-%m-%d');
-            xAxis.title = 'Date';
-            xAxis.addOrderRule('date');
+        var svg = dimple.newSvg('#' + id, '100%', '100%');
+        var chart = new dimple.chart(svg, data).setMargins("140px", "30px", "40px", "60px");
                 
-        var yAxis = chart.addCategoryAxis('y', 'opp');
-            yAxis.title = null;
-            yAxis.addOrderRule('date');
-             
-        var series = chart.addSeries(['opp', 'type'], dimple.plot.line);   
-            series.lineMarkers = false;
-            series.lineWeight = 9;
+        var xAxis = chart.addMeasureAxis('x', 'thisYearValue');
+            xAxis.title = 'Value This Year (£)';
+                
+        var yAxis = chart.addCategoryAxis('y', 'stageCategory');
+            yAxis.title = 'Stage';
+            yAxis.addOrderRule(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost']);
+               
+        var series = chart.addSeries('recordType', dimple.plot.bar); 
 
+        var legend = chart.addLegend("50px", "-20px", "100%", "-30px");        
+                       
         series.getTooltipText = function (e) {
-            return ['(' + e.cx + ')'];
-        };  
-
-        chart.assignColor("Live Date", "LimeGreen", "LimeGreen", 0.75);   
-        chart.assignColor("Delivery Date", "LightSkyBlue", "LightSkyBlue", 0.75);   
-        chart.assignColor("Store Date", "YellowGreen", "YellowGreen", 0.75);   
-        chart.assignColor("End Date", "Gainsboro", "Gainsboro", 0.75);   
-                
+            return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
+        };        
+           
         chart.draw();
-
+                
         function reload(data) { chart.data = data; chart.draw(); }
         function resize() { chart.draw(); }
 
-        return { reload : reload, resize : resize };              
-                           
-    };
+        return { reload : reload, resize : resize };   
+    }
     
     $c.OpportunitySales = function(id, data) {
         
