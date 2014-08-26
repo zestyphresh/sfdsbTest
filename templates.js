@@ -113,7 +113,7 @@ _templates['headline-opportunities'] = ""+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Opportunity List - Confirmed</span>" +
-        "                <a class='pull-right' data-toggle='collapse' data-target='{{id}}-tables-opp-list-confirmed'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "                <button class='btn btn-default pull-right' data-toggle='collapse' data-target='{{id}}-tables-opp-list-confirmed'><span class='glyphicon glyphicon-plus'></span></button>" +
         "            </div>"+
         "            <div id='{{id}}-tables-opp-list-confirmed' class='table-responsive'></div>"+
         "        </div>"+ 
