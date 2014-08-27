@@ -39,6 +39,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //})
                         //.value());
                         
+                        console.log()
                         _data = crossfilter(result.opps);
 
                         dims['stageCategory'] = _data.dimension('stageCategory');
