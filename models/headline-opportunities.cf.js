@@ -19,6 +19,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var currentFilters = {'accountSector' : 'all'};
         
+        var val1, val2, val3;
+        
         function fetch(callback) {
             
             var deferred = Q.defer();
@@ -41,11 +43,14 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data = crossfilter(result.opps);
 
-                        dims['stageCategory'] = _data.dimension(function(d) { return d.stageCategory; });
+                        dims['stageCategory'] = _data.dimension(function(d) { return d.stageCategory + '/' + d.recordType; });
                         dims['owner'] = _data.dimension(function(d) { return d.owner; });
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
                         
-                        console.log(dims);
+                        val1 = dims['stageCategory'].group().reduceSum(function(d) { return d.thisYearValue; });
+                        
+                        console.log(val1);
+                        
 
                         //updateFilters();
 
