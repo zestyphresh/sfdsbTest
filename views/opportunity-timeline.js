@@ -45,7 +45,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
              composite
                 .width(768)
                 .height(480)
-                .x(d3.scale.linear().domain([0,20]))
+                .x(d3.scale.linear().domain([0,10000000]))
                 .yAxisLabel("The Y Axis")
                 .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
                 .renderHorizontalGridLines(true)
