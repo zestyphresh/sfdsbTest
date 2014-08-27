@@ -41,8 +41,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             dcchttest = dc.seriesChart('#' + _uid + '-charts-opp-buckets');
             
              dcchttest
-                .width()
-                .height()
                 .chart(dc.rowChart)
                 .x(d3.scale.linear().domain([0,1000000]))
                 .brushOn(false)
