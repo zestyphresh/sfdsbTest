@@ -38,29 +38,19 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var composite = dc.compositeChart('#' + _uid + '-charts-opp-buckets');
+            var composite = dc.rowChart('#' + _uid + '-charts-opp-buckets');
             
             console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
             
              composite
                 .width(768)
                 .height(480)
-                .x(d3.scale.linear().domain([0,10000000]))
-                .yAxisLabel("The Y Axis")
-                .legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
-                .renderHorizontalGridLines(true)
-                .compose([
-                    dc.rowChart(composite)
-                        .dimension(_models.opps2.val1()[0])
-                        .colors('red')
-                        .group(_models.opps2.val1()[1], "Top Line"),
-                    dc.rowChart(composite)
-                        .dimension(_models.opps2.val1()[0])
-                        .colors('blue')
-                        .group(_models.opps2.val1()[1], "Bottom Line")
-                    ])
+                .x(d3.scale.linear().domain([0,100000]))
                 .brushOn(false)
-            .render();
+                .yAxisLabel("This is the Y Axis!")
+                .dimension(_models.opps2.val1()[0])
+                .group( _models.opps2.val1()[1]);
+            composite.render();
 
             //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
