@@ -6,11 +6,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data = crossfilter();
+            _data;
             
         var dims = {};
         
-
         var _filters = 
             [{'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
              {'field' : 'owner', 'title' : 'Owner', 'values' : []},
@@ -40,7 +39,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //})
                         //.value());
                         
-                        _data.add(result.opps);
+                        _data = crossfilter(result.opps);
 
                         dims['stageCategory'] = _data.dimension('stageCategory');
                         dims['owner'] = _data.dimension('owner');
