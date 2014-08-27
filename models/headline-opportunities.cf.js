@@ -48,7 +48,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
                         
                         var headlineByCategory = dims.stageCategory.filter('Headline');
-                        var threatByCategory = dims.stageCategory.filter('Headline');
+                        var threatByCategory = dims.stageCategory.filter('Threat');
 
                         console.log(headlineByCategory.group().all());
                         console.log(threatByCategory.group().all());
