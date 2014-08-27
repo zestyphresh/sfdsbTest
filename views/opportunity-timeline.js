@@ -16,10 +16,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Init models
         function init(renderAfter) {
             
-            _models['opps'] = new gblModel.HeadlineOpportunities;
+            //_models['opps'] = new gblModel.HeadlineOpportunities;
             _models['opps2'] = new gblModel.HeadlineOpportunitiesCf;
+            
+            //_models.opps.fetch(), 
 
-            Q.all([_models.opps.fetch(), _models.opps2.fetch()]).done(function() {
+            Q.all([_models.opps2.fetch()]).done(function() {
                 
                 _loaded = true;
 
