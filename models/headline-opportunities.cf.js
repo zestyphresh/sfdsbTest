@@ -48,7 +48,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
                         
                         val1 = dims.stageCategoryType.group().reduceSum(function(d) { return d.thisYearValue; });
-                        console.log(val1);
+                        console.log(val1.all());
                         
 
                         //updateFilters();
