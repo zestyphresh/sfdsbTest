@@ -36,7 +36,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data.add(_(result.opps).each(function(v) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
-                            v.mDatePrevious = moment(v.closeDatePrevious, 'YYY-MM-DD');
+                            v.mDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
                         })
                         .value());
 
