@@ -43,8 +43,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
             
              dcchttest
-                .chart(dc.rowChart)
+                .chart(function(c) { return dc.lineChart(c).interpolate('basis'); })
                 .x(d3.scale.linear().domain([0,1000000]))
+                .brushOn(false)
                 .yAxisLabel("Stage")
                 .xAxisLabel("Value")
                 .elasticY(true)
