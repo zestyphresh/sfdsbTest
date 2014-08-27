@@ -46,7 +46,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 .width(300)
                 .chart(function(c) { return dc.rowChart(c); })
                 .x(d3.scale.linear().domain([0,1000000]))
-                .brushOn(false)
+                //.brushOn(false)
                 .yAxisLabel("Stage")
                 .xAxisLabel("Value")
                 .elasticY(true)
