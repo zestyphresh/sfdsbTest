@@ -38,7 +38,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            composite = dc.compositeChart('#' + _uid + '-charts-opp-buckets');
+            var composite = dc.compositeChart('#' + _uid + '-charts-opp-buckets');
             
             console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
             
