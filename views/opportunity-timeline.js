@@ -53,13 +53,11 @@ var VIEW_OPPORTUNITIES = (function($v) {
                     dc.rowChart(composite)
                         .dimension(_models.opps2.val1()[0])
                         .colors('red')
-                        .group(_models.opps2.val1()[1], "Top Line")
-                        .dashStyle([2,2]),
+                        .group(_models.opps2.val1()[1], "Top Line"),
                     dc.rowChart(composite)
                         .dimension(_models.opps2.val1()[0])
                         .colors('blue')
                         .group(_models.opps2.val1()[1], "Bottom Line")
-                        .dashStyle([5,5])
                     ])
                 .brushOn(false)
             .render();
