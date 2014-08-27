@@ -55,7 +55,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 .keyAccessor(function(d) {return d.key[0];})
                 .valueAccessor(function(d) {return d.value;});
             dcchttest.yAxis().tickFormat(function(d) {return d3.format(',f');});
-        //    dcchttest.margins().left += 40;
+            dcchttest.margins().left += 40;
             dc.renderAll();
 
             //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
