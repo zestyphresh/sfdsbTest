@@ -44,9 +44,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
              dcchttest
                 .width(300)
-                .chart(function(c) { return dc.rowChart(c); })
+                .chart(function(c) { return dc.barChart(c); })
                 .x(d3.scale.linear().domain([0,1000000]))
-                //.brushOn(false)
+                .brushOn(false)
                 .yAxisLabel("Stage")
                 .xAxisLabel("Value")
                 .elasticY(true)
