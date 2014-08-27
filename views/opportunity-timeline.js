@@ -43,8 +43,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
             
              composite
-                .width(768)
-                .height(480)
+                .minWidth(400)
                 .x(d3.scale.linear().domain([0,100000]))
                 .dimension(_models.opps2.val1()[0])
                 .group( _models.opps2.val1()[1]);
