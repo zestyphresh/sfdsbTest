@@ -5,8 +5,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
     $m.HeadlineOpportunitiesCf = function(){
         
         var _modelId = 'a0Mb0000005LPl5',
-            _uid = _.uniqueId(_modelId + '-'),
-            _data = crossfilter();
+            _uid = _.uniqueId(_modelId + '-')
+        ;
+        
+        var _data;
             
         var dims = {};
         
@@ -34,7 +36,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
-                        _data.add(_(result.opps).each(function(v) {
+                        _data = crossfilter(_(result.opps).each(function(v) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                             v.mDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
                         })
