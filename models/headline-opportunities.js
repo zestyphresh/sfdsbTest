@@ -8,19 +8,15 @@ var MODEL_OPPORTUNITIES = (function($m) {
             _uid = _.uniqueId(_modelId + '-'),
             _dataAll = [],
             _dataFiltered = [];
-
-        var getData = {};
-
+        
         var _filters = 
-            [{'field' : 'account', 'title' : 'Account', 'values' : []},
-             {'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
+            [{'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
              {'field' : 'owner', 'title' : 'Owner', 'values' : []},
              {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
-             {'field' : 'recordType', 'title' : 'Type', 'values' : []},
-             {'field' : 'stageCategory', 'title' : 'Stage', 'values' : []},
-             {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []},
-             {'field' : 'isPromotion', 'title' : 'Promotion?', 'values' : []}
+             {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []}
             ];
+        
+        var currentFilters = {'accountSector' : 'all'}
         
         function fetch(callback) {
             
@@ -74,7 +70,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-        function getData2(format, filter, threatsNegative) {
+        function getData(format, filter, threatsNegative) {
             
             var result = _.size(filter) > 0 ? _.filter(_dataAll, filter) : _dataAll;
             
@@ -94,16 +90,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
 
-        getData.filtered = function() { return _dataAll; };
-        getData.timeline = function() { return _dataTransformToTimeline(_dataAll); };
-        getData.monthlySales = function() { return _.filter(_dataTransformToMonthlySales(_dataAll), {'stageCategory' : stage}); };
-        getData.oppsByStageCategory = function(stage) { return _.filter(_convertThreatsToNegative(_dataAll), {'stageCategory' : stage}); };
-        
         return { 
             fetch : fetch,
-            getData2 : getData2,
-            updateFilters : updateFilters,
             getData : getData,
+            updateFilters : updateFilters,
             getFilters : function() { return _filters; }
         };
         
