@@ -5,10 +5,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
     $m.HeadlineOpportunitiesCf = function(){
         
         var _modelId = 'a0Mb0000005LPl5',
-            _uid = _.uniqueId(_modelId + '-')
-        ;
-        
-        var _data;
+            _uid = _.uniqueId(_modelId + '-'),
+            _data = crossfilter();
             
         var dims = {};
         
@@ -20,7 +18,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
              {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []}
             ];
         
-        var currentFilters = {'accountSector' : 'all'};
+        var currentFilters = {'accountSector' : 'all'}
         
         function fetch(callback) {
             
@@ -36,11 +34,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
-                        _data = crossfilter(_(result.opps).each(function(v) {
-                            v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
-                            v.mDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
-                        })
-                        .value());
+                        //_data.add(_(result.opps).each(function(v) {
+                        //    v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
+                        //    v.mDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
+                        //})
+                        //.value());
+                        
+                        _data.add(result.opps);
 
                         dims['stageCategory'] = _data.dimension('stageCategory');
                         dims['owner'] = _data.dimension('owner');
