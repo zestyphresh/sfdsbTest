@@ -43,14 +43,19 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data = crossfilter(result.opps);
 
-                        dims['stageCategory'] = _data.dimension(function(d) { return d.stageCategory + '/' + d.recordType; });
+                        dims['stageCategory'] = _data.dimension(function(d) { return d.stageCategory; });
                         dims['owner'] = _data.dimension(function(d) { return d.owner; });
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
                         
-                        val1 = dims['stageCategory'].group().reduceSum(function(d) { return d.thisYearValue; });
+                        var headlineByCategory = dims.stageCategory.filter('Headline');
+                        var threatByCategory = dims.stageCategory.filter('Headline');
                         
-                        console.log(val1.all());
-                        console.log(_.flatten(val1.all()));
+                        console.log(headlineByCategory);
+                        console.log(threatByCategory);
+                        
+                        
+                        console.log(headlineByCategory.all());
+                        console.log(threatByCategory.all());
                         
 
                         //updateFilters();
