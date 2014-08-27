@@ -46,7 +46,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 .width(768)
                 .height(480)
                 .x(d3.scale.linear().domain([0,100000]))
-                .brushOn(false)
                 .yAxisLabel("This is the Y Axis!")
                 .dimension(_models.opps2.val1()[0])
                 .group( _models.opps2.val1()[1]);
