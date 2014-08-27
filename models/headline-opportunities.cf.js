@@ -49,7 +49,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         val1 = dims['stageCategory'].group().reduceSum(function(d) { return d.thisYearValue; });
                         
-                        console.log(val1);
+                        console.log(val1.all());
+                        console.log(_.flatten(val1.all()));
                         
 
                         //updateFilters();
