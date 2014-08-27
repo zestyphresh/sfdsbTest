@@ -11,7 +11,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         ;
 
         //Public vars
-        var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBucket;
+        var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
         
         //Init models
         function init(renderAfter) {
@@ -38,7 +38,28 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
+            dcchttest = dc.seriesChart('#' + _uid + '-charts-opp-buckets');
+            
+             dcchttest
+                .width()
+                .height()
+                .chart(dc.rowChart)
+                .x(d3.scale.linear().domain([0,1000000]))
+                .brushOn(false)
+                .yAxisLabel("Stage")
+                .xAxisLabel("Value")
+                .elasticY(true)
+                .dimension(_models.opps2.val1[0])
+                .group(_models.opps2.val1[1])
+                .mouseZoomable(true)
+                .seriesAccessor(function(d) {return d.key[0];})
+                .keyAccessor(function(d) {return d.key[1];})
+                .valueAccessor(function(d) {return d.value;});
+            //dcchttestt.yAxis().tickFormat(function(d) {return d3.format(',f');});
+        //    dcchttest.margins().left += 40;
+            dc.renderAll();
+
+            //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
             tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
             tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData2('list', {'stageCategory' : 'Open'}, true));     

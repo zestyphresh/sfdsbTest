@@ -102,6 +102,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         }
 
         return { 
+            val1 : function() { return [dims.stageCategoryType, val1]; },
             fetch : fetch,
             getData : getData,
             updateFilters : updateFilters,
