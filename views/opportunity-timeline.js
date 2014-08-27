@@ -51,8 +51,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 .elasticY(true)
                 .dimension(_models.opps2.val1[0])
                 .group(_models.opps2.val1[1])
-                .seriesAccessor(function(d) {return d.key[0];})
-                .keyAccessor(function(d) {return d.key[1];})
+                .seriesAccessor(function(d) {return d.key[1];})
+                .keyAccessor(function(d) {return d.key[0];})
                 .valueAccessor(function(d) {return d.value;});
             dcchttestt.yAxis().tickFormat(function(d) {return d3.format(',f');});
         //    dcchttest.margins().left += 40;
