@@ -43,13 +43,12 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data = crossfilter(result.opps);
 
-                        dims['Headline'] = _data.dimension(function(d) { return d.recordType; }).filter(function(d) { return d.recordType === 'Headline'; });
-                        dims['Threat'] = _data.dimension(function(d) { return d.recordType; }).filter(function(d) { return d.recordType === 'Threat'; });
+                        dims['stageCategoryType'] = _data.dimension(function(d) { return [d.stageCategory, d.recordType]; });
                         dims['owner'] = _data.dimension(function(d) { return d.owner; });
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
-
-                        console.log(dims['Headline'].group().all());
-                        console.log(dims['Threat'].group().all());
+                        
+                        val1 = dims.stageCategoryType.group().reduceSum(function(d) { return d.thisYearValue; });
+                        console.log(val1);
                         
 
                         //updateFilters();
