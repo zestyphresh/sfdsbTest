@@ -43,13 +43,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         _data = crossfilter(result.opps);
 
-                        dims['HeadlineStageCategory'] = _data.dimension(function(d) { return d.stageCategory; }).filter(function(d) { console.log(d); });
-                        dims['ThreatStageCategory'] = _data.dimension(function(d) { return d.stageCategory; }).filter(function(d) { return d.recordType === 'Threat'; });
+                        dims['Headline'] = _data.dimension(function(d) { return d.recordType; }).filter(function(d) { return d.recordType === 'Headline'; });
+                        dims['Threat'] = _data.dimension(function(d) { return d.recordType; }).filter(function(d) { return d.recordType === 'Threat'; });
                         dims['owner'] = _data.dimension(function(d) { return d.owner; });
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
 
-                        console.log(dims['HeadlineStageCategory'].group().all());
-                        console.log(dims['ThreatStageCategory'].group().all());
+                        console.log(dims['Headline'].group().all());
+                        console.log(dims['Threat'].group().all());
                         
 
                         //updateFilters();
