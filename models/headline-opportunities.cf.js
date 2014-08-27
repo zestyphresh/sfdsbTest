@@ -49,13 +49,9 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         var headlineByCategory = dims.stageCategory.filter('Headline');
                         var threatByCategory = dims.stageCategory.filter('Headline');
-                        
-                        console.log(headlineByCategory);
-                        console.log(threatByCategory);
-                        
-                        
-                        console.log(headlineByCategory.all());
-                        console.log(threatByCategory.all());
+
+                        console.log(headlineByCategory.group().all());
+                        console.log(threatByCategory.group().all());
                         
 
                         //updateFilters();
