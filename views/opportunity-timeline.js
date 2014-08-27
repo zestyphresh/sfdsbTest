@@ -40,7 +40,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             dcchttest = dc.seriesChart('#' + _uid + '-charts-opp-buckets');
             
-            console.log(_models.opps2.val1[0], _models.opps2.val1[1]);
+            console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
             
              dcchttest
                 .chart(dc.rowChart)
@@ -49,8 +49,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 .yAxisLabel("Stage")
                 .xAxisLabel("Value")
                 .elasticY(true)
-                .dimension(_models.opps2.val1[0])
-                .group(_models.opps2.val1[1])
+                .dimension(_models.opps2.val1()[0])
+                .group(_models.opps2.val1()[1])
                 .seriesAccessor(function(d) {return d.key[1];})
                 .keyAccessor(function(d) {return d.key[0];})
                 .valueAccessor(function(d) {return d.value;});
