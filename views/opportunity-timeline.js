@@ -34,7 +34,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
 
-            $body.append(templates['container']({'id':_uid}))
+            $body.append(templates['container']({'id':_uid}));
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
