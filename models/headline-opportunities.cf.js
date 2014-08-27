@@ -47,9 +47,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         dims['ThreatStageCategory'] = _data.dimension(function(d) { return d.stageCategory; }).filter('Threat');
                         dims['owner'] = _data.dimension(function(d) { return d.owner; });
                         dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
-                        
-                        var headlineByCategory = dims.stageCategory.filter('Headline');
-                        var threatByCategory = dims.stageCategory.filter('Threat');
 
                         console.log(dims['HeadlineStageCategory'].group().all());
                         console.log(dims['ThreatStageCategory'].group().all());
