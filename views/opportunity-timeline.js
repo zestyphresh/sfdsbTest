@@ -44,7 +44,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
              composite
                 .minWidth(400)
-                .x(d3.scale.linear().domain([0,100000]))
+                .x(d3.scale.linear().domain([0,10000]))
                 .dimension(_models.opps2.val1()[0])
                 .group( _models.opps2.val1()[1]);
             composite.render();
