@@ -18,7 +18,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
              {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []}
             ];
         
-        var currentFilters = {'accountSector' : 'all'}
+        var currentFilters = {'accountSector' : 'all'};
         
         function fetch(callback) {
             
