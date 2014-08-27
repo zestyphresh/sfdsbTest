@@ -39,14 +39,14 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //})
                         //.value());
                         
-                        console.log()
+                        console.log(result.opps);
                         _data = crossfilter(result.opps);
 
-                        dims['stageCategory'] = _data.dimension('stageCategory');
-                        dims['owner'] = _data.dimension('owner');
-                        dims['productCategory'] = _data.dimension('productCategory');
+                        //dims['stageCategory'] = _data.dimension('stageCategory');
+                        //dims['owner'] = _data.dimension('owner');
+                        //dims['productCategory'] = _data.dimension('productCategory');
                         
-                        console.log(dims);
+                        //console.log(dims);
 
                         //updateFilters();
 
