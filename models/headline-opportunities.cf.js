@@ -34,14 +34,12 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
-                        var result = _(result.opps).each(function(v) {
+                        _data.add(_(result.opps).each(function(v) {
                             v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
                             v.mDatePrevious = moment(v.closeDatePrevious, 'YYY-MM-DD');
                         })
-                        .value();
-                        
-                        _data.add(result);
-                        
+                        .value());
+
                         dims['stageCategory'] = _data.dimension('stageCategory');
                         dims['owner'] = _data.dimension('owner');
                         dims['productCategory'] = _data.dimension('productCategory');
