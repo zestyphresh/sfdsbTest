@@ -16,12 +16,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Init models
         function init(renderAfter) {
             
-            //_models['opps'] = new gblModel.HeadlineOpportunities;
-            _models['opps2'] = new gblModel.HeadlineOpportunitiesCf;
+            //_models['opps2'] = new gblModel.HeadlineOpportunities;
+            _models['opps'] = new gblModel.HeadlineOpportunitiesCf;
             
             //_models.opps.fetch(), 
 
-            Q.all([_models.opps2.fetch()]).done(function() {
+            Q.all([_models.opps.fetch()]).done(function() {
                 
                 _loaded = true;
 
@@ -40,13 +40,13 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
 
             chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.dims.dummy);
-            tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
-            tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
-            tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData2('list', {'stageCategory' : 'Open'}, true));     
-            tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', _models.opps.getData2('list', {'stageCategory' : 'Unlikely'}, true));     
-            tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', _models.opps.getData2('list', {'stageCategory' : 'Lost'}, true));
-            tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
-            chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
+            //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
+            //tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
+            //tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData2('list', {'stageCategory' : 'Open'}, true));     
+            //tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', _models.opps.getData2('list', {'stageCategory' : 'Unlikely'}, true));     
+            //tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', _models.opps.getData2('list', {'stageCategory' : 'Lost'}, true));
+            //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
+            //chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
             
             //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
             //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
