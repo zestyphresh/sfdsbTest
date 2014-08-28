@@ -32,29 +32,30 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value());
                         
                         //Create crossfilter dimensions
-                        dims = {
-                            dummy : _data.dimension(function(d) { return 'all'; }),
-                            recordType : _data.dimension(function(d) { return d.recordType; }),
-                            sector : _data.dimension(function(d) { return d.accountSector; }),
-                            budgeted : _data.dimension(function(d) { return d.isBudgeted ? 'Budgeted' : 'Unbudgeted'; }),
-                            stageCategory : _data.dimension(function(d) { return d.stageCategory; }),
-                            owner : _data.dimension(function(d) { return d.owner; }),
-                            productCategory : _data.dimension(function(d) { return d.productCategory; }),
-                            year : _data.dimension(function(d) { 
+                        var dummy = _data.dimension(function(d) { return 'all'; });
+                        var recordType = _data.dimension(function(d) { return d.recordType; });
+                        var sector = _data.dimension(function(d) { return d.accountSector; });
+                        var budgeted = _data.dimension(function(d) { return d.isBudgeted ? 'Budgeted' : 'Unbudgeted'; });
+                        var stageCategory = _data.dimension(function(d) { return d.stageCategory; });
+                        var owner = _data.dimension(function(d) { return d.owner; });
+                        var productCategory = _data.dimension(function(d) { return d.productCategory; });
+                        var year = _data.dimension(function(d) { 
+                        
+                            var currentYear = moment().year();
+                            var oppYear = d.closeDate.year();
                             
-                                var currentYear = moment().year();
-                                var oppYear = d.closeDate.year();
-                                
-                                if (currentYear > oppYear) {
-                                    return 'Last Year';
-                                } else if (currentYear == oppYear) {
-                                    return 'This Year';
-                                } else if (currentYear < oppYear) {
-                                    return 'Next Year';
-                                }
+                            if (currentYear > oppYear) {
+                                return 'Last Year';
+                            } else if (currentYear == oppYear) {
+                                return 'This Year';
+                            } else if (currentYear < oppYear) {
+                                return 'Next Year';
+                            }
                             
-                            })
-                        };
+                        });
+                        
+                        dims.dummy = dummy;
+                        dims.recordType = recordType;
                         
                         groups = {
                         };
