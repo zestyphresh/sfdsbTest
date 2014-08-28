@@ -42,7 +42,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
             chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.dims.dummy);
             
-            setTimeout(function() {_models.opps.dims.sector.filter('Retail')}, 3000);
+            setTimeout(function() {_models.opps.dims.sector.filter('Retail'); chtSales.reload();}, 3000);
+            
+            
             
             //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
             //tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
