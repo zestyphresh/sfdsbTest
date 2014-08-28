@@ -56,6 +56,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         dims.dummy = dummy;
                         dims.recordType = recordType;
+                        dims.sector = sector;
                         
                         groups = {
                         };
