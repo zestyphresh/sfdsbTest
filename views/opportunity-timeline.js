@@ -38,18 +38,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var composite = dc.rowChart('#' + _uid + '-charts-opp-buckets');
-            
-            console.log(_models.opps2.val1()[0], _models.opps2.val1()[1]);
-            
-             composite
-                .minWidth(400)
-                .x(d3.scale.linear().domain([0,10000]))
-                .dimension(_models.opps2.val1()[0])
-                .group( _models.opps2.val1()[1]);
-            composite.render();
 
-            //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
+            chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.dims.dummy);
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
             tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
             tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData2('list', {'stageCategory' : 'Open'}, true));     

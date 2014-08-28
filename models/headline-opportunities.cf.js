@@ -6,21 +6,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         var _modelId = 'a0Mb0000005LPl5',
             _uid = _.uniqueId(_modelId + '-'),
-            _data;
+            _data = crossfilter();
             
-        var dims = {};
-        
-        var _filters = 
-            [{'field' : 'accountSector', 'title' : 'Sector', 'values' : []},
-             {'field' : 'owner', 'title' : 'Owner', 'values' : []},
-             {'field' : 'productCategory', 'title' : 'Category', 'values' : []},
-             {'field' : 'isBudgeted', 'title' : 'Budgeted?', 'values' : []}
-            ];
-        
-        var currentFilters = {'accountSector' : 'all'};
-        
-        var val1, val2, val3;
-        
+        var dims, groups;
+
         function fetch(callback) {
             
             var deferred = Q.defer();
@@ -35,24 +24,41 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
-                        //_data.add(_(result.opps).each(function(v) {
-                        //    v.mDate = moment(v.closeDate, 'YYYY-MM-DD');
-                        //    v.mDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
-                        //})
-                        //.value());
+                        //Add records to crossfilter and convert date strings to moment objects
+                        _data.add(_(result.opps).each(function(v) {
+                            v.date = moment(v.closeDate, 'YYYY-MM-DD');
+                            v.datePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
+                        })
+                        .value());
                         
-                        _data = crossfilter(result.opps);
-
-                        dims['stageCategoryType'] = _data.dimension(function(d) { return [d.stageCategory]; });
-                        dims['owner'] = _data.dimension(function(d) { return d.owner; });
-                        dims['productCategory'] = _data.dimension(function(d) { return d.productCategory; });
+                        //Create crossfilter dimensions
+                        dims = {
+                            dummy : _data.dimension(function(d) { return 'all'; }),
+                            recordType : _data.dimension(function(d) { return d.recordType; }),
+                            sector : _data.dimension(function(d) { return d.accountSector; }),
+                            budgeted : _data.dimension(function(d) { return d.isBudgeted ? 'Budgeted' : 'Unbudgeted'; }),
+                            stageCategory : _data.dimension(function(d) { return d.stageCategory; }),
+                            owner : _data.dimension(function(d) { return d.owner; }),
+                            productCategory : _data.dimension(function(d) { return d.productCategory; }),
+                            year : _data.dimension(function(d) { 
+                            
+                                var currentYear = moment().year();
+                                var oppYear = d.mDate.year();
+                                
+                                if (currentYear > oppYear) {
+                                    return 'Last Year';
+                                } else if (currentYear == oppYear) {
+                                    return 'This Year';
+                                } else if (currentYear < oppYear) {
+                                    return 'Next Year';
+                                }
+                            
+                            })
+                        };
                         
-                        val1 = dims.stageCategoryType.group().reduceSum(function(d) { return d.thisYearValue; });
-                        console.log(val1.all());
-                        
-
-                        //updateFilters();
-
+                        groups = {
+                        };
+                    
                         deferred.resolve(true);
                         
                     }
@@ -65,50 +71,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
             
         }
         
-
-        
-        function filterData(filter) {
-            _dataFiltered = _.where(_dataAll, filter);
-        }
-        
-        function updateFilters(){
-            
-            _(_filters).each(function(f) { 
-                f.values = _modpriv.getUniqueValues(_dataAll, f.field);
-            });
-            
-            //console.log(_filters);
-            
-        }
-        
-        function getData(format, filter, threatsNegative) {
-            
-            var result = _.size(filter) > 0 ? _.filter(_dataAll, filter) : _dataAll;
-            
-            if (threatsNegative) result = _convertThreatsToNegative(result);
-            
-            switch (format) {
-                case 'list':
-                    return result;
-                    break;
-                case 'monthlySales':
-                    return _dataTransformToMonthlySales(result);
-                    break;
-                case 'timeline':
-                    return _dataTransformToTimeline(result);
-                    break;
-            }
-            
-        }
-
         return { 
-            val1 : function() { return [dims.stageCategoryType, val1]; },
-            fetch : fetch,
-            getData : getData,
-            updateFilters : updateFilters,
-            getFilters : function() { return _filters; }
+            dims : dims,
+            fetch : fetch
         };
         
+        //CROSSFILTER REDUCE FUNCTIONS
+
         //PRIVATE FUNCTIONS
         //_convertThreatsToNegative
         //_dataTransformToMonthlySales
@@ -130,7 +99,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
             });
             
         }
-        
     
         function _dataTransformToMonthlySales(originalData) {
             

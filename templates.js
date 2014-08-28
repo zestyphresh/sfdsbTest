@@ -95,14 +95,22 @@ _templates['headline-opportunities'] = ""+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
         ""+ 
-        "    <div class='col-xs-12 col-md-6'>"+
-        "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>" +
-        "                <span>Opportunity Buckets</span>" +
-        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-charts-opp-buckets'><span class='glyphicon glyphicon-plus'></span></a>" +
-        "            </div>"+
-        "            <div id='{{id}}-charts-opp-buckets' class='minChartDims1'></div>"+
-        "        </div>"+ 
+        "    <div id='{{id}}-charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    </div>"+
+        ""+
+        "    <div id='{{id}}-1charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    </div>"+
+        ""+  
+        "    <div id='{{id}}-2charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    </div>"+
+        ""+  
+        "    <div id='{{id}}-3charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    </div>"+
+        ""+  
+        "    <div id='{{id}}-4charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    </div>"+
+        ""+  
+        "    <div id='{{id}}-5charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
         "    </div>"+
         ""+  
         "    <div class='col-xs-12 col-md-6'>"+

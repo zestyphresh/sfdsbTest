@@ -91,6 +91,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         }
 
         return { 
+            dims
             fetch : fetch,
             getData : getData,
             updateFilters : updateFilters,

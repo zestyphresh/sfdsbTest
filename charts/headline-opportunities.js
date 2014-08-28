@@ -2,10 +2,14 @@ var CHART_OPPORTUNITIES = (function($c) {
     
     var _priv = $c._priv;
     
-    $c.OpportunitySalesByCategory = function(id, data) {
+    $c.OpportunitySalesByCategory = function(id, dimension) {
+        
+        var _data, _dimension = dimension;
+
+        _refreshData();
         
         var svg = dimple.newSvg('#' + id, '100%', '100%');
-        var chart = new dimple.chart(svg, data).setMargins("60px", "30px", "40px", "60px");
+        var chart = new dimple.chart(svg, _data).setMargins("60px", "30px", "40px", "60px");
                 
         var xAxis = chart.addMeasureAxis('x', 'thisYearValue');
             xAxis.title = 'Value This Year (£)';
@@ -23,12 +27,13 @@ var CHART_OPPORTUNITIES = (function($c) {
         };        
            
         chart.draw();
-                
-        function reload(data) { chart.data = data; chart.draw(); }
+        
+        function _refreshData() { _data = _dimension.top(Infinity); };
+        function reload() { _refreshData(); chart.draw(); }
         function resize() { chart.draw(); }
 
         return { reload : reload, resize : resize };   
-    }
+    };
     
     $c.OpportunitySales = function(id, data) {
         
