@@ -8,7 +8,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
             _uid = _.uniqueId(_modelId + '-'),
             _data = crossfilter();
             
-        var dims, groups;
+        var dims = {}, groups = {};
 
         function fetch(callback) {
             
