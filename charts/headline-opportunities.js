@@ -28,7 +28,7 @@ var CHART_OPPORTUNITIES = (function($c) {
            
         chart.draw();
         
-        function _refreshData() { _data = _dimension.top(Infinity); };
+        function _refreshData() { _data = _dimension.top(Infinity); console.log(_data);};
         function reload() { _refreshData(); chart.draw(); }
         function resize() { chart.draw(); }
 
