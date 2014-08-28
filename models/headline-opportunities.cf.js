@@ -26,8 +26,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                         //Add records to crossfilter and convert date strings to moment objects
                         _data.add(_(result.opps).each(function(v) {
-                            v.date = moment(v.closeDate, 'YYYY-MM-DD');
-                            v.datePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
+                            v.closeDate = moment(v.closeDate, 'YYYY-MM-DD');
+                            v.closeDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
                         })
                         .value());
                         
@@ -43,7 +43,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             year : _data.dimension(function(d) { 
                             
                                 var currentYear = moment().year();
-                                var oppYear = d.mDate.year();
+                                var oppYear = d.closeDate.year();
                                 
                                 if (currentYear > oppYear) {
                                     return 'Last Year';
