@@ -79,13 +79,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             );
                         
                         groups.totalByStageCategoryPrevious = dims.stageCategoryPrevious
-                            .group(function(d) {
-                                if (d === 'Confirmed') return 'Confirmed';
-                                if (d === 'Likely') return 'Unconfirmed';
-                                if (d === 'Open') return 'Unconfirmed';
-                                if (d === 'Unlikely') return 'Unconfirmed';
-                                if (d === 'Lost') return 'Lost';
-                            })
+                            .group()
                             .reduce(
                                 function(p, v) {
                                     p.count++;
