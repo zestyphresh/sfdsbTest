@@ -111,16 +111,6 @@ _templates['headline-opportunities'] = ""+
         "    <h5 class='red'>Threats Lost : <span id='{{id}}-opp-summary-lost-threat'></span></h5>"+
         "    </div>"+
         ""+
-        "    <div class='col-xs-12 col-md-6'>"+
-        "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>" +
-        "                <span>Opportunity Buckets - Change</span>" +
-        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-charts-opp-buckets-change'><span class='glyphicon glyphicon-plus'></span></a>" +
-        "            </div>"+
-        "            <div id='{{id}}-charts-opp-buckets-change' class='minChartDims1'></div>"+
-        "        </div>"+ 
-        "    </div>"+
-        ""+  
         "    <div class='col-xs-12'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +

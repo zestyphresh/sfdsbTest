@@ -69,11 +69,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid + '-opp-summary-unlikely-threat').html(f.gbpComparison(summaryDataCurrent.Unlikely.Threat, summaryDataPrevious.Unlikely.Threat));
             $j('#' + _uid + '-opp-summary-lost-threat').html(f.gbpComparison(summaryDataCurrent.Lost.Threat, summaryDataPrevious.Lost.Threat));
 
-            var chartData = _models.opps.dims.dummy.top(Infinity);
-
-            chtSalesByCategory = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-stages', chartData);
-            chtSalesByOwner = new CHART.OpportunitySalesByOwner(_uid + '-charts-opp-owners', chartData);
-            
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
 
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', tableData.Confirmed);
