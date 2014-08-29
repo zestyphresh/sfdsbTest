@@ -63,11 +63,13 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                     p.count++;
                                     if (v.recordType === 'Headline') p.Headline += v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat += v.thisYearValue;
+                                    return p;
                                 },
                                 function(p, v) {
                                     p.count--;
                                     if (v.recordType === 'Headline') p.Headline -= v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat -= v.thisYearValue;
+                                    return p;
                                 },
                                 function() {
                                     return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
