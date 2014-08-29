@@ -60,11 +60,11 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //Create crossfilter groups
                         groups.totalByStageCategory = dims.stageCategory
                             .group(function(d) {
-                                if (d === 'Confirmed') return 'Confirmed';
-                                if (d === 'Likely') return 'Unconfirmed';
-                                if (d === 'Open') return 'Unconfirmed';
-                                if (d === 'Unlikely') return 'Unconfirmed';
-                                if (d === 'Lost') return 'Lost';
+                                if (d == 'Confirmed') return 'Confirmed';
+                                if (d == 'Likely') return 'Unconfirmed';
+                                if (d == 'Open') return 'Unconfirmed';
+                                if (d == 'Unlikely') return 'Unconfirmed';
+                                if (d == 'Lost') return 'Lost';
                             })
                             .reduce(
                                 function(p, v) {
