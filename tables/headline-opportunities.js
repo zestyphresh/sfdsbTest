@@ -81,7 +81,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return dateComparisonInWeeks(data, row.closeDatePrevious);
+                                        return f.dateComparisonInWeeks(data, row.closeDatePrevious);
                                     } 
                                     return data;
                                 },
