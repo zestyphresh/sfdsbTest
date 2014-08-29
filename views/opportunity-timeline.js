@@ -60,7 +60,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             console.log(summaryDataCurrent, summaryDataPrevious);
             
-            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
+            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGbpWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
             
             
 
