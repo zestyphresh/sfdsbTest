@@ -22,7 +22,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                         {"data": "isoValue", "title": "ISO"},                   //7
                         {"data": "closeDate", "title": "Date"},                 //8
                         {"data": "productCategory", "title": "Category"}        //9
-        ]
+        ];
         
         $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
             
@@ -35,25 +35,20 @@ var TABLE_OPPORTUNITIES = (function($t) {
             'columns' : _columns,
             'columnDefs' : [{ 
                                 'targets' : [0], 
-                                'render' : function ( data, type, full, meta ) {
+                                'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[full.recordType] + '"></span>';
+                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[row.recordType] + '"></span>';
                                     } 
                                     return data;
                                 }
                             },
                             { 
                                 'targets' : [5], //thisYearValue
-                                'render' : function ( data, type, full, meta ) {
+                                'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        var diff = data - full.thisYearValuePrevious;
-                                        if (diff == 0) {
-                                            return f.toGbp(data);
-                                        } else {
-                                            return f.toGbpWithComparison(data, diff, '');
-                                        }
+                                        return f.gbpComparison(data, row.thisYearValuePrevious);
                                     } 
                                     return data;
                                 },
@@ -61,15 +56,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                             },
                             { 
                                 'targets' : [6], //annualisedValue 
-                                'render' : function ( data, type, full, meta ) {
+                                'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        var diff = data - full.annualisedValuePrevious;
-                                        if (diff == 0) {
-                                            return f.toGbp(data);
-                                        } else {
-                                            return f.toGbpWithComparison(data, diff, '');
-                                        }
+                                        return f.gbpComparison(data, row.annualisedValuePrevious);
                                     } 
                                     return data;
                                 },
@@ -77,15 +67,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
                             },
                             { 
                                 'targets' : [7], //isoValue 
-                                'render' : function ( data, type, full, meta ) {
+                                'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        var diff = data - full.isoValuePrevious;
-                                        if (diff == 0) {
-                                            return f.toGbp(data);
-                                        } else {
-                                            return f.toGbpWithComparison(data, diff, '');
-                                        }
+                                        return f.gbpComparison(data, row.isoValuePrevious);
                                     } 
                                     return data;
                                 },
@@ -93,40 +78,17 @@ var TABLE_OPPORTUNITIES = (function($t) {
                             },
                             { 
                                 'targets' : [8], 
-                                'render' : function ( data, type, full, meta ) {
+                                'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        if (data == full.closeDatePrevious) {
-                                            return data;
-                                        } else {
-                                            return data.format('YYYY-MM-DD') + ' (' + data.diff(full.closeDatePrevious, 'weeks') + ' weeks)';
-                                        }
+                                        return dateComparisonInWeeks(data, row.closeDatePrevious);
                                     } 
                                     return data;
                                 },
                                 'className' : 'text-right'
                             }
             ],
-            'footerCallback' : function (tfoot, data, start, end, display) {
-                var api = this.api(),
-                    thisYearCol = 5,
-                    annualisedCol = 6,
-                    isoCol = 7;
-                    
-                var totals = _(data).reduce(function(r, v, k) {
-                    
-                    return {'thisYear' : r.thisYear + v.thisYearValue, 
-                            'annualised' : r.annualised + v.annualisedValue, 
-                            'iso' : r.iso + v.isoValue
-                    };
-                    
-                }, {'thisYear':0, 'annualised':0, 'iso':0}); 
 
-                $j(api.column(0).footer()).html('Total');
-                $j(api.column(thisYearCol).footer()).html(f.toGbp(totals.thisYear));
-                $j(api.column(annualisedCol).footer()).html(f.toGbp(totals.annualised));
-                $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
-            }
         });
 
         return { 

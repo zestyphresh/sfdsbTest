@@ -60,7 +60,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             console.log(f.toGbpWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
             
-            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGbpWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
+            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.gbpComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline));
 
             var chartData = _models.opps.dims.dummy.top(Infinity);
 
@@ -68,9 +68,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             chtSalesByOwner = new CHART.OpportunitySalesByOwner(_uid + '-charts-opp-owners', chartData);
             
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
-            
-            console.log(tableData);
-            
+
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', tableData.Confirmed);
             tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', tableData.Likely);     
             tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', tableData.Open);     
