@@ -56,8 +56,41 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         });
 
                         //Create crossfilter groups
-                        groups.totalConfirmed = dims.stageCategory
-                            .group()
+                        groups.totalByStageCategory = dims.stageCategory
+                            .group(function(d) {
+                                if (d === 'Confirmed') return 'Confirmed';
+                                if (d === 'Likely') return 'Unconfirmed';
+                                if (d === 'Open') return 'Unconfirmed';
+                                if (d === 'Unlikely') return 'Unconfirmed';
+                                if (d === 'Lost') return 'Lost';
+                            })
+                            .reduce(
+                                function(p, v) {
+                                    p.count++;
+                                    if (v.recordType === 'Headline') p.Headline += v.thisYearValue;
+                                    if (v.recordType === 'Threat') p.Threat += v.thisYearValue;
+                                    return p;
+                                },
+                                function(p, v) {
+                                    p.count--;
+                                    if (v.recordType === 'Headline') p.Headline -= v.thisYearValue;
+                                    if (v.recordType === 'Threat') p.Threat -= v.thisYearValue;
+                                    return p;
+                                },
+                                function() {
+                                    return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
+                                }
+                            )
+                            .top(Infinity);
+                        
+                        groups.totalByStageCategoryPrevious = dims.stageCategoryPrevious
+                            .group(function(d) {
+                                if (d === 'Confirmed') return 'Confirmed';
+                                if (d === 'Likely') return 'Unconfirmed';
+                                if (d === 'Open') return 'Unconfirmed';
+                                if (d === 'Unlikely') return 'Unconfirmed';
+                                if (d === 'Lost') return 'Lost';
+                            })
                             .reduce(
                                 function(p, v) {
                                     p.count++;
@@ -77,8 +110,6 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             )
                             .top(Infinity);
 
-                        console.log(groups.totalConfirmed);
-                    
                         deferred.resolve(true);
                         
                     }

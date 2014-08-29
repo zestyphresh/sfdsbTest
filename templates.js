@@ -95,6 +95,21 @@ _templates['headline-opportunities'] = ""+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
         ""+ 
+        "    <div id='{{id}}-opp-summary-confirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Confirmed : <span class='{{id}}-opp-summary-confirmed-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Confirmed : <span class='{{id}}-opp-summary-confirmed-threat'></span></h5>"+
+        "    </div>"+
+        ""+
+        "    <div id='{{id}}-opp-summary-unconfirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-threat'></span></h5>"+
+        "    </div>"+
+        ""+
+        "    <div id='{{id}}-opp-summary-lost' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Lost : <span class='{{id}}-opp-summary-lost-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Lost : <span class='{{id}}-opp-summary-lost-threat'></span></h5>"+
+        "    </div>"+
+        ""+
         "    <div id='{{id}}-charts-opp-stages' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    <h5>By Stage</h5>"+
         "    </div>"+
