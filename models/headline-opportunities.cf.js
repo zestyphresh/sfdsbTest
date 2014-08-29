@@ -31,7 +31,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         })
                         .value());
                         
-                        console.log(_data.all());
+                        console.log(result.opps);
                         
                         //Create crossfilter dimensions
                         dims.dummy = _data.dimension(function(d) { return 'all'; });
