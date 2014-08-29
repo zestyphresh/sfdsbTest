@@ -12,6 +12,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
         //Public vars
         var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
+        var chtSalesByCategory, chtSalesByOwner;
         
         //Init models
         function init(renderAfter) {
@@ -37,14 +38,11 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $body.append(templates['container']({'id':_uid}));
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
-            
-            console.log(_models.opps.dims);
 
-            chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.dims.dummy.top(Infinity));
-            
-            setTimeout(function() {_models.opps.dims.sector.filter('Retail'); chtSales.reload(_models.opps.dims.dummy.top(Infinity));}, 3000);
-            
-            
+            var chartData = _models.opps.dims.dummy.top(Infinity);
+
+            chtSalesByCategory = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-stages', chartData);
+            chtSalesByOwner = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-owners', chartData);
             
             //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
             //tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     

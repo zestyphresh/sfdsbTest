@@ -95,22 +95,22 @@ _templates['headline-opportunities'] = ""+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
         ""+ 
-        "    <div id='{{id}}-charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-charts-opp-stages' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+
-        "    <div id='{{id}}-1charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-charts-opp-owners' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+  
-        "    <div id='{{id}}-2charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-2charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+  
-        "    <div id='{{id}}-3charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-3charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+  
-        "    <div id='{{id}}-4charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-4charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+  
-        "    <div id='{{id}}-5charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 minHeight300'>"+
+        "    <div id='{{id}}-5charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
         "    </div>"+
         ""+  
         "    <div class='col-xs-12 col-md-6'>"+
