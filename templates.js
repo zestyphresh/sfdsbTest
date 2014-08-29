@@ -97,7 +97,7 @@ _templates['headline-opportunities'] = ""+
         ""+ 
         "    <div id='{{id}}-opp-summary-headline' class='col-xs-12 col-md-4 col-lg-4'>"+
         "    <h5 class='green'>Opps Confirmed : <span id='{{id}}-opp-summary-confirmed-headline'></span></h5>"+
-        "    <h5 class='green'>Opps Likely : <span id='{{id}}-opp-summary-unlikely-headline'></span></h5>"+
+        "    <h5 class='green'>Opps Likely : <span id='{{id}}-opp-summary-likely-headline'></span></h5>"+
         "    <h5 class='green'>Opps Open : <span id='{{id}}-opp-summary-open-headline'></span></h5>"+
         "    <h5 class='green'>Opps Unlikely : <span id='{{id}}-opp-summary-unlikely-headline'></span></h5>"+
         "    <h5 class='green'>Opps Lost : <span id='{{id}}-opp-summary-lost-headline'></span></h5>"+
