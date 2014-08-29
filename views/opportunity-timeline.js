@@ -67,7 +67,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             chtSalesByCategory = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-stages', chartData);
             chtSalesByOwner = new CHART.OpportunitySalesByOwner(_uid + '-charts-opp-owners', chartData);
             
-            var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.StageCategory; }).value();
+            var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
             
             console.log(tableData);
             
