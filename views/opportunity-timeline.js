@@ -55,7 +55,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory).map(function(v) {
+            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) {
                 return [v.key, v.value];
             }).object().value();
             

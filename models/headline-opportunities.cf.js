@@ -80,8 +80,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                 function() {
                                     return {'count' : 0, 'Headline' : 0, 'Threat': 0 };
                                 }
-                            )
-                            .top(Infinity);
+                            );
                         
                         groups.totalByStageCategoryPrevious = dims.stageCategoryPrevious
                             .group(function(d) {
@@ -107,8 +106,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                 function() {
                                     return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
                                 }
-                            )
-                            .top(Infinity);
+                            );
 
                         deferred.resolve(true);
                         
