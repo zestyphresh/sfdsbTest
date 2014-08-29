@@ -99,7 +99,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                         if (data == full.closeDatePrevious) {
                                             return data;
                                         } else {
-                                            return data + ' (' + moment(data, 'YYYY-MM-DD').diff(moment(full.closeDatePrevious, 'YYYY-MM-DD'), 'weeks') + ' weeks)';
+                                            return data.format('YYYY-MM-DD') + ' (' + data.diff(full.closeDatePrevious, 'weeks') + ' weeks)';
                                         }
                                     } 
                                     return data;
