@@ -55,7 +55,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         });
 
                         //Create crossfilter groups
-                        groups.totalHeadlineConfirmed = dims.stageCategory.dummy
+                        groups.totalHeadlineConfirmed = dims.stageCategory
                             .group(function(stage) { if (stage === 'Confirmed') return stage; })
                             .reduceSum(function(d) { if (d.recordType === 'Headline') return d.thisYearValue});
                         
