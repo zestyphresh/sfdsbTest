@@ -42,7 +42,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             var chartData = _models.opps.dims.dummy.top(Infinity);
 
             chtSalesByCategory = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-stages', chartData);
-            chtSalesByOwner = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-owners', chartData);
+            chtSalesByOwner = new CHART.OpportunitySalesByOwner(_uid + '-charts-opp-owners', chartData);
             
             //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
             //tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
