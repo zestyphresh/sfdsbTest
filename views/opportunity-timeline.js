@@ -55,13 +55,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) {
-                return [v.key, v.value];
-            }).object().value();
+            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
+            var summaryDataPrevious = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             
             console.log(summaryDataCurrent);
             
-            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison());
+            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline));
             
             
 
