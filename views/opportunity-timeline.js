@@ -58,9 +58,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             var summaryDataPrevious = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             
-            console.log(summaryDataCurrent);
+            console.log(summaryDataCurrent, summaryDataPrevious);
             
-            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline));
+            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
             
             
 
