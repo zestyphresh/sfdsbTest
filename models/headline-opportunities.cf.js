@@ -60,6 +60,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             .reduceSum(function(d) { if (d.recordType === 'Headline') return d.thisYearValue});
                         
                         console.log(groups.totalHeadlineConfirmed);
+                        console.log(groups.totalHeadlineConfirmed[0].value);
                     
                         deferred.resolve(true);
                         
