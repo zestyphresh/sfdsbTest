@@ -61,15 +61,13 @@ var VIEW_OPPORTUNITIES = (function($v) {
             console.log(f.toGbpWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
             
             $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGbpWithComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline, ''));
-            
-            
 
             var chartData = _models.opps.dims.dummy.top(Infinity);
 
             chtSalesByCategory = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-stages', chartData);
             chtSalesByOwner = new CHART.OpportunitySalesByOwner(_uid + '-charts-opp-owners', chartData);
             
-            var tableData = _(_model.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.StageCategory; });
+            var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.StageCategory; });
             
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', tableData.Confirmed);
             tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', tableData.Likely);     
