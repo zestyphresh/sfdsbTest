@@ -32,7 +32,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         .value());
                         
                         //Create crossfilter dimensions
-                        var dummy = _data.dimension(function(d) { return 'all'; });
+                        dims.dummy = _data.dimension(function(d) { return 'all'; });
                         var recordType = _data.dimension(function(d) { return d.recordType; });
                         var sector = _data.dimension(function(d) { return d.accountSector; });
                         var budgeted = _data.dimension(function(d) { return d.isBudgeted ? 'Budgeted' : 'Unbudgeted'; });
@@ -54,7 +54,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             
                         });
                         
-                        dims.dummy = dummy;
+                        //dims.dummy = dummy;
                         dims.recordType = recordType;
                         dims.sector = sector;
                         

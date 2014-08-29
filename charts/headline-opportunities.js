@@ -2,12 +2,10 @@ var CHART_OPPORTUNITIES = (function($c) {
     
     var _priv = $c._priv;
     
-    $c.OpportunitySalesByCategory = function(id, dimension) {
+    $c.OpportunitySalesByCategory = function(id, data) {
         
-        var _data, _dimension = dimension;
+        var _data = data;
 
-        _refreshData();
-        
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, _data).setMargins("60px", "30px", "40px", "60px");
                 
@@ -28,11 +26,14 @@ var CHART_OPPORTUNITIES = (function($c) {
            
         chart.draw();
         
-        function _refreshData() { _data = _dimension.top(Infinity); console.log(_data);};
-        function reload() { _refreshData(); chart.data = _data; chart.draw(); }
+        function reload(data) { _data = data; chart.data = _data; chart.draw(); }
         function resize() { chart.draw(); }
 
-        return { reload : reload, resize : resize };   
+        return { 
+            reload : reload, 
+            resize : resize 
+        };   
+        
     };
     
     $c.OpportunitySales = function(id, data) {

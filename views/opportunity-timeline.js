@@ -42,7 +42,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
             chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.dims.dummy);
             
-            setTimeout(function() {_models.opps.dims.sector.filter('Retail'); chtSales.reload();}, 3000);
+            setTimeout(function() {_models.opps.dims.sector.filter('Retail'); chtSales.reload(_models.opps.dims.dummy.top(Infinity));}, 3000);
             
             
             
