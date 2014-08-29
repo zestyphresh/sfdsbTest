@@ -124,6 +124,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         
         return { 
             dims : dims,
+            groups : groups,
             fetch : fetch
         };
         
