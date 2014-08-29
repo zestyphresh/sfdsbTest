@@ -60,12 +60,12 @@ var MODEL_OPPORTUNITIES = (function($m) {
                             .group()
                             .reduce(
                                 function(p, v) {
-                                    ++p.count;
+                                    p.count++;
                                     if (v.recordType === 'Headline') p.Headline += v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat += v.thisYearValue;
                                 },
                                 function(p, v) {
-                                    --p.count;
+                                    p.count--;
                                     if (v.recordType === 'Headline') p.Headline -= v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat -= v.thisYearValue;
                                 },
