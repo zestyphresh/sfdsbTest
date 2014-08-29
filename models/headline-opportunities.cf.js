@@ -37,6 +37,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         dims.sector = _data.dimension(function(d) { return d.accountSector; });
                         dims.budgeted = _data.dimension(function(d) { return d.isBudgeted ? 'Budgeted' : 'Unbudgeted'; });
                         dims.stageCategory = _data.dimension(function(d) { return d.stageCategory; });
+                        dims.stageCategoryPrevious = _data.dimension(function(d) { return d.stageCategoryPrevious; });
                         dims.owner = _data.dimension(function(d) { return d.owner; });
                         dims.productCategory = _data.dimension(function(d) { return d.productCategory; });
                         dims.year = _data.dimension(function(d) { 
@@ -57,10 +58,25 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //Create crossfilter groups
                         groups.totalHeadlineConfirmed = dims.stageCategory
                             .group(function(stage) { if (stage === 'Confirmed') return stage; })
-                            .reduceSum(function(d) { if (d.recordType === 'Headline') return d.thisYearValue});
-                        
+                            .reduceSum(
+                                function(p, v) {
+                                    ++p.count;
+                                    if (v.recordType === 'Headline') p.Headline += v.thisYearValue;
+                                    if (v.recordType === 'Threat') p.Threat += v.thisYearValue;
+                                    
+                                },
+                                function(p, v) {
+                                    --p.count;
+                                    if (v.recordType === 'Headline') p.Headline -= v.thisYearValue;
+                                    if (v.recordType === 'Threat') p.Threat -= v.thisYearValue;
+                                },
+                                function() {
+                                    return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
+                                }
+                            );
+
                         console.log(groups.totalHeadlineConfirmed);
-                        console.log(groups.totalHeadlineConfirmed[0].value);
+                        console.log(groups.totalHeadlineConfirmed.top(1)[0].value);
                     
                         deferred.resolve(true);
                         
