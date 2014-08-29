@@ -111,25 +111,6 @@ _templates['headline-opportunities'] = ""+
         "    <h5 class='red'>Threats Lost : <span id='{{id}}-opp-summary-lost-threat'></span></h5>"+
         "    </div>"+
         ""+
-        "    <div id='{{id}}-charts-opp-stages' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    <h5>By Stage</h5>"+
-        "    </div>"+
-        ""+
-        "    <div id='{{id}}-charts-opp-owners' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    </div>"+
-        ""+  
-        "    <div id='{{id}}-2charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    </div>"+
-        ""+  
-        "    <div id='{{id}}-3charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    </div>"+
-        ""+  
-        "    <div id='{{id}}-4charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    </div>"+
-        ""+  
-        "    <div id='{{id}}-5charts-opp-buckets' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
-        "    </div>"+
-        ""+  
         "    <div class='col-xs-12 col-md-6'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
