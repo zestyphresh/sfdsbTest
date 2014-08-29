@@ -96,6 +96,7 @@ _templates['headline-opportunities'] = ""+
         "    </div>"+
         ""+ 
         "    <div id='{{id}}-charts-opp-stages' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
+        "    <h5>By Stage</h5>"+
         "    </div>"+
         ""+
         "    <div id='{{id}}-charts-opp-owners' class='col-xs-12 col-md-3 col-lg-2 height300'>"+
