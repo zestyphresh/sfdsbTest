@@ -34,10 +34,36 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
+            
+                    "    <div id='{{id}}-opp-summary-confirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Confirmed : <span class='{{id}}-opp-summary-confirmed-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Confirmed : <span class='{{id}}-opp-summary-confirmed-threat'></span></h5>"+
+        "    </div>"+
+        ""+
+        "    <div id='{{id}}-opp-summary-unconfirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-threat'></span></h5>"+
+        "    </div>"+
+        ""+
+        "    <div id='{{id}}-opp-summary-lost' class='col-xs-12 col-md-4 col-lg-4'>"+
+        "    <h5 class='green'>Opps Lost : <span class='{{id}}-opp-summary-lost-headline'></span></h5>"+
+        "    <h5 class='red'>Threats Lost : <span class='{{id}}-opp-summary-lost-threat'></span></h5>"+
+        "    </div>"+
+        
 
             $body.append(templates['container']({'id':_uid}));
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
+            
+            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) {
+                return [v.key, v.value];
+            }).object().value();
+            
+            console.log(summaryDataCurrent);
+            
+            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.toGBPWithComparison());
+            
+            
 
             var chartData = _models.opps.dims.dummy.top(Infinity);
 

@@ -78,7 +78,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                     return p;
                                 },
                                 function() {
-                                    return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
+                                    return {'count' : 0, 'Headline' : 0, 'Threat': 0 };
                                 }
                             )
                             .top(Infinity);
