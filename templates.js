@@ -105,7 +105,7 @@ _templates['headline-opportunities'] = ""+
         ""+
         "    <div id='{{id}}-opp-summary-threat' class='col-xs-12 col-md-4 col-lg-4'>"+
         "    <h5 class='red'>Threats Confirmed : <span id='{{id}}-opp-summary-confirmed-threat'></span></h5>"+
-        "    <h5 class='red'>Threats Likely : <span id='{{id}}-opp-summary-likely-threat></span></h5>"+
+        "    <h5 class='red'>Threats Likely : <span id='{{id}}-opp-summary-likely-threat'></span></h5>"+
         "    <h5 class='red'>Threats Open : <span id='{{id}}-opp-summary-open-threat'></span></h5>"+
         "    <h5 class='red'>Threats Unlikely : <span id='{{id}}-opp-summary-unlikely-threat'></span></h5>"+
         "    <h5 class='red'>Threats Lost : <span id='{{id}}-opp-summary-lost-threat'></span></h5>"+
