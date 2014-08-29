@@ -58,14 +58,15 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         //Create crossfilter groups
                         groups.totalHeadlineConfirmed = dims.stageCategory
                             .group(function(stage) { if (stage === 'Confirmed') return stage; })
-                            .reduceSum(
+                            .reduce(
                                 function(p, v) {
+                                    console.log(p, v);
                                     ++p.count;
                                     if (v.recordType === 'Headline') p.Headline += v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat += v.thisYearValue;
-                                    
                                 },
                                 function(p, v) {
+                                    console.log(p, v);
                                     --p.count;
                                     if (v.recordType === 'Headline') p.Headline -= v.thisYearValue;
                                     if (v.recordType === 'Threat') p.Threat -= v.thisYearValue;
@@ -73,10 +74,10 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                 function() {
                                     return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
                                 }
-                            );
+                            )
+                            .top(Infinity);
 
                         console.log(groups.totalHeadlineConfirmed);
-                        console.log(groups.totalHeadlineConfirmed.top(1)[0].value);
                     
                         deferred.resolve(true);
                         
