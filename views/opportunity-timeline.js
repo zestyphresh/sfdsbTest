@@ -34,22 +34,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
-            
-                    "    <div id='{{id}}-opp-summary-confirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
-        "    <h5 class='green'>Opps Confirmed : <span class='{{id}}-opp-summary-confirmed-headline'></span></h5>"+
-        "    <h5 class='red'>Threats Confirmed : <span class='{{id}}-opp-summary-confirmed-threat'></span></h5>"+
-        "    </div>"+
-        ""+
-        "    <div id='{{id}}-opp-summary-unconfirmed' class='col-xs-12 col-md-4 col-lg-4'>"+
-        "    <h5 class='green'>Opps Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-headline'></span></h5>"+
-        "    <h5 class='red'>Threats Unconfirmed : <span class='{{id}}-opp-summary-unconfirmed-threat'></span></h5>"+
-        "    </div>"+
-        ""+
-        "    <div id='{{id}}-opp-summary-lost' class='col-xs-12 col-md-4 col-lg-4'>"+
-        "    <h5 class='green'>Opps Lost : <span class='{{id}}-opp-summary-lost-headline'></span></h5>"+
-        "    <h5 class='red'>Threats Lost : <span class='{{id}}-opp-summary-lost-threat'></span></h5>"+
-        "    </div>"+
-        
 
             $body.append(templates['container']({'id':_uid}));
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
@@ -78,17 +62,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', tableData.Lost);
             //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
             //chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
-            
-            
-            //chtSales = new CHART.OpportunitySalesByCategory(_uid + '-charts-opp-buckets', _models.opps.getData2('list', {}, false));
-            //tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _models.opps.getData2('list', {'stageCategory' : 'Confirmed'}, true));
-            //tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _models.opps.getData2('list', {'stageCategory' : 'Likely'}, true));     
-            //tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _models.opps.getData2('list', {'stageCategory' : 'Open'}, true));     
-            //tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', _models.opps.getData2('list', {'stageCategory' : 'Unlikely'}, true));     
-            //tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', _models.opps.getData2('list', {'stageCategory' : 'Lost'}, true));
-            //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
-            //chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
-            
+
             renderFilters(_uid + '-filters');
 
         }
