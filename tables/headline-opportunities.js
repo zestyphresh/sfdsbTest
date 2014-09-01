@@ -2,9 +2,11 @@ var TABLE_OPPORTUNITIES = (function($t) {
     
     var _modpriv = $t._priv;
     
-        $t.HeadlineOpportunitySummary = function(id, data) {
+    $t.HeadlineOpportunitySummary = function(id, data) {
         
         var _id = id + '-inner';
+        
+        var _stages = ['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost'];
 
         var _columns = [{"data": "stage", "title": "Stage"}, 
                         {"data": "headline", "title": "Headline"},                
@@ -25,11 +27,27 @@ var TABLE_OPPORTUNITIES = (function($t) {
             'orderable' : false,
             'columns' : _columns,
             'columnDefs' : [{ 
+                                'targets' : [0], 
+                                'render' : function ( data, type, row, meta ) {
+                                    switch (type) {
+                                        case 'sort':
+                                            return _.indexOf(_stages, data);
+                                            break;
+                                    }
+
+                                    return data;
+                                },
+                                'className' : 'text-right'
+                            },
+                            { 
                                 'targets' : [1,2,3,4,5,6], 
                                 'render' : function ( data, type, row, meta ) {
-                                    if (type === 'display') {
-                                        return f.toGbp(data);
-                                    } 
+                                    switch (type) {
+                                        case 'display':
+                                            return f.toGbp(data);
+                                            break;
+                                    }
+
                                     return data;
                                 },
                                 'className' : 'text-right'
