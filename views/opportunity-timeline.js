@@ -13,6 +13,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Public vars
         var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
         var chtSalesByCategory, chtSalesByOwner, tblOppSummary;
+        var filterOwner
         
         //Init models
         function init(renderAfter) {
@@ -28,8 +29,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             });
 
         }
-        
-        
             
         //Render function, adds all dom elements and creates charts, tables and filters
         function render() { 
@@ -38,23 +37,27 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            //FILTERS {{id}}-filters-owner
-            var filterOwner = $j('#' + _uid + '-filters-owner');
+            //FILTERS
+            filterOwner = $j('#' + _uid + '-filters-owner');
             filterOwner.find('ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+
+            summary().render();
+            oppsByStage().render();
+            timeline().render();
+            
+            bindEvents();
+
+        }
+        
+        function bindEvents() {
+        
             filterOwner.on('changed.fu.combobox', function(event, selected) {
                 _models.opps.dims.owner.filterExact(selected.value);
                 summaryTable().update();
+                oppsByStage().update();
+                timeline().update();
             });
             
-            //SUMMARY TABLE
-            
-            summary().render();
-            oppsByStage().render();
-            
-            //OPPS BY STAGE TABLES
-
-            //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
-
         }
         
         function summary() {
