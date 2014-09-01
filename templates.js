@@ -76,7 +76,7 @@ _templates['table'] = ""+
     
 _templates['heading-no-links'] = ""+
         "<div class='row'>"+
-        "    <div class='col-xs-12'>"+           
+        "    <div class='well col-xs-12'>"+           
         "        <h4>"+  
         "            {{title}}"+  
         "        </h4>"+  
