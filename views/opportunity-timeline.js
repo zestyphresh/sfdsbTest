@@ -51,6 +51,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 summaryTable.push(result);
             });
             
+            console.log(summaryTable);
+            
             tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryTable);
             
 
