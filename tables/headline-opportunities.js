@@ -19,10 +19,10 @@ var TABLE_OPPORTUNITIES = (function($t) {
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
-            'order' : [[ 2, 'desc' ]],
             'paging' : false,
             'info' : false, 
             'searching' : false,
+            'orderable' : false,
             'columns' : _columns,
             'columnDefs' : [{ 
                                 'targets' : [1,2,3,4,5,6], 
