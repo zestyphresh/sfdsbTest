@@ -118,6 +118,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
             var _data = _models.opps.toTimeline(_.filter(_models.opps.dims.dummy.top(Infinity), {'stage' : 'Confirmed'}));
             
+            console.log(_models.opps.dims.dummy.top(Infinity));
+            console.log(_.filter(_models.opps.dims.dummy.top(Infinity), {'stage' : 'Confirmed'}));
+            
             console.log(_data);
 
             function render() {
