@@ -100,7 +100,7 @@ _templates['heading'] = ""+
 _templates['headline-opportunities'] = ""+
         "<div class='row'>"+
         ""+    
-        "    <div class='col-xs-3'>"+
+        "    <div class='col-xs-12 col-md-3'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Filters</span>" +
@@ -130,7 +130,7 @@ _templates['headline-opportunities'] = ""+
         "        </div>"+ 
         "    </div>"+
         ""+
-        "    <div class='col-xs-9'>"+
+        "    <div class='col-xs-12 col-md-9'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Opportunity Summary</span>" +
