@@ -43,9 +43,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             filterSector = $j('#' + _uid + '-filters-sector');
             filterSector.find('ul').append(templates['combobox-item'](_models.opps.groups.sectors.all()));
-            
-            filterOwnerReset = $j('#' + _uid + '-filters-owner-reset');
-            filterSectorReset = $j('#' + _uid + '-filters-sector-reset');
 
             summary().render();
             oppsByStage().render();
@@ -59,25 +56,25 @@ var VIEW_OPPORTUNITIES = (function($v) {
         function bindEvents() {
             
             filterOwner.on('changed.fu.combobox', function(event, selected) {
-                _models.opps.dims.owner.filterExact(selected.value);
+                if (selected.value === 'All') {
+                    _models.opps.dims.owner.filterAll();
+                } else {
+                    _models.opps.dims.owner.filterExact(selected.value);
+                }
+                
                 update();
             });
-            
-            filterOwnerReset.on('click', function() {
-                _models.opps.dims.owner.filterAll();
-                update();
-            });
-            
+
             filterSector.on('changed.fu.combobox', function(event, selected) {
-                _models.opps.dims.sector.filterExact(selected.value);
+                if (selected.value === 'All') {
+                    _models.opps.dims.sector.filterAll();
+                } else {
+                    _models.opps.dims.sector.filterExact(selected.value);
+                }
+                
                 update();
             });
-            
-            filterSectorReset.on('click', function() {
-                _models.opps.dims.sector.filterAll();
-                update();
-            });
-            
+
             function update() {
                 summary().update();
                 oppsByStage().update();

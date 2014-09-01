@@ -9,7 +9,7 @@ var _templates = {};
 
 _templates['combobox-item'] = ""+
     "{{#each this}}"+ 
-    "    <li data-value='{{key}}'><a>{{key}} ({{value}})</a></li>"+
+    "    <li data-value='{{key}}'><a>{{key}}</a></li>"+
     "{{/each}}"
 ;
 
@@ -112,6 +112,7 @@ _templates['headline-opportunities'] = ""+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
         "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
@@ -121,6 +122,7 @@ _templates['headline-opportunities'] = ""+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
         "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
