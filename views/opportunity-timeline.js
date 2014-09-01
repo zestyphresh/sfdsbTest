@@ -45,7 +45,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             var summaryTable = [];
             
             _.each(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost'], function(d) {
-                var result = {'stage' : d, 'headline' : c.Headline, 'headlineVs' : c.Headline - p.Headline, 'threat' : c.Threat, 'threatVs' : c.Threat - p.Threat}
+                var result = {'stage' : d, 'headline' : c[d].Headline, 'headlineVs' : c[d].Headline - p[d].Headline, 'threat' : c[d].Threat, 'threatVs' : c[d].Threat - p[d].Threat};
                     result.total = result.headline - result.threat;
                     result.totalVs = result.headlineVs - result.threatVs;
                 summaryTable.push(result);
