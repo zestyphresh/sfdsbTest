@@ -116,12 +116,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         
         function timeline() {
 
-            var _data = _models.opps.toTimeline(_.filter(_models.opps.dims.dummy.top(Infinity), {'stage' : 'Confirmed'}));
-            
-            console.log(_models.opps.dims.dummy.top(Infinity));
-            console.log(_.filter(_models.opps.dims.dummy.top(Infinity), {'stage' : 'Confirmed'}));
-            
-            console.log(_data);
+            var _data = _models.opps.toTimeline(_.filter(_models.opps.dims.dummy.top(Infinity), {'stageCategory' : 'Confirmed'}));
 
             function render() {
                 tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline', _data);
