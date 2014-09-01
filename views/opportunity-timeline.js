@@ -54,8 +54,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             console.log(summaryTable);
             
             tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryTable);
-            
-
 
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
 
