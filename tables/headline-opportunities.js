@@ -17,7 +17,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                         {"data": "totalVs", "title": "Vs Last Month"}
         ];
         
-        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns), 'footer' = false}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
@@ -85,7 +85,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                         {"data": "productCategory", "title": "Category"}        //9
         ];
         
-        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns), 'footer' = false}));
             
         var table = $j('#' + _id).DataTable({
             'data' : data,

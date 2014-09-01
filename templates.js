@@ -64,11 +64,13 @@ _templates['table'] = ""+
         "        </tr>"+
         "    </thead>"+
         "    <tbody></tbody>"+
+        "    {{#if footer}}"+
         "    <tfoot>"+
         "         <tr role='row'>"+
         "            {{#times columns}}<th></th>{{/times}}"+
         "        </tr>"+
         "    </tfoot>"+
+        "`   {{/if}}"+
         "</table>"
 ;
     
