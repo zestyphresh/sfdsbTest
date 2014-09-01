@@ -53,6 +53,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             console.log(summaryTable);
             
+            console.log(_models.opps.groups.owners.all());
+            
             tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryTable);
 
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
@@ -65,15 +67,6 @@ var VIEW_OPPORTUNITIES = (function($v) {
             //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
             //chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
 
-            renderFilters(_uid + '-filters');
-
-        }
-        
-        //Renders filters, separate to render() so it can be called to refresh filters
-        function renderFilters(id) {
-    
-            //$j('#' + id).empty().append(templates['dropdown-filters'](_models.opps.getFilters())); 
-    
         }
         
         return { 

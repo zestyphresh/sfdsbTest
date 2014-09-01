@@ -6,7 +6,13 @@ Handlebars.registerHelper('times', function(n, block) {
 });
     
 var _templates = {};
-    
+
+_templates['dropdown-filters'] = ""+
+    "{{#each this}}"+ 
+    "    <li data-value='1'><a href='#'>One</a></li>"+
+    "{{/each}}"
+;
+
 _templates['dropdown-filters'] = ""+
     "{{#each this}}"+ 
     "    <div class='btn-group'>"+  
@@ -91,11 +97,27 @@ _templates['heading'] = ""+
     
 _templates['headline-opportunities'] = ""+
         "<div class='row'>"+
-        "    <div class='col-xs-12'>"+
-        "        <div id='{{id}}-filters' class='well'></div>"+
-        "    </div>"+
         ""+    
-        "    <div class='col-xs-12'>"+
+        "    <div class='col-xs-3'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Filters</span>" +
+        "            </div>"+
+        "            <div class='panel-body'>"+
+        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox''>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='1'><a href='#'>One</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "            </div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-9'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Opportunity Summary</span>" +
@@ -199,18 +221,10 @@ _templates['countdown-promo'] = ""+
 ;
     
 _templates['container'] = ""+
-        "<div id='{{id}}' class='container-fluid dashboard-view'></div>"
+        "<div id='{{id}}' class='container-fluid dashboard-view fuelux'></div>"
 ;   
 
-_templates['loading'] = ""+
-        "<div id='loading' class='container-fluid dashboard-view'>"+
-            "<div class='row'>"+
-                "<div class='well well-info'>Loading...</div>"+
-            "</div>"+
-        "</div>"
-; 
-        
-    
+
 var templates =  {
     'container' : Handlebars.compile(_templates['container']),
     'dropdown-filters' : Handlebars.compile(_templates['dropdown-filters']),
@@ -219,6 +233,5 @@ var templates =  {
     'heading' : Handlebars.compile(_templates['heading']),
     'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
     'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
-    'countdown-promo' : Handlebars.compile(_templates['countdown-promo']),
-    'loading' : Handlebars.compile(_templates['loading'])
+    'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
 }; 

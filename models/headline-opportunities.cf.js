@@ -97,6 +97,9 @@ var MODEL_OPPORTUNITIES = (function($m) {
                                     return { 'count' : 0, 'Headline' : 0, 'Threat': 0 };
                                 }
                             );
+                            
+                        groups.owners = dims.owner.group();
+                        groups.sectors = dims.sector.group();
 
                         deferred.resolve(true);
                         
