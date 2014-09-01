@@ -135,7 +135,18 @@ var TABLE_OPPORTUNITIES = (function($t) {
         });
 
         return { 
-            reload : function(data) { table.clear().rows.add(data).draw(); } 
+            reload : function(data) { 
+                if (data === undefined) {
+                
+                    table.clear().draw(); 
+                    
+                } else {
+                    
+                    table.clear().rows.add(data).draw(); 
+                    
+                }
+            
+            } 
         }; 
         
     };
