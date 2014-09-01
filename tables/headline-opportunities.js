@@ -145,7 +145,6 @@ var TABLE_OPPORTUNITIES = (function($t) {
                     table.clear().rows.add(data).draw(); 
                     
                 }
-            
             } 
         }; 
         
