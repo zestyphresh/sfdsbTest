@@ -40,7 +40,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
             //FILTERS {{id}}-filters-owner
-            $j('#' + _uid + '-filters-owner' + ' > ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+            $j('#' + _uid + '-filters-owner').find('ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
             
             
             //SUMMARY TABLE

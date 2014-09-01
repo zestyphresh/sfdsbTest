@@ -109,7 +109,6 @@ _templates['headline-opportunities'] = ""+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
         "                            <ul class='dropdown-menu dropdown-menu-right'>"+
-        "                                <li data-value='1'><a href='#'>One</a></li>"+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
