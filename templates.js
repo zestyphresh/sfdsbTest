@@ -106,7 +106,7 @@ _templates['headline-opportunities'] = ""+
         "                <span>Filters</span>" +
         "            </div>"+
         "            <div class='panel-body'>"+ 
-        "                <div><span>Sector</span><span id='{{id}}-filters-sector-reset' class='filter-reset text-right'>Reset</span></div>"+
+        "                <div><h5>Sector</h5></div>"+
         "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
@@ -116,7 +116,7 @@ _templates['headline-opportunities'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
-        "                <div><span>Salesperson</span><span id='{{id}}-filters-owner-reset' class='filter-reset text-right'>Reset</span></div>"+
+        "                <div><h5>Salesperson</h5></div>"+
         "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
