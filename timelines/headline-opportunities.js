@@ -20,6 +20,7 @@ var TIMELINE_HEADLINE_OPPS = (function($l) {
         timeline.setGroups(groups);
 
         return { 
+            reload : function(data) { timeline.setItems(data); timeline.redraw(); }
         };  
                                 
     };

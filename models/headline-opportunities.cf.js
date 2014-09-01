@@ -116,7 +116,8 @@ var MODEL_OPPORTUNITIES = (function($m) {
         return { 
             dims : dims,
             groups : groups,
-            fetch : fetch
+            fetch : fetch,
+            toTimeline : toTimeline
         };
         
         //CROSSFILTER REDUCE FUNCTIONS
@@ -179,7 +180,7 @@ var MODEL_OPPORTUNITIES = (function($m) {
         }
         
         
-        function _dataTransformToTimeline(originalData) {
+        function toTimeline(originalData) {
             
             var newData = [];
                 

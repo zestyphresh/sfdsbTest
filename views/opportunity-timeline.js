@@ -48,43 +48,77 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
             //SUMMARY TABLE
             
-            summaryTable().render();
-
-            
-            
+            summary().render();
+            oppsByStage().render();
             
             //OPPS BY STAGE TABLES
-            var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
 
-            tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', tableData.Confirmed);
-            tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', tableData.Likely);     
-            tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', tableData.Open);     
-            tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', tableData.Unlikely);     
-            tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', tableData.Lost);
             //tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline',_models.opps.getData2('timeline', {'stageCategory' : 'Confirmed'}, false));
-            //chtSales = new CHART.OpportunitySales(_uid + '-charts-opp-sales', _models.opps.getData2('monthlySales', {'stageCategory' : 'Confirmed'}, false));
 
         }
         
-        function summaryTable() {
+        function summary() {
 
-            var c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //current
-                p = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //previous
-                summaryData = [];
+            var _c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //current
+                _p = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //previous
+                _data = [];
             
             _.each(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost'], function(d) {
-                var result = {'stage' : d, 'headline' : c[d].Headline, 'headlineVs' : c[d].Headline - p[d].Headline, 'threat' : c[d].Threat, 'threatVs' : c[d].Threat - p[d].Threat};
+                var result = {'stage' : d, 'headline' : _c[d].Headline, 'headlineVs' : _c[d].Headline - _p[d].Headline, 'threat' : _c[d].Threat, 'threatVs' : _c[d].Threat - _p[d].Threat};
                     result.total = result.headline - result.threat;
                     result.totalVs = result.headlineVs - result.threatVs;
-                summaryData.push(result);
+                _data.push(result);
             });
             
             function render() {
-                tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryData);
+                tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', _data);
             }
             
             function update() {
-                tblOppSummary.reload(summaryData);
+                tblOppSummary.reload(_data);
+            }
+            
+            return { render : render, update : update };
+        }
+        
+        function oppsByStage() {
+            
+            var _data = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
+            
+            function render() {
+
+                tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _data.Confirmed);
+                tblOppsLikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-likely', _data.Likely);     
+                tblOppsOpen = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-open', _data.Open);     
+                tblOppsUnlikely = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-unlikely', _data.Unlikely);     
+                tblOppsLost = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-lost', _data.Lost);
+                
+            }
+            
+            function update() {
+                
+                tblOppsConfirmed.reload(_data.Confirmed);
+                tblOppsLikely.reload(_data.Likely);     
+                tblOppsOpen.reload(_data.Open);     
+                tblOppsUnlikely.reload(_data.Unlikely);     
+                tblOppsLost.reload(_data.Lost);
+                   
+            }
+            
+            return { render : render, update : update };
+            
+        }
+        
+        function timeline() {
+
+            var _data = _models.opps.toTimeline(_.filter(_models.opps.dims.dummy.top(Infinity), {'stage' : 'confirmed'}));
+
+            function render() {
+                tmlOpps = new TIMELINE.HeadlineOpportunities(_uid + '-charts-opp-timeline', _data);
+            }
+            
+            function update() {
+                tmlOpps.reload(_data);
             }
             
             return { render : render, update : update };
