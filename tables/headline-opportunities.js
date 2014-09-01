@@ -28,7 +28,7 @@ var TABLE_OPPORTUNITIES = (function($t) {
                                 'targets' : [1,2,3,4,5,6], 
                                 'render' : function ( data, type, row, meta ) {
                                     if (type === 'display') {
-                                        return toGbp(data);
+                                        return f.toGbp(data);
                                     } 
                                     return data;
                                 },

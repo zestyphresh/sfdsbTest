@@ -1,7 +1,7 @@
 var f = {
 
     toGbp : function(num) { return accounting.formatMoney(num); },
-    
+
     gbpComparison : function(num1, num2) {
         var diff = num1 - num2;
         if (diff == 0) {
