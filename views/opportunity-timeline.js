@@ -13,7 +13,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //Public vars
         var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
         var chtSalesByCategory, chtSalesByOwner, tblOppSummary;
-        var filterOwner
+        var filterOwner;
         
         //Init models
         function init(renderAfter) {
@@ -50,10 +50,13 @@ var VIEW_OPPORTUNITIES = (function($v) {
         }
         
         function bindEvents() {
+            
+            console.log('in bind func');
         
             filterOwner.on('changed.fu.combobox', function(event, selected) {
+                console.log('in bound event');
                 _models.opps.dims.owner.filterExact(selected.value);
-                summaryTable().update();
+                summary().update();
                 oppsByStage().update();
                 timeline().update();
             });
