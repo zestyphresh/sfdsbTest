@@ -105,8 +105,9 @@ _templates['headline-opportunities'] = ""+
         "            <div class='panel-heading'>" +
         "                <span>Filters</span>" +
         "            </div>"+
-        "            <div class='panel-body'>"+
-        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "            <div class='panel-body'>"+ 
+        "                <div><span>Sector</span><span id='{{id}}-filters-sector-reset' class='filter-reset text-right'>Reset</span></div>"+
+        "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
@@ -114,7 +115,8 @@ _templates['headline-opportunities'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
-        "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                <div><span>Salesperson</span><span id='{{id}}-filters-owner-reset' class='filter-reset text-right'>Reset</span></div>"+
+        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
