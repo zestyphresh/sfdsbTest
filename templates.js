@@ -9,7 +9,7 @@ var _templates = {};
 
 _templates['combobox-item'] = ""+
     "{{#each this}}"+ 
-    "    <li data-value='{{key}}'>{{key}} ({{value}})</li>"+
+    "    <li data-value='{{key}}'><a>{{key}} ({{value}})</a></li>"+
     "{{/each}}"
 ;
 
