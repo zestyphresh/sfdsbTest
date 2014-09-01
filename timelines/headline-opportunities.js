@@ -5,7 +5,8 @@ var TIMELINE_HEADLINE_OPPS = (function($l) {
     $l.HeadlineOpportunities = function(id, data) {
         
         var options = {
-            'maxHeight' : '600px' 
+            'maxHeight' : '600px', 
+            'minHeight' : '600px'
         };
             
         var groups = [
