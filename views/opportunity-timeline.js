@@ -39,6 +39,11 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
+            //FILTERS {{id}}-filters-owner
+            $j('#' + _uid + '-filters-owner' + ' > ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+            
+            
+            //SUMMARY TABLE
             var c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             var p = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             
@@ -51,12 +56,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 summaryTable.push(result);
             });
             
-            console.log(summaryTable);
-            
-            console.log(_models.opps.groups.owners.all());
-            
             tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryTable);
-
+            
+            //OPPS BY STAGE TABLES
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
 
             tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', tableData.Confirmed);

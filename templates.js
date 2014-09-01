@@ -7,9 +7,9 @@ Handlebars.registerHelper('times', function(n, block) {
     
 var _templates = {};
 
-_templates['dropdown-filters'] = ""+
+_templates['combobox-item'] = ""+
     "{{#each this}}"+ 
-    "    <li data-value='1'><a href='#'>One</a></li>"+
+    "    <li data-value='{{key}}'>{{key}} ({{value}})</li>"+
     "{{/each}}"
 ;
 
@@ -233,5 +233,6 @@ var templates =  {
     'heading' : Handlebars.compile(_templates['heading']),
     'heading-no-links' : Handlebars.compile(_templates['heading-no-links']),
     'headline-opportunities' : Handlebars.compile(_templates['headline-opportunities']),
-    'countdown-promo' : Handlebars.compile(_templates['countdown-promo'])
+    'countdown-promo' : Handlebars.compile(_templates['countdown-promo']),
+    'combobox-item' : Handlebars.compile(_templates['combobox-item'])
 }; 
