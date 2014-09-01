@@ -40,7 +40,13 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
             //FILTERS {{id}}-filters-owner
-            $j('#' + _uid + '-filters-owner').find('ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+            var filterOwner = $j('#' + _uid + '-filters-owner');
+            filterOwner.find('ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+            filterOwner.on('changed.fu.combobox', function(event, data) {
+                console.log(event, data);
+            });
+            
+
             
             
             //SUMMARY TABLE
