@@ -51,10 +51,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         
         function bindEvents() {
             
-            console.log('in bind func');
-        
             filterOwner.on('changed.fu.combobox', function(event, selected) {
-                console.log('in bound event');
                 _models.opps.dims.owner.filterExact(selected.value);
                 summary().update();
                 oppsByStage().update();
@@ -90,6 +87,8 @@ var VIEW_OPPORTUNITIES = (function($v) {
         function oppsByStage() {
             
             var _data = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
+            
+            console.log(_data);
             
             function render() {
 
