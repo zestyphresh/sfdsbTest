@@ -7,12 +7,12 @@ var TABLE_OPPORTUNITIES = (function($t) {
         var _id = id + '-inner';
 
         var _columns = [{"data": "stage", "title": "Stage"}, 
-                        {"data": "headline", "title": "Account"},                
-                        {"data": "headlineVs", "title": "Owner"},                    
-                        {"data": "threat", "title": "Type"},                
-                        {"data": "threatVs", "title": "Name"},                      
-                        {"data": "total", "title": "This Year"},        
-                        {"data": "totalVs", "title": "Annualised"}
+                        {"data": "headline", "title": "Headline"},                
+                        {"data": "headlineVs", "title": "Vs Last Month"},                    
+                        {"data": "threat", "title": "Threat"},                
+                        {"data": "threatVs", "title": "Vs Last Month"},                      
+                        {"data": "total", "title": "Total"},        
+                        {"data": "totalVs", "title": "Vs Last Month"}
         ];
         
         $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
