@@ -12,7 +12,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
         //Public vars
         var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
-        var chtSalesByCategory, chtSalesByOwner;
+        var chtSalesByCategory, chtSalesByOwner, tblOppSummary;
         
         //Init models
         function init(renderAfter) {
@@ -39,19 +39,21 @@ var VIEW_OPPORTUNITIES = (function($v) {
             $j('#' + _uid).append(templates['heading-no-links']({'title':'Opportunity Timeline'}));
             $j('#' + _uid).append(templates['headline-opportunities']({'id':_uid}));
             
-            var summaryDataCurrent = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
-            var summaryDataPrevious = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
+            var c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
+            var p = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value();
             
-            $j('#' + _uid + '-opp-summary-confirmed-headline').html(f.gbpComparison(summaryDataCurrent.Confirmed.Headline, summaryDataPrevious.Confirmed.Headline));
-            $j('#' + _uid + '-opp-summary-likely-headline').html(f.gbpComparison(summaryDataCurrent.Likely.Headline, summaryDataPrevious.Likely.Headline));
-            $j('#' + _uid + '-opp-summary-open-headline').html(f.gbpComparison(summaryDataCurrent.Open.Headline, summaryDataPrevious.Open.Headline));
-            $j('#' + _uid + '-opp-summary-unlikely-headline').html(f.gbpComparison(summaryDataCurrent.Unlikely.Headline, summaryDataPrevious.Unlikely.Headline));
-            $j('#' + _uid + '-opp-summary-lost-headline').html(f.gbpComparison(summaryDataCurrent.Lost.Headline, summaryDataPrevious.Lost.Headline));
-            $j('#' + _uid + '-opp-summary-confirmed-threat').html(f.gbpComparison(summaryDataCurrent.Confirmed.Threat, summaryDataPrevious.Confirmed.Threat));
-            $j('#' + _uid + '-opp-summary-likely-threat').html(f.gbpComparison(summaryDataCurrent.Likely.Threat, summaryDataPrevious.Likely.Threat));
-            $j('#' + _uid + '-opp-summary-open-threat').html(f.gbpComparison(summaryDataCurrent.Open.Threat, summaryDataPrevious.Open.Threat));
-            $j('#' + _uid + '-opp-summary-unlikely-threat').html(f.gbpComparison(summaryDataCurrent.Unlikely.Threat, summaryDataPrevious.Unlikely.Threat));
-            $j('#' + _uid + '-opp-summary-lost-threat').html(f.gbpComparison(summaryDataCurrent.Lost.Threat, summaryDataPrevious.Lost.Threat));
+            var summaryTable = [];
+            
+            _.each(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost'], function(d) {
+                var result = {'stage' : d, 'headline' : c.Headline, 'headlineVs' : c.Headline - p.Headline, 'threat' : c.Threat, 'threatVs' : c.Threat - p.Threat}
+                    result.total = result.headline - result.threat;
+                    result.totalVs = result.headlineVs - result.threatVs;
+                summaryTable.push(result);
+            });
+            
+            tblOppSummary = new TABLE.HeadlineOpportunitySummary(_uid + '-tables-opp-summary', summaryTable);
+            
+
 
             var tableData = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
 

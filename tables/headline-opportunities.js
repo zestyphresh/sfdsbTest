@@ -1,6 +1,49 @@
 var TABLE_OPPORTUNITIES = (function($t) {
     
     var _modpriv = $t._priv;
+    
+        $t.HeadlineOpportunitySummary = function(id, data) {
+        
+        var _id = id + '-inner';
+
+        var _columns = [{"data": "stage", "title": "Stage"}, 
+                        {"data": "headline", "title": "Account"},                
+                        {"data": "headlineVs", "title": "Owner"},                    
+                        {"data": "threat", "title": "Type"},                
+                        {"data": "threatVs", "title": "Name"},                      
+                        {"data": "total", "title": "This Year"},        
+                        {"data": "totalVs", "title": "Annualised"}
+        ];
+        
+        $j('#' + id).append(_modpriv.template({'id': _id, 'columns' : _.size(_columns)}));
+            
+        var table = $j('#' + _id).DataTable({
+            'data' : data,
+            'order' : [[ 2, 'desc' ]],
+            'paging' : false,
+            'info' : false, 
+            'searching' : false,
+            'columns' : _columns,
+            'columnDefs' : [{ 
+                                'targets' : [1,2,3,4,5,6], 
+                                'render' : function ( data, type, row, meta ) {
+                                    if (type === 'display') {
+                                        return toGbp(data);
+                                    } 
+                                    return data;
+                                },
+                                'className' : 'text-right'
+                            }
+            ],
+
+        });
+
+        return { 
+            reload : function(data) { table.clear().rows.add(data).draw(); } 
+        }; 
+        
+    };
+    
 
     $t.HeadlineOpportunities = function(id, data) {
         

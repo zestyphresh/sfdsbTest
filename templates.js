@@ -94,21 +94,15 @@ _templates['headline-opportunities'] = ""+
         "    <div class='col-xs-12'>"+
         "        <div id='{{id}}-filters' class='well'></div>"+
         "    </div>"+
-        ""+ 
-        "    <div id='{{id}}-opp-summary-headline' class='col-xs-12 col-md-4 col-lg-4'>"+
-        "    <h5 class='green'>Opps Confirmed : <span id='{{id}}-opp-summary-confirmed-headline'></span></h5>"+
-        "    <h5 class='green'>Opps Likely : <span id='{{id}}-opp-summary-likely-headline'></span></h5>"+
-        "    <h5 class='green'>Opps Open : <span id='{{id}}-opp-summary-open-headline'></span></h5>"+
-        "    <h5 class='green'>Opps Unlikely : <span id='{{id}}-opp-summary-unlikely-headline'></span></h5>"+
-        "    <h5 class='green'>Opps Lost : <span id='{{id}}-opp-summary-lost-headline'></span></h5>"+
-        "    </div>"+
-        ""+
-        "    <div id='{{id}}-opp-summary-threat' class='col-xs-12 col-md-4 col-lg-4'>"+
-        "    <h5 class='red'>Threats Confirmed : <span id='{{id}}-opp-summary-confirmed-threat'></span></h5>"+
-        "    <h5 class='red'>Threats Likely : <span id='{{id}}-opp-summary-likely-threat'></span></h5>"+
-        "    <h5 class='red'>Threats Open : <span id='{{id}}-opp-summary-open-threat'></span></h5>"+
-        "    <h5 class='red'>Threats Unlikely : <span id='{{id}}-opp-summary-unlikely-threat'></span></h5>"+
-        "    <h5 class='red'>Threats Lost : <span id='{{id}}-opp-summary-lost-threat'></span></h5>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity Summary</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-summary'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-summary' class='table-responsive'></div>"+
+        "        </div>"+ 
         "    </div>"+
         ""+
         "    <div class='col-xs-12'>"+
