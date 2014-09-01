@@ -104,7 +104,7 @@ _templates['headline-opportunities'] = ""+
         "                <span>Filters</span>" +
         "            </div>"+
         "            <div class='panel-body'>"+
-        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox''>"+
+        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
