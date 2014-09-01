@@ -8,7 +8,6 @@
     gblModel = MODEL;
     $body = $j('body');
     $navbar = $j();
-    $loading = $j(templates['loading']());
     
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
@@ -17,8 +16,7 @@
             
             $navbar = $j(templates['navbar'](result[0].navbar));
             $navbar.appendTo($body);
-            $loading.appendTo($body).hide();
-            
+
             _.each(result[0].views.available, function(v) {
         
                 var args = _.isUndefined(v.View_Args__c) ? false : JSON.parse(v.View_Args__c);
