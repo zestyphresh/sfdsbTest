@@ -2,7 +2,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
     $v.HeadlineOpportunityTimeline = function(args) {
 
-        //Private vars
+        //PRIVATE VARS - SET
         var _args = args,
             _viewId = 'a0Lb0000006xVBq',
             _uid = _.uniqueId(_viewId + '-'), 
@@ -10,12 +10,12 @@ var VIEW_OPPORTUNITIES = (function($v) {
             _loaded = false
         ;
 
-        //Public vars
-        var tmlOpps, chtSales, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost, chtOppsBuckets, dcchttest;
-        var chtSalesByCategory, chtSalesByOwner, tblOppSummary;
+        //PRIVATE VARS - NOT SET
+        var tmlOpps, tblOppsConfirmed, tblOppsLikely, tblOppsOpen, tblOppsUnlikely, tblOppsLost;
+        var tblOppSummary;
         var filterOwner;
         
-        //Init models
+        //INITIALISE MODELS
         function init(renderAfter) {
             
             _models['opps'] = new gblModel.HeadlineOpportunitiesCf;
@@ -30,7 +30,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
         }
             
-        //Render function, adds all dom elements and creates charts, tables and filters
+        //RENDER
         function render() { 
 
             $body.append(templates['container']({'id':_uid}));
@@ -40,6 +40,9 @@ var VIEW_OPPORTUNITIES = (function($v) {
             //FILTERS
             filterOwner = $j('#' + _uid + '-filters-owner');
             filterOwner.find('ul').append(templates['combobox-item'](_models.opps.groups.owners.all()));
+            
+            filterSector = $j('#' + _uid + '-filters-sector');
+            filterSector.find('ul').append(templates['combobox-item'](_models.opps.groups.sectors.all()));
 
             summary().render();
             oppsByStage().render();
@@ -49,6 +52,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
 
         }
         
+        //BIND EVENTS
         function bindEvents() {
             
             filterOwner.on('changed.fu.combobox', function(event, selected) {
@@ -58,8 +62,19 @@ var VIEW_OPPORTUNITIES = (function($v) {
                 timeline().update();
             });
             
+            filterSector.on('changed.fu.combobox', function(event, selected) {
+                _models.opps.dims.sector.filterExact(selected.value);
+                summary().update();
+                oppsByStage().update();
+                timeline().update();
+            });
+            
         }
         
+        //COMPONENT GROUPS
+        //Components are grouped by the data they consume to avoid manipulating the same data multiple times
+        
+        //COMPONENT GROUP - SUMMARY
         function summary() {
 
             var _c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //current
@@ -84,12 +99,11 @@ var VIEW_OPPORTUNITIES = (function($v) {
             return { render : render, update : update };
         }
         
+        //COMPONENT GROUP - OPPS BY STAGE
         function oppsByStage() {
             
             var _data = _(_models.opps.dims.dummy.top(Infinity)).groupBy(function(v) { return v.stageCategory; }).value();
-            
-            console.log(_data);
-            
+
             function render() {
 
                 tblOppsConfirmed = new TABLE.HeadlineOpportunities(_uid + '-tables-opp-list-confirmed', _data.Confirmed);
@@ -114,6 +128,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
             
         }
         
+        //COMPONENT GROUP - TIMELINE
         function timeline() {
 
             var _data = _models.opps.toTimeline(_.filter(_models.opps.dims.dummy.top(Infinity), {'stageCategory' : 'Confirmed'}));

@@ -114,6 +114,14 @@ _templates['headline-opportunities'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
+        "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
         "            </div>"+
         "        </div>"+ 
         "    </div>"+
@@ -185,12 +193,6 @@ _templates['headline-opportunities'] = ""+
         "        </div>"+
         "    </div>"+
         ""+    
-        "    <div class='col-xs-12'>"+
-        "        <div class='panel panel-default'>"+
-        "            <div class='panel-heading'>Opportunity Sales</div>"+
-        "            <div id='{{id}}-charts-opp-sales' class='minChartDims1'></div>"+
-        "        </div>"+ 
-        "    </div>"+
         "</div>"
 ;
 
