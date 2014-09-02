@@ -1,4 +1,4 @@
-var TABLE_OPPORTUNITIES = (function($t) {
+var TABLE_HEADLINE_OPPS = (function($t) {
     
     var _modpriv = $t._priv;
     

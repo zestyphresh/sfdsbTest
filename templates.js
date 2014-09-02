@@ -200,6 +200,109 @@ _templates['headline-opportunities'] = ""+
         "</div>"
 ;
 
+_templates['epos-basic'] = ""+
+        "<div class='row'>"+
+        ""+    
+        "    <div class='col-xs-12 col-md-3'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Filters</span>" +
+        "            </div>"+
+        "            <div class='panel-body'>"+ 
+        "                <div><h5>Sector</h5></div>"+
+        "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "                <div><h5>Salesperson</h5></div>"+
+        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "            </div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-12 col-md-9'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity Summary</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-summary'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-summary' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Confirmed</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-confirmed'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-list-confirmed' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Likley</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-likely'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-list-likely' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Open</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-open'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-list-open' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Unlikley</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-unlikley'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-list-unlikely' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+    
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Opportunity List - Lost</span>" +
+        "                <a class='pull-right' data-toggle='collapse' data-target='#{{id}}-tables-opp-list-lost'><span class='glyphicon glyphicon-plus'></span></a>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-opp-list-lost' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Opportunity Timeline</div>"+
+        "            <div id='{{id}}-charts-opp-timeline' class='minChartDims3'></div>"+
+        "        </div>"+
+        "    </div>"+
+        ""+    
+        "</div>"
+;
+
 _templates['countdown-promo'] = ""+
         "<div class='row'>"+
         "    <div class='col-xs-12'>"+

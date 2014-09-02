@@ -1,0 +1,20 @@
+            'footerCallback' : function (tfoot, data, start, end, display) {
+                var api = this.api(),
+                    thisYearCol = 5,
+                    annualisedCol = 6,
+                    isoCol = 7;
+                    
+                var totals = _(data).reduce(function(r, v, k) {
+                    
+                    return {'thisYear' : r.thisYear + v.thisYearValue, 
+                            'annualised' : r.annualised + v.annualisedValue, 
+                            'iso' : r.iso + v.isoValue
+                    };
+                    
+                }, {'thisYear':0, 'annualised':0, 'iso':0}); 
+
+                $j(api.column(0).footer()).html('Total');
+                $j(api.column(thisYearCol).footer()).html(f.toGbp(totals.thisYear));
+                $j(api.column(annualisedCol).footer()).html(f.toGbp(totals.annualised));
+                $j(api.column(isoCol).footer()).html(f.toGbp(totals.iso));
+            }

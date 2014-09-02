@@ -20,21 +20,11 @@ var TABLE = (function() {
             return {
                 'targets' : targets,
                 'render' : render, 
-                className : cssClass               
+                'className' : cssClass               
             };
     
         },
-        
-        oppThreatsNegative : function(data, keys) {
-            _.each(data, function (v, k) {
-                if (v.recordType === 'Threat') {
-                    _.each(keys, function(key) {
-                        v[key] = -v[key];
-                    });
-                }
-            });
-        }
-    
+
     };
     
     return module;

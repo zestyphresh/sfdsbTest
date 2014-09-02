@@ -1,20 +1,18 @@
-var MODEL_USERVIEWCONFIG = (function($m) {
+var MODEL_USERVIEWS = (function($m) {
     
     var _modpriv = $m._priv;
     
-    $m.getUserViewConfig = function(userId) {
+    $m.userViews = function(userId) {
         
-        var id = 'a0Mb0000005LPl4',
-            deferred = Q.defer(),
-            remoteObject = new SObjectModel.userViews()
-        ;
+        var deferred = Q.defer(),
+            remoteObject = new SObjectModel.userViews();
     
         remoteObject.retrieve({
             
             limit : 100,
             where : { User_Id__c : { eq : userId } }
             
-            }, function(err, obj) {
+            }, function(err, res) {
 
                 var result = { 'navbar' : {}, 'views' : {} },
                     userViews = _.map(obj, '_props');

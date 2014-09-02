@@ -2,6 +2,7 @@ var CHART_OPPORTUNITIES = (function($c) {
     
     var _priv = $c._priv;
     
+    //NOT CURRENTLY IN USE
     $c.OpportunitySalesByCategory = function(id, data) {
         
         var _data = data;
@@ -36,6 +37,7 @@ var CHART_OPPORTUNITIES = (function($c) {
         
     };
     
+    //NOT CURRENTLY IN USE
     $c.OpportunitySalesByOwner = function(id, data) {
         
         var _data = data;
@@ -70,6 +72,7 @@ var CHART_OPPORTUNITIES = (function($c) {
         
     };
     
+    //NOT CURRENTLY IN USE
     $c.OpportunitySales = function(id, data) {
         
         var svg = dimple.newSvg('#' + id, '100%', '100%');

@@ -1,4 +1,4 @@
-var VIEW_OPPORTUNITIES = (function($v) {
+var VIEW_HEADLINE_OPPS = (function($v) {
 
     $v.HeadlineOpportunityTimeline = function(args) {
 
@@ -18,7 +18,7 @@ var VIEW_OPPORTUNITIES = (function($v) {
         //INITIALISE MODELS
         function init(renderAfter) {
             
-            _models['opps'] = new gblModel.HeadlineOpportunitiesCf;
+            _models['opps'] = new gblModel.HeadlineOpps;
             
             Q.all([_models.opps.fetch()]).done(function() {
                 
