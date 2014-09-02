@@ -24,15 +24,17 @@ var MODEL_OPPORTUNITIES = (function($m) {
                         
                     } else {
                         
+                        _onFetchDataChanges(result.opps);
+                        
+                        _data.add(result.opps);
+                        
                         //Add records to crossfilter and convert date strings to moment objects
-                        _data.add(_(result.opps).each(function(v) {
-                            v.closeDate = moment(v.closeDate, 'YYYY-MM-DD');
-                            v.closeDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
-                        })
-                        .value());
-                        
-                        console.log(result.opps);
-                        
+                        //_data.add(_(result.opps).each(function(v) {
+                        //    v.closeDate = moment(v.closeDate, 'YYYY-MM-DD');
+                        //    v.closeDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
+                        //})
+                        //.value());
+
                         //Create crossfilter dimensions
                         dims.dummy = _data.dimension(function(d) { return 'all'; });
                         dims.recordType = _data.dimension(function(d) { return d.recordType; });
@@ -110,6 +112,16 @@ var MODEL_OPPORTUNITIES = (function($m) {
             );
             
             return deferred.promise;
+            
+        }
+        
+        //Any data manipulation prior to inserting to crossfilter should be handled here
+        function _onFetchDataChanges(data) {
+            
+            _(data).each(function(v) {
+                v.closeDate = moment(v.closeDate, 'YYYY-MM-DD');
+                v.closeDatePrevious = moment(v.closeDatePrevious, 'YYYY-MM-DD');
+            });
             
         }
         
