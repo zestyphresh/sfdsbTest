@@ -17,7 +17,7 @@ var MODEL_EPOS = (function($m) {
             
             var deferred = Q.defer();
             
-            Q.all([_remote('Homebase').fetch()]).done(function(results) {
+            Q.all([_remote('Homebase')]).done(function(results) {
                 
                 console.log(results);
                 
@@ -39,6 +39,8 @@ var MODEL_EPOS = (function($m) {
         
         function _remote(parentAccount) {
             
+            console.log('in remote');
+            
             var deferred = Q.defer();
 
             AnalyticsDataProvider.getEpos(
@@ -46,6 +48,8 @@ var MODEL_EPOS = (function($m) {
                 parentAccount,
                 
                 function (result, event) {
+                    
+                    console.log(result, event);
                     
                     if (!event.status) {
                         
