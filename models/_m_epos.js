@@ -12,15 +12,11 @@ var MODEL_EPOS = (function($m) {
         
         //PUBLIC FUNCTIONS
         function fetch(callback) {
-            
-            console.log('in fetch');
-            
+
             var deferred = Q.defer();
             
             Q.all([_remote('Homebase')]).done(function(results) {
-                
-                console.log(results);
-                
+
                 _.each(results, function(v) {
                     
                     _onFetchDataChanges(v);
@@ -28,6 +24,10 @@ var MODEL_EPOS = (function($m) {
                     _data.add(v);
                     
                 });
+                
+                _createDims();
+                
+                _createGroups();
                 
                 deferred.resolve(true);
                 
@@ -38,9 +38,7 @@ var MODEL_EPOS = (function($m) {
         }
         
         function _remote(parentAccount) {
-            
-            console.log('in remote');
-            
+
             var deferred = Q.defer();
 
             AnalyticsDataProvider.getEpos(
@@ -48,9 +46,7 @@ var MODEL_EPOS = (function($m) {
                 parentAccount,
                 
                 function (result, event) {
-                    
-                    console.log(result, event);
-                    
+
                     if (!event.status) {
                         
                         deferred.reject(false);
