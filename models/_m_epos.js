@@ -51,6 +51,7 @@ var MODEL_EPOS = (function($m) {
         function _onFetchDataChanges(data) {
             
             _(data).each(function(v) {
+                v.stringDate = v.eposDate;
                 v.eposDate = moment(v.eposDate, 'YYYY-MM-DD');
             });
             
