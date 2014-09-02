@@ -24,9 +24,7 @@ var MODEL_EPOS = (function($m) {
                     _data.add(v);
                     
                 });
-                
-                console.log(_data)
-                
+
                 _createDims();
                 
                 _createGroups();
