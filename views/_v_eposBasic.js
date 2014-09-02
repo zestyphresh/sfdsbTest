@@ -49,7 +49,7 @@ var VIEW_EPOS = (function($v) {
             fltProductCategory = $j('#' + _uid + '-filters-product-category');
             fltProductCategory.find('ul').append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
             
-            basic().render();
+            chart().render();
 
             bindEvents();
 
@@ -99,7 +99,7 @@ var VIEW_EPOS = (function($v) {
             });
 
             function update() {
-                basic().update();
+                chart().update();
             }
             
         }
