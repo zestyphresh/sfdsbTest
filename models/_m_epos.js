@@ -13,9 +13,37 @@ var MODEL_EPOS = (function($m) {
         //PUBLIC FUNCTIONS
         function fetch(callback) {
             
+            console.log('in fetch');
+            
+            var deferred = Q.defer();
+            
+            Q.all([_remote('Homebase').fetch()]).done(function(results) {
+                
+                console.log(results);
+                
+                _.each(results, function(v) {
+                    
+                    _onFetchDataChanges(v);
+                    
+                    _data.add(v);
+                    
+                });
+                
+                deferred.resolve(true);
+                
+            });
+
+            return deferred.promise;
+
+        }
+        
+        function _remote(parentAccount) {
+            
             var deferred = Q.defer();
 
             AnalyticsDataProvider.getEpos(
+                
+                parentAccount,
                 
                 function (result, event) {
                     
@@ -24,16 +52,8 @@ var MODEL_EPOS = (function($m) {
                         deferred.reject(false);
                         
                     } else {
-                        
-                        _onFetchDataChanges(result);
-                        
-                        _data.add(result);
-                        
-                        _createDims();
-                        
-                        _createGroups();
 
-                        deferred.resolve(true);
+                        deferred.resolve(result);
                         
                     }
 
@@ -44,6 +64,7 @@ var MODEL_EPOS = (function($m) {
             return deferred.promise;
             
         }
+        
         
         //PRIVATE FUNCTIONS
         
