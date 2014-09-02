@@ -12,7 +12,7 @@
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
 
-    Q.all([gblModel.getUserViewConfig(config.userId), gblModel.getDateInfo()]).then(function(result) {
+    Q.all([gblModel.userViews(config.userId), gblModel.dates()]).then(function(result) {
             
             $navbar = $j(templates['navbar'](result[0].navbar));
             $navbar.appendTo($body);

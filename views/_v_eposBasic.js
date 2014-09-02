@@ -102,8 +102,6 @@ var VIEW_EPOS = (function($v) {
                 basic().update();
             }
             
-            
-            
         }
         
         //COMPONENT GROUPS
