@@ -13,6 +13,8 @@
     config.userName = $j('#userName').text();
 
     Q.all([gblModel.userViews(config.userId), gblModel.dates()]).then(function(result) {
+        
+        console.log(result);
             
             $navbar = $j(templates['navbar'](result[0].navbar));
             $navbar.appendTo($body);
