@@ -15,7 +15,7 @@ var MODEL_USERVIEWS = (function($m) {
             }, function(err, res) {
 
                 var result = { 'navbar' : {}, 'views' : {} },
-                    userViews = _.map(obj, '_props');
+                    userViews = _.map(res, '_props');
 
                 //NAVBAR
                 var navbar = result.navbar;
