@@ -25,9 +25,13 @@ var MODEL_EPOS = (function($m) {
                     
                 });
                 
+                console.log(_data)
+                
                 _createDims();
                 
                 _createGroups();
+                
+                console.log(dims.dummy.top(Infinity));
                 
                 deferred.resolve(true);
                 
