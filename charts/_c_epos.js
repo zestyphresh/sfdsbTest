@@ -13,7 +13,7 @@ var CHART_EPOS = (function($c) {
         var yAxis = chart.addMeasureAxis('y', 'quantity');
             yAxis.title = 'Quantity';
                 
-        var xAxis = chart.addTimeAxis('x', 'stringDate', 'YYYY-MM-DD', 'YYYY-MM');
+        var xAxis = chart.addTimeAxis('x', 'stringDate', '%Y-%m-%d', '%Y-%m');
             xAxis.title = 'Date';
                
         var series = chart.addSeries(null, dimple.plot.line); 
