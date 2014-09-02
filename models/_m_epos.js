@@ -37,7 +37,7 @@ var MODEL_EPOS = (function($m) {
                         
                     }
 
-                }, { escape: true }
+                }, { buffer: false, escape: true }
                     
             );
             
@@ -63,7 +63,6 @@ var MODEL_EPOS = (function($m) {
             dims.dummy = _data.dimension(function(d) { return 'all'; });
             dims.accountParentName = _data.dimension(function(d) { return d.accountParentName; });
             dims.subSector = _data.dimension(function(d) { return d.accountSubSector; });
-            dims.sector = _data.dimension(function(d) { return d.accountSector; });
             dims.productName = _data.dimension(function(d) { return d.productName; });
             dims.productCategory = _data.dimension(function(d) { return d.productCategory; });
 
