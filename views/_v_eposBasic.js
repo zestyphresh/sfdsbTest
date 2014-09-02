@@ -113,7 +113,7 @@ var VIEW_EPOS = (function($v) {
             var _data = _models.epos.dims.dummy.top(Infinity);
             
             function render() {
-                chtBasic= new CHART.EposBasic(_uid + '-tables-opp-summary', _data);
+                chtBasic = new CHART.EposBasic(_uid + '-charts-basic', _data);
             }
             
             function update() {
