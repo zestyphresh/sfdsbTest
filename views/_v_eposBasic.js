@@ -110,7 +110,7 @@ var VIEW_EPOS = (function($v) {
         //COMPONENT GROUP - SUMMARY
         function chart() {
 
-            var _data = _models.epos.dims.dummy.all();
+            var _data = _models.epos.dims.dummy.top(Infinity);
             
             function render() {
                 chtBasic= new CHART.EposBasic(_uid + '-tables-opp-summary', _data);
