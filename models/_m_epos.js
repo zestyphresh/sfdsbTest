@@ -25,9 +25,7 @@ var MODEL_EPOS = (function($m) {
             ]).done(function(results) {
 
                 _.each(results, function(v) {
-                    
-                    console.log(results);
-                    
+
                     _onFetchDataChanges(v);
                     
                     _data.add(v);
