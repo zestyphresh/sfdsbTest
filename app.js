@@ -15,6 +15,7 @@
     Q.all([gblModel.userViews(config.userId), gblModel.dates()]).then(function(result) {
         
         console.log(result);
+        console.log(views);
             
             $navbar = $j(templates['navbar'](result[0].navbar));
             $navbar.appendTo($body);
@@ -26,6 +27,8 @@
                 router.on(v.link, routerFunc(v.name, args));
                 
             });
+            
+        console.log(views);    
             
     });
 
