@@ -149,7 +149,7 @@ _templates['epos-basic'] = ""+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
-        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right scrollable-menu'>"+
         "                                <li data-value='All'><a>All</a></li>"+
         "                            </ul>"+
         "                        </div>"+
