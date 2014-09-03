@@ -106,6 +106,8 @@ _templates['epos-basic'] = ""+
         "                <span>Filters</span>" +
         "            </div>"+
         "            <div class='panel-body'>"+ 
+        "<div class='row'>"+
+        "<div class='col-xs-12 col-md-3'>"+
         "                <div><h5>Account</h5></div>"+
         "                <div id='{{id}}-filters-parent-account' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
@@ -116,6 +118,8 @@ _templates['epos-basic'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
+        "</div>"+
+        "<div class='col-xs-12 col-md-3'>"+
         "                <div><h5>Sub Sector</h5></div>"+
         "                <div id='{{id}}-filters-sub-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
@@ -126,6 +130,8 @@ _templates['epos-basic'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
+        "</div>"+
+        "<div class='col-xs-12 col-md-3'>"+
         "                <div><h5>Product Category</h5></div>"+
         "                <div id='{{id}}-filters-product-category' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
@@ -136,6 +142,8 @@ _templates['epos-basic'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
+        "</div>"+
+        "<div class='col-xs-12 col-md-3'>"+
         "                <div><h5>Product</h5></div>"+
         "                <div id='{{id}}-filters-product' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
@@ -146,6 +154,8 @@ _templates['epos-basic'] = ""+
         "                            </ul>"+
         "                        </div>"+
         "                </div>"+
+        "</div>"+
+        "</div>"+
         "            </div>"+
         "        </div>"+ 
         "    </div>"+
