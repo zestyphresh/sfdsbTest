@@ -23,6 +23,8 @@ var MODEL_EPOS = (function($m) {
                 DATA_REMOTING.headlineOpps('Wickes'),
                 DATA_REMOTING.headlineOpps('Tesco')
             ]).done(function(results) {
+                
+                console.log(results);
 
                 _.each(results, function(v) {
 
