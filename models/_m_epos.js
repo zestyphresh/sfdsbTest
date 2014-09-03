@@ -86,7 +86,7 @@ var MODEL_EPOS = (function($m) {
             dims.dummy = _data.dimension(function(d) { return 'all'; });
             dims.accountParentName = _data.dimension(function(d) { return d.accountParentName; });
             dims.subSector = _data.dimension(function(d) { return d.accountSubSector; });
-            dims.productName = _data.dimension(function(d) { return d.productName; });
+            dims.product = _data.dimension(function(d) { return d.productName; });
             dims.productCategory = _data.dimension(function(d) { return d.productCategory; });
 
         }
@@ -99,9 +99,6 @@ var MODEL_EPOS = (function($m) {
             groups.product = dims.productName.group();
             groups.productCategory = dims.productCategory.group();
             
-            //Reduce functions
-            //TODO - Find way to organise better, will probably multiply quite quickly
-
         }
         
         return { 

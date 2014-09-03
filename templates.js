@@ -151,7 +151,10 @@ _templates['epos-basic'] = ""+
         "    </div>"+
         ""+
         "    <div class='col-xs-12'>"+
-        "        <div id='{{id}}-charts-basic' class='height600'></div>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>Epos Chart</div>"+
+        "            <div id='{{id}}-charts-basic' class='height600'></div>"+
+        "        </div>"+
         "    </div>"+
         ""+    
         "</div>"
