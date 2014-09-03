@@ -19,8 +19,6 @@ var MODEL_EPOS = (function($m) {
                 DATA_REMOTING.headlineOpps('Homebase'),
                 DATA_REMOTING.headlineOpps('Argos'),
                 DATA_REMOTING.headlineOpps('Boots'),
-                DATA_REMOTING.headlineOpps('John Lewis'),
-                DATA_REMOTING.headlineOpps('Wickes'),
                 DATA_REMOTING.headlineOpps('Tesco')
             ]).done(function(results) {
                 
