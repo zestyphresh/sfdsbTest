@@ -35,12 +35,11 @@
     function routerFunc(name, args) {
 
         return function() {
-            
-            console.log(name, args);
+
+            $j('.dashboard-view').hide();
             
             if (views[name]) {
                 
-                $j('.dashboard-view').hide();
                 $j('#' + views[name].getUid()).show();
                 
             } else {
