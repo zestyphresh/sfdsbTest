@@ -58,7 +58,7 @@ var MODEL_EPOS = (function($m) {
         function _createDims() {
             
             dims.dummy = _data.dimension(function(d) { return 'all'; });
-            dims.parentAc = _data.dimension(function(d) { return d.accountParentName; });
+            dims.parentAccount = _data.dimension(function(d) { return d.accountParentName; });
             dims.subSector = _data.dimension(function(d) { return d.accountSubSector; });
             dims.product = _data.dimension(function(d) { return d.productName; });
             dims.productCategory = _data.dimension(function(d) { return d.productCategory; });
@@ -68,7 +68,7 @@ var MODEL_EPOS = (function($m) {
         //Create groups from crossfilter dimensions
         function _createGroups() {
             
-            groups.parentAccount = dims.accountParentName.group();
+            groups.parentAccount = dims.parentAccount.group();
             groups.subSector = dims.subSector.group();
             groups.product = dims.product.group();
             groups.productCategory = dims.productCategory.group();
