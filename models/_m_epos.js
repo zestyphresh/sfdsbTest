@@ -16,13 +16,11 @@ var MODEL_EPOS = (function($m) {
             var deferred = Q.defer();
             
             Q.all([
-                DATA_REMOTING.headlineOpps('Homebase'),
-                DATA_REMOTING.headlineOpps('Argos'),
-                DATA_REMOTING.headlineOpps('Boots'),
-                DATA_REMOTING.headlineOpps('Tesco')
+                DATA_REMOTING.epos('Homebase'),
+                DATA_REMOTING.epos('Argos'),
+                DATA_REMOTING.epos('Boots'),
+                DATA_REMOTING.epos('Tesco')
             ]).done(function(results) {
-                
-                console.log(results);
 
                 _.each(results, function(v) {
 
