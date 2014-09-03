@@ -33,6 +33,8 @@
 
         return function() {
             
+            console.log(name, args);
+            
             if (views[name]) {
                 
                 $j('.dashboard-view').hide();
