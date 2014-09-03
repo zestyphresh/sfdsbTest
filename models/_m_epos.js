@@ -15,7 +15,14 @@ var MODEL_EPOS = (function($m) {
 
             var deferred = Q.defer();
             
-            Q.all([_remote('Homebase')]).done(function(results) {
+            Q.all([
+                DATA_REMOTING.headlineOpps('Homebase'),
+                DATA_REMOTING.headlineOpps('Argos'),
+                DATA_REMOTING.headlineOpps('Boots'),
+                DATA_REMOTING.headlineOpps('John Lewis'),
+                DATA_REMOTING.headlineOpps('Wickes'),
+                DATA_REMOTING.headlineOpps('Tesco')
+            ]).done(function(results) {
 
                 _.each(results, function(v) {
                     
@@ -28,9 +35,7 @@ var MODEL_EPOS = (function($m) {
                 _createDims();
                 
                 _createGroups();
-                
-                console.log(dims.dummy.top(Infinity));
-                
+
                 deferred.resolve(true);
                 
             });
@@ -38,35 +43,6 @@ var MODEL_EPOS = (function($m) {
             return deferred.promise;
 
         }
-        
-        function _remote(parentAccount) {
-
-            var deferred = Q.defer();
-
-            AnalyticsDataProvider.getEpos(
-                
-                parentAccount,
-                
-                function (result, event) {
-
-                    if (!event.status) {
-                        
-                        deferred.reject(false);
-                        
-                    } else {
-
-                        deferred.resolve(result);
-                        
-                    }
-
-                }, { buffer: false, escape: true }
-                    
-            );
-            
-            return deferred.promise;
-            
-        }
-        
         
         //PRIVATE FUNCTIONS
         

@@ -14,33 +14,27 @@ var MODEL_HEADLINE_OPPS = (function($m) {
         function fetch(callback) {
             
             var deferred = Q.defer();
-
-            AnalyticsDataProvider.getHeadlineOpportunities(
-                
-                function (result, event) {
-                    
-                    if (!event.status) {
-                        
-                        deferred.reject(false);
-                        
-                    } else {
-                        
-                        _onFetchDataChanges(result);
-                        
-                        _data.add(result);
-                        
-                        _createDims();
-                        
-                        _createGroups();
-
-                        deferred.resolve(true);
-                        
-                    }
-
-                }, { escape: true }
-                    
-            );
             
+            Q.all([
+                DATA_REMOTING.headlineOpps()
+            ]).done(function(results) {
+
+                _.each(results, function(v) {
+                    
+                    _onFetchDataChanges(v);
+                    
+                    _data.add(v);
+                    
+                });
+
+                _createDims();
+                
+                _createGroups();
+                
+                deferred.resolve(true);
+                
+            });
+
             return deferred.promise;
             
         }
