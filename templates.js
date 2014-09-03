@@ -27,7 +27,7 @@ _templates['dropdown-filters'] = ""+
 ;
     
 _templates['navbar'] = ""+ 
-        "<nav class='navbar navbar-fixed-top' role='navigation'>"+
+        "<nav class='navbar navbar-fixed-top navbar-default' role='navigation'>"+
         "    <div class='navbar-header'>"+
         "        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>"+
         "            <span class='sr-only'>Toggle navigation</span>"+
