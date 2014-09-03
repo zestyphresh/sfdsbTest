@@ -16,9 +16,9 @@ var CHART_EPOS = (function($c) {
         var xAxis = chart.addTimeAxis('x', 'stringDate', '%Y-%m-%d', '%Y-%m');
             xAxis.title = 'Date';
                
-        var series = chart.addSeries(null, dimple.plot.line); 
+        var series = chart.addSeries(['halfYear', 'accountParentName'], dimple.plot.line); 
 
-        //var legend = chart.addLegend("60px", "-20px", "100%", "-30px");        
+        var legend = chart.addLegend("60px", "-20px", "100%", "-30px");        
                        
         //series.getTooltipText = function (e) {
         //    return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];

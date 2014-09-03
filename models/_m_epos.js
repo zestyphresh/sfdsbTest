@@ -50,6 +50,7 @@ var MODEL_EPOS = (function($m) {
             _(data).each(function(v) {
                 v.stringDate = v.eposDate;
                 v.eposDate = moment(v.eposDate, 'YYYY-MM-DD');
+                v.halfYear = '' + v.eposDate.Year() + '-' + Math.ceil(v.eposDate.Quarter()/2);
             });
             
         }
