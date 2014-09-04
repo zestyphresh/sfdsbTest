@@ -94,6 +94,8 @@ var VIEW_HEADLINE_OPPS = (function($v) {
             var _c = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //current
                 _p = _(_models.opps.groups.totalByStageCategory.top(Infinity)).map(function(v) { return [v.key, v.value]; }).object().value(), //previous
                 _data = [];
+                
+            console.log(_c, _p);
             
             _.each(['Confirmed', 'Likely', 'Open', 'Unlikely', 'Lost'], function(d) {
                 var result = {'stage' : d, 'headline' : _c[d].Headline, 'headlineVs' : _c[d].Headline - _p[d].Headline, 'threat' : _c[d].Threat, 'threatVs' : _c[d].Threat - _p[d].Threat};
