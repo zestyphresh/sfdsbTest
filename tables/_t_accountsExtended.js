@@ -2,7 +2,7 @@ var TABLE_ACCOUNTS_EXTENDED = (function($t) {
     
     var _modpriv = $t._priv;
     
-    $t.HeadlineOpportunitySummary = function(id, data) {
+    $t.AccountsExtended = function(id, data) {
         
         var _id = id + '-inner';
         

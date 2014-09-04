@@ -4,7 +4,7 @@ var VIEW_EPOS = (function($v) {
 
         //PRIVATE VARS - SET
         var _args = args,
-            _viewId = '',
+            _viewId = 'a0Lb0000007B9Ij',
             _uid = _.uniqueId(_viewId + '-'), 
             _models = {},
             _loaded = false
