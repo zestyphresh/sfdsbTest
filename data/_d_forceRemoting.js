@@ -3,7 +3,7 @@ var DATA_REMOTING = {
     //Note - Make sure buffer is set to false unless you know that the combined
     //result of any that might be bufferred together will be less than 15mb.
     
-    'accountExtended' : function() {
+    'accountsExtended' : function() {
         
         //parentAccount used in soql where clause to reuce size of result as it
         //was hitting the 15mb limit. Use multiple calls and join in the model
