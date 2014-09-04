@@ -1,6 +1,6 @@
-var VIEW_EPOS = (function($v) {
+var VIEW_ACCOUNTS_EXTENDED = (function($v) {
 
-    $v.EposBasic = function(args) {
+    $v.AccountsExtended = function(args) {
 
         //PRIVATE VARS - SET
         var _args = args,
@@ -33,7 +33,7 @@ var VIEW_EPOS = (function($v) {
         function render() { 
 
             $body.append(templates['container']({'id':_uid}));
-            $j('#' + _uid).append(templates['heading-no-links']({'title':'EPOS'}));
+            $j('#' + _uid).append(templates['heading-no-links']({'title':'Accounts'}));
             $j('#' + _uid).append(templates['accounts-extended']({'id':_uid}));
 
             //FILTERS
