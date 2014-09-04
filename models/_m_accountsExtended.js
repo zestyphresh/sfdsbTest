@@ -16,7 +16,7 @@ var MODEL_ACCOUNTS_EXTENDED = (function($m) {
             var deferred = Q.defer();
             
             Q.all([
-                DATA_REMOTING.accountsExtended()
+                DATA_REMOTING.getAccountsExtended()
             ]).done(function(results) {
 
                 _.each(results, function(v) {
