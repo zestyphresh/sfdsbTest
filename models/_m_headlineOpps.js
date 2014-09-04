@@ -93,7 +93,6 @@ var MODEL_HEADLINE_OPPS = (function($m) {
             groups.owners = dims.owner.group();
             groups.sectors = dims.sector.group();
             
-            
             //Reduce functions
             //TODO - Find way to organise better, will probably multiply quite quickly
             function _reduceAddByStageCategory(p, v) {

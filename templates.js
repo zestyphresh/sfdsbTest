@@ -170,6 +170,51 @@ _templates['epos-basic'] = ""+
         "</div>"
 ;
 
+_templates['accounts-extended'] = ""+
+        "<div class='row'>"+
+        ""+    
+        "    <div class='col-xs-12 col-md-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Filters</span>" +
+        "            </div>"+
+        "            <div class='panel-body'>"+ 
+        "                <div><h5>Sector</h5></div>"+
+        "                <div id='{{id}}-filters-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "                <div><h5>Salesperson</h5></div>"+
+        "                <div id='{{id}}-filters-owner' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "            </div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+
+        "    <div class='col-xs-12 col-md-12'>"+
+        "        <div class='panel panel-default'>"+
+        "            <div class='panel-heading'>" +
+        "                <span>Account Sales</span>" +
+        "            </div>"+
+        "            <div id='{{id}}-tables-accs-sales' class='table-responsive'></div>"+
+        "        </div>"+ 
+        "    </div>"+
+        ""+    
+        "</div>"
+;
+
 _templates['headline-opportunities'] = ""+
         "<div class='row'>"+
         ""+    
