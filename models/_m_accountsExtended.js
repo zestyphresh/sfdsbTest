@@ -56,8 +56,8 @@ var MODEL_ACCOUNTS_EXTENDED = (function($m) {
             dims.dummy = _data.dimension(function(d) { return 'all'; });
             dims.account = _data.dimension(function(d) { return d.name; });
             dims.parentAccount = _data.dimension(function(d) { return d.parentName; });
-            dims.subSector = _data.dimension(function(d) { return d.accountSubSector; });
-            dims.sector = _data.dimension(function(d) { return d.sector; });
+            dims.subSector = _data.dimension(function(d) { return d.accountSubSector === undefined ? 'N/A' : d.accountSubSector; });
+            dims.sector = _data.dimension(function(d) { return d.sector === undefined ? 'N/A' : d.sector; });
             dims.owner = _data.dimension(function(d) { return d.owner; });
             dims.reportingOwner = _data.dimension(function(d) { return d.reportingOwner; });
 
