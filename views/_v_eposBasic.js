@@ -59,6 +59,8 @@ var VIEW_EPOS = (function($v) {
             fltProduct.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.product.all()));
             fltProductCategory.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
             
+            console.log(_models.epos.groups.parentAccount.all());
+            
         }
         
         function updateComponents() {
