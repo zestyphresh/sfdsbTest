@@ -15,6 +15,8 @@ var CHART_EPOS = (function($c) {
                 
         var xAxis = chart.addTimeAxis('x', 'stringDate', '%Y-%m-%d', '%Y-%m');
             xAxis.title = 'Date';
+            xAxis.overrideMin = '2013-01-01';
+            xAxis.overrideMax = '2014-12-31';
                
         var series = chart.addSeries(['halfYear', 'accountParentName'], dimple.plot.line); 
 
