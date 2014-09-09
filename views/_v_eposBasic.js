@@ -52,30 +52,25 @@ var VIEW_EPOS = (function($v) {
         
         function updateFilters() {
             
-            console.log('update filters');
-            console.log(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; }));
-            
             fltParentAccount.find('ul').empty().append(templates['combobox-item'](
-                _(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'}).value()
+                _(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; })).unshift({'key' : 'All'}).value()
             ));
                 
             fltSubSector.find('ul').empty().append(templates['combobox-item'](
-                _(_models.epos.groups.subSector.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'}).value()
+                _(_models.epos.groups.subSector.all().filter(function(d) { return d.value > 0; })).unshift({'key' : 'All'}).value()
             ));
             
             fltProduct.find('ul').empty().append(templates['combobox-item'](
-                _(_models.epos.groups.product.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'}).value()
+                _(_models.epos.groups.product.all().filter(function(d) { return d.value > 0; })).unshift({'key' : 'All'}).value()
             ));
             
             fltProductCategory.find('ul').empty().append(templates['combobox-item'](
-                _(_models.epos.groups.productCategory.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'}).value()
+                _(_models.epos.groups.productCategory.all().filter(function(d) { return d.value > 0; })).unshift({'key' : 'All'}).value()
             ));
             
         }
         
         function updateComponents() {
-            
-            console.log('update components');
             
             chart().update();
             
