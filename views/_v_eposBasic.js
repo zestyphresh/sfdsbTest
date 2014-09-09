@@ -53,6 +53,7 @@ var VIEW_EPOS = (function($v) {
         function updateFilters() {
             
             console.log('update filters');
+            console.log(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; }));
             
             fltParentAccount.find('ul').empty().append(templates['combobox-item'](
                 _(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'})
