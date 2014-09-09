@@ -60,7 +60,7 @@ var MODEL_EPOS = (function($m) {
             _(data).each(function(v) {
                 v.stringDate = v.eposDate;
                 v.eposDate = moment(v.eposDate, 'YYYY-MM-DD');
-                v.halfYear = '' + v.stringDate.splice(0,4) + '-H' + _halfYearMap[v.stringDate.splice(5,7)];
+                v.halfYear = '' + v.stringDate.slice(0,4) + '-H' + _halfYearMap[v.stringDate.slice(5,7)];
             });
             
         }
