@@ -99,7 +99,7 @@ var TABLE_HEADLINE_OPPS = (function($t) {
                                 'render' : function ( data, type, row, meta ) {
                                     //console.log(data, type, meta, full);
                                     if (type === 'display') {
-                                        return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[row.recordType] + '"></span>';
+                                        return '<span class="glyphicon glyphicon-lg ' + glyphs[data].glyph + ' ' + glyphClass[row.recordType] + '"></span>';
                                     } 
                                     return data;
                                 },
