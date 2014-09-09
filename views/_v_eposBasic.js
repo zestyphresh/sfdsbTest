@@ -60,6 +60,7 @@ var VIEW_EPOS = (function($v) {
             fltProductCategory.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
             
             console.log(_models.epos.groups.parentAccount.all());
+            console.log(_models.epos.groups.parentAccount.top(Infinity));
             
         }
         
