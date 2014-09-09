@@ -73,6 +73,7 @@ var MODEL_EPOS = (function($m) {
             groups.subSector = dims.subSector.group();
             groups.product = dims.product.group();
             groups.productCategory = dims.productCategory.group();
+
             
         }
         

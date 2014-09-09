@@ -54,13 +54,21 @@ var VIEW_EPOS = (function($v) {
             
             console.log('update filters');
             
-            fltParentAccount.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.parentAccount.all()));
-            fltSubSector.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.subSector.all()));
-            fltProduct.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.product.all()));
-            fltProductCategory.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
+            fltParentAccount.find('ul').empty().append(templates['combobox-item'](
+                _(_models.epos.groups.parentAccount.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'})
+            ));
+                
+            fltSubSector.find('ul').empty().append(templates['combobox-item'](
+                _(_models.epos.groups.subSector.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'})
+            ));
             
-            console.log(_models.epos.groups.parentAccount.all());
-            console.log(_models.epos.groups.parentAccount.top(Infinity));
+            fltProduct.find('ul').empty().append(templates['combobox-item'](
+                _(_models.epos.groups.product.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'})
+            ));
+            
+            fltProductCategory.find('ul').empty().append(templates['combobox-item'](
+                _(_models.epos.groups.productCategory.all().filter(function(d) { return d.value > 0; })).push({'key' : 'all'})
+            ));
             
         }
         
