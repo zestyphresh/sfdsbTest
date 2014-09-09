@@ -52,10 +52,10 @@ var VIEW_EPOS = (function($v) {
         
         function updateFilters() {
             
-            fltParentAccount.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.parentAccount.all()));
-            fltSubSector.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.subSector.all()));
-            fltProduct.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.product.all()));
-            fltProductCategory.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
+            fltParentAccount.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.parentAccount.all()));
+            fltSubSector.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.subSector.all()));
+            fltProduct.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.product.all()));
+            fltProductCategory.find('ul').empty().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
             
         }
         
