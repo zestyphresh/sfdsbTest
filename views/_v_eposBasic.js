@@ -74,6 +74,8 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.parentAccount.filterExact(selected.value);
                 }
+                updateFilters();
+                updateComponents();
             });
 
             fltSubSector.on('changed.fu.combobox', function(event, selected) {
@@ -82,6 +84,8 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.subSector.filterExact(selected.value);
                 }
+                updateFilters();
+                updateComponents();
             });
             
             fltProduct.on('changed.fu.combobox', function(event, selected) {
@@ -90,6 +94,8 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.product.filterExact(selected.value);
                 }
+                updateFilters();
+                updateComponents();
             });
             
             fltProductCategory.on('changed.fu.combobox', function(event, selected) {
@@ -98,10 +104,9 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.productCategory.filterExact(selected.value);
                 }
+                updateFilters();
+                updateComponents();
             });
-            
-            updateFilters();
-            updateComponents();
             
         }
         
