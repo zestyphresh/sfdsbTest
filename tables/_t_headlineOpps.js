@@ -102,7 +102,8 @@ var TABLE_HEADLINE_OPPS = (function($t) {
                                         return '<span class="glyphicon ' + glyphs[data].glyph + ' ' + glyphClass[row.recordType] + '"></span>';
                                     } 
                                     return data;
-                                }
+                                },
+                                'className' : 'text-center'
                             },
                             { 
                                 'targets' : [5], //thisYearValue
