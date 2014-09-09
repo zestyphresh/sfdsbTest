@@ -89,7 +89,7 @@ var TABLE_HEADLINE_OPPS = (function($t) {
             
         var table = $j('#' + _id).DataTable({
             'data' : data,
-            'order' : [[ 0, 'desc' ]],
+            'order' : [[ 0, 'asc' ]],
             'paging' : false,
             'info' : false, 
             'searching' : false,
