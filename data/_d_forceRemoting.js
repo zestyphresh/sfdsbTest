@@ -5,10 +5,6 @@ var DATA_REMOTING = {
     
     'accountsExtended' : function() {
         
-        //parentAccount used in soql where clause to reuce size of result as it
-        //was hitting the 15mb limit. Use multiple calls and join in the model
-        //to create a full dataset.
-        
         var deferred = Q.defer();
 
         AnalyticsDataProvider.getAccountsExtended(
@@ -39,7 +35,7 @@ var DATA_REMOTING = {
 
     'epos' : function(parentAccount) {
         
-        //parentAccount used in soql where clause to reuce size of result as it
+        //parentAccount used in soql where clause to reduce size of result as it
         //was hitting the 15mb limit. Use multiple calls and join in the model
         //to create a full dataset.
         

@@ -38,21 +38,31 @@ var VIEW_EPOS = (function($v) {
 
             //FILTERS
             fltParentAccount = $j('#' + _uid + '-filters-parent-account');
-            fltParentAccount.find('ul').append(templates['combobox-item'](_models.epos.groups.parentAccount.all()));
-            
             fltSubSector = $j('#' + _uid + '-filters-sub-sector');
-            fltSubSector.find('ul').append(templates['combobox-item'](_models.epos.groups.subSector.all()));
-            
             fltProduct = $j('#' + _uid + '-filters-product');
-            fltProduct.find('ul').append(templates['combobox-item'](_models.epos.groups.product.all()));
-            
             fltProductCategory = $j('#' + _uid + '-filters-product-category');
-            fltProductCategory.find('ul').append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
+            
+            updateFilters();
             
             chart().render();
 
             bindEvents();
 
+        }
+        
+        function updateFilters() {
+            
+            fltParentAccount.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.parentAccount.all()));
+            fltSubSector.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.subSector.all()));
+            fltProduct.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.product.all()));
+            fltProductCategory.find('ul').clear().append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
+            
+        }
+        
+        function updateComponents() {
+            
+            chart().update();
+            
         }
         
         //BIND EVENTS
@@ -64,8 +74,6 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.parentAccount.filterExact(selected.value);
                 }
-                
-                update();
             });
 
             fltSubSector.on('changed.fu.combobox', function(event, selected) {
@@ -74,8 +82,6 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.subSector.filterExact(selected.value);
                 }
-                
-                update();
             });
             
             fltProduct.on('changed.fu.combobox', function(event, selected) {
@@ -84,8 +90,6 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.product.filterExact(selected.value);
                 }
-                
-                update();
             });
             
             fltProductCategory.on('changed.fu.combobox', function(event, selected) {
@@ -94,13 +98,10 @@ var VIEW_EPOS = (function($v) {
                 } else {
                     _models.epos.dims.productCategory.filterExact(selected.value);
                 }
-                
-                update();
             });
-
-            function update() {
-                chart().update();
-            }
+            
+            updateFilters();
+            updateComponents();
             
         }
         

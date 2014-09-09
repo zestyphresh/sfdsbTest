@@ -108,8 +108,8 @@ _templates['epos-basic'] = ""+
         "            <div class='panel-body'>"+ 
         "<div class='row'>"+
         "<div class='col-xs-12 col-md-3'>"+
-        "                <div><h5>Account</h5></div>"+
-        "                <div id='{{id}}-filters-parent-account' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                <div><h5>Sub Sector</h5></div>"+
+        "                <div id='{{id}}-filters-sub-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
@@ -120,8 +120,8 @@ _templates['epos-basic'] = ""+
         "                </div>"+
         "</div>"+
         "<div class='col-xs-12 col-md-3'>"+
-        "                <div><h5>Sub Sector</h5></div>"+
-        "                <div id='{{id}}-filters-sub-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                <div><h5>Account</h5></div>"+
+        "                <div id='{{id}}-filters-parent-account' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
         "                    <input type='text' class='form-control'>"+
         "                        <div class='input-group-btn'>"+
         "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
