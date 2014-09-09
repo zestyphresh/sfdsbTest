@@ -6,6 +6,8 @@ var MODEL_EPOS = (function($m) {
         
         //PRIVATE VARS
         var _data = crossfilter();
+        var _availableData = ['Homebase', 'Argos', 'Boots', 'Tesco'];
+        var _halfYearMap = {'01' : '1','02' : '1','03' : '1','04' : '1','05' : '1','06' : '1','07' : '2','08' : '2','09' : '2','10' : '2','11' : '2','12' : '2'};
             
         //PUBLIC VARS   
         var dims = {}, groups = {};
@@ -17,9 +19,17 @@ var MODEL_EPOS = (function($m) {
             
             Q.all([
                 DATA_REMOTING.epos('Homebase'),
+                DATA_REMOTING.epos('Homebase FOB'),
+                DATA_REMOTING.epos('B&Q'),
                 DATA_REMOTING.epos('Argos'),
+                DATA_REMOTING.epos('Wilkinsons'),
+                DATA_REMOTING.epos('Robert Dyas'),
                 DATA_REMOTING.epos('Boots'),
-                DATA_REMOTING.epos('Tesco')
+                DATA_REMOTING.epos('John Lewis'),
+                DATA_REMOTING.epos('Tesco'),
+                DATA_REMOTING.epos('Sainsburys'),
+                DATA_REMOTING.epos('Wickes'),
+                DATA_REMOTING.epos('Asda')
             ]).done(function(results) {
 
                 _.each(results, function(v) {
@@ -50,7 +60,7 @@ var MODEL_EPOS = (function($m) {
             _(data).each(function(v) {
                 v.stringDate = v.eposDate;
                 v.eposDate = moment(v.eposDate, 'YYYY-MM-DD');
-                v.halfYear = '' + v.eposDate.year() + '-' + Math.ceil(v.eposDate.quarter()/2);
+                v.halfYear = '' + v.stringDate.splice(0,4) + '-H' + _halfYearMap[v.stringDate.splice(5,7)];
             });
             
         }

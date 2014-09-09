@@ -107,6 +107,20 @@ _templates['epos-basic'] = ""+
         "            </div>"+
         "            <div class='panel-body'>"+ 
         "<div class='row'>"+
+        "    <div class='col-xs-12 col-md-3'>"+
+        "                <div><h5>Sub Sector</h5></div>"+
+        "                <div id='{{id}}-filters-sub-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
+        "                    <input type='text' class='form-control'>"+
+        "                        <div class='input-group-btn'>"+
+        "                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'><span class='caret'></span></button>"+
+        "                            <ul class='dropdown-menu dropdown-menu-right'>"+
+        "                                <li data-value='All'><a>All</a></li>"+
+        "                            </ul>"+
+        "                        </div>"+
+        "                </div>"+
+        "    </div>"+
+        "</div>"+
+        "<div class='row'>"+
         "<div class='col-xs-12 col-md-3'>"+
         "                <div><h5>Sub Sector</h5></div>"+
         "                <div id='{{id}}-filters-sub-sector' class='input-group input-append dropdown combobox' data-initialize='combobox'>"+
