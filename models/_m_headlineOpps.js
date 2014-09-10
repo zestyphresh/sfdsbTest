@@ -196,8 +196,10 @@ var MODEL_HEADLINE_OPPS = (function($m) {
                         storeDate = d.closeDate.clone().add('weeks', 4),
                         maxDate = new moment('2015-12-31', 'YYYY-MM-DD'),
                         tClass = headline ? 'headline' : 'threat',
-                        content = d.account + ' - ' + d.name + '</br>' + 
-                                  'ISO - ' + f.toGbp(d.isoValue) + ', Annualised - ' + f.toGbp(d.annualisedValue);
+                        //content = d.account + ' - ' + d.name + '</br>' + 
+                        //          'ISO - ' + f.toGbp(d.isoValue) + ', Annualised - ' + f.toGbp(d.annualisedValue);
+                        content = 'Account' + ' - ' + 'Product Category' + '</br>' + 
+                                  'ISO - ' + '£000.00' + ', Annualised - ' + '£000.00';
                         var group;
                         
                         if (d.isoValue + d.annualisedValue < 50000) {
