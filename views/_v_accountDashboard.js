@@ -62,36 +62,22 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         //BIND EVENTS
         function bindEvents() {
             
-            fltParentAccount.on('changed.fu.combobox', function(event, selected) {
-                if (selected.value === 'All') {
-                    _models.epos.dims.parentAccount.filterAll();
-                } else {
-                    _models.epos.dims.parentAccount.filterExact(selected.value);
-                }
-                
-                update();
-            });
-
-            function update() {
-                chart().update();
-            }
-            
         }
         
         //COMPONENT GROUPS
         //Components are grouped by the data they consume to avoid manipulating the same data multiple times
         
         //COMPONENT GROUP - SUMMARY
-        function sales() {
+        function allSales() {
 
             var _data = _models.accs.dims.dummy.top(Infinity);
             
             function render() {
-                tblAccs = new TABLE.AccountsExtended(_uid + '-tables-accs-sales', _data);
+                chtSales = new CHART.WeeklySales(_uid + '-charts-sales-weekly', _data);
             }
             
             function update() {
-                tblAccs.reload(_data);
+                chtSales.reload(_data);
             }
             
             return { render : render, update : update };
