@@ -1,8 +1,6 @@
 var VIEW_ACCOUNT_DASHBOARD = (function($v) {
 
     $v.AccountDashboard = function(args) {
-        
-        log.push({'view' : 'in view'});
 
         //PRIVATE VARS - SET
         var _args = args,
@@ -18,9 +16,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         
         //INITIALISE MODELS
         function init(renderAfter) {
-            
-            log.push({'view-init' : 'in init'});
-            
+
             _models['sales'] = new gblModel.AccountSales;
             
             Q.all([_models.accs.fetch(url.params.parent, url.params.id)]).done(function() {
