@@ -381,5 +381,6 @@ var templates =  {
     'countdown-promo' : Handlebars.compile(_templates['countdown-promo']),
     'combobox-item' : Handlebars.compile(_templates['combobox-item']),
     'epos-basic' : Handlebars.compile(_templates['epos-basic']),
-    'accounts-extended' : Handlebars.compile(_templates['accounts-extended'])
+    'accounts-extended' : Handlebars.compile(_templates['accounts-extended']),
+    'account-dashboard' : Handlebars.compile(_templates['account-dashboard'])
 }; 
