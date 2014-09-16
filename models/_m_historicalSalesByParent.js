@@ -82,10 +82,10 @@ var MODEL_ACCOUNT_SALES = (function($m) {
                 p.count++;
                 p[v.year] += v.grossValue;
                 
-                p.2011vsPrevious = p.val2011 - p.val2010;
-                p.2012vsPrevious = p.val2012 - p.val2011; 
-                p.2013vsPrevious = p.val2013 - p.val2012; 
-                p.2014vsPrevious = p.val2014 - p.val2013; 
+                p.vsPrevious2011 = p.val2011 - p.val2010;
+                p.vsPrevious2012 = p.val2012 - p.val2011; 
+                p.vsPrevious2013 = p.val2013 - p.val2012; 
+                p.vsPrevious2014 = p.val2014 - p.val2013; 
                 
                 return p;
             }
@@ -95,10 +95,10 @@ var MODEL_ACCOUNT_SALES = (function($m) {
                 p.count--;
                 p[v.year] -= v.grossValue;
                 
-                p.2011vsPrevious = p.val2011 - p.val2010;
-                p.2012vsPrevious = p.val2012 - p.val2011; 
-                p.2013vsPrevious = p.val2013 - p.val2012; 
-                p.2014vsPrevious = p.val2014 - p.val2013; 
+                p.vsPrevious2011 = p.val2011 - p.val2010;
+                p.vsPrevious2012 = p.val2012 - p.val2011; 
+                p.vsPrevious2013 = p.val2013 - p.val2012; 
+                p.vsPrevious2014 = p.val2014 - p.val2013; 
                 
                 return p;
             }
@@ -106,7 +106,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             function _reduceInitialiseByYear() {
                 return {'count' : 0, 
                         'val2010' : 0, 'val2011' : 0, 'val2012': 0, 'val2013': 0, 'val2014': 0, 
-                        '2011vsPrevious' : 0, '2012vsPrevious': 0, '2013vsPrevious': 0, '2014vsPrevious': 0};
+                        'vsPrevious2011' : 0, 'vsPrevious2012': 0, 'vsPrevious2013': 0, 'vsPrevious2014': 0};
             }
             
         }
