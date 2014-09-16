@@ -12,6 +12,7 @@
 
     var currentUrl = new URI(window.location.href);
     url.params = currentUrl.search(true);
+    console.log(url);
 
     Q.all([gblModel.dates()]).then(function(result) {
         
