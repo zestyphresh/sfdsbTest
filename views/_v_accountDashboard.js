@@ -4,13 +4,17 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
 
         //PRIVATE VARS - SET
         var _args = args,
-            _viewId = 'tbc',
+            _viewId = 'aaaaaaaaaaaaaaa',
             _uid = _.uniqueId(_viewId + '-'), 
             _models = {},
             _loaded = false
         ;
 
         //PRIVATE VARS - NOT SET
+        var _components = {
+            tables : {},
+            charts : {}
+        }
         var tbl;
         var flt;
         
@@ -24,9 +28,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
                 _loaded = true;
 
                 if (renderAfter) render();
-                
-                console.log(_models.sales.groups.productByYear.all());
-                
+
             });
 
         }
@@ -36,7 +38,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
 
             $body.append(templates['container']({'id':_uid}));
             $j('#' + _uid).append(templates['heading-no-links']({'title':url.params.name}));
-            //$j('#' + _uid).append(templates['accounts-extended']({'id':_uid}));
+            $j('#' + _uid).append(templates['account-dashboard']({'id':_uid}));
 
             //FILTERS
             //fltParentAccount = $j('#' + _uid + '-filters-parent-account');
