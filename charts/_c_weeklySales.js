@@ -12,7 +12,7 @@ var CHART_Monthly_SALES = (function($c) {
         var yAxis = chart.addMeasureAxis('y', 'value');
             yAxis.title = 'Gross Value';
                 
-        var xAxis = chart.addTimeAxis('x', 'stringDate', '%Y-M%m', '%Y-%m');
+        var xAxis = chart.addTimeAxis('x', 'key', '%Y-M%m', '%Y-%m');
             xAxis.title = 'Date';
 
         var series = chart.addSeries(null, dimple.plot.bar); 
