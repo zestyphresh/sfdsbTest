@@ -8,13 +8,14 @@
     $body = $j('body');
     $navbar = $j();
     url = {};
+    log = [];
 
     var currentUrl = new URI(window.location.href);
     url.params = currentUrl.search(true);
 
     Q.all([gblModel.dates()]).then(function(result) {
         
-        console.log('in app');
+        log.push({'app' : 'in app'});
 
             //$navbar = $j(templates['navbar'](config.userName));
             //$navbar.appendTo($body);
@@ -23,5 +24,7 @@
             views['accountDashboard'].init(true);
 
     });
+    
+    console.log(log);
 
 }());
