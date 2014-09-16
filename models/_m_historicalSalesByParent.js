@@ -12,6 +12,8 @@ var MODEL_ACCOUNT_SALES = (function($m) {
         
         //PUBLIC FUNCTIONS
         function fetch(parent, id) {
+            
+            console.log('fetch');
 
             var deferred = Q.defer();
             

@@ -16,6 +16,8 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         
         //INITIALISE MODELS
         function init(renderAfter) {
+            
+            console.log('init');
 
             _models['sales'] = new gblModel.AccountSales;
             
