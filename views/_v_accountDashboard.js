@@ -26,10 +26,10 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
                 _loaded = true;
 
                 if (renderAfter) render();
-
+                
+                console.log(_models.sales.groups.productByYear.all());
+                
             });
-            
-            console.log(_models.sales.groups.productByYear.all());
 
         }
             
