@@ -91,6 +91,36 @@ var DATA_REMOTING = {
             
         return deferred.promise;
 
+    },
+    
+    'historicalSalesByParent' : function(parent, id) {
+        
+        //This query should never hit any SOQL limits
+        
+        var deferred = Q.defer();
+
+        AnalyticsDataProvider.getHeadlineOpportunities(
+            
+            parent, id, 
+
+            function (result, event) {
+
+                if (!event.status) {
+                        
+                    deferred.reject(event);
+                        
+                } else {
+
+                    deferred.resolve(result);
+                        
+                }
+
+            }, { buffer: false, escape: true }
+                    
+        );
+            
+        return deferred.promise;
+
     }
 
 };

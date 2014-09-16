@@ -12,11 +12,8 @@
     config.userId = $j('#userId').text();
     config.userName = $j('#userName').text();
 
-    Q.all([gblModel.userViews(config.userId), gblModel.dates()]).then(function(result) {
-        
-        console.log(result);
-        console.log(views);
-            
+    Q.all([gblModel.userViews(config.userId)]).then(function(result) {
+
             $navbar = $j(templates['navbar'](result[0].navbar));
             $navbar.appendTo($body);
 
@@ -27,9 +24,7 @@
                 router.on(v.link, routerFunc(v.name, args));
                 
             });
-            
-        console.log(views);    
-            
+
     });
 
     function routerFunc(name, args) {
