@@ -79,7 +79,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
                 .group()
                 .reduce(_reduceAddByYear, _reduceSubtractByYear, _reduceInitialiseByYear);
                 
-            groups.yearMonth = dims.yearMonth.group.reduceSum(function(d) { return d.grossValue; });
+            groups.yearMonth = dims.yearMonth.group().reduceSum(function(d) { return d.grossValue; });
             
             //Reduce functions
             //TODO - Find way to organise better, will probably multiply quite quickly
