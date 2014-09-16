@@ -6,6 +6,7 @@ Handlebars.registerHelper('times', function(n, block) {
 });
     
 var _templates = {};
+var _tmpl = {};
 
 _templates['combobox-item'] = ""+
     "{{#each this}}"+ 
@@ -347,7 +348,7 @@ _templates['countdown-promo'] = ""+
     
 _templates['container'] = ""+
         "<div id='{{id}}' class='container-fluid dashboard-view fuelux'></div>"
-;   
+;
 
 
 var templates =  {

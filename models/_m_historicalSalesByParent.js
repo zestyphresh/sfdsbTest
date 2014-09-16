@@ -83,7 +83,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             function _reduceAddByYear(p, v) {
                 
                 p.count++;
-                p[v.year] += v.grossValue;
+                p['val' + v.year] += v.grossValue;
                 
                 p.vsPrevious2011 = p.val2011 - p.val2010;
                 p.vsPrevious2012 = p.val2012 - p.val2011; 
@@ -96,7 +96,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             function _reduceSubtractByYear(p, v) {
                 
                 p.count--;
-                p[v.year] -= v.grossValue;
+                p['val' + v.year] -= v.grossValue;
                 
                 p.vsPrevious2011 = p.val2011 - p.val2010;
                 p.vsPrevious2012 = p.val2012 - p.val2011; 
