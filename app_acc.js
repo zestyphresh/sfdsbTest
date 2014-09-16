@@ -17,8 +17,8 @@
             //$navbar = $j(templates['navbar'](config.userName));
             //$navbar.appendTo($body);
  
-            views['historicalSalesByParent'] = new VIEW['historicalSalesByParent']({});
-            views['historicalSalesByParent'].init(true);
+            views['accountDashboard'] = new VIEW['accountDashboard']({});
+            views['accountDashboard'].init(true);
 
     });
 
