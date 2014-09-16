@@ -15,8 +15,6 @@
     console.log(url);
 
     Q.all([gblModel.dates()]).then(function(result) {
-        
-        log.push({'app' : 'in app'});
 
             //$navbar = $j(templates['navbar'](config.userName));
             //$navbar.appendTo($body);

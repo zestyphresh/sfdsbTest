@@ -19,7 +19,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
 
             _models['sales'] = new gblModel.AccountSales;
             
-            Q.all([_models.accs.fetch(url.params.parent, url.params.id)]).done(function() {
+            Q.all([_models.sales.fetch(url.params.parent, url.params.id)]).done(function() {
                 
                 _loaded = true;
 
