@@ -28,6 +28,8 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
                 if (renderAfter) render();
 
             });
+            
+            console.log(_models.sales.groups.productByYear.all());
 
         }
             

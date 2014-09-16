@@ -65,6 +65,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             
             dims.dummy = _data.dimension(function(d) { return 'all'; });
             dims.account = _data.dimension(function(d) { return d.accountName; });
+            dims.product = _data.dimension(function(d) { return d.productCode + " " + d.productName; });
 
         }
         
