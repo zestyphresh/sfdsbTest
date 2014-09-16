@@ -72,7 +72,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
             var _data = _models.sales.groups.yearMonth.all();
             
             function render() {
-                chtSales = new CHART.WeeklySales(_uid + '-charts-sales-weekly', _data);
+                chtSales = new CHART.MonthlySales(_uid + '-charts-sales-weekly', _data);
             }
             
             function update() {
