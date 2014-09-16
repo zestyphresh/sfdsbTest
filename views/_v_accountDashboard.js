@@ -70,7 +70,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         //COMPONENT GROUP - SUMMARY
         function allSales() {
 
-            var _data = _models.accs.dims.dummy.top(Infinity);
+            var _data = _models.sales.dims.dummy.top(Infinity);
             
             function render() {
                 chtSales = new CHART.WeeklySales(_uid + '-charts-sales-weekly', _data);
