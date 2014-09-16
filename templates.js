@@ -224,7 +224,7 @@ _templates['account-dashboard'] = ""+
         "            <div id='{{id}}-charts-sales-weekly' class='minChartDims3'></div>"+
         "        </div>"+
         "    </div>"+
-        "    <div class='col-xs-12 col-md-12'>"+
+        "    <div class='col-xs-12 col-md-6'>"+
         "        <div class='panel panel-default'>"+
         "            <div class='panel-heading'>" +
         "                <span>Product Sales</span>" +
