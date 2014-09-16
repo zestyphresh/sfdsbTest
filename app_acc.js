@@ -24,7 +24,5 @@
             views['accountDashboard'].init(true);
 
     });
-    
-    console.log(log);
 
 }());
