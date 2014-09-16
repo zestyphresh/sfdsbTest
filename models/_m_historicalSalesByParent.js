@@ -49,7 +49,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
         function _onFetchDataChanges(data) {
             
             _(data).each(function(d) {
-                d.stringDate = v.invoiceDate;
+                d.stringDate = d.invoiceDate;
                 d.yearWeek = _modpriv.datesByDate[d.stringDate].fyYearWeek;
                 d.yearMonth = _modpriv.datesByDate[d.stringDate].fyYearMonth;
                 d.year = _modpriv.datesByDate[d.stringDate].fyYear;
