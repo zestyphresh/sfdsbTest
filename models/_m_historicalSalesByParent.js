@@ -50,11 +50,11 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             
             _(data).each(function(v) {
                 v.stringDate = v.invoiceDate;
-                v.yearWeek = _modpriv.datesByDate.stringDate.fyYearWeek;
-                v.yearMonth = _modpriv.datesByDate.stringDate.fyYearMonth;
-                v.year = _modpriv.datesByDate.stringDate.fyYear;
-                v.month = _modpriv.datesByDate.stringDate.fyMonthNum;
-                v.isYTD = _modpriv.datesByDate.stringDate.fyIsYearToDate;
+                v.yearWeek = _modpriv.datesByDate[v.stringDate].fyYearWeek;
+                v.yearMonth = _modpriv.datesByDate[v.stringDate].fyYearMonth;
+                v.year = _modpriv.datesByDate[v.stringDate].fyYear;
+                v.month = _modpriv.datesByDate[v.stringDate].fyMonthNum;
+                v.isYTD = _modpriv.datesByDate[v.stringDate].fyIsYearToDate;
                 v.invoiceDate = moment(v.invoiceDate, 'YYYY-MM-DD');
             });
             
