@@ -15,8 +15,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
             tables : {},
             charts : {}
         }
-        var tbl;
-        var flt;
+        var chtSales;
         
         //INITIALISE MODELS
         function init(renderAfter) {
@@ -70,7 +69,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         //COMPONENT GROUP - SUMMARY
         function allSales() {
 
-            var _data = _models.sales.dims.dummy.top(Infinity);
+            var _data = _models.sales.groups.yearMonth.all();
             
             function render() {
                 chtSales = new CHART.WeeklySales(_uid + '-charts-sales-weekly', _data);

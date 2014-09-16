@@ -48,14 +48,14 @@ var MODEL_ACCOUNT_SALES = (function($m) {
         //Any data manipulation prior to inserting to crossfilter should be handled here
         function _onFetchDataChanges(data) {
             
-            _(data).each(function(v) {
-                v.stringDate = v.invoiceDate;
-                v.yearWeek = _modpriv.datesByDate[v.stringDate].fyYearWeek;
-                v.yearMonth = _modpriv.datesByDate[v.stringDate].fyYearMonth;
-                v.year = _modpriv.datesByDate[v.stringDate].fyYear;
-                v.month = _modpriv.datesByDate[v.stringDate].fyMonthNum;
-                v.isYTD = _modpriv.datesByDate[v.stringDate].fyIsYearToDate;
-                v.invoiceDate = moment(v.invoiceDate, 'YYYY-MM-DD');
+            _(data).each(function(d) {
+                d.stringDate = v.invoiceDate;
+                d.yearWeek = _modpriv.datesByDate[d.stringDate].fyYearWeek;
+                d.yearMonth = _modpriv.datesByDate[d.stringDate].fyYearMonth;
+                d.year = _modpriv.datesByDate[d.stringDate].fyYear;
+                d.month = _modpriv.datesByDate[d.stringDate].fyMonthNum;
+                d.isYTD = _modpriv.datesByDate[d.stringDate].fyIsYearToDate;
+                d.invoiceDate = moment(d.invoiceDate, 'YYYY-MM-DD');
             });
             
         }
@@ -66,6 +66,7 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             dims.dummy = _data.dimension(function(d) { return 'all'; });
             dims.account = _data.dimension(function(d) { return d.accountName; });
             dims.product = _data.dimension(function(d) { return d.productCode + " " + d.productName; });
+            dims.yearMonth = _data.dimension(function(d) { return d.yearMonth; });
 
         }
         
@@ -77,9 +78,13 @@ var MODEL_ACCOUNT_SALES = (function($m) {
             groups.productByYear = dims.product
                 .group()
                 .reduce(_reduceAddByYear, _reduceSubtractByYear, _reduceInitialiseByYear);
+                
+            groups.yearMonth = dims.yearMonth.group.reduceSum(function(d) { return d.grossValue; });
             
             //Reduce functions
             //TODO - Find way to organise better, will probably multiply quite quickly
+            
+            //Grouping Products By Year
             function _reduceAddByYear(p, v) {
                 
                 p.count++;
