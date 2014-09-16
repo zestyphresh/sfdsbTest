@@ -13,6 +13,8 @@
     url.params = currentUrl.search(true);
 
     Q.all([gblModel.dates()]).then(function(result) {
+        
+        console.log('in app');
 
             //$navbar = $j(templates['navbar'](config.userName));
             //$navbar.appendTo($body);
