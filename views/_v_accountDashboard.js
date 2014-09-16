@@ -53,7 +53,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
             //fltProductCategory = $j('#' + _uid + '-filters-product-category');
             //fltProductCategory.find('ul').append(templates['combobox-item'](_models.epos.groups.productCategory.all()));
             
-            //sales().render();
+            allSales().render();
 
             //bindEvents();
 
