@@ -99,7 +99,7 @@ var DATA_REMOTING = {
         
         var deferred = Q.defer();
 
-        AnalyticsDataProvider.getHeadlineOpportunities(
+        AnalyticsDataProvider.getHistoricalSalesByParent(
             
             parent, id, 
 
