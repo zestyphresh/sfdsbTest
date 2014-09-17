@@ -70,7 +70,7 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         function allSales() {
 
             //var _data = _models.sales.groups.yearMonth.all();
-            var _data = _models.sales.dummy.top(Infinity);
+            var _data = _models.sales.dims.dummy.top(Infinity);
             
             console.log(_data);
             
