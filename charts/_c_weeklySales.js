@@ -15,8 +15,7 @@ var CHART_Monthly_SALES = (function($c) {
         var xAxis = chart.addTimeAxis('x', 'key', '%Y-M%m', '%Y-%m');
             xAxis.title = 'Date';
 
-        var series = chart.addSeries(null, dimple.plot.bar);
-            series.barGap = 0.2;
+        var series = chart.addSeries(null, dimple.plot.area);
                        
         //series.getTooltipText = function (e) {
         //    return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
