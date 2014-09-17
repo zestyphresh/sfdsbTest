@@ -16,8 +16,10 @@ var CHART_Monthly_SALES = (function($c) {
             xAxis.title = 'Date';
             xAxis.timePeriod = d3.time.months;
             xAxis.timeInterval = 1;
+            xAxis.floatingBarWidth = 10
+            xAxis.overrideMin = new Date(2010, 1, 1);
 
-        var series = chart.addSeries(null, dimple.plot.area);
+        var series = chart.addSeries(null, dimple.plot.bar);
 
                        
         //series.getTooltipText = function (e) {
