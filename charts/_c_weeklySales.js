@@ -9,10 +9,10 @@ var CHART_Monthly_SALES = (function($c) {
         var svg = dimple.newSvg('#' + id, '100%', '100%');
         var chart = new dimple.chart(svg, _data).setMargins("60px", "30px", "40px", "60px");
                 
-        var yAxis = chart.addMeasureAxis('y', 'grossValue');
+        var yAxis = chart.addMeasureAxis('y', 'value');
             yAxis.title = 'Gross Value';
                 
-        var xAxis = chart.addCategoryAxis('x', ['year', 'month']);
+        var xAxis = chart.addTimeAxis('x', 'key', '%Y-M%m', '%Y-%b');
             xAxis.title = 'Date';
 
         var series = chart.addSeries(null, dimple.plot.bar);
