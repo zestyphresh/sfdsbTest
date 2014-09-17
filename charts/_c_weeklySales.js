@@ -14,8 +14,11 @@ var CHART_Monthly_SALES = (function($c) {
                 
         var xAxis = chart.addTimeAxis('x', 'key', '%Y-M%m', '%Y-%b');
             xAxis.title = 'Date';
+            xAxis.timePeriod = d3.time.months;
+            xAxis.timeInterval = 1;
 
         var series = chart.addSeries(null, dimple.plot.bar);
+
                        
         //series.getTooltipText = function (e) {
         //    return [e.aggField[0] + ' - ' + numeral(e.yValue).format('$0,0')];
