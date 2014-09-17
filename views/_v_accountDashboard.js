@@ -69,7 +69,8 @@ var VIEW_ACCOUNT_DASHBOARD = (function($v) {
         //COMPONENT GROUP - SUMMARY
         function allSales() {
 
-            var _data = _models.sales.groups.yearMonth.all();
+            //var _data = _models.sales.groups.yearMonth.all();
+            var _data = _models.sales.dummy.top(Infinity);
             
             console.log(_data);
             
